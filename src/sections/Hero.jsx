@@ -2,6 +2,21 @@ import { motion } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 
 export default function Hero() {
+  const scrollToSection = (event, id) => {
+    event.preventDefault()
+
+    const target = document.getElementById(id)
+    if (!target) return
+
+    const offset = 88
+    const targetTop = target.getBoundingClientRect().top + window.scrollY - offset
+
+    window.scrollTo({
+      top: targetTop,
+      behavior: 'smooth'
+    })
+  }
+
   return (
     <section id="hero" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
@@ -30,16 +45,20 @@ export default function Hero() {
               
               <div className="flex flex-wrap gap-4">
                 <motion.a
-                  href="#work"
+                  href="/Brand9Studio%20Portfolio.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download="Brand9Studio_Portfolio.pdf"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="px-8 py-4 bg-brand-lime text-black font-outfit font-black text-sm uppercase tracking-widest rounded-none btn-shimmer"
                 >
-                  View Our Work
+                  Download Portfolio
                 </motion.a>
                 
                 <motion.a
                   href="#contact"
+                  onClick={(event) => scrollToSection(event, 'contact')}
                   whileHover={{ x: 5 }}
                   className="px-8 py-4 border border-white/20 text-white font-inter text-sm uppercase tracking-widest hover:border-brand-lime/50 flex items-center gap-2"
                 >
@@ -67,15 +86,32 @@ export default function Hero() {
                 </div>
               </div>
               
-              {/* Floating Element */}
-              <motion.div
-                animate={{ y: [0, -20, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-10 -right-10 glass-panel p-6 px-10 lime-glow border-brand-lime/30"
-              >
-                <p className="text-3xl font-black text-white">9+</p>
-                <p className="text-[10px] text-brand-lime uppercase tracking-widest">Years Experience</p>
-              </motion.div>
+              {/* Floating Stat Badges */}
+              <div className="absolute -top-8 -right-8 flex flex-col gap-4">
+                <motion.div
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                  className="glass-panel p-4 px-6 border border-white/10 bg-black/40 backdrop-blur-sm"
+                >
+                  <div className="flex items-baseline gap-3">
+                    <p className="text-3xl font-black text-white">9+</p>
+                    <span className="text-[11px] text-brand-smoke uppercase tracking-wider">Years</span>
+                  </div>
+                  <p className="text-[11px] text-brand-lime mt-1 font-bold">Creative industry experience</p>
+                </motion.div>
+
+                <motion.div
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 0.4 }}
+                  className="glass-panel p-4 px-6 border border-white/10 bg-black/35 backdrop-blur-sm"
+                >
+                  <div className="flex items-baseline gap-3">
+                    <p className="text-3xl font-black text-white">14+</p>
+                    <span className="text-[11px] text-brand-smoke uppercase tracking-wider">Years</span>
+                  </div>
+                  <p className="text-[11px] text-brand-lime mt-1 font-bold">Digital marketing experience</p>
+                </motion.div>
+              </div>
             </motion.div>
           </div>
         </div>

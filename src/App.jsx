@@ -1,15 +1,14 @@
-import { useState, useEffect } from 'react'
 import { motion, useScroll, useSpring } from 'framer-motion'
 import Navbar from './components/Navbar'
 import Hero from './sections/Hero'
-import About from './sections/About'
-import Services from './sections/Services'
 import Projects from './sections/Projects'
+import CaseStudies from './sections/CaseStudies'
+import Services from './sections/Services'
 import Testimonials from './sections/Testimonials'
-import Pricing from './sections/Pricing'
+import About from './sections/About'
+import ClientLogos from './components/ClientLogos'
 import Contact from './sections/Contact'
 import Footer from './components/Footer'
-import ClientLogos from './components/ClientLogos'
 
 function App() {
   const { scrollYProgress } = useScroll()
@@ -36,12 +35,12 @@ function App() {
       
       <main>
         <Hero />
-        <ClientLogos />
-        <About />
-        <Services />
         <Projects />
+        <CaseStudies />
+        <Services />
         <Testimonials />
-        <Pricing />
+        <About />
+        <ClientLogos />
         <Contact />
       </main>
 

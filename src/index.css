@@ -16,6 +16,10 @@ body {
   background-color: var(--bg-obsidian);
 }
 
+[id] {
+  scroll-margin-top: 110px;
+}
+
 h1, h2, h3, h4 {
   @apply font-outfit;
 }

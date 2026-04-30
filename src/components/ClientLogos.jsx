@@ -4,7 +4,7 @@ export default function ClientLogos() {
   const clients = ["MAISON MIRA", "RANKENHANCE", "REFLECTIONS", "DR. ANUJ MUDGAL", "INT. TRADE SOLUTIONS"]
 
   return (
-    <div className="py-12 bg-black overflow-hidden border-y border-white/5 relative">
+    <section id="clients" className="py-12 bg-black overflow-hidden border-y border-white/5 relative">
       <div className="absolute inset-0 z-10 pointer-events-none">
         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-black to-transparent" />
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-black to-transparent" />
@@ -24,6 +24,6 @@ export default function ClientLogos() {
           </span>
         ))}
       </motion.div>
-    </div>
+    </section>
   )
 }
