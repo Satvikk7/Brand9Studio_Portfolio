@@ -235,9 +235,26 @@ function CarouselArrow({ direction, onClick, disabled }) {
 }
 
 function ProjectCard({ project, expanded, onToggle, onOpenLightbox }) {
+  const descriptionRef = useRef(null)
   const heroImage = project.images[0]
   const detailImages = project.images.slice(1)
   const panelId = `project-panel-${project.folder.replace(/[^a-z0-9]+/gi, '-').toLowerCase()}`
+  const [shouldShowReadMore, setShouldShowReadMore] = useState(false)
+  const [descriptionExpanded, setDescriptionExpanded] = useState(false)
+
+  useEffect(() => {
+    const updateReadMoreVisibility = () => {
+      const node = descriptionRef.current
+      if (!node) return
+
+      setShouldShowReadMore(node.scrollHeight > node.clientHeight + 1)
+    }
+
+    updateReadMoreVisibility()
+    window.addEventListener('resize', updateReadMoreVisibility)
+
+    return () => window.removeEventListener('resize', updateReadMoreVisibility)
+  }, [project.intro])
 
   return (
     <motion.div
@@ -300,12 +317,42 @@ function ProjectCard({ project, expanded, onToggle, onOpenLightbox }) {
               </h3>
             </div>
 
-            <p className="text-sm text-brand-smoke leading-relaxed line-clamp-3">{project.intro}</p>
+            <div className="relative min-h-[48px]">
+              <p
+                ref={descriptionRef}
+                className={`text-sm text-brand-smoke leading-relaxed ${descriptionExpanded ? '' : 'line-clamp-2 pr-20'}`}
+                aria-expanded={descriptionExpanded}
+              >
+                {project.intro}
+              </p>
+
+              {shouldShowReadMore && !descriptionExpanded && (
+                <button
+                  type="button"
+                  onClick={() => setDescriptionExpanded(true)}
+                  className="absolute bottom-0 right-0 translate-y-[1px] px-3 py-0.5 text-[10px] font-bold uppercase tracking-[0.3em] text-brand-lime bg-black/75 rounded-l-full hover:text-white transition-colors"
+                  aria-label={`Read more about ${project.title}`}
+                >
+                  ....read more
+                </button>
+              )}
+
+              {shouldShowReadMore && descriptionExpanded && (
+                <button
+                  type="button"
+                  onClick={() => setDescriptionExpanded(false)}
+                  className="mt-2 text-[10px] font-bold uppercase tracking-[0.3em] text-brand-lime hover:text-white transition-colors"
+                  aria-label={`Show less about ${project.title}`}
+                >
+                  Show less
+                </button>
+              )}
+            </div>
 
             <div className="flex flex-wrap gap-2 text-[10px] text-brand-smoke/70 uppercase tracking-wider">
-              <span className="px-2 py-1 rounded bg-white/5 border border-white/10">Premium</span>
-              <span className="px-2 py-1 rounded bg-white/5 border border-white/10">2024</span>
-              <span className="px-2 py-1 rounded bg-white/5 border border-white/10">Accessible</span>
+              <span className="px-2 py-1 rounded bg-white/5 border border-white/10">Client Work</span>
+              <span className="px-2 py-1 rounded bg-white/5 border border-white/10">2025</span>
+              <span className="px-2 py-1 rounded bg-white/5 border border-white/10">Design Ready</span>
             </div>
 
             <div className="flex items-center gap-3">
@@ -432,20 +479,20 @@ function CategoryCarousel({ categoryData, expandedProject, setExpandedProject, o
       className="mb-20"
     >
       {/* Category Header */}
-      <div className="mb-8 flex items-center gap-4">
-        <div className="flex-1">
+      <div className="mb-8 flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
+        <div className="flex-1 min-w-0">
           <div className="flex items-center gap-3">
-            <h2 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tighter">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white uppercase tracking-tighter">
               {categoryData.category}
             </h2>
             <motion.div
               initial={{ width: 0 }}
               whileInView={{ width: '240px' }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="h-[2px] bg-gradient-to-r from-brand-lime to-transparent"
+              className="h-[2px] bg-gradient-to-r from-brand-lime to-transparent hidden sm:block"
             />
           </div>
-          <p className="text-sm text-brand-smoke/60 mt-2 uppercase tracking-wider font-mono">
+          <p className="text-xs sm:text-sm text-brand-smoke/60 mt-2 uppercase tracking-wider font-mono">
             {categoryData.projects.length} project{categoryData.projects.length > 1 ? 's' : ''}
           </p>
         </div>
@@ -562,10 +609,10 @@ export default function Projects() {
           <span className="text-brand-lime font-mono text-xs uppercase tracking-[0.4em] mb-4 block">
             Adaptive Flow
           </span>
-          <h1 className="text-6xl md:text-7xl font-black text-white uppercase tracking-tighter leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white uppercase tracking-tighter leading-tight">
             WORK <br /> <span className="text-brand-lime">GALLERY.</span>
           </h1>
-          <p className="text-lg text-brand-smoke/70 mt-6 max-w-2xl leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg text-brand-smoke/70 mt-6 max-w-2xl leading-relaxed">
             An extensive collection of premium creative assets, seamlessly organized by category. Each project
             showcases meticulous attention to detail and versatile design excellence.
           </p>
@@ -585,30 +632,30 @@ export default function Projects() {
         </div>
 
         {lightbox.open && lightbox.project && (
-          <div className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-xl flex items-center justify-center px-4 py-6">
+          <div className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-xl flex items-center justify-center px-3 sm:px-4 py-4 sm:py-6 overflow-y-auto">
             <div className="absolute inset-0" onClick={closeLightbox} />
 
             <motion.div
               initial={{ opacity: 0, scale: 0.96, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.25 }}
-              className="relative z-10 w-full max-w-6xl max-h-[92vh] overflow-hidden rounded-[2rem] border border-white/10 bg-brand-gray/95 shadow-2xl shadow-black/60"
+              className="relative z-10 w-full max-w-6xl max-h-[calc(100vh-32px)] overflow-hidden rounded-lg sm:rounded-2xl lg:rounded-[2rem] border border-white/10 bg-brand-gray/95 shadow-2xl shadow-black/60 flex flex-col"
             >
-              <div className="flex items-center justify-between gap-4 p-4 border-b border-white/10">
-                <div>
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 p-3 sm:p-4 border-b border-white/10 flex-shrink-0">
+                <div className="min-w-0 flex-1">
                   <p className={`text-[10px] uppercase tracking-[0.35em] ${lightbox.project.accentText}`}>
                     Fullscreen Preview
                   </p>
-                  <h3 className="text-lg md:text-xl font-black text-white uppercase tracking-tight">
+                  <h3 className="text-base sm:text-lg md:text-xl font-black text-white uppercase tracking-tight truncate">
                     {lightbox.project.title}
                   </h3>
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 flex-shrink-0">
                   <button
                     type="button"
                     onClick={() => moveLightbox('prev')}
-                    className="p-2 rounded-full bg-white/5 border border-white/10 text-white hover:border-brand-lime/40 hover:text-brand-lime transition-colors"
+                    className="p-1.5 sm:p-2 rounded-full bg-white/5 border border-white/10 text-white hover:border-brand-lime/40 hover:text-brand-lime transition-colors hidden sm:flex"
                     aria-label="Previous image"
                   >
                     <ChevronLeft size={18} />
@@ -616,7 +663,7 @@ export default function Projects() {
                   <button
                     type="button"
                     onClick={() => moveLightbox('next')}
-                    className="p-2 rounded-full bg-white/5 border border-white/10 text-white hover:border-brand-lime/40 hover:text-brand-lime transition-colors"
+                    className="p-1.5 sm:p-2 rounded-full bg-white/5 border border-white/10 text-white hover:border-brand-lime/40 hover:text-brand-lime transition-colors hidden sm:flex"
                     aria-label="Next image"
                   >
                     <ChevronRight size={18} />
@@ -624,7 +671,7 @@ export default function Projects() {
                   <button
                     type="button"
                     onClick={closeLightbox}
-                    className="p-2 rounded-full bg-white/5 border border-white/10 text-white hover:border-brand-lime/40 hover:text-brand-lime transition-colors"
+                    className="p-1.5 sm:p-2 rounded-full bg-white/5 border border-white/10 text-white hover:border-brand-lime/40 hover:text-brand-lime transition-colors"
                     aria-label="Close fullscreen preview"
                   >
                     <X size={18} />
@@ -632,41 +679,41 @@ export default function Projects() {
                 </div>
               </div>
 
-              <div className="grid lg:grid-cols-[minmax(0,1.6fr)_minmax(320px,0.9fr)] gap-0 max-h-[calc(92vh-64px)]">
-                <div className="bg-black flex items-center justify-center p-4 md:p-6 min-h-[320px] lg:min-h-[calc(92vh-64px)]">
+              <div className="grid lg:grid-cols-[minmax(0,1.6fr)_minmax(280px,0.9fr)] gap-0 max-h-[calc(100vh-120px)] flex-1 overflow-hidden">
+                <div className="bg-black flex items-center justify-center p-2 sm:p-4 md:p-6 min-h-[250px] sm:min-h-[320px] overflow-auto">
                   <img
                     src={lightbox.project.images[lightbox.index].src}
                     alt={`${lightbox.project.title} fullscreen ${lightbox.index + 1}`}
-                    className="max-h-[calc(92vh-120px)] w-auto max-w-full object-contain"
+                    className="max-h-[calc(100vh-180px)] w-auto max-w-full object-contain"
                   />
                 </div>
 
-                <div className="border-t lg:border-t-0 lg:border-l border-white/10 p-4 md:p-6 overflow-y-auto space-y-5">
+                <div className="border-t lg:border-t-0 lg:border-l border-white/10 p-3 sm:p-4 md:p-6 overflow-y-auto space-y-4 sm:space-y-5">
                   <div className="space-y-2">
                     <div className={`text-[10px] uppercase tracking-[0.35em] ${lightbox.project.accentText}`}>
                       {lightbox.project.category}
                     </div>
-                    <p className="text-brand-smoke leading-relaxed">{lightbox.project.intro}</p>
+                    <p className="text-xs sm:text-sm text-brand-smoke leading-relaxed">{lightbox.project.intro}</p>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-3 text-sm text-white">
-                    <div className="rounded-[1rem] bg-white/5 border border-white/10 p-3">
+                  <div className="grid grid-cols-2 gap-2 sm:gap-3 text-xs sm:text-sm text-white">
+                    <div className="rounded-lg sm:rounded-[1rem] bg-white/5 border border-white/10 p-2 sm:p-3">
                       <span className="block text-[10px] uppercase tracking-[0.28em] text-brand-smoke/70">Image</span>
                       <span className="font-bold">{String(lightbox.index + 1).padStart(2, '0')}</span>
                     </div>
-                    <div className="rounded-[1rem] bg-white/5 border border-white/10 p-3">
+                    <div className="rounded-lg sm:rounded-[1rem] bg-white/5 border border-white/10 p-2 sm:p-3">
                       <span className="block text-[10px] uppercase tracking-[0.28em] text-brand-smoke/70">Total</span>
                       <span className="font-bold">{lightbox.project.images.length}</span>
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-3 gap-3">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3">
                     {lightbox.project.images.map((image, index) => (
                       <button
                         key={image.name}
                         type="button"
                         onClick={() => setLightbox((current) => ({ ...current, index }))}
-                        className={`rounded-[1rem] border p-2 bg-black/30 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-lime/70 ${
+                        className={`rounded-lg sm:rounded-[1rem] border p-1.5 sm:p-2 bg-black/30 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-lime/70 ${
                           index === lightbox.index
                             ? 'border-brand-lime/60'
                             : 'border-white/10 hover:border-white/30'
@@ -676,10 +723,29 @@ export default function Projects() {
                         <img
                           src={image.src}
                           alt={`${lightbox.project.title} thumbnail ${index + 1}`}
-                          className="h-20 w-full object-contain"
+                          className="h-16 sm:h-20 w-full object-contain"
                         />
                       </button>
                     ))}
+                  </div>
+
+                  <div className="flex gap-2 sm:hidden pt-2 border-t border-white/10">
+                    <button
+                      type="button"
+                      onClick={() => moveLightbox('prev')}
+                      className="flex-1 p-2 rounded-lg bg-white/5 border border-white/10 text-white text-xs font-bold uppercase tracking-widest hover:border-brand-lime/40 hover:text-brand-lime transition-colors"
+                      aria-label="Previous image"
+                    >
+                      ← Prev
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => moveLightbox('next')}
+                      className="flex-1 p-2 rounded-lg bg-white/5 border border-white/10 text-white text-xs font-bold uppercase tracking-widest hover:border-brand-lime/40 hover:text-brand-lime transition-colors"
+                      aria-label="Next image"
+                    >
+                      Next →
+                    </button>
                   </div>
                 </div>
               </div>
@@ -693,15 +759,15 @@ export default function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-24 pt-16 border-t border-white/10 text-center"
+          className="mt-24 pt-16 border-t border-white/10 text-center px-4"
         >
-          <h3 className="text-2xl font-bold text-white mb-4">Interested in Working Together?</h3>
-          <p className="text-brand-smoke/60 mb-8">Let's bring your creative vision to life.</p>
+          <h3 className="text-xl sm:text-2xl font-bold text-white mb-4">Interested in Working Together?</h3>
+          <p className="text-sm sm:text-base text-brand-smoke/60 mb-8">Let's bring your creative vision to life.</p>
           <motion.a
             href="#contact"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-block px-8 py-3 bg-brand-lime text-black font-bold uppercase tracking-widest rounded-full hover:bg-white transition-all"
+            className="inline-block px-6 sm:px-8 py-2 sm:py-3 bg-brand-lime text-black font-bold uppercase tracking-widest rounded-full hover:bg-white transition-all text-xs sm:text-sm"
           >
             Start a Project
           </motion.a>

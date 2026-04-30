@@ -18,23 +18,23 @@ export default function Contact() {
             viewport={{ once: true }}
           >
             <span className="text-brand-lime font-mono text-xs uppercase tracking-[0.4em] mb-4 block">Get in Touch</span>
-            <h2 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter uppercase">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-6 sm:mb-8 tracking-tighter uppercase">
               LET'S BUILD <br />
               <span className="text-brand-lime italic">SOMETHING BIG.</span>
             </h2>
             
-            <p className="text-brand-smoke text-lg mb-12 leading-relaxed max-w-md">
+            <p className="text-brand-smoke text-sm sm:text-base md:text-lg mb-8 sm:mb-12 leading-relaxed max-w-md">
               Ready to take your brand to the next level? Contact us today for a free growth consultation.
             </p>
 
             <div className="space-y-6">
               <a href="mailto:hello@brand9studio.com" className="flex items-center gap-6 group">
-                <div className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center group-hover:border-brand-lime group-hover:bg-brand-lime transition-all duration-500">
-                  <Mail className="text-white group-hover:text-black transition-colors" />
+                <div className="w-12 sm:w-14 h-12 sm:h-14 rounded-full border border-white/10 flex items-center justify-center group-hover:border-brand-lime group-hover:bg-brand-lime transition-all duration-500 flex-shrink-0">
+                  <Mail size={20} className="text-white group-hover:text-black transition-colors" />
                 </div>
-                <div>
-                  <p className="text-[10px] text-brand-smoke uppercase tracking-widest mb-1">Email Us</p>
-                  <p className="text-xl font-bold text-white group-hover:text-brand-lime transition-colors">hello@brand9studio.com</p>
+                <div className="min-w-0 flex-1">
+                  <p className="text-[9px] sm:text-[10px] text-brand-smoke uppercase tracking-widest mb-1">Email Us</p>
+                  <p className="text-base sm:text-lg lg:text-xl font-bold text-white group-hover:text-brand-lime transition-colors truncate">hello@brand9studio.com</p>
                 </div>
               </a>
 
@@ -61,29 +61,29 @@ export default function Contact() {
             viewport={{ once: true }}
             className="glass-panel p-8 md:p-12 border-white/5 relative"
           >
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid md:grid-cols-2 gap-6">
+            <form className="space-y-4 sm:space-y-6" onSubmit={(e) => e.preventDefault()}>
+              <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                 <div className="space-y-2">
-                  <label className="text-[10px] font-bold text-brand-smoke uppercase tracking-widest ml-1">Name</label>
+                  <label className="text-[9px] sm:text-[10px] font-bold text-brand-smoke uppercase tracking-widest ml-1">Name</label>
                   <input 
                     type="text" 
                     placeholder="John Doe"
-                    className="w-full bg-black/50 border border-white/10 px-6 py-4 text-white focus:outline-none focus:border-brand-lime transition-colors"
+                    className="w-full bg-black/50 border border-white/10 px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base text-white focus:outline-none focus:border-brand-lime transition-colors"
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-bold text-brand-smoke uppercase tracking-widest ml-1">Email</label>
+                  <label className="text-[9px] sm:text-[10px] font-bold text-brand-smoke uppercase tracking-widest ml-1">Email</label>
                   <input 
                     type="email" 
                     placeholder="john@example.com"
-                    className="w-full bg-black/50 border border-white/10 px-6 py-4 text-white focus:outline-none focus:border-brand-lime transition-colors"
+                    className="w-full bg-black/50 border border-white/10 px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base text-white focus:outline-none focus:border-brand-lime transition-colors"
                   />
                 </div>
               </div>
               
               <div className="space-y-2">
-                <label className="text-[10px] font-bold text-brand-smoke uppercase tracking-widest ml-1">Service Required</label>
-                <select className="w-full bg-black/50 border border-white/10 px-6 py-4 text-white focus:outline-none focus:border-brand-lime transition-colors appearance-none">
+                <label className="text-[9px] sm:text-[10px] font-bold text-brand-smoke uppercase tracking-widest ml-1">Service Required</label>
+                <select className="w-full bg-black/50 border border-white/10 px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base text-white focus:outline-none focus:border-brand-lime transition-colors appearance-none">
                   <option>Branding</option>
                   <option>Digital Marketing</option>
                   <option>Web Design</option>
@@ -92,16 +92,16 @@ export default function Contact() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-[10px] font-bold text-brand-smoke uppercase tracking-widest ml-1">Message</label>
+                <label className="text-[9px] sm:text-[10px] font-bold text-brand-smoke uppercase tracking-widest ml-1">Message</label>
                 <textarea 
                   rows={4}
                   placeholder="Tell us about your brand..."
-                  className="w-full bg-black/50 border border-white/10 px-6 py-4 text-white focus:outline-none focus:border-brand-lime transition-colors resize-none"
+                  className="w-full bg-black/50 border border-white/10 px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base text-white focus:outline-none focus:border-brand-lime transition-colors resize-none"
                 ></textarea>
               </div>
 
-              <button className="w-full py-5 bg-brand-lime text-black font-outfit font-black uppercase tracking-[0.2em] text-sm hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3 group">
-                Send Message <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
+              <button className="w-full py-3 sm:py-5 bg-brand-lime text-black font-outfit font-black uppercase tracking-[0.2em] text-xs sm:text-sm hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 sm:gap-3 group">
+                Send Message <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />
               </button>
             </form>
           </motion.div>

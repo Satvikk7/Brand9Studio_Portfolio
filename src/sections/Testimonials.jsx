@@ -42,15 +42,15 @@ export default function Testimonials() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16"
+          className="mb-12 sm:mb-16"
         >
           <span className="text-brand-lime font-mono text-xs uppercase tracking-[0.4em] mb-4 block">Testimonials</span>
-          <h2 className="text-5xl font-black text-white uppercase tracking-tighter">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white uppercase tracking-tighter">
             TRUSTED BY <span className="text-brand-lime">VISIONARIES.</span>
           </h2>
         </motion.div>
 
-        <div className="flex flex-wrap justify-center gap-8">
+        <div className="flex flex-wrap justify-center gap-4 sm:gap-6 lg:gap-8">
           {testimonials.map((t, i) => (
             <motion.div
               key={i}
@@ -58,21 +58,21 @@ export default function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="glass-panel p-10 text-left border-white/5 relative group w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-1.34rem)]"
+              className="glass-panel p-6 sm:p-8 lg:p-10 text-left border-white/5 relative group w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.33%-1.34rem)]"
             >
-              <Quote size={40} className="text-brand-lime/20 absolute top-8 right-8 group-hover:text-brand-lime/40 transition-colors" />
+              <Quote size={32} className="text-brand-lime/20 absolute top-4 right-4 sm:top-6 sm:right-6 lg:top-8 lg:right-8 group-hover:text-brand-lime/40 transition-colors" />
               
-              <p className="text-brand-smoke italic mb-8 leading-relaxed relative z-10 text-sm">
+              <p className="text-brand-smoke italic mb-6 sm:mb-8 leading-relaxed relative z-10 text-xs sm:text-sm">
                 "{t.content}"
               </p>
               
-              <div className="flex items-center gap-4 mt-auto">
-                <div className="w-12 h-12 rounded-full bg-brand-lime flex items-center justify-center text-black font-black text-xl flex-shrink-0">
+              <div className="flex items-center gap-3 sm:gap-4 mt-auto">
+                <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-brand-lime flex items-center justify-center text-black font-black text-lg sm:text-xl flex-shrink-0">
                   {t.image}
                 </div>
-                <div>
-                  <h4 className="text-white font-bold uppercase text-sm">{t.name}</h4>
-                  <p className="text-brand-lime text-[10px] font-bold uppercase tracking-widest">{t.role}</p>
+                <div className="min-w-0 flex-1">
+                  <h4 className="text-white font-bold uppercase text-xs sm:text-sm truncate">{t.name}</h4>
+                  <p className="text-brand-lime text-[9px] sm:text-[10px] font-bold uppercase tracking-widest truncate">{t.role}</p>
                 </div>
               </div>
             </motion.div>

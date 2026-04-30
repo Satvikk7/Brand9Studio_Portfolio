@@ -11,7 +11,7 @@ export default function About() {
   return (
     <section id="about" className="py-24 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-20 items-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -19,23 +19,23 @@ export default function About() {
             transition={{ duration: 0.8 }}
           >
             <span className="text-brand-lime font-mono text-xs uppercase tracking-[0.4em] mb-4 block">Our Philosophy</span>
-            <h2 className="text-4xl md:text-5xl font-black mb-8 text-white leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 sm:mb-8 text-white leading-tight">
               WE DON'T JUST CREATE DESIGNS, <br />
               <span className="text-brand-lime italic">WE CREATE DIGITAL SUCCESS.</span>
             </h2>
             
-            <p className="text-brand-smoke text-lg mb-8 leading-relaxed">
+            <p className="text-brand-smoke text-sm sm:text-base md:text-lg mb-6 sm:mb-8 leading-relaxed">
               Brand9Studio is a creative design and digital solutions powerhouse. We help brands build a modern, 
               trusted, and growth-ready identity. We blend clean design, smart strategy, and a strong digital 
               presence to create visuals that make your brand stand out and communicate with absolute clarity.
             </p>
 
-            <div className="grid sm:grid-cols-3 gap-6">
+            <div className="grid sm:grid-cols-3 gap-4 sm:gap-6">
               {stats.map((stat, i) => (
-                <div key={i} className="glass-panel p-6 border-white/5 hover:border-brand-lime/20 transition-all group">
-                  <div className="mb-4 transform group-hover:scale-110 transition-transform">{stat.icon}</div>
-                  <p className="text-2xl font-black text-white">{stat.value}</p>
-                  <p className="text-[10px] text-brand-smoke uppercase tracking-widest mt-1">{stat.label}</p>
+                <div key={i} className="glass-panel p-4 sm:p-6 border-white/5 hover:border-brand-lime/20 transition-all group">
+                  <div className="mb-3 sm:mb-4 transform group-hover:scale-110 transition-transform">{stat.icon}</div>
+                  <p className="text-xl sm:text-2xl font-black text-white">{stat.value}</p>
+                  <p className="text-[9px] sm:text-[10px] text-brand-smoke uppercase tracking-widest mt-1">{stat.label}</p>
                 </div>
               ))}
             </div>

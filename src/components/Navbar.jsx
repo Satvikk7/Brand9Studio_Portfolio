@@ -138,18 +138,18 @@ export default function Navbar() {
         }
       }}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        <a href="#hero" onClick={(event) => handleNavClick(event, 'hero')} className="flex items-center gap-2 group">
-          <img src="/logo.png" alt="Brand9 Studio Logo" className="h-10 w-auto" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+        <a href="#hero" onClick={(event) => handleNavClick(event, 'hero')} className="flex items-center gap-2 group flex-shrink-0">
+          <img src="/logo.png" alt="Brand9 Studio Logo" className="h-8 sm:h-10 w-auto" />
         </a>
 
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-6 lg:gap-8">
           {navItems.map((item) => (
             <a
               key={item.id}
               href={`#${item.id}`}
               onClick={(event) => handleNavClick(event, item.id)}
-              className={`relative text-sm tracking-wider uppercase transition-colors font-inter ${
+              className={`relative text-xs lg:text-sm tracking-wider uppercase transition-colors font-inter ${
                 activeSection === item.id ? 'text-brand-lime' : 'text-brand-smoke hover:text-brand-lime'
               }`}
             >
@@ -167,7 +167,7 @@ export default function Navbar() {
             href="https://www.brand9studio.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-5 py-2 border border-brand-lime/30 text-brand-lime font-outfit font-bold text-sm rounded-full hover:bg-brand-lime hover:text-black hover:scale-105 active:scale-95 transition-all"
+            className="px-4 lg:px-5 py-2 border border-brand-lime/30 text-brand-lime font-outfit font-bold text-xs lg:text-sm rounded-full hover:bg-brand-lime hover:text-black hover:scale-105 active:scale-95 transition-all"
           >
             WEBSITE
           </a>
@@ -177,7 +177,7 @@ export default function Navbar() {
         <div className="md:hidden">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-3 -mr-3 flex flex-col justify-center gap-1.5 cursor-pointer relative hover:opacity-80 transition-opacity active:scale-95"
+            className="p-2 -mr-2 flex flex-col justify-center gap-1.5 cursor-pointer relative hover:opacity-80 transition-opacity active:scale-95"
             aria-label="Toggle menu"
             aria-expanded={mobileMenuOpen}
           >
@@ -204,7 +204,7 @@ export default function Navbar() {
         transition={{ duration: 0.3 }}
         className={`md:hidden overflow-hidden pointer-events-auto ${scrolled ? 'bg-black/80 backdrop-blur-lg' : 'bg-black/90'}`}
       >
-        <div className="px-6 py-2 border-t border-white/10 flex flex-col pointer-events-auto">
+        <div className="px-4 sm:px-6 py-2 border-t border-white/10 flex flex-col pointer-events-auto gap-1">
           {navItems.map((item) => (
             <button
               key={item.id}
@@ -213,7 +213,7 @@ export default function Navbar() {
               onPointerUp={(e) => handleMobileNavClick(e, item.id)}
               onTouchEnd={(e) => handleMobileNavClick(e, item.id)}
               onClick={(e) => handleMobileNavClick(e, item.id)}
-              className={`min-h-12 w-full px-4 py-3 rounded-lg transition-all font-inter text-sm tracking-wider uppercase flex items-center cursor-pointer select-none touch-manipulation active:bg-brand-lime/20 pointer-events-auto text-left ${
+              className={`min-h-10 sm:min-h-12 w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg transition-all font-inter text-xs sm:text-sm tracking-wider uppercase flex items-center cursor-pointer select-none touch-manipulation active:bg-brand-lime/20 pointer-events-auto text-left ${
                 activeSection === item.id
                   ? 'text-brand-lime font-semibold bg-brand-lime/10'
                   : 'text-brand-smoke hover:text-brand-lime hover:bg-white/5'
@@ -226,7 +226,7 @@ export default function Navbar() {
             href="https://www.brand9studio.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="min-h-12 mx-4 my-2 px-5 py-3 border border-brand-lime/30 text-brand-lime font-outfit font-bold text-sm rounded-full hover:bg-brand-lime hover:text-black active:bg-brand-lime active:text-black transition-all text-center cursor-pointer select-none touch-manipulation pointer-events-auto"
+            className="min-h-10 sm:min-h-12 mx-2 sm:mx-4 my-2 px-4 sm:px-5 py-2 sm:py-3 border border-brand-lime/30 text-brand-lime font-outfit font-bold text-xs sm:text-sm rounded-full hover:bg-brand-lime hover:text-black active:bg-brand-lime active:text-black transition-all text-center cursor-pointer select-none touch-manipulation pointer-events-auto"
           >
             WEBSITE
           </a>

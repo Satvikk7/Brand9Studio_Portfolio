@@ -1,8 +1,10 @@
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, Sparkles, Layers3, Target } from 'lucide-react'
 
-const caseStudies = [
+export const caseStudies = [
   {
+    id: 'calendar-campaign-system',
     title: 'Calendar Campaign System',
     folder: 'Calendar Report Design',
     summary: 'A coordinated calendar-led communication system that connected report design, envelope graphics, and campaign delivery into one branded experience.',
@@ -12,6 +14,7 @@ const caseStudies = [
     icon: Sparkles
   },
   {
+    id: 'digital-portal-interface-suite',
     title: 'Digital Portal Interface Suite',
     folder: 'Dashboard (Web Portal)',
     summary: 'A digital product UI direction spanning dashboard screens, style guidance, and loyalty portal concepts.',
@@ -21,6 +24,7 @@ const caseStudies = [
     icon: Layers3
   },
   {
+    id: 'brand-identity-toolkit',
     title: 'Brand Identity Toolkit',
     folder: 'Logo designs',
     summary: 'A foundational identity toolkit covering logos, business cards, letterheads, and supporting collateral.',
@@ -31,7 +35,39 @@ const caseStudies = [
   }
 ]
 
+export const latestCaseStudy = caseStudies[caseStudies.length - 1]
+
+function highlightCaseStudy(studyId) {
+  const target = document.getElementById(`case-study-${studyId}`)
+  if (!target) return
+
+  target.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  window.dispatchEvent(new CustomEvent('highlight-case-study', { detail: { studyId } }))
+}
+
 export default function CaseStudies() {
+  const [activeStudyId, setActiveStudyId] = useState(null)
+
+  useEffect(() => {
+    let timeoutId = null
+
+    const handleHighlight = (event) => {
+      const studyId = event.detail?.studyId
+      if (!studyId) return
+
+      setActiveStudyId(studyId)
+      window.clearTimeout(timeoutId)
+      timeoutId = window.setTimeout(() => setActiveStudyId(null), 2000)
+    }
+
+    window.addEventListener('highlight-case-study', handleHighlight)
+
+    return () => {
+      window.removeEventListener('highlight-case-study', handleHighlight)
+      window.clearTimeout(timeoutId)
+    }
+  }, [])
+
   return (
     <section id="case-studies" className="py-24 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
@@ -55,15 +91,21 @@ export default function CaseStudies() {
         <div className="grid lg:grid-cols-3 gap-8">
           {caseStudies.map((study, index) => {
             const Icon = study.icon
+            const isActive = activeStudyId === study.id
 
             return (
               <motion.article
+                id={`case-study-${study.id}`}
                 key={study.title}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.08 }}
-                className="bg-brand-gray border border-white/5 hover:border-brand-lime/30 transition-all duration-500 p-8 rounded-[1.75rem]"
+                className={`bg-brand-gray border transition-all duration-500 p-8 rounded-[1.75rem] ${
+                  isActive
+                    ? 'border-brand-lime shadow-[0_0_0_1px_rgba(164,255,78,0.35),0_0_40px_rgba(164,255,78,0.18)] scale-[1.01]'
+                    : 'border-white/5 hover:border-brand-lime/30'
+                }`}
               >
                 <div className="flex items-center justify-between gap-4 mb-6">
                   <span className="text-[10px] font-bold uppercase tracking-[0.35em] text-brand-smoke">
@@ -96,7 +138,11 @@ export default function CaseStudies() {
                   </div>
                 </div>
 
-                <button className="mt-8 flex items-center gap-3 text-white font-bold text-xs uppercase tracking-widest group/button">
+                <button
+                  type="button"
+                  onClick={() => highlightCaseStudy(study.id)}
+                  className="mt-8 flex items-center gap-3 text-white font-bold text-xs uppercase tracking-widest group/button"
+                >
                   Explore Story
                   <ArrowRight size={15} className="text-brand-lime transition-transform group-hover/button:translate-x-1" />
                 </button>
