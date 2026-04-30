@@ -504,7 +504,7 @@ function CategoryCarousel({ categoryData, expandedProject, setExpandedProject, o
           ref={scrollRef}
           onScroll={checkScroll}
           className="flex gap-6 overflow-x-auto scrollbar-hide pb-4 snap-x snap-mandatory"
-          style={{ scrollBehavior: 'smooth', touchAction: 'auto' }}
+          style={{ scrollBehavior: 'smooth', touchAction: 'pan-x' }}
         >
           {categoryData.projects.map((project) => (
             <div key={project.folder} className="snap-start">
