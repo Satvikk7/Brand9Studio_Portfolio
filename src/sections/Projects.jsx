@@ -443,6 +443,13 @@ function ProjectCard({ project, expanded, onToggle, onOpenLightbox }) {
 
 function CategoryCarousel({ categoryData, expandedProject, setExpandedProject, onOpenLightbox }) {
   const scrollRef = useRef(null)
+  const touchStateRef = useRef({
+    active: false,
+    mode: null,
+    startX: 0,
+    startY: 0,
+    startScrollLeft: 0
+  })
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(true)
 
@@ -468,6 +475,49 @@ function CategoryCarousel({ categoryData, expandedProject, setExpandedProject, o
 
   const handleToggle = (projectFolder) => {
     setExpandedProject((current) => (current === projectFolder ? null : projectFolder))
+  }
+
+  const handlePointerDown = (event) => {
+    const node = scrollRef.current
+    if (!node) return
+
+    if (event.pointerType === 'mouse' && event.button !== 0) return
+
+    touchStateRef.current = {
+      active: true,
+      mode: null,
+      startX: event.clientX,
+      startY: event.clientY,
+      startScrollLeft: node.scrollLeft
+    }
+  }
+
+  const handlePointerMove = (event) => {
+    const node = scrollRef.current
+    const state = touchStateRef.current
+    if (!node || !state.active) return
+
+    const deltaX = event.clientX - state.startX
+    const deltaY = event.clientY - state.startY
+    const threshold = 12
+
+    if (!state.mode) {
+      if (Math.abs(deltaX) < threshold && Math.abs(deltaY) < threshold) {
+        return
+      }
+
+      state.mode = Math.abs(deltaX) > Math.abs(deltaY) ? 'horizontal' : 'vertical'
+    }
+
+    if (state.mode === 'horizontal') {
+      event.preventDefault()
+      node.scrollLeft = state.startScrollLeft - deltaX
+    }
+  }
+
+  const handlePointerUp = () => {
+    touchStateRef.current.active = false
+    touchStateRef.current.mode = null
   }
 
   return (
@@ -503,8 +553,12 @@ function CategoryCarousel({ categoryData, expandedProject, setExpandedProject, o
         <div
           ref={scrollRef}
           onScroll={checkScroll}
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={handlePointerUp}
+          onPointerCancel={handlePointerUp}
           className="flex gap-6 overflow-x-auto scrollbar-hide pb-4 snap-x snap-mandatory"
-          style={{ scrollBehavior: 'smooth', touchAction: 'pan-x' }}
+          style={{ scrollBehavior: 'smooth', touchAction: 'pan-y' }}
         >
           {categoryData.projects.map((project) => (
             <div key={project.folder} className="snap-start">
