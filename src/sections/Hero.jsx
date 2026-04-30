@@ -81,6 +81,27 @@ export default function Hero() {
                   Start a Project <ArrowUpRight size={16} sm:size={18} className="text-brand-lime" />
                 </motion.a>
               </div>
+
+              <motion.button
+                type="button"
+                onClick={openLatestCaseStudy}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.2 }}
+                whileTap={{ scale: 0.99 }}
+                className="mt-8 w-full lg:hidden rounded-2xl border border-white/10 bg-brand-gray/80 p-3 sm:p-4 text-left"
+                aria-label={`Open latest case study ${latestCaseStudy.title}`}
+              >
+                <div className="relative rounded-xl bg-black overflow-hidden min-h-[200px] sm:min-h-[240px] p-4 sm:p-6">
+                  <div className="absolute inset-0 bg-gradient-to-tr from-brand-lime/20 to-transparent opacity-50" />
+                  <div className="relative z-10">
+                    <p className="text-[10px] font-mono text-brand-lime mb-2 tracking-widest uppercase">Latest Case Study</p>
+                    <h3 className="text-xl sm:text-2xl font-black text-white leading-tight">{latestCaseStudy.title}</h3>
+                    <p className="text-brand-smoke text-xs sm:text-sm mt-2 line-clamp-3">{latestCaseStudy.summary}</p>
+                    <p className="text-brand-lime text-[10px] mt-3 font-bold uppercase tracking-[0.25em]">{latestCaseStudy.folder}</p>
+                  </div>
+                </div>
+              </motion.button>
             </motion.div>
           </div>
           

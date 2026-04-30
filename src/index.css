@@ -10,6 +10,13 @@
   --text-gray: #A0A0A0;
 }
 
+html,
+body,
+#root {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
 body {
   @apply bg-brand-dark text-white font-inter overflow-x-hidden selection:bg-brand-orange selection:text-black;
   scroll-behavior: smooth;

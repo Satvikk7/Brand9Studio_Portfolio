@@ -221,7 +221,7 @@ function CarouselArrow({ direction, onClick, disabled }) {
       aria-label={direction === 'left' ? 'Scroll category left' : 'Scroll category right'}
       whileHover={{ scale: disabled ? 1 : 1.1 }}
       whileTap={{ scale: disabled ? 1 : 0.95 }}
-      className={`absolute top-1/2 transform -translate-y-1/2 z-20 p-2 rounded-full transition-all ${
+      className={`hidden md:flex absolute top-1/2 transform -translate-y-1/2 z-20 p-2 rounded-full transition-all ${
         direction === 'left' ? '-left-6' : '-right-6'
       } ${
         disabled
@@ -263,7 +263,7 @@ function ProjectCard({ project, expanded, onToggle, onOpenLightbox }) {
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
       layout
-      className="relative flex-shrink-0 group w-[340px] md:w-[360px]"
+      className="relative flex-shrink-0 group w-[calc(100vw-3rem)] max-w-[340px] md:w-[360px]"
     >
       <div
         className={`relative rounded-[1.5rem] overflow-hidden backdrop-blur-md border border-white/10 bg-gradient-to-br ${project.accent} shadow-2xl shadow-black/40 transition-all duration-300 hover:border-white/20 h-full`}
@@ -504,7 +504,7 @@ function CategoryCarousel({ categoryData, expandedProject, setExpandedProject, o
           ref={scrollRef}
           onScroll={checkScroll}
           className="flex gap-6 overflow-x-auto scrollbar-hide pb-4 snap-x snap-mandatory"
-          style={{ scrollBehavior: 'smooth' }}
+          style={{ scrollBehavior: 'smooth', touchAction: 'pan-y' }}
         >
           {categoryData.projects.map((project) => (
             <div key={project.folder} className="snap-start">
