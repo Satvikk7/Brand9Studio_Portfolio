@@ -104,3 +104,13 @@ h1, h2, h3, h4 {
     transform: translateX(100%);
   }
 }
+
+/* Scrollbar Hide */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
