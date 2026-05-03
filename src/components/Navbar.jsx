@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useRef } from 'react'
+import brandLogo from '../../Brand9Studio LOGO.png'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -140,7 +141,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
         <a href="#hero" onClick={(event) => handleNavClick(event, 'hero')} className="flex items-center gap-2 group flex-shrink-0">
-          <img src="/logo.png" alt="Brand9 Studio Logo" className="h-8 sm:h-10 w-auto" />
+          <img src={brandLogo} alt="Brand9 Studio Logo" className="h-10 sm:h-12 lg:h-14 w-auto" />
         </a>
 
         <div className="hidden md:flex items-center gap-6 lg:gap-8">
