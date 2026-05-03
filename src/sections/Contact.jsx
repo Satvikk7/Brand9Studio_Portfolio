@@ -63,7 +63,7 @@ export default function Contact() {
             className="glass-panel p-8 md:p-12 border-white/5 relative"
           >
             <form className="space-y-4 sm:space-y-6" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
+              <div className="grid md:grid-cols-3 gap-4 sm:gap-6">
                 <div className="space-y-2">
                   <label className="text-[9px] sm:text-[10px] font-bold text-brand-smoke uppercase tracking-widest ml-1">Name</label>
                   <input 
@@ -80,14 +80,25 @@ export default function Contact() {
                     className="w-full bg-black/50 border border-white/10 px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base text-white focus:outline-none focus:border-brand-lime transition-colors"
                   />
                 </div>
+                <div className="space-y-2">
+                  <label className="text-[9px] sm:text-[10px] font-bold text-brand-smoke uppercase tracking-widest ml-1">Phone Number</label>
+                  <input 
+                    type="tel" 
+                    placeholder="+91 98765 43210"
+                    className="w-full bg-black/50 border border-white/10 px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base text-white focus:outline-none focus:border-brand-lime transition-colors"
+                  />
+                </div>
               </div>
               
               <div className="space-y-2">
                 <label className="text-[9px] sm:text-[10px] font-bold text-brand-smoke uppercase tracking-widest ml-1">Service Required</label>
                 <select className="w-full bg-black/50 border border-white/10 px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base text-white focus:outline-none focus:border-brand-lime transition-colors appearance-none">
-                  <option>Branding</option>
-                  <option>Digital Marketing</option>
-                  <option>Web Design</option>
+                  <option>Branding & Creative Design</option>
+                  <option>Reels, Videos & Photography</option>
+                  <option>Social Media Management & Marketing</option>
+                  <option>Performance Marketing (Google & Meta Ads)</option>
+                  <option>Website Design & Development</option>
+                  <option>Content Writing & Creative Copy</option>
                   <option>Other</option>
                 </select>
               </div>
