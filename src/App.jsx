@@ -2,6 +2,12 @@ import { motion, useMotionValue, useScroll, useSpring } from 'framer-motion'
 import { useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import HomePage from './pages/HomePage'
+import BrandingPage from './pages/BrandingPage'
+import ReelsPage from './pages/ReelsPage'
+import SocialMediaPage from './pages/SocialMediaPage'
+import DigitalMarketingPage from './pages/DigitalMarketingPage'
+import WebDesignPage from './pages/WebDesignPage'
+import ContentWritingPage from './pages/ContentWritingPage'
 import ProjectPage from './pages/ProjectPage'
 
 function App() {
@@ -70,6 +76,12 @@ function App() {
       <div className="relative z-10">
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/branding" element={<BrandingPage />} />
+          <Route path="/reels" element={<ReelsPage />} />
+          <Route path="/social-media" element={<SocialMediaPage />} />
+          <Route path="/digital-marketing" element={<DigitalMarketingPage />} />
+          <Route path="/web-design" element={<WebDesignPage />} />
+          <Route path="/content-writing" element={<ContentWritingPage />} />
           <Route path="/project/:id" element={<ProjectPage />} />
         </Routes>
       </div>

@@ -1,7 +1,18 @@
 import { motion } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 import { Palette, Play, Share2, BarChart3, Globe, PenTool } from 'lucide-react'
 
 export default function Services() {
+  const navigate = useNavigate()
+
+  const handleServiceClick = (path) => {
+    navigate(path, {
+      state: {
+        scrollY: window.scrollY
+      }
+    })
+  }
+
   const services = [
     {
       title: "Branding",
@@ -52,31 +63,58 @@ export default function Services() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-1px bg-white/5 border border-white/5">
-          {services.map((service, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="bg-brand-dark p-6 sm:p-8 lg:p-10 hover:bg-white/[0.02] transition-colors relative group overflow-hidden"
-            >
-              {/* Hover Effect */}
-              <div className="absolute top-0 left-0 w-full h-[2px] bg-brand-lime scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
-              
-              <div className="text-brand-lime mb-6 sm:mb-8 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500">
-                {service.icon}
-              </div>
-              <h3 className="text-lg sm:text-xl lg:text-2xl font-black text-white mb-3 sm:mb-4 uppercase tracking-tight">{service.title}</h3>
-              <p className="text-brand-smoke leading-relaxed text-xs sm:text-sm lg:text-base">
-                {service.desc}
-              </p>
-              
-              <div className="mt-6 sm:mt-8 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-2 text-brand-lime text-xs font-bold uppercase tracking-widest">
-                Learn More <span>→</span>
-              </div>
-            </motion.div>
-          ))}
+          {services.map((service, i) => {
+            const isBranding = service.title === 'Branding'
+            const isReels = service.title === 'Reels & Videos'
+            const isSocialMedia = service.title === 'Social Media'
+            const isDigitalMarketing = service.title === 'Digital Marketing'
+            const isWebDesign = service.title === 'Web Design'
+            const isContentWriting = service.title === 'Content Writing'
+
+            const cardClasses =
+              'bg-brand-dark p-6 sm:p-8 lg:p-10 hover:bg-white/[0.02] transition-colors relative group overflow-hidden block text-left w-full'
+
+            const content = (
+              <>
+                <div className="absolute top-0 left-0 w-full h-[2px] bg-brand-lime scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
+
+                <div className="text-brand-lime mb-6 sm:mb-8 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500">
+                  {service.icon}
+                </div>
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-black text-white mb-3 sm:mb-4 uppercase tracking-tight">{service.title}</h3>
+                <p className="text-brand-smoke leading-relaxed text-xs sm:text-sm lg:text-base">
+                  {service.desc}
+                </p>
+
+                <div className="mt-6 sm:mt-8 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-2 text-brand-lime text-xs font-bold uppercase tracking-widest">
+                  Learn More <span>→</span>
+                </div>
+              </>
+            )
+
+            return (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="relative"
+              >
+                {isBranding || isReels || isSocialMedia || isDigitalMarketing || isWebDesign || isContentWriting ? (
+                  <button
+                    onClick={() => handleServiceClick(isBranding ? '/branding' : isReels ? '/reels' : isSocialMedia ? '/social-media' : isDigitalMarketing ? '/digital-marketing' : isWebDesign ? '/web-design' : '/content-writing')}
+                    className={cardClasses}
+                    data-cursor="hover"
+                  >
+                    {content}
+                  </button>
+                ) : (
+                  <div className={cardClasses}>{content}</div>
+                )}
+              </motion.div>
+            )
+          })}
         </div>
       </div>
     </section>
