@@ -1,15 +1,8 @@
 import { motion, useMotionValue, useScroll, useSpring } from 'framer-motion'
 import { useEffect } from 'react'
-import Navbar from './components/Navbar'
-import Hero from './sections/Hero'
-import Projects from './sections/Projects'
-import CaseStudies from './sections/CaseStudies'
-import Services from './sections/Services'
-import Testimonials from './sections/Testimonials'
-import About from './sections/About'
-import ClientLogos from './components/ClientLogos'
-import Contact from './sections/Contact'
-import Footer from './components/Footer'
+import { Routes, Route } from 'react-router-dom'
+import HomePage from './pages/HomePage'
+import ProjectPage from './pages/ProjectPage'
 
 function App() {
   const { scrollYProgress } = useScroll()
@@ -74,20 +67,12 @@ function App() {
         style={{ scaleX }}
       />
 
-      <Navbar />
-      
-      <main className="relative z-10">
-        <Hero />
-        <Projects />
-        <CaseStudies />
-        <Services />
-        <Testimonials />
-        <About />
-        <ClientLogos />
-        <Contact />
-      </main>
-
-      <Footer />
+      <div className="relative z-10">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/project/:id" element={<ProjectPage />} />
+        </Routes>
+      </div>
     </div>
   )
 }

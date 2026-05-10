@@ -1,0 +1,222 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "African Roots Project",
+      "client": "Heritage Brand",
+      "category": "BROCHURE",
+      "heroImage": "/projects/Brochure/African Roots Project/shared image.jpg",
+      "description": "Premium brochure design celebrating cultural heritage and brand storytelling with sophisticated visual composition.",
+      "year": "2025",
+      "frameNarratives": [
+        {
+          "title": "Cultural Cover Statement",
+          "focus": "Establishes the African Roots identity with bold typography and heritage-forward motifs.",
+          "detail": "The opening frame positions the brand as premium and rooted in authenticity, creating immediate visual trust."
+        },
+        {
+          "title": "Storyline Progression",
+          "focus": "Introduces the narrative journey with balanced spacing and curated visual rhythm.",
+          "detail": "Content hierarchy is structured to keep readers engaged while preserving editorial elegance."
+        },
+        {
+          "title": "Value Communication",
+          "focus": "Highlights offer and differentiation through modular composition and contrast.",
+          "detail": "This frame improves readability and supports decision-making with clear sectional flow."
+        },
+        {
+          "title": "Closing Brand Recall",
+          "focus": "Concludes the brochure with strong recall cues and actionable communication touchpoints.",
+          "detail": "The final frame reinforces identity consistency and campaign continuity."
+        }
+      ],
+      "images": [
+        "/projects/Brochure/African Roots Project/shared image.jpg",
+        "/projects/Brochure/African Roots Project/shared image (1).jpg",
+        "/projects/Brochure/African Roots Project/shared image (2).jpg",
+        "/projects/Brochure/African Roots Project/shared image (3).jpg"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Ecomerce Business Project",
+      "client": "Retail Growth Studio",
+      "category": "BROCHURE",
+      "heroImage": "/projects/Brochure/Ecomerce Business Project/shared image (1).jpg",
+      "description": "Conversion-focused brochure design for an ecommerce brand, built to present offerings with a clean, modern, and sales-ready layout.",
+      "year": "2025",
+      "frameNarratives": [
+        {
+          "title": "Commercial First Impression",
+          "focus": "Leads with a conversion-ready visual identity and crisp category framing.",
+          "detail": "This page is designed to capture attention quickly and align user intent with business offering."
+        },
+        {
+          "title": "Audience Problem Framing",
+          "focus": "Maps customer pain points to service value through concise storytelling blocks.",
+          "detail": "The layout supports faster understanding by combining visual anchors with short-form copy."
+        },
+        {
+          "title": "Offer Breakdown",
+          "focus": "Presents service tiers and benefits using a clear, modular visual system.",
+          "detail": "The structure reduces cognitive load and improves comparability for purchase decisions."
+        },
+        {
+          "title": "Action & Trust Layer",
+          "focus": "Ends with trust cues, retention messaging, and direct call-to-action flow.",
+          "detail": "This final touchpoint supports stronger lead response and brochure-to-conversion movement."
+        }
+      ],
+      "images": [
+        "/projects/Brochure/Ecomerce Business Project/shared image (1).jpg",
+        "/projects/Brochure/Ecomerce Business Project/shared image (2).jpg",
+        "/projects/Brochure/Ecomerce Business Project/shared image (3).jpg",
+        "/projects/Brochure/Ecomerce Business Project/shared image (4).jpg"
+      ]
+    }
+    ,
+    {
+      "id": 3,
+      "title": "Analytics Dashboard Project",
+      "client": "InsightWorks",
+      "category": "ANALYTICS",
+      "heroImage": "/projects/Analytics/Analytics Dashboard Project/Analytics Demo-1.jpg",
+      "description": "Interactive analytics dashboard design focusing on clarity, data hierarchy, and actionable insights for decision-makers.",
+      "year": "2026",
+      "frameNarratives": [
+        {
+          "title": "Dashboard Overview",
+          "focus": "Presents a high-level performance snapshot with concise KPI tiles and summary charts.",
+          "detail": "The overview frame emphasizes immediate situational awareness for executives and product owners."
+        },
+        {
+          "title": "Trend Analysis",
+          "focus": "Shows multi-period trends and anomaly highlights with clear axes and callouts.",
+          "detail": "Designed to help analysts quickly identify performance shifts and dig into causal factors."
+        },
+        {
+          "title": "Segment Drilldown",
+          "focus": "Enables users to explore cohorts and segments with focused visual filters.",
+          "detail": "Supports faster hypothesis validation and prioritization of opportunities."
+        },
+        {
+          "title": "Action Panel",
+          "focus": "Combines recommended actions, notes, and export options for cross-team collaboration.",
+          "detail": "Bridges insight-to-action by providing contextual next steps and data export flows."
+        },
+        {
+          "title": "Supplemental Widgets",
+          "focus": "Displays micro-interactions and secondary visualizations for deeper exploration.",
+          "detail": "Supports advanced users with additional drill controls and contextual tooltips."
+        }
+      ],
+      "images": [
+        "/projects/Analytics/Analytics Dashboard Project/Analytics Demo-1.jpg",
+        "/projects/Analytics/Analytics Dashboard Project/Analytics Demo-2.jpg",
+        "/projects/Analytics/Analytics Dashboard Project/Analytics L3 03.png",
+        "/projects/Analytics/Analytics Dashboard Project/Sales Cockpit 03.png",
+        "/projects/Analytics/Analytics Dashboard Project/Sales Cockpit 04.png",
+        "/projects/Analytics/Analytics Dashboard Project/Sales Cockpit 05.png"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "ValueHits Project",
+      "client": "ValueHits",
+      "category": "EMAILERS",
+      "heroImage": "/projects/Emailers/ValueHits Project/shared image.jpg",
+      "description": "Conversion-focused emailer design with a clear hierarchy, compact messaging, and strong call-to-action emphasis.",
+      "year": "2026",
+      "frameNarratives": [
+        {
+          "title": "Primary Emailer",
+          "focus": "Introduces the campaign with clear promotion framing and concise subject-line hierarchy.",
+          "detail": "This opening asset is designed for immediate attention and quick comprehension in inbox previews."
+        },
+        {
+          "title": "Follow-up Variation",
+          "focus": "Supports the main send with a lighter variant tuned for continued engagement.",
+          "detail": "The secondary frame reinforces the same offer while providing variation for audience segmentation."
+        }
+      ],
+      "images": [
+        "/projects/Emailers/ValueHits Project/shared image.jpg",
+        "/projects/Emailers/ValueHits Project/shared image (1).jpg"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Coporate Brief",
+      "client": "Corporate Brief",
+      "category": "CORPORATE DESKS",
+      "heroImage": "/projects/Corporate Desks/Coporate Brief/1.jpg",
+      "description": "Corporate desk visual system with premium presentation layouts, structured sections, and clean communication hierarchy.",
+      "year": "2026",
+      "frameNarratives": [
+        {
+          "title": "Executive Cover",
+          "focus": "Introduces the corporate identity with a formal cover composition and strong visual order.",
+          "detail": "The cover frame is designed to signal professionalism and set a polished tone for the full document."
+        },
+        {
+          "title": "Structured Overview",
+          "focus": "Uses balanced layout blocks to present information with clarity and hierarchy.",
+          "detail": "This frame keeps the document scannable while preserving a premium editorial feel."
+        },
+        {
+          "title": "Content Expansion",
+          "focus": "Adds supporting information and visual anchors for a stronger reading flow.",
+          "detail": "The composition supports longer-form content without losing the clean corporate look."
+        },
+        {
+          "title": "Closing Page",
+          "focus": "Wraps the presentation with a refined closing layout and brand recall cues.",
+          "detail": "The ending frame reinforces consistency and leaves a professional final impression."
+        }
+      ],
+      "images": [
+        "/projects/Corporate Desks/Coporate Brief/1.jpg",
+        "/projects/Corporate Desks/Coporate Brief/2.jpg",
+        "/projects/Corporate Desks/Coporate Brief/3.jpg",
+        "/projects/Corporate Desks/Coporate Brief/4.jpg"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Indian Polymers Industries",
+      "client": "Indian Polymers Industries",
+      "category": "CORPORATE DESKS",
+      "heroImage": "/projects/Corporate Desks/Indian Polymers Industries/1.jpg",
+      "description": "Industrial corporate desk presentation with detailed sections, clear information blocks, and polished visual structure.",
+      "year": "2026",
+      "frameNarratives": [
+        {
+          "title": "Brand Cover",
+          "focus": "Starts with an industrial yet refined cover that frames the company identity confidently.",
+          "detail": "The first page establishes credibility and creates a strong anchor for the rest of the set."
+        },
+        {
+          "title": "Operational Detail",
+          "focus": "Highlights process, capability, or service detail with a disciplined grid system.",
+          "detail": "This page is built to communicate technical confidence without visual clutter."
+        },
+        {
+          "title": "Capability Spread",
+          "focus": "Presents key strengths in a format that is easy to compare and remember.",
+          "detail": "The layout supports business storytelling while maintaining a corporate presentation style."
+        },
+        {
+          "title": "Reference Close",
+          "focus": "Concludes with a clean summary page and a strong final brand statement.",
+          "detail": "The last frame helps the audience retain the company message and visual identity."
+        }
+      ],
+      "images": [
+        "/projects/Corporate Desks/Indian Polymers Industries/1.jpg",
+        "/projects/Corporate Desks/Indian Polymers Industries/2.jpg",
+        "/projects/Corporate Desks/Indian Polymers Industries/3.jpg",
+        "/projects/Corporate Desks/Indian Polymers Industries/4.jpg"
+      ]
+    }
+  ]
+}

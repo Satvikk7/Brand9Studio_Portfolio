@@ -18,6 +18,10 @@ export default function Hero() {
     })
   }
 
+  const exploreWorkGallery = (event) => {
+    scrollToSection(event, 'work')
+  }
+
   const openLatestCaseStudy = () => {
     const target = document.getElementById('case-studies')
     if (!target) return
@@ -61,15 +65,13 @@ export default function Hero() {
               
               <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
                 <motion.a
-                  href="/Brand9Studio%20Portfolio.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  download="Brand9Studio_Portfolio.pdf"
+                  href="#work"
+                  onClick={exploreWorkGallery}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="px-6 sm:px-8 py-3 sm:py-4 bg-brand-lime text-black font-outfit font-black text-xs sm:text-sm uppercase tracking-widest rounded-none btn-shimmer"
                 >
-                  Download Portfolio
+                  Explore Work Gallery
                 </motion.a>
                 
                 <motion.a

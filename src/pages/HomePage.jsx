@@ -1,0 +1,46 @@
+import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
+import Navbar from '../components/Navbar'
+import Hero from '../sections/Hero'
+import Projects from '../sections/Projects'
+import CaseStudies from '../sections/CaseStudies'
+import Services from '../sections/Services'
+import Testimonials from '../sections/Testimonials'
+import About from '../sections/About'
+import ClientLogos from '../components/ClientLogos'
+import Contact from '../sections/Contact'
+import Footer from '../components/Footer'
+
+export default function HomePage() {
+  const location = useLocation()
+
+  useEffect(() => {
+    const scrollY = location.state?.scrollY
+    if (typeof scrollY !== 'number') return
+
+    const frame = window.requestAnimationFrame(() => {
+      window.scrollTo({ top: scrollY, behavior: 'auto' })
+    })
+
+    return () => window.cancelAnimationFrame(frame)
+  }, [location.state])
+
+  return (
+    <>
+      <Navbar />
+
+      <main>
+        <Hero />
+        <Projects />
+        <CaseStudies />
+        <Services />
+        <Testimonials />
+        <About />
+        <ClientLogos />
+        <Contact />
+      </main>
+
+      <Footer />
+    </>
+  )
+}
