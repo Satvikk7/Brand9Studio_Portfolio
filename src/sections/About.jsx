@@ -32,7 +32,7 @@ export default function About() {
 
             <div className="grid sm:grid-cols-3 gap-4 sm:gap-6">
               {stats.map((stat, i) => (
-                <div key={i} className="glass-panel p-4 sm:p-6 border-white/5 hover:border-brand-lime/20 transition-all group">
+                <div key={i} className="premium-card p-4 sm:p-6 border-white/10 hover:border-brand-lime/30 transition-all group">
                   <div className="mb-3 sm:mb-4 transform group-hover:scale-110 transition-transform">{stat.icon}</div>
                   <p className="text-xl sm:text-2xl font-black text-white">{stat.value}</p>
                   <p className="text-[9px] sm:text-[10px] text-brand-smoke uppercase tracking-widest mt-1">{stat.label}</p>
@@ -48,8 +48,8 @@ export default function About() {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <div className="aspect-square bg-brand-gray border border-white/10 overflow-hidden group">
-              <div className="absolute inset-0 bg-brand-lime/5 group-hover:bg-brand-lime/10 transition-colors" />
+            <div className="aspect-square premium-card border border-white/10 overflow-hidden group">
+              <div className="absolute inset-0 bg-brand-lime/5 group-hover:bg-brand-lime/12 transition-colors" />
               <div className="absolute inset-0 flex items-center justify-center p-12">
                 <p className="text-center font-outfit text-2xl font-medium text-white italic leading-relaxed">
                   "Design meets strategy and creativity meets business growth."

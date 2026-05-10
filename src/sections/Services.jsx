@@ -71,8 +71,8 @@ export default function Services() {
             const isWebDesign = service.title === 'Web Design'
             const isContentWriting = service.title === 'Content Writing'
 
-            const cardClasses =
-              'bg-brand-dark p-6 sm:p-8 lg:p-10 hover:bg-white/[0.02] transition-colors relative group overflow-hidden block text-left w-full'
+              const cardClasses =
+                'premium-card p-6 sm:p-8 lg:p-10 relative group overflow-hidden block text-left w-full border border-white/5'
 
             const content = (
               <>
@@ -81,7 +81,7 @@ export default function Services() {
                 <div className="text-brand-lime mb-6 sm:mb-8 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500">
                   {service.icon}
                 </div>
-                <h3 className="text-lg sm:text-xl lg:text-2xl font-black text-white mb-3 sm:mb-4 uppercase tracking-tight">{service.title}</h3>
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-black text-white mb-3 sm:mb-4 uppercase tracking-tight group-hover:text-brand-lime transition-colors duration-300">{service.title}</h3>
                 <p className="text-brand-smoke leading-relaxed text-xs sm:text-sm lg:text-base">
                   {service.desc}
                 </p>

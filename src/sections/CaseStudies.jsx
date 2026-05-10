@@ -101,17 +101,17 @@ export default function CaseStudies() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.08 }}
-                className={`bg-brand-gray border transition-all duration-500 p-8 rounded-[1.75rem] ${
+                  className={`premium-card border transition-all duration-500 p-8 rounded-xl ${
                   isActive
-                    ? 'border-brand-lime shadow-[0_0_0_1px_rgba(164,255,78,0.35),0_0_40px_rgba(164,255,78,0.18)] scale-[1.01]'
-                    : 'border-white/5 hover:border-brand-lime/30'
+                      ? 'border-brand-lime/60 shadow-[0_0_0_1px_rgba(196,239,71,0.4),0_0_40px_rgba(196,239,71,0.15),inset_0_1px_0_rgba(255,255,255,0.1)] scale-[1.02]'
+                      : 'border-white/8 hover:border-brand-lime/40 hover:shadow-lg'
                 }`}
               >
                 <div className="flex items-center justify-between gap-4 mb-6">
                   <span className="text-[10px] font-bold uppercase tracking-[0.35em] text-brand-smoke">
                     {study.folder}
                   </span>
-                  <div className="w-12 h-12 rounded-full bg-brand-lime/10 border border-brand-lime/20 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-full bg-brand-lime/15 border border-brand-lime/30 flex items-center justify-center transition-all group-hover:bg-brand-lime/20">
                     <Icon size={18} className="text-brand-lime" />
                   </div>
                 </div>
@@ -119,7 +119,7 @@ export default function CaseStudies() {
                 <h3 className="text-2xl font-black text-white uppercase tracking-tight mb-4">
                   {study.title}
                 </h3>
-                <p className="text-brand-smoke leading-relaxed mb-6">
+                  <p className="text-brand-smoke leading-relaxed mb-6 text-sm">
                   {study.summary}
                 </p>
 

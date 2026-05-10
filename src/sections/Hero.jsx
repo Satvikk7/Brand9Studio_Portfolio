@@ -1,8 +1,19 @@
+import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 import { latestCaseStudy } from './CaseStudies'
 
 export default function Hero() {
+  const highlightTimerRef = useRef(null)
+
+  useEffect(() => {
+    return () => {
+      if (highlightTimerRef.current) {
+        window.clearTimeout(highlightTimerRef.current)
+      }
+    }
+  }, [])
+
   const scrollToSection = (event, id) => {
     event.preventDefault()
 
@@ -27,14 +38,23 @@ export default function Hero() {
     if (!target) return
 
     const offset = 88
+    const start = window.scrollY
     const targetTop = target.getBoundingClientRect().top + window.scrollY - offset
+    const distance = Math.abs(targetTop - start)
+    const highlightDelay = Math.min(1200, 250 + distance / 2.2)
 
     window.scrollTo({
       top: targetTop,
       behavior: 'smooth'
     })
 
-    window.dispatchEvent(new CustomEvent('highlight-case-study', { detail: { studyId: latestCaseStudy.id } }))
+    if (highlightTimerRef.current) {
+      window.clearTimeout(highlightTimerRef.current)
+    }
+
+    highlightTimerRef.current = window.setTimeout(() => {
+      window.dispatchEvent(new CustomEvent('highlight-case-study', { detail: { studyId: latestCaseStudy.id } }))
+    }, highlightDelay)
   }
 
   return (
@@ -69,7 +89,7 @@ export default function Hero() {
                   onClick={exploreWorkGallery}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-6 sm:px-8 py-3 sm:py-4 bg-brand-lime text-black font-outfit font-black text-xs sm:text-sm uppercase tracking-widest rounded-none btn-shimmer"
+                   className="px-6 sm:px-8 py-3 sm:py-4 premium-btn text-black font-outfit font-black text-xs sm:text-sm uppercase tracking-widest rounded-lg"
                 >
                   Explore Work Gallery
                 </motion.a>
@@ -78,7 +98,7 @@ export default function Hero() {
                   href="#contact"
                   onClick={(event) => scrollToSection(event, 'contact')}
                   whileHover={{ x: 5 }}
-                  className="px-6 sm:px-8 py-3 sm:py-4 border border-white/20 text-white font-inter text-xs sm:text-sm uppercase tracking-widest hover:border-brand-lime/50 flex items-center justify-center sm:justify-start gap-2"
+                    className="px-6 sm:px-8 py-3 sm:py-4 border border-white/20 text-white font-inter text-xs sm:text-sm uppercase tracking-widest hover:border-brand-lime/60 hover:bg-white/5 flex items-center justify-center sm:justify-start gap-2 transition-all duration-300 rounded-lg"
                 >
                   Start a Project <ArrowUpRight size={16} sm:size={18} className="text-brand-lime" />
                 </motion.a>
@@ -91,11 +111,11 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.2 }}
                 whileTap={{ scale: 0.99 }}
-                className="mt-8 w-full lg:hidden rounded-2xl border border-white/10 bg-brand-gray/80 p-3 sm:p-4 text-left"
+                  className="mt-8 w-full lg:hidden rounded-xl border border-white/10 premium-card p-3 sm:p-4 text-left hover:border-white/20 transition-all duration-300"
                 aria-label={`Open latest case study ${latestCaseStudy.title}`}
               >
                 <div className="relative rounded-xl bg-black overflow-hidden min-h-[200px] sm:min-h-[240px] p-4 sm:p-6">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-brand-lime/20 to-transparent opacity-50" />
+                    <div className="absolute inset-0 bg-gradient-to-tr from-brand-lime/30 to-transparent opacity-40" />
                   <div className="relative z-10">
                     <p className="text-[10px] font-mono text-brand-lime mb-2 tracking-widest uppercase">Latest Case Study</p>
                     <h3 className="text-xl sm:text-2xl font-black text-white leading-tight">{latestCaseStudy.title}</h3>
@@ -119,11 +139,11 @@ export default function Hero() {
                 onClick={openLatestCaseStudy}
                 whileHover={{ rotate: 0, scale: 1.01 }}
                 whileTap={{ scale: 0.99 }}
-                className="w-full max-w-[450px] aspect-[450/550] bg-brand-gray border border-white/10 p-4 rotate-3 hover:rotate-0 transition-transform duration-700 group text-left"
+                className="w-full max-w-[450px] aspect-[450/550] premium-card border border-white/10 p-4 rotate-3 hover:rotate-0 transition-all duration-700 group text-left"
                 aria-label={`Open latest case study ${latestCaseStudy.title}`}
               >
                 <div className="w-full h-full bg-black relative overflow-hidden flex flex-col">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-brand-lime/20 to-transparent opacity-50" />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-brand-lime/30 to-transparent opacity-40" />
                   <div className="absolute bottom-6 sm:bottom-8 lg:bottom-10 left-6 sm:left-8 lg:left-10 right-6 sm:right-8 lg:right-10">
                     <p className="text-[10px] sm:text-xs font-mono text-brand-lime mb-2 tracking-widest uppercase">Latest Case Study</p>
                     <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white leading-tight">{latestCaseStudy.title}</h3>
@@ -140,7 +160,7 @@ export default function Hero() {
                 <motion.div
                   animate={{ y: [0, -10, 0] }}
                   transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                  className="glass-panel p-3 sm:p-4 px-4 sm:px-6 border border-white/10 bg-black/40 backdrop-blur-sm text-sm sm:text-base"
+                  className="premium-card p-3 sm:p-4 px-4 sm:px-6 border border-white/10 text-sm sm:text-base"
                 >
                   <div className="flex items-baseline gap-2 sm:gap-3">
                     <p className="text-2xl sm:text-3xl font-black text-white">9+</p>
@@ -152,7 +172,7 @@ export default function Hero() {
                 <motion.div
                   animate={{ y: [0, -8, 0] }}
                   transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 0.4 }}
-                  className="glass-panel p-3 sm:p-4 px-4 sm:px-6 border border-white/10 bg-black/35 backdrop-blur-sm text-sm sm:text-base hidden sm:block"
+                  className="premium-card p-3 sm:p-4 px-4 sm:px-6 border border-white/10 text-sm sm:text-base hidden sm:block"
                 >
                   <div className="flex items-baseline gap-2 sm:gap-3">
                     <p className="text-2xl sm:text-3xl font-black text-white">14+</p>

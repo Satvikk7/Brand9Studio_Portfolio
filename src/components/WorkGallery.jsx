@@ -68,7 +68,7 @@ function ProjectCard({ project, index, onOpenProject }) {
         whileHover={{ scale: 1.015, y: -4 }}
         whileTap={{ scale: 0.98 }}
         transition={{ type: 'spring', stiffness: 320, damping: 28 }}
-        className={`relative rounded-xl overflow-hidden backdrop-blur-md border border-white/10 bg-gradient-to-br ${colorClass} shadow-xl hover:shadow-2xl hover:border-white/30 transition-all duration-300 h-full flex flex-col cursor-pointer w-full`}
+        className={`premium-card relative rounded-xl overflow-hidden border border-white/10 bg-gradient-to-br ${colorClass} hover:border-white/25 transition-all duration-300 h-full flex flex-col cursor-pointer w-full`}
       >
         {/* Image Container with Overlay */}
         <div className="relative w-full overflow-hidden bg-black/40 aspect-square sm:aspect-video flex items-center justify-center">
@@ -115,11 +115,11 @@ function ProjectCard({ project, index, onOpenProject }) {
           </p>
 
           {/* Footer with Category & Year */}
-          <div className="flex items-center justify-between gap-2 mt-auto pt-3 border-t border-white/10">
+          <div className="flex items-center justify-between gap-2 mt-auto pt-3 border-t border-white/8">
             <span className={`inline-block text-[10px] sm:text-xs font-bold uppercase tracking-wider px-2 py-1 rounded-full ${categoryBadges[project.category] || 'bg-brand-lime/30 text-brand-lime'}`}>
               {formatCategoryLabel(project.category)}
             </span>
-            <span className="text-[10px] text-brand-smoke/50 font-mono">{project.year}</span>
+            <span className="text-[10px] text-brand-smoke/40 font-mono">{project.year}</span>
           </div>
         </div>
       </motion.button>
@@ -135,8 +135,8 @@ function FilterButton({ category, isActive, onClick }) {
       whileTap={{ scale: 0.95 }}
       className={`relative px-4 sm:px-6 py-2 sm:py-2.5 rounded-full font-bold text-xs sm:text-sm uppercase tracking-widest transition-all duration-300 whitespace-nowrap ${
         isActive
-          ? 'bg-brand-lime text-black shadow-lg shadow-brand-lime/50'
-          : 'bg-white/5 border border-white/20 text-white/80 hover:border-brand-lime/50 hover:text-white'
+          ? 'bg-brand-lime text-black shadow-lg shadow-brand-lime/40'
+          : 'bg-white/5 border border-white/15 text-white/70 hover:border-brand-lime/60 hover:text-white hover:bg-white/8'
       }`}
     >
       {category}

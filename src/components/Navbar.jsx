@@ -130,7 +130,7 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
-        scrolled ? 'bg-black/80 backdrop-blur-lg border-b border-white/10 py-4' : 'bg-transparent py-6'
+        scrolled ? 'bg-black/40 backdrop-blur-xl border-b border-white/10 py-3 shadow-lg' : 'bg-transparent py-6'
       }`}
       onClick={(e) => {
         // Close mobile menu if clicking a nav target
@@ -150,7 +150,7 @@ export default function Navbar() {
               key={item.id}
               href={`#${item.id}`}
               onClick={(event) => handleNavClick(event, item.id)}
-              className={`relative text-xs lg:text-sm tracking-wider uppercase transition-colors font-inter ${
+              className={`relative text-xs lg:text-sm tracking-wider uppercase transition-all duration-300 font-inter ${
                 activeSection === item.id ? 'text-brand-lime' : 'text-brand-smoke hover:text-brand-lime'
               }`}
             >
@@ -168,7 +168,7 @@ export default function Navbar() {
             href="https://www.brand9studio.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 lg:px-5 py-2 border border-brand-lime/30 text-brand-lime font-outfit font-bold text-xs lg:text-sm rounded-full hover:bg-brand-lime hover:text-black hover:scale-105 active:scale-95 transition-all"
+            className="px-4 lg:px-5 py-2 border border-brand-lime/40 text-brand-lime font-outfit font-bold text-xs lg:text-sm rounded-lg hover:bg-brand-lime/10 hover:border-brand-lime/80 hover:text-brand-lime active:scale-95 transition-all duration-300 shadow-lg"
           >
             WEBSITE
           </a>
@@ -202,8 +202,8 @@ export default function Navbar() {
       <motion.div
         initial={{ opacity: 0, height: 0 }}
         animate={{ opacity: mobileMenuOpen ? 1 : 0, height: mobileMenuOpen ? 'auto' : 0 }}
-        transition={{ duration: 0.3 }}
-        className={`md:hidden overflow-hidden pointer-events-auto ${scrolled ? 'bg-black/80 backdrop-blur-lg' : 'bg-black/90'}`}
+        transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+        className={`md:hidden overflow-hidden pointer-events-auto ${scrolled ? 'bg-black/50 backdrop-blur-xl' : 'bg-black/70 backdrop-blur-lg'}`}
       >
         <div className="px-4 sm:px-6 py-2 border-t border-white/10 flex flex-col pointer-events-auto gap-1">
           {navItems.map((item) => (
@@ -214,7 +214,7 @@ export default function Navbar() {
               onPointerUp={(e) => handleMobileNavClick(e, item.id)}
               onTouchEnd={(e) => handleMobileNavClick(e, item.id)}
               onClick={(e) => handleMobileNavClick(e, item.id)}
-              className={`min-h-10 sm:min-h-12 w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg transition-all font-inter text-xs sm:text-sm tracking-wider uppercase flex items-center cursor-pointer select-none touch-manipulation active:bg-brand-lime/20 pointer-events-auto text-left ${
+              className={`min-h-10 sm:min-h-12 w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg transition-all duration-300 font-inter text-xs sm:text-sm tracking-wider uppercase flex items-center cursor-pointer select-none touch-manipulation active:bg-brand-lime/20 pointer-events-auto text-left ${
                 activeSection === item.id
                   ? 'text-brand-lime font-semibold bg-brand-lime/10'
                   : 'text-brand-smoke hover:text-brand-lime hover:bg-white/5'
@@ -227,7 +227,7 @@ export default function Navbar() {
             href="https://www.brand9studio.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="min-h-10 sm:min-h-12 mx-2 sm:mx-4 my-2 px-4 sm:px-5 py-2 sm:py-3 border border-brand-lime/30 text-brand-lime font-outfit font-bold text-xs sm:text-sm rounded-full hover:bg-brand-lime hover:text-black active:bg-brand-lime active:text-black transition-all text-center cursor-pointer select-none touch-manipulation pointer-events-auto"
+            className="min-h-10 sm:min-h-12 mx-2 sm:mx-4 my-2 px-4 sm:px-5 py-2 sm:py-3 border border-brand-lime/40 text-brand-lime font-outfit font-bold text-xs sm:text-sm rounded-lg hover:bg-brand-lime/10 hover:border-brand-lime/80 active:bg-brand-lime/20 transition-all duration-300 text-center cursor-pointer select-none touch-manipulation pointer-events-auto"
           >
             WEBSITE
           </a>
