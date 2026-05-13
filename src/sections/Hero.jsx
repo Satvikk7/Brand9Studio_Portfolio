@@ -163,7 +163,7 @@ export default function Hero() {
                   className="premium-card p-3 sm:p-4 px-4 sm:px-6 border border-white/10 text-sm sm:text-base"
                 >
                   <div className="flex items-baseline gap-2 sm:gap-3">
-                    <p className="text-2xl sm:text-3xl font-black text-white">9+</p>
+                    <p className="text-2xl sm:text-3xl font-black text-white">10+</p>
                     <span className="text-[10px] sm:text-[11px] text-brand-smoke uppercase tracking-wider">Years</span>
                   </div>
                   <p className="text-[9px] sm:text-[11px] text-brand-lime mt-1 font-bold">Creative industry experience</p>
