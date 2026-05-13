@@ -7,6 +7,7 @@ import CaseStudies from '../sections/CaseStudies'
 import Services from '../sections/Services'
 import Testimonials from '../sections/Testimonials'
 import About from '../sections/About'
+import CreativeToolsBar from '../sections/CreativeToolsBar'
 import ClientLogos from '../components/ClientLogos'
 import Contact from '../sections/Contact'
 import Footer from '../components/Footer'
@@ -36,6 +37,7 @@ export default function HomePage() {
         <Services />
         <Testimonials />
         <About />
+        <CreativeToolsBar />
         <ClientLogos />
         <Contact />
       </main>
