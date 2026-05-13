@@ -3,7 +3,7 @@ import { Target, Zap, TrendingUp } from 'lucide-react'
 
 export default function About() {
   const stats = [
-    { icon: <Zap className="text-brand-lime" />, label: "Creative Exp.", value: "9+ Years" },
+    { icon: <Zap className="text-brand-lime" />, label: "Creative Exp.", value: "10+ Years" },
     { icon: <TrendingUp className="text-brand-lime" />, label: "Digital Marketing", value: "14+ Years" },
     { icon: <Target className="text-brand-lime" />, label: "Client Satisfaction", value: "100%" },
   ]
