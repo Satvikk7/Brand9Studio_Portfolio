@@ -29,13 +29,13 @@ export default function Contact() {
             </p>
 
             <div className="space-y-6">
-              <a href="mailto:hello@brand9studio.com" className="flex items-center gap-6 group">
+              <a href="mailto:support@brand9studio.com" className="flex items-center gap-6 group">
                 <div className="w-12 sm:w-14 h-12 sm:h-14 rounded-full border border-white/10 flex items-center justify-center group-hover:border-brand-lime/60 group-hover:bg-brand-lime/10 transition-all duration-300 flex-shrink-0">
                   <Mail size={20} className="text-white group-hover:text-brand-lime transition-colors" />
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="text-[9px] sm:text-[10px] text-brand-smoke uppercase tracking-widest mb-1">Email Us</p>
-                  <p className="text-base sm:text-lg lg:text-xl font-bold text-white group-hover:text-brand-lime transition-colors truncate">hello@brand9studio.com</p>
+                  <p className="text-base sm:text-lg lg:text-xl font-bold text-white group-hover:text-brand-lime transition-colors truncate">support@brand9studio.com</p>
                 </div>
               </a>
 
