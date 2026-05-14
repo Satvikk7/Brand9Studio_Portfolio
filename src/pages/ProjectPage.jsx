@@ -297,11 +297,29 @@ export default function ProjectPage() {
                       className="rounded-xl sm:rounded-2xl border border-white/10 bg-black/40 p-2 sm:p-3 md:p-4 flex justify-center"
                     >
                       {isPdfAsset ? (
-                        <iframe
-                          src={`${image}#view=FitH`}
-                          title={`${project.title} PDF ${index + 1}`}
-                          className="w-full h-[70vh] sm:h-[75vh] rounded-lg sm:rounded-xl border-0"
-                        />
+                        <div className="w-full flex flex-col items-center">
+                          <iframe
+                            src={`${image}#view=FitH`}
+                            title={`${project.title} PDF ${index + 1}`}
+                            className="hidden sm:block w-full h-[70vh] sm:h-[75vh] rounded-lg sm:rounded-xl border-0"
+                          />
+                          {/* Mobile Fallback Card */}
+                          <div className="sm:hidden w-full aspect-video flex flex-col items-center justify-center bg-brand-gray/10 rounded-xl border border-white/10 p-8 text-center">
+                            <div className="w-20 h-20 rounded-3xl bg-brand-lime/10 border border-brand-lime/20 flex items-center justify-center mb-4">
+                              <span className="text-brand-lime font-black text-2xl">PDF</span>
+                            </div>
+                            <h4 className="text-white font-bold mb-2">Portfolio Document</h4>
+                            <p className="text-brand-smoke/60 text-xs mb-6">This document is best viewed in a native PDF reader on your mobile device.</p>
+                            <a 
+                              href={image} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="px-6 py-3 bg-brand-lime text-black font-bold text-xs uppercase tracking-widest rounded-lg active:scale-95 transition-all"
+                            >
+                              Open Full Document
+                            </a>
+                          </div>
+                        </div>
                       ) : (
                         <img
                           src={image}

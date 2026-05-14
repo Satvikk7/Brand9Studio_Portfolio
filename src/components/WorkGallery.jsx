@@ -121,11 +121,21 @@ const ProjectCard = React.memo(React.forwardRef(({ project, index, onOpenProject
         {/* Image Container with Overlay */}
         <div className="relative w-full overflow-hidden bg-black/40 aspect-square sm:aspect-video flex items-center justify-center">
           {isPdfHero ? (
-            <iframe
-              src={`${project.heroImage}#view=FitH&toolbar=0&navpanes=0&scrollbar=0`}
-              title={`${project.title} PDF preview`}
-              className="w-full h-full pointer-events-none border-0"
-            />
+            <>
+              {/* Desktop Iframe */}
+              <iframe
+                src={`${project.heroImage}#view=FitH&toolbar=0&navpanes=0&scrollbar=0`}
+                title={`${project.title} PDF preview`}
+                className="hidden sm:block w-full h-full pointer-events-none border-0"
+              />
+              {/* Mobile/Tablet Placeholder */}
+              <div className="sm:hidden w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-brand-gray/40 to-black/60 p-6">
+                <div className="w-16 h-16 rounded-2xl bg-brand-lime/10 border border-brand-lime/30 flex items-center justify-center mb-3">
+                  <span className="text-brand-lime font-black text-xl">PDF</span>
+                </div>
+                <span className="text-[10px] text-brand-smoke/60 uppercase tracking-[0.2em] font-bold">Document Preview</span>
+              </div>
+            </>
           ) : (
             <img
               src={project.heroImage}
