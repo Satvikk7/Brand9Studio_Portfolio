@@ -36,9 +36,13 @@ export default function CustomCursor() {
         target.closest('[role="button"]') ||
         computedCursor === 'pointer'
       
+      const isHeroElement = !!target.closest('#hero')
+      
       const isTextElement = 
-        ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span', 'li', 'label', 'input', 'textarea'].includes(tagName) ||
-        computedCursor === 'text'
+        !isHeroElement && (
+          ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span', 'li', 'label', 'input', 'textarea'].includes(tagName) ||
+          computedCursor === 'text'
+        )
       
       setIsPointer(!!isClickable)
       setIsText(!!isTextElement && !isClickable)
