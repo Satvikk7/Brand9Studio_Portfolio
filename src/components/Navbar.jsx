@@ -129,8 +129,8 @@ export default function Navbar() {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 will-change-gpu ${
-        scrolled ? 'py-4 bg-black/60 backdrop-blur-xl border-b border-white/5' : 'py-6 bg-transparent'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 will-change-gpu ${
+        scrolled ? 'py-3 bg-black/50 backdrop-blur-3xl border-b border-white/10 shadow-2xl' : 'py-6 bg-transparent'
       }`}
       onClick={(e) => {
         // Close mobile menu if clicking a nav target

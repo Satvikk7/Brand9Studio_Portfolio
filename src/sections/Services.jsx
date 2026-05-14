@@ -63,7 +63,7 @@ export default function Services() {
           </motion.div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-1px bg-white/5 border border-white/5">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {services.map((service, i) => {
             const isBranding = service.title === 'Branding'
             const isReels = service.title === 'Reels & Videos'
@@ -72,8 +72,8 @@ export default function Services() {
             const isWebDesign = service.title === 'Web Design'
             const isContentWriting = service.title === 'Content Writing'
 
-              const cardClasses =
-                'premium-card p-6 sm:p-8 lg:p-10 relative group overflow-hidden block text-left w-full border border-white/5'
+            const cardClasses =
+              'premium-card p-8 sm:p-10 relative group overflow-hidden block text-left w-full h-full'
 
             const content = (
               <>

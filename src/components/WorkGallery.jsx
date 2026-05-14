@@ -199,10 +199,10 @@ function FilterButton({ category, isActive, onClick }) {
       onClick={onClick}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      className={`relative px-4 sm:px-6 py-2 sm:py-2.5 rounded-full font-bold text-xs sm:text-sm uppercase tracking-widest transition-all duration-300 whitespace-nowrap ${
+      className={`relative px-5 sm:px-7 py-2 rounded-xl font-bold text-[10px] sm:text-xs uppercase tracking-[0.2em] transition-all duration-500 whitespace-nowrap ${
         isActive
-          ? 'bg-brand-lime text-black shadow-lg shadow-brand-lime/40'
-          : 'bg-white/5 border border-white/15 text-white/70 hover:border-brand-lime/60 hover:text-white hover:bg-white/8'
+          ? 'bg-brand-lime text-black shadow-xl shadow-brand-lime/20 border border-brand-lime/50'
+          : 'bg-white/[0.03] border border-white/10 text-white/50 hover:border-brand-lime/40 hover:text-white hover:bg-white/[0.06]'
       }`}
     >
       {category}
