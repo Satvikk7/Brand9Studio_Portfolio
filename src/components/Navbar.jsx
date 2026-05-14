@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useRef } from 'react'
+import Magnetic from './Magnetic'
 
 const brandLogo = "/logo.png"
 
@@ -147,32 +148,35 @@ export default function Navbar() {
 
         <div className="hidden md:flex items-center gap-6 lg:gap-8">
           {navItems.map((item) => (
-            <a
-              key={item.id}
-              href={`#${item.id}`}
-              onClick={(event) => handleNavClick(event, item.id)}
-              className={`relative text-xs lg:text-sm tracking-wider uppercase transition-all duration-300 font-inter ${
-                activeSection === item.id ? 'text-brand-lime' : 'text-brand-smoke hover:text-brand-lime'
-              }`}
-            >
-              {item.label}
-              {activeSection === item.id && (
-                <motion.span
-                  layoutId="nav-active-indicator"
-                  transition={{ type: 'spring', stiffness: 500, damping: 40 }}
-                  className="absolute -bottom-2 left-0 right-0 h-[2px] bg-brand-lime"
-                />
-              )}
-            </a>
+            <Magnetic key={item.id} strength={0.2}>
+              <a
+                href={`#${item.id}`}
+                onClick={(event) => handleNavClick(event, item.id)}
+                className={`relative text-xs lg:text-sm tracking-wider uppercase transition-all duration-300 font-inter py-2 px-2 ${
+                  activeSection === item.id ? 'text-brand-lime' : 'text-brand-smoke hover:text-brand-lime'
+                }`}
+              >
+                {item.label}
+                {activeSection === item.id && (
+                  <motion.span
+                    layoutId="nav-active-indicator"
+                    transition={{ type: 'spring', stiffness: 500, damping: 40 }}
+                    className="absolute -bottom-1 left-2 right-2 h-[2px] bg-brand-lime"
+                  />
+                )}
+              </a>
+            </Magnetic>
           ))}
-          <a
-            href="https://www.brand9studio.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 lg:px-5 py-2 border border-brand-lime/40 text-brand-lime font-outfit font-bold text-xs lg:text-sm rounded-lg hover:bg-brand-lime/10 hover:border-brand-lime/80 hover:text-brand-lime active:scale-95 transition-all duration-300 shadow-lg"
-          >
-            WEBSITE
-          </a>
+          <Magnetic strength={0.4}>
+            <a
+              href="https://www.brand9studio.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 lg:px-5 py-2 border border-brand-lime/40 text-brand-lime font-outfit font-bold text-xs lg:text-sm rounded-lg hover:bg-brand-lime/10 hover:border-brand-lime/80 hover:text-brand-lime active:scale-95 transition-all duration-300 shadow-lg block"
+            >
+              WEBSITE
+            </a>
+          </Magnetic>
         </div>
 
         {/* Mobile Menu Icon */}

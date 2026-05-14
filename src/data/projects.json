@@ -1,4 +1,4 @@
-{
+﻿{
   "projects": [
     {
       "id": 1,
@@ -92,7 +92,7 @@
         {
           "title": "Service Overview",
           "focus": "Organizes offerings and key messaging into a readable modular format.",
-          "detail": "This section helps viewers quickly understand the company’s core value proposition."
+          "detail": "This section helps viewers quickly understand the companyâ€™s core value proposition."
         },
         {
           "title": "Capability Highlights",
@@ -625,8 +625,8 @@
       "id": 5,
       "title": "Coporate Brief",
       "client": "Corporate Brief",
-      "category": "CORPORATE DESKS",
-      "heroImage": "/projects/Corporate Desks/Coporate Brief/1.jpg",
+      "category": "CORPORATE DECKS",
+      "heroImage": "/projects/Corporate Decks/Coporate Brief/1.jpg",
       "description": "Corporate desk visual system with premium presentation layouts, structured sections, and clean communication hierarchy.",
       "year": "2026",
       "frameNarratives": [
@@ -652,18 +652,18 @@
         }
       ],
       "images": [
-        "/projects/Corporate Desks/Coporate Brief/1.jpg",
-        "/projects/Corporate Desks/Coporate Brief/2.jpg",
-        "/projects/Corporate Desks/Coporate Brief/3.jpg",
-        "/projects/Corporate Desks/Coporate Brief/4.jpg"
+        "/projects/Corporate Decks/Coporate Brief/1.jpg",
+        "/projects/Corporate Decks/Coporate Brief/2.jpg",
+        "/projects/Corporate Decks/Coporate Brief/3.jpg",
+        "/projects/Corporate Decks/Coporate Brief/4.jpg"
       ]
     },
     {
       "id": 6,
       "title": "Indian Polymers Industries",
       "client": "Indian Polymers Industries",
-      "category": "CORPORATE DESKS",
-      "heroImage": "/projects/Corporate Desks/Indian Polymers Industries/1.jpg",
+      "category": "CORPORATE DECKS",
+      "heroImage": "/projects/Corporate Decks/Indian Polymers Industries/1.jpg",
       "description": "Industrial corporate desk presentation with detailed sections, clear information blocks, and polished visual structure.",
       "year": "2026",
       "frameNarratives": [
@@ -689,11 +689,13 @@
         }
       ],
       "images": [
-        "/projects/Corporate Desks/Indian Polymers Industries/1.jpg",
-        "/projects/Corporate Desks/Indian Polymers Industries/2.jpg",
-        "/projects/Corporate Desks/Indian Polymers Industries/3.jpg",
-        "/projects/Corporate Desks/Indian Polymers Industries/4.jpg"
+        "/projects/Corporate Decks/Indian Polymers Industries/1.jpg",
+        "/projects/Corporate Decks/Indian Polymers Industries/2.jpg",
+        "/projects/Corporate Decks/Indian Polymers Industries/3.jpg",
+        "/projects/Corporate Decks/Indian Polymers Industries/4.jpg"
       ]
     }
   ]
 }
+
+

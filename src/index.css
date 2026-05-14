@@ -16,6 +16,22 @@
     background-color: var(--bg-obsidian);
   }
 
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #050505;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #222;
+    border-radius: 10px;
+    border: 3px solid #050505;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #C4EF47;
+  }
+
   @media (pointer: fine) {
     * {
       cursor: none !important;

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, Sparkles, Layers3, Target } from 'lucide-react'
+import BeforeAfterSlider from '../components/BeforeAfterSlider'
 
 export const caseStudies = [
   {
@@ -88,6 +89,44 @@ export default function CaseStudies() {
           </p>
         </div>
 
+        {/* Featured Transformation Slider */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-20"
+        >
+          <div className="flex flex-col lg:flex-row gap-12 items-center">
+            <div className="w-full lg:w-3/5">
+              <BeforeAfterSlider
+                beforeImage="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=1200"
+                afterImage="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1200"
+                beforeLabel="Old Identity"
+                afterLabel="Growth-Ready Revamp"
+              />
+            </div>
+            <div className="w-full lg:w-2/5 space-y-6">
+              <div className="inline-block px-3 py-1 bg-brand-lime/10 border border-brand-lime/20 rounded-full text-[10px] font-bold text-brand-lime uppercase tracking-widest">
+                Visual Impact
+              </div>
+              <h3 className="text-3xl font-black text-white uppercase tracking-tighter leading-none">
+                FROM CONCEPT <br /> TO <span className="text-brand-lime">CONVERSION.</span>
+              </h3>
+              <p className="text-brand-smoke text-sm leading-relaxed">
+                Our design process isn't just about aesthetics. We transform outdated brand markers into strategic visual assets that capture trust and drive measurable business growth.
+              </p>
+              <ul className="space-y-3">
+                {['Strategic Color Theory', 'Modern Typography Systems', 'High-Performance Visuals'].map((item, i) => (
+                  <li key={i} className="flex items-center gap-3 text-xs font-bold text-white uppercase tracking-wider">
+                    <span className="w-1.5 h-1.5 bg-brand-lime rounded-full" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </motion.div>
+
         <div className="grid lg:grid-cols-3 gap-8">
           {caseStudies.map((study, index) => {
             const Icon = study.icon
@@ -101,17 +140,16 @@ export default function CaseStudies() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.08 }}
-                  className={`premium-card border transition-all duration-500 p-8 rounded-xl ${
-                  isActive
-                      ? 'border-brand-lime/60 shadow-[0_0_0_1px_rgba(196,239,71,0.4),0_0_40px_rgba(196,239,71,0.15),inset_0_1px_0_rgba(255,255,255,0.1)] scale-[1.02]'
-                      : 'border-white/8 hover:border-brand-lime/40 hover:shadow-lg'
-                }`}
+                className={`premium-card border transition-all duration-500 p-8 rounded-xl ${isActive
+                    ? 'border-brand-lime/60 shadow-[0_0_0_1px_rgba(196,239,71,0.4),0_0_40px_rgba(196,239,71,0.15),inset_0_1px_0_rgba(255,255,255,0.1)] scale-[1.02]'
+                    : 'border-white/8 hover:border-brand-lime/40 hover:shadow-lg'
+                  }`}
               >
                 <div className="flex items-center justify-between gap-4 mb-6">
                   <span className="text-[10px] font-bold uppercase tracking-[0.35em] text-brand-smoke">
                     {study.folder}
                   </span>
-                    <div className="w-12 h-12 rounded-full bg-brand-lime/15 border border-brand-lime/30 flex items-center justify-center transition-all group-hover:bg-brand-lime/20">
+                  <div className="w-12 h-12 rounded-full bg-brand-lime/15 border border-brand-lime/30 flex items-center justify-center transition-all group-hover:bg-brand-lime/20">
                     <Icon size={18} className="text-brand-lime" />
                   </div>
                 </div>
@@ -119,7 +157,7 @@ export default function CaseStudies() {
                 <h3 className="text-2xl font-black text-white uppercase tracking-tight mb-4">
                   {study.title}
                 </h3>
-                  <p className="text-brand-smoke leading-relaxed mb-6 text-sm">
+                <p className="text-brand-smoke leading-relaxed mb-6 text-sm">
                   {study.summary}
                 </p>
 

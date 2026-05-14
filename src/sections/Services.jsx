@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import { Palette, Play, Share2, BarChart3, Globe, PenTool } from 'lucide-react'
+import Magnetic from '../components/Magnetic'
 
 export default function Services() {
   const navigate = useNavigate()
@@ -18,36 +19,42 @@ export default function Services() {
       title: "Branding",
       desc: "Logos, Identity, and complete brand systems that resonate.",
       icon: <Palette size={32} />,
+      size: "lg:col-span-2",
     },
     {
       title: "Reels & Videos",
-      desc: "Performance-driven creative content that captures attention.",
+      desc: "Performance-driven creative content.",
       icon: <Play size={32} />,
+      size: "lg:col-span-1",
     },
     {
       title: "Social Media",
-      desc: "Strategic management and growth-focused social presence.",
+      desc: "Strategic management and growth.",
       icon: <Share2 size={32} />,
+      size: "lg:col-span-1",
     },
     {
       title: "Digital Marketing",
-      desc: "Performance marketing that drives measurable ROI.",
+      desc: "Performance marketing that drives measurable ROI and brand authority.",
       icon: <BarChart3 size={32} />,
+      size: "lg:col-span-2",
     },
     {
       title: "Web Design",
-      desc: "Modern, responsive, and conversion-optimized websites.",
+      desc: "Modern, responsive, and optimized websites.",
       icon: <Globe size={32} />,
+      size: "lg:col-span-1",
     },
     {
       title: "Content Writing",
-      desc: "Clear, persuasive copy that communicates your brand values.",
+      desc: "Clear, persuasive copy that communicates brand values effectively.",
       icon: <PenTool size={32} />,
+      size: "lg:col-span-2",
     },
   ]
 
   return (
-    <section id="services" className="py-24 bg-brand-gray/50 relative">
+    <section id="services" className="py-24 bg-brand-gray/50 relative overflow-hidden">
       <div className="main-container will-change-gpu">
         <div className="mb-16 sm:mb-20">
           <motion.div
@@ -63,7 +70,7 @@ export default function Services() {
           </motion.div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 auto-rows-fr">
           {services.map((service, i) => {
             const isBranding = service.title === 'Branding'
             const isReels = service.title === 'Reels & Videos'
@@ -73,22 +80,27 @@ export default function Services() {
             const isContentWriting = service.title === 'Content Writing'
 
             const cardClasses =
-              'premium-card p-8 sm:p-10 relative group overflow-hidden block text-left w-full h-full'
+              'premium-card p-8 sm:p-10 relative group overflow-hidden block text-left w-full h-full border border-white/5'
 
             const content = (
               <>
-                <div className="absolute top-0 left-0 w-full h-[2px] bg-brand-lime scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
+                {/* Magnetic Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-brand-lime/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="text-brand-lime mb-6 sm:mb-8 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500 origin-left">
+                    {service.icon}
+                  </div>
+                  <h3 className="text-lg sm:text-xl lg:text-2xl font-black text-white mb-3 sm:mb-4 uppercase tracking-tight group-hover:text-brand-lime transition-colors duration-300">
+                    {service.title}
+                  </h3>
+                  <p className="text-brand-smoke leading-relaxed text-xs sm:text-sm lg:text-base flex-grow">
+                    {service.desc}
+                  </p>
 
-                <div className="text-brand-lime mb-6 sm:mb-8 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500">
-                  {service.icon}
-                </div>
-                <h3 className="text-lg sm:text-xl lg:text-2xl font-black text-white mb-3 sm:mb-4 uppercase tracking-tight group-hover:text-brand-lime transition-colors duration-300">{service.title}</h3>
-                <p className="text-brand-smoke leading-relaxed text-xs sm:text-sm lg:text-base">
-                  {service.desc}
-                </p>
-
-                <div className="mt-6 sm:mt-8 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-2 text-brand-lime text-xs font-bold uppercase tracking-widest">
-                  Learn More <span>→</span>
+                  <div className="mt-8 opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0 duration-300 flex items-center gap-2 text-brand-lime text-[10px] sm:text-xs font-bold uppercase tracking-widest">
+                    Explore Solution <span>→</span>
+                  </div>
                 </div>
               </>
             )
@@ -96,23 +108,25 @@ export default function Services() {
             return (
               <motion.div
                 key={i}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="relative"
+                className={`relative ${service.size}`}
               >
-                {isBranding || isReels || isSocialMedia || isDigitalMarketing || isWebDesign || isContentWriting ? (
-                  <button
-                    onClick={() => handleServiceClick(isBranding ? '/branding' : isReels ? '/reels' : isSocialMedia ? '/social-media' : isDigitalMarketing ? '/digital-marketing' : isWebDesign ? '/web-design' : '/content-writing')}
-                    className={cardClasses}
-                    data-cursor="hover"
-                  >
-                    {content}
-                  </button>
-                ) : (
-                  <div className={cardClasses}>{content}</div>
-                )}
+                <Magnetic strength={0.1}>
+                  {isBranding || isReels || isSocialMedia || isDigitalMarketing || isWebDesign || isContentWriting ? (
+                    <button
+                      onClick={() => handleServiceClick(isBranding ? '/branding' : isReels ? '/reels' : isSocialMedia ? '/social-media' : isDigitalMarketing ? '/digital-marketing' : isWebDesign ? '/web-design' : '/content-writing')}
+                      className={cardClasses}
+                      data-cursor="hover"
+                    >
+                      {content}
+                    </button>
+                  ) : (
+                    <div className={cardClasses}>{content}</div>
+                  )}
+                </Magnetic>
               </motion.div>
             )
           })}

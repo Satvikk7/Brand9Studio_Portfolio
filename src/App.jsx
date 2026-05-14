@@ -1,5 +1,5 @@
-import { motion, useMotionValue, useScroll, useSpring } from 'framer-motion'
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
+import { motion, useMotionValue, useScroll, useSpring, AnimatePresence, useTransform } from 'framer-motion'
 import { Routes, Route } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import BrandingPage from './pages/BrandingPage'
@@ -12,9 +12,25 @@ import ProjectPage from './pages/ProjectPage'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import CustomCursor from './components/CustomCursor'
+import Preloader from './components/Preloader'
+import ScrollProgress from './components/ScrollProgress'
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true)
   const { scrollYProgress } = useScroll()
+
+  // Parallax offsets
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -200])
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, -400])
+  const y3 = useTransform(scrollYProgress, [0, 1], [0, 150])
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 2400)
+    return () => clearTimeout(timer)
+  }, [])
+
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
@@ -58,7 +74,12 @@ function App() {
 
   return (
     <div className="bg-brand-dark min-h-screen relative isolate overflow-hidden">
+      <AnimatePresence mode="wait">
+        {isLoading && <Preloader key="preloader" />}
+      </AnimatePresence>
+
       <CustomCursor />
+      <ScrollProgress />
       
       {/* Background Effects */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
@@ -77,17 +98,25 @@ function App() {
         <motion.div
           aria-hidden="true"
           className="absolute -left-1/4 top-[-12%] h-[60vw] w-[60vw] rounded-full portfolio-wave-orb blur-3xl mix-blend-screen"
-          style={{ transform: 'translateZ(0)', willChange: 'transform, opacity' }}
-          animate={{ x: [0, 42, 0], y: [0, 28, 0], rotate: [0, 10, 0], scale: [1, 1.08, 1] }}
+          style={{ y: y1, transform: 'translateZ(0)', willChange: 'transform, opacity' }}
+          animate={{ x: [0, 42, 0], rotate: [0, 10, 0], scale: [1, 1.08, 1] }}
           transition={{ duration: 24, repeat: Infinity, ease: 'easeInOut' }}
         />
 
         <motion.div
           aria-hidden="true"
           className="absolute right-[-18%] bottom-[-18%] h-[64vw] w-[64vw] rounded-full portfolio-wave-orb-alt blur-3xl mix-blend-screen"
-          style={{ transform: 'translateZ(0)', willChange: 'transform, opacity' }}
-          animate={{ x: [0, -36, 0], y: [0, -24, 0], rotate: [0, -12, 0], scale: [1, 1.05, 1] }}
+          style={{ y: y2, transform: 'translateZ(0)', willChange: 'transform, opacity' }}
+          animate={{ x: [0, -36, 0], rotate: [0, -12, 0], scale: [1, 1.05, 1] }}
           transition={{ duration: 28, repeat: Infinity, ease: 'easeInOut' }}
+        />
+
+        <motion.div
+          aria-hidden="true"
+          className="absolute left-[10%] top-[40%] h-[40vw] w-[40vw] rounded-full bg-brand-lime/5 blur-3xl mix-blend-screen"
+          style={{ y: y3, transform: 'translateZ(0)', willChange: 'transform, opacity' }}
+          animate={{ x: [0, 20, 0], rotate: [0, 5, 0] }}
+          transition={{ duration: 30, repeat: Infinity, ease: 'easeInOut' }}
         />
 
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(5,5,5,0.14)_52%,rgba(5,5,5,0.72)_100%)]" />

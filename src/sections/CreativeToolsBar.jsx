@@ -9,6 +9,7 @@ import canvaIcon from '../assets/icons/Canva.png'
 import sketchIcon from '../assets/icons/Sketch.png'
 import picsartIcon from '../assets/icons/Picsart.png'
 import cutoutIcon from '../assets/icons/Edits app.png'
+import capcutIcon from '../assets/icons/CapCut.png'
 
 const styles = `
   @keyframes marquee-lr {
@@ -38,9 +39,9 @@ const styles = `
   }
 `
 
-const styleSheet = document.createElement('style')
-styleSheet.textContent = styles
 if (typeof document !== 'undefined') {
+  const styleSheet = document.createElement('style')
+  styleSheet.textContent = styles
   document.head.appendChild(styleSheet)
 }
 
@@ -55,6 +56,7 @@ const tools = [
   { name: 'Sketch', icon: sketchIcon },
   { name: 'PicsArt', icon: picsartIcon },
   { name: 'Edits', icon: cutoutIcon },
+  { name: 'CapCut', icon: capcutIcon },
 ]
 
 function ToolItem({ name, icon }) {

@@ -37,7 +37,7 @@ export function buildCategories(projects = []) {
   const categorySet = new Set(projects.map((project) => project.category).filter(Boolean))
   const desiredOrder = [
     'BROCHURE',
-    'CORPORATE DESKS',
+    'CORPORATE DECKS',
     'WEBSITE PAGE',
     'SOCIAL MEDIA POSTS',
     'VISITING CARDS',

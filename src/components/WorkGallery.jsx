@@ -6,6 +6,7 @@ import { normalizeProjects, buildCategories } from '../utils/projectModel'
 
 const categoryColors = {
   'BROCHURE': 'from-orange-500/20 to-amber-600/20',
+  'CORPORATE DECKS': 'from-slate-500/20 to-slate-600/20',
   'BRANDING & IDENTITY': 'from-violet-500/20 to-violet-600/20',
   'LOGO DESIGNS': 'from-brand-lime/20 to-emerald-500/20',
   'SOCIAL MEDIA POSTS': 'from-fuchsia-500/20 to-cyan-500/20',
@@ -18,6 +19,7 @@ const categoryColors = {
 
 const categoryBadges = {
   'BROCHURE': 'bg-orange-500/30 text-orange-300',
+  'CORPORATE DECKS': 'bg-slate-500/30 text-slate-300',
   'BRANDING & IDENTITY': 'bg-violet-500/30 text-violet-300',
   'LOGO DESIGNS': 'bg-emerald-500/30 text-emerald-300',
   'SOCIAL MEDIA POSTS': 'bg-fuchsia-500/30 text-fuchsia-300',
@@ -30,7 +32,7 @@ const categoryBadges = {
 
 const categorySortOrder = [
   'BROCHURE',
-  'CORPORATE DESKS',
+  'CORPORATE DECKS',
   'WEBSITE PAGE',
   'SOCIAL MEDIA POSTS',
   'VISITING CARDS',
@@ -46,6 +48,7 @@ const categorySortOrder = [
 function formatCategoryLabel(category = '') {
   const known = {
     'BROCHURE': 'Brochure',
+    'CORPORATE DECKS': 'Corporate Decks',
     'ANALYTICS': 'Analytics',
     'EMAILERS': 'Emailers',
     'BRANDING & IDENTITY': 'Branding',
