@@ -15,6 +15,16 @@
     -webkit-font-smoothing: antialiased;
     background-color: var(--bg-obsidian);
   }
+
+  @media (pointer: fine) {
+    * {
+      cursor: none !important;
+    }
+    
+    a, button, [role="button"] {
+      cursor: none !important;
+    }
+  }
 }
 
 :root {

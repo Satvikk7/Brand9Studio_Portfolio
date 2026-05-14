@@ -9,6 +9,9 @@ import DigitalMarketingPage from './pages/DigitalMarketingPage'
 import WebDesignPage from './pages/WebDesignPage'
 import ContentWritingPage from './pages/ContentWritingPage'
 import ProjectPage from './pages/ProjectPage'
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
+import CustomCursor from './components/CustomCursor'
 
 function App() {
   const { scrollYProgress } = useScroll()
@@ -55,6 +58,8 @@ function App() {
 
   return (
     <div className="bg-brand-dark min-h-screen relative isolate overflow-hidden">
+      <CustomCursor />
+      
       {/* Background Effects */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
         <div className="absolute inset-0 bg-grid opacity-60" />

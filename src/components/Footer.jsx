@@ -1,4 +1,4 @@
-import brandLogo from '../../Brand9Studio LOGO.png'
+const brandLogo = "/logo.png"
 
 export default function Footer() {
   return (

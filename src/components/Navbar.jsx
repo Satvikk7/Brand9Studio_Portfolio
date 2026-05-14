@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useRef } from 'react'
-import brandLogo from '../../Brand9Studio LOGO.png'
+
+const brandLogo = "/logo.png"
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
