@@ -19,14 +19,14 @@ export default function ScrollProgress() {
     <motion.div 
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
-      className={`fixed right-8 z-[100] hidden md:block ${bottomClass} transition-[bottom] duration-300`}
+      className={`fixed right-4 sm:right-8 z-[100] ${bottomClass} transition-[bottom] duration-300`}
     >
       <button 
         onClick={scrollToTop}
-        className="relative w-14 h-14 flex items-center justify-center group"
+        className="relative w-10 h-10 sm:w-14 sm:h-14 flex items-center justify-center group"
       >
         {/* Radial Progress SVG */}
-        <svg className="w-full h-full -rotate-90">
+        <svg className="w-full h-full -rotate-90" viewBox="0 0 56 56">
           <circle
             cx="28"
             cy="28"
@@ -46,8 +46,9 @@ export default function ScrollProgress() {
         </svg>
 
         {/* Center Island */}
-        <div className="absolute inset-2 bg-brand-dark/40 backdrop-blur-xl border border-white/10 rounded-full flex items-center justify-center transition-all duration-300 group-hover:bg-brand-lime/20 group-hover:border-brand-lime/40">
-          <ArrowUp size={18} className="text-white group-hover:text-brand-lime group-hover:-translate-y-1 transition-all" />
+        <div className="absolute inset-1.5 sm:inset-2 bg-brand-dark/40 backdrop-blur-xl border border-white/10 rounded-full flex items-center justify-center transition-all duration-300 group-hover:bg-brand-lime/20 group-hover:border-brand-lime/40">
+          <ArrowUp size={14} className="sm:hidden text-white group-hover:text-brand-lime group-hover:-translate-y-1 transition-all" />
+          <ArrowUp size={18} className="hidden sm:block text-white group-hover:text-brand-lime group-hover:-translate-y-1 transition-all" />
         </div>
       </button>
     </motion.div>

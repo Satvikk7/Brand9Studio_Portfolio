@@ -86,9 +86,9 @@ export default function About() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.5 }}
-                className="absolute inset-0 flex flex-col items-center justify-center p-12"
+                className="absolute inset-0 flex flex-col items-center justify-center p-6 sm:p-10 lg:p-12"
               >
-                <p className="text-center font-outfit text-2xl font-medium text-white italic leading-relaxed">
+                <p className="text-center font-outfit text-base sm:text-xl lg:text-2xl font-medium text-white italic leading-relaxed">
                   "{quotes[currentQuote]}"
                 </p>
                 <motion.div 

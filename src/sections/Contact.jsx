@@ -12,7 +12,7 @@ export default function Contact() {
   return (
     <section id="contact" className="py-24 relative overflow-hidden">
       <div className="main-container">
-        <div className="grid lg:grid-cols-2 gap-20">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-20">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -60,10 +60,10 @@ export default function Contact() {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="premium-card p-8 md:p-12 border-white/5 relative"
+            className="premium-card p-6 sm:p-8 md:p-12 border-white/5 relative"
           >
             <form className="space-y-4 sm:space-y-6" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid md:grid-cols-3 gap-4 sm:gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
                 <div className="space-y-2">
                   <label className="text-[9px] sm:text-[10px] font-bold text-brand-smoke uppercase tracking-widest ml-1">Name</label>
                   <input

@@ -100,7 +100,7 @@ export default function Hero() {
                   whileHover={{ x: 5 }}
                     className="px-6 sm:px-8 py-3 sm:py-4 border border-white/20 text-white font-inter text-xs sm:text-sm uppercase tracking-widest hover:border-brand-lime/60 hover:bg-white/5 flex items-center justify-center sm:justify-start gap-2 transition-all duration-300 rounded-lg"
                 >
-                  Start a Project <ArrowUpRight size={16} sm:size={18} className="text-brand-lime" />
+                  Start a Project <ArrowUpRight size={16} className="text-brand-lime" />
                 </motion.a>
               </div>
 
