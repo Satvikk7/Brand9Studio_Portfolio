@@ -232,6 +232,7 @@ export default function ProjectPage() {
           {project.images.map((image, index) => {
             const frameContent = buildFrameContent(project, index, project.images.length)
             const reverseLayout = index % 2 === 1
+            const isPdfAsset = /\.pdf$/i.test(image)
 
             return (
               <motion.article
@@ -249,7 +250,7 @@ export default function ProjectPage() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, amount: 0.25 }}
                     transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                    className={`p-4 sm:p-5 md:p-6 lg:p-7 lg:col-span-5 border-b lg:border-b-0 border-white/10 ${reverseLayout ? 'lg:order-2 lg:border-l lg:border-l-white/10 lg:border-r-0' : 'lg:border-r lg:border-r-white/10'}`}
+                    className={`p-4 sm:p-5 md:p-6 lg:p-7 ${isPdfAsset ? 'lg:col-span-6' : 'lg:col-span-5'} border-b lg:border-b-0 border-white/10 ${reverseLayout ? 'lg:order-2 lg:border-l lg:border-l-white/10 lg:border-r-0' : 'lg:border-r lg:border-r-white/10'}`}
                   >
                     <p className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.24em] text-brand-lime mb-3">
                       {project.projectFolder || project.category}
@@ -288,20 +289,28 @@ export default function ProjectPage() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, amount: 0.25 }}
                     transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                    className={`lg:col-span-7 p-3 sm:p-4 md:p-6 ${reverseLayout ? 'lg:order-1' : ''}`}
+                    className={`${isPdfAsset ? 'lg:col-span-6' : 'lg:col-span-7'} p-3 sm:p-4 md:p-6 ${reverseLayout ? 'lg:order-1' : ''}`}
                   >
                     <motion.div
                       whileHover={{ scale: 1.008 }}
                       transition={{ duration: 0.25 }}
                       className="rounded-xl sm:rounded-2xl border border-white/10 bg-black/40 p-2 sm:p-3 md:p-4 flex justify-center"
                     >
-                      <img
-                        src={image}
-                        alt={`${project.title} asset ${index + 1}`}
-                        className="w-auto h-auto max-w-full max-h-[75vh] sm:max-h-[80vh] object-contain rounded-lg sm:rounded-xl"
-                        loading={index === 0 ? 'eager' : 'lazy'}
-                        decoding="async"
-                      />
+                      {isPdfAsset ? (
+                        <iframe
+                          src={`${image}#view=FitH`}
+                          title={`${project.title} PDF ${index + 1}`}
+                          className="w-full h-[70vh] sm:h-[75vh] rounded-lg sm:rounded-xl border-0"
+                        />
+                      ) : (
+                        <img
+                          src={image}
+                          alt={`${project.title} asset ${index + 1}`}
+                          className="w-auto h-auto max-w-full max-h-[75vh] sm:max-h-[80vh] object-contain rounded-lg sm:rounded-xl"
+                          loading={index === 0 ? 'eager' : 'lazy'}
+                          decoding="async"
+                        />
+                      )}
                     </motion.div>
                   </motion.div>
                 </div>

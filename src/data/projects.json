@@ -76,6 +76,483 @@
     }
     ,
     {
+      "id": 7,
+      "title": "Bizsol Technologies Project",
+      "client": "Bizsol Technologies",
+      "category": "BROCHURE",
+      "heroImage": "/projects/Brochure/Bizsol Technologies Project/shared image.jpg",
+      "description": "A clean brochure presentation for Bizsol Technologies with a premium layout, clear hierarchy, and modern corporate styling.",
+      "year": "2026",
+      "frameNarratives": [
+        {
+          "title": "Opening Statement",
+          "focus": "Introduces the brochure with a confident visual structure and clear identity cues.",
+          "detail": "The first frame sets a professional tone and establishes the brand story instantly."
+        },
+        {
+          "title": "Service Overview",
+          "focus": "Organizes offerings and key messaging into a readable modular format.",
+          "detail": "This section helps viewers quickly understand the company’s core value proposition."
+        },
+        {
+          "title": "Capability Highlights",
+          "focus": "Shows strengths and differentiators with strong visual balance and spacing.",
+          "detail": "Designed to keep the page premium while making the content easy to scan."
+        },
+        {
+          "title": "Closing Impact",
+          "focus": "Ends with a polished call-to-action and memorable brand recall.",
+          "detail": "The final frame leaves a refined impression and supports stronger engagement."
+        }
+      ],
+      "images": [
+        "/projects/Brochure/Bizsol Technologies Project/shared image.jpg",
+        "/projects/Brochure/Bizsol Technologies Project/shared image (1).jpg",
+        "/projects/Brochure/Bizsol Technologies Project/shared image (2).jpg",
+        "/projects/Brochure/Bizsol Technologies Project/shared image (3).jpg"
+      ]
+    }
+    ,
+    {
+      "id": 8,
+      "title": "Vertex Emblem",
+      "client": "Logo Design Study",
+      "category": "LOGO DESIGNS",
+      "projectFolder": "Minimal Emblem",
+      "heroImage": "/projects/Logo Designs/shared image.png",
+      "description": "A sharp emblem concept with a minimal silhouette, built to feel modern, compact, and brand-ready.",
+      "year": "2026",
+      "frameNarratives": [
+        {
+          "title": "Symbol Direction",
+          "focus": "Introduces a clean geometric form that communicates confidence and clarity.",
+          "detail": "The mark is designed to be memorable at small sizes while staying elegant in larger applications."
+        },
+        {
+          "title": "Identity Balance",
+          "focus": "Refines spacing and proportion so the logo feels stable and polished.",
+          "detail": "This version works well across headers, social icons, and compact brand applications."
+        }
+      ],
+      "images": [
+        "/projects/Logo Designs/shared image.png"
+      ]
+    }
+    ,
+    {
+      "id": 9,
+      "title": "Solace Wordmark",
+      "client": "Logo Design Study",
+      "category": "LOGO DESIGNS",
+      "projectFolder": "Refined Wordmark",
+      "heroImage": "/projects/Logo Designs/shared image (1).png",
+      "description": "A refined wordmark approach with a premium feel, smooth rhythm, and a clean digital-first presence.",
+      "year": "2026",
+      "frameNarratives": [
+        {
+          "title": "Letterform Flow",
+          "focus": "Highlights the typography and keeps the logo readable with a calm visual tone.",
+          "detail": "The design is tuned for polished presentation across stationery and website use."
+        },
+        {
+          "title": "Brand Finish",
+          "focus": "Balances weight and spacing to create a more premium final impression.",
+          "detail": "This variation supports a trustworthy and elevated identity direction."
+        }
+      ],
+      "images": [
+        "/projects/Logo Designs/shared image (1).png"
+      ]
+    }
+    ,
+    {
+      "id": 10,
+      "title": "Aura Mark",
+      "client": "Logo Design Study",
+      "category": "LOGO DESIGNS",
+      "projectFolder": "Soft Brand Mark",
+      "heroImage": "/projects/Logo Designs/shared image (2).png",
+      "description": "A soft brand mark that feels modern and adaptable, ideal for a clean identity system.",
+      "year": "2026",
+      "frameNarratives": [
+        {
+          "title": "Visual Signature",
+          "focus": "Creates a distinct mark with a balanced, easy-to-recognize shape.",
+          "detail": "The symbol is crafted to be versatile enough for digital, print, and social brand assets."
+        },
+        {
+          "title": "Polished Detail",
+          "focus": "Adds subtle refinement so the identity feels considered and contemporary.",
+          "detail": "This version reads cleanly in both light and dark environments."
+        }
+      ],
+      "images": [
+        "/projects/Logo Designs/shared image (2).png"
+      ]
+    }
+    ,
+    {
+      "id": 11,
+      "title": "Prism Identity",
+      "client": "Logo Design Study",
+      "category": "LOGO DESIGNS",
+      "projectFolder": "Identity System",
+      "heroImage": "/projects/Logo Designs/shared image (3).png",
+      "description": "A versatile identity mark with strong visual character and a clean brand-system approach.",
+      "year": "2026",
+      "frameNarratives": [
+        {
+          "title": "Core Mark",
+          "focus": "Sets the foundation with a logo that feels balanced, modern, and scalable.",
+          "detail": "The shape and spacing are optimized for strong recognition across brand touchpoints."
+        },
+        {
+          "title": "System Ready",
+          "focus": "Prepares the mark for use across app icons, headers, and supporting collateral.",
+          "detail": "This design direction performs well in both feature and minimal layouts."
+        }
+      ],
+      "images": [
+        "/projects/Logo Designs/shared image (3).png"
+      ]
+    }
+    ,
+    {
+      "id": 12,
+      "title": "Nova Crest",
+      "client": "Logo Design Study",
+      "category": "LOGO DESIGNS",
+      "projectFolder": "Crest Concept",
+      "heroImage": "/projects/Logo Designs/shared image (4).png",
+      "description": "A crest-inspired concept that blends premium structure with a clean contemporary finish.",
+      "year": "2026",
+      "frameNarratives": [
+        {
+          "title": "Premium Structure",
+          "focus": "Uses a compact crest form to suggest authority and brand strength.",
+          "detail": "The mark remains lightweight enough for modern digital branding needs."
+        },
+        {
+          "title": "Brand Recall",
+          "focus": "Improves memorability through a distinctive outline and refined spacing.",
+          "detail": "This concept is suited for premium positioning and elegant presentations."
+        }
+      ],
+      "images": [
+        "/projects/Logo Designs/shared image (4).png"
+      ]
+    }
+    ,
+    {
+      "id": 13,
+      "title": "Flux Monogram",
+      "client": "Logo Design Study",
+      "category": "LOGO DESIGNS",
+      "projectFolder": "Monogram Concept",
+      "heroImage": "/projects/Logo Designs/shared image (5).png",
+      "description": "A compact monogram study focused on clean geometry, rhythm, and high brand adaptability.",
+      "year": "2026",
+      "frameNarratives": [
+        {
+          "title": "Compact Form",
+          "focus": "Introduces a condensed mark that works especially well in tight spaces.",
+          "detail": "The form is designed to look premium even as a favicon or social avatar."
+        },
+        {
+          "title": "Flexible Use",
+          "focus": "Keeps the identity adaptable across marketing assets and UI placements.",
+          "detail": "The structure gives the logo long-term utility in evolving brand systems."
+        }
+      ],
+      "images": [
+        "/projects/Logo Designs/shared image (5).png"
+      ]
+    }
+    ,
+    {
+      "id": 14,
+      "title": "Bloom Logo Study",
+      "client": "Logo Design Study",
+      "category": "LOGO DESIGNS",
+      "projectFolder": "Organic Concept",
+      "heroImage": "/projects/Logo Designs/shared image (1).jpg",
+      "description": "A logo exploration with a softer visual personality, built to feel friendly and brandable.",
+      "year": "2026",
+      "frameNarratives": [
+        {
+          "title": "Organic Direction",
+          "focus": "Leans into a more approachable identity language with subtle personality.",
+          "detail": "The design feels suitable for brands that need warmth without losing professionalism."
+        },
+        {
+          "title": "Brand Warmth",
+          "focus": "Rounds out the concept with a polished finish and a memorable silhouette.",
+          "detail": "This final variation offers a softer alternative within the logo family."
+        }
+      ],
+      "images": [
+        "/projects/Logo Designs/shared image (1).jpg"
+      ]
+    }
+    ,
+    {
+      "id": 15,
+      "title": "Social Launch Story",
+      "client": "Brand Social Kit",
+      "category": "SOCIAL MEDIA POSTS",
+      "projectFolder": "Launch Campaign",
+      "heroImage": "/projects/Social Media Posts/shared image (4).jpg",
+      "description": "A bold social launch post with premium contrast, strong messaging, and a clear call to attention.",
+      "year": "2026",
+      "frameNarratives": [
+        {
+          "title": "Launch Hook",
+          "focus": "Starts with a strong headline and visual rhythm that stops the scroll.",
+          "detail": "The design is built for immediate impact in feed and story placements."
+        },
+        {
+          "title": "Message Flow",
+          "focus": "Keeps the copy short and structured for quick audience comprehension.",
+          "detail": "Balanced spacing and hierarchy help the message feel premium and easy to read."
+        }
+      ],
+      "images": [
+        "/projects/Social Media Posts/shared image (4).jpg"
+      ]
+    }
+    ,
+    {
+      "id": 16,
+      "title": "Community Pulse Post",
+      "client": "Brand Social Kit",
+      "category": "SOCIAL MEDIA POSTS",
+      "projectFolder": "Community Engagement",
+      "heroImage": "/projects/Social Media Posts/shared image (5).jpg",
+      "description": "A community-focused social layout that feels friendly, refined, and optimized for engagement.",
+      "year": "2026",
+      "frameNarratives": [
+        {
+          "title": "Engagement First",
+          "focus": "Uses warm contrast and clear spacing to support audience interaction.",
+          "detail": "This post is designed to feel approachable without losing brand consistency."
+        },
+        {
+          "title": "Brand Consistency",
+          "focus": "Keeps the palette and typography aligned with the wider visual system.",
+          "detail": "The result is a cohesive post that reinforces recognition across the feed."
+        }
+      ],
+      "images": [
+        "/projects/Social Media Posts/shared image (5).jpg"
+      ]
+    }
+    ,
+    {
+      "id": 17,
+      "title": "Content Spark Post",
+      "client": "Brand Social Kit",
+      "category": "SOCIAL MEDIA POSTS",
+      "projectFolder": "Content Highlight",
+      "heroImage": "/projects/Social Media Posts/shared image (6).jpg",
+      "description": "A content highlight post that presents information cleanly while retaining a vibrant social-first look.",
+      "year": "2026",
+      "frameNarratives": [
+        {
+          "title": "Content Clarity",
+          "focus": "Structures the post so the key message is understood in a glance.",
+          "detail": "The layout is optimized for both mobile feed viewing and story-format use."
+        },
+        {
+          "title": "Visual Energy",
+          "focus": "Uses bold contrasts and clean hierarchy to keep the asset lively.",
+          "detail": "This design direction is ideal for campaigns that need freshness and rhythm."
+        }
+      ],
+      "images": [
+        "/projects/Social Media Posts/shared image (6).jpg"
+      ]
+    }
+    ,
+    {
+      "id": 18,
+      "title": "Brand Motion Teaser",
+      "client": "Brand Social Kit",
+      "category": "SOCIAL MEDIA POSTS",
+      "projectFolder": "Teaser Graphic",
+      "heroImage": "/projects/Social Media Posts/shared image (7).png",
+      "description": "A teaser-style social graphic built to create curiosity and a polished pre-launch presence.",
+      "year": "2026",
+      "frameNarratives": [
+        {
+          "title": "Teaser Energy",
+          "focus": "Balances mystery and clarity so the audience wants to learn more.",
+          "detail": "The composition is concise, memorable, and ready for launch sequences."
+        },
+        {
+          "title": "Feed Ready",
+          "focus": "Keeps the visual weight balanced for strong performance in social contexts.",
+          "detail": "A polished final frame that can anchor a multi-post campaign."
+        }
+      ],
+      "images": [
+        "/projects/Social Media Posts/shared image (7).png"
+      ]
+    }
+    ,
+    {
+      "id": 19,
+      "title": "Business World Travel",
+      "client": "Travel Social Campaign",
+      "category": "SOCIAL MEDIA POSTS",
+      "projectFolder": "Business World Travel",
+      "heroImage": "/projects/Social Media Posts/Business World Travel/shared image (2).jpg",
+      "description": "A polished two-post social series for a travel brand, designed to feel inviting, premium, and easy to engage with.",
+      "year": "2026",
+      "frameNarratives": [
+        {
+          "title": "Travel Hook",
+          "focus": "Introduces the campaign with a clear destination-led visual and a strong scroll-stopping layout.",
+          "detail": "The opening post is crafted to create curiosity and immediate brand interest in the feed."
+        },
+        {
+          "title": "Campaign Companion",
+          "focus": "Supports the first design with a complementary layout that keeps the message cohesive.",
+          "detail": "The second post helps reinforce the travel story while keeping the visual rhythm consistent."
+        }
+      ],
+      "images": [
+        "/projects/Social Media Posts/Business World Travel/shared image (2).jpg",
+        "/projects/Social Media Posts/Business World Travel/shared image (3).jpg"
+      ]
+    }
+    ,
+    {
+      "id": 20,
+      "title": "Avenir Technologies Visiting Cards",
+      "client": "Avenir Technologies",
+      "category": "VISITING CARDS",
+      "projectFolder": "Avenir Technologies",
+      "heroImage": "/projects/Visiting Cards/Avenir Technologies/shared image (7).jpg",
+      "description": "A premium two-sided visiting card set crafted for a clean, confident first impression with strong brand clarity.",
+      "year": "2026",
+      "frameNarratives": [
+        {
+          "title": "Front Identity",
+          "focus": "Introduces the brand with a refined layout, sharp hierarchy, and memorable visual balance.",
+          "detail": "The front side is designed to communicate professionalism instantly in client handoffs and meetings."
+        },
+        {
+          "title": "Back Utility",
+          "focus": "Presents contact details with clean spacing and high readability for practical day-to-day use.",
+          "detail": "The reverse side keeps the brand language consistent while maximizing clarity and usability."
+        }
+      ],
+      "images": [
+        "/projects/Visiting Cards/Avenir Technologies/shared image (7).jpg",
+        "/projects/Visiting Cards/Avenir Technologies/shared image (8).jpg"
+      ]
+    }
+    ,
+    {
+      "id": 21,
+      "title": "Meenaz Visiting Card",
+      "client": "Meenaz",
+      "category": "VISITING CARDS",
+      "projectFolder": "Meenaz",
+      "heroImage": "/projects/Visiting Cards/Meenaz.png",
+      "description": "A sleek single-card concept with a modern finish and clear personal-brand presentation.",
+      "year": "2026",
+      "frameNarratives": [
+        {
+          "title": "Brand Presence",
+          "focus": "Uses a focused visual style to create a polished and professional first look.",
+          "detail": "The card keeps messaging concise while retaining premium brand character."
+        }
+      ],
+      "images": [
+        "/projects/Visiting Cards/Meenaz.png"
+      ]
+    }
+    ,
+    {
+      "id": 22,
+      "title": "Wedding Website Page",
+      "client": "Website Page Series",
+      "category": "WEBSITE PAGE",
+      "projectFolder": "Website Page",
+      "heroImage": "/projects/Website Page/Website_Wedding.pdf",
+      "description": "A wedding-focused website page concept with elegant hierarchy, immersive visuals, and conversion-ready section flow.",
+      "year": "2026",
+      "frameNarratives": [
+        {
+          "title": "Landing Impression",
+          "focus": "Sets a premium romantic tone with clean composition and visually guided storytelling.",
+          "detail": "The PDF layout is optimized for long-scroll presentation while keeping each section easy to scan."
+        },
+        {
+          "title": "Content Journey",
+          "focus": "Uses structured blocks and clear spacing to maintain flow across the full-page concept.",
+          "detail": "The page direction balances visual beauty with practical communication and lead intent."
+        }
+      ],
+      "images": [
+        "/projects/Website Page/Website_Wedding.pdf"
+      ]
+    }
+    ,
+    {
+      "id": 23,
+      "title": "Maternity & Kids Website Page",
+      "client": "Website Page Series",
+      "category": "WEBSITE PAGE",
+      "projectFolder": "Website Page",
+      "heroImage": "/projects/Website Page/Website_Maternity & Kids .pdf",
+      "description": "A warm and friendly website page concept tailored for maternity and kids offerings with a reassuring, modern design language.",
+      "year": "2026",
+      "frameNarratives": [
+        {
+          "title": "Warm Brand Tone",
+          "focus": "Introduces the page with approachable visuals and trust-building structure.",
+          "detail": "The composition keeps the experience gentle and clear for family-oriented audiences."
+        },
+        {
+          "title": "Section Clarity",
+          "focus": "Organizes services and highlights into a smooth long-page reading sequence.",
+          "detail": "This helps users absorb details quickly while preserving a premium visual flow."
+        }
+      ],
+      "images": [
+        "/projects/Website Page/Website_Maternity & Kids .pdf"
+      ]
+    }
+    ,
+    {
+      "id": 24,
+      "title": "Website Main Page",
+      "client": "Website Page Series",
+      "category": "WEBSITE PAGE",
+      "projectFolder": "Website Page",
+      "heroImage": "/projects/Website Page/website_main page.pdf",
+      "description": "A comprehensive main-page direction showing full-page layout rhythm, key content zones, and polished brand presentation.",
+      "year": "2026",
+      "frameNarratives": [
+        {
+          "title": "Core Layout",
+          "focus": "Builds a strong structure for hero, value sections, and conversion touchpoints.",
+          "detail": "The concept is designed for readability and visual continuity across a long single-page experience."
+        },
+        {
+          "title": "Conversion Flow",
+          "focus": "Supports navigation and decision-making through clean hierarchy and focused section pacing.",
+          "detail": "Each block reinforces the brand story while guiding users toward action."
+        }
+      ],
+      "images": [
+        "/projects/Website Page/website_main page.pdf"
+      ]
+    }
+    ,
+    {
       "id": 3,
       "title": "Analytics Dashboard Project",
       "client": "InsightWorks",

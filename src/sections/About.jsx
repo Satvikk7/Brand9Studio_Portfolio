@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { Target, Zap, TrendingUp } from 'lucide-react'
+import { useState, useEffect } from 'react'
 
 export default function About() {
   const stats = [
@@ -7,6 +8,24 @@ export default function About() {
     { icon: <TrendingUp className="text-brand-lime" />, label: "Digital Marketing", value: "14+ Years" },
     { icon: <Target className="text-brand-lime" />, label: "Client Satisfaction", value: "100%" },
   ]
+
+  const quotes = [
+    "Design meets strategy and creativity meets business growth.",
+    "Every pixel tells a story of innovation and purpose.",
+    "We transform visions into visual experiences that drive results.",
+    "Clean design, bold strategy, unstoppable growth.",
+    "Your brand deserves more than design—it deserves a digital revolution.",
+    "Creativity without strategy is just art. Strategy without creativity is just business. We do both.",
+  ]
+
+  const [currentQuote, setCurrentQuote] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentQuote((prev) => (prev + 1) % quotes.length)
+    }, 5000) // Change quote every 5 seconds
+    return () => clearInterval(interval)
+  }, [quotes.length])
 
   return (
     <section id="about" className="py-24 relative overflow-hidden">
@@ -48,20 +67,81 @@ export default function About() {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <div className="aspect-square premium-card border border-white/10 overflow-hidden group">
-              <div className="absolute inset-0 bg-brand-lime/5 group-hover:bg-brand-lime/12 transition-colors" />
-              <div className="absolute inset-0 flex items-center justify-center p-12">
+            <motion.div
+              key={currentQuote}
+              initial={{ opacity: 0, y: 30, x: 20, scale: 0.92, rotateZ: -2 }}
+              animate={{ opacity: 1, y: 0, x: 0, scale: 1, rotateZ: 0 }}
+              exit={{ opacity: 0, y: -30, x: -20, scale: 0.92, rotateZ: 2 }}
+              transition={{ 
+                duration: 0.8,
+                ease: "easeInOut",
+                type: "spring",
+                stiffness: 100,
+                damping: 15
+              }}
+              className="aspect-square premium-card border border-white/10 overflow-hidden group"
+            >
+              <div className="absolute inset-0 bg-brand-lime/5 group-hover:bg-brand-lime/12 transition-colors duration-500" />
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2, duration: 0.5 }}
+                className="absolute inset-0 flex flex-col items-center justify-center p-12"
+              >
                 <p className="text-center font-outfit text-2xl font-medium text-white italic leading-relaxed">
-                  "Design meets strategy and creativity meets business growth."
+                  "{quotes[currentQuote]}"
                 </p>
-              </div>
+                <motion.div 
+                  className="flex justify-center gap-2 mt-8"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.4, duration: 0.5 }}
+                >
+                  {quotes.map((_, i) => (
+                    <motion.button
+                      key={i}
+                      onClick={() => setCurrentQuote(i)}
+                      whileHover={{ scale: 1.3 }}
+                      whileTap={{ scale: 0.9 }}
+                      className={`w-2 h-2 rounded-full transition-all ${
+                        i === currentQuote ? 'bg-brand-lime w-6' : 'bg-white/20 hover:bg-white/40'
+                      }`}
+                      aria-label={`Quote ${i + 1}`}
+                    />
+                  ))}
+                </motion.div>
+              </motion.div>
               
-              {/* Decorative elements */}
-              <div className="absolute top-0 left-0 w-20 h-[1px] bg-brand-lime" />
-              <div className="absolute top-0 left-0 w-[1px] h-20 bg-brand-lime" />
-              <div className="absolute bottom-0 right-0 w-20 h-[1px] bg-brand-lime" />
-              <div className="absolute bottom-0 right-0 w-[1px] h-20 bg-brand-lime" />
-            </div>
+              {/* Animated Decorative elements */}
+              <motion.div 
+                className="absolute top-0 left-0 w-20 h-[1px] bg-brand-lime"
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ delay: 0.1, duration: 0.6 }}
+                style={{ originX: 0 }}
+              />
+              <motion.div 
+                className="absolute top-0 left-0 w-[1px] h-20 bg-brand-lime"
+                initial={{ scaleY: 0 }}
+                animate={{ scaleY: 1 }}
+                transition={{ delay: 0.15, duration: 0.6 }}
+                style={{ originY: 0 }}
+              />
+              <motion.div 
+                className="absolute bottom-0 right-0 w-20 h-[1px] bg-brand-lime"
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ delay: 0.2, duration: 0.6 }}
+                style={{ originX: 1 }}
+              />
+              <motion.div 
+                className="absolute bottom-0 right-0 w-[1px] h-20 bg-brand-lime"
+                initial={{ scaleY: 0 }}
+                animate={{ scaleY: 1 }}
+                transition={{ delay: 0.25, duration: 0.6 }}
+                style={{ originY: 1 }}
+              />
+            </motion.div>
             
             <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-brand-lime/20 blur-3xl rounded-full" />
           </motion.div>

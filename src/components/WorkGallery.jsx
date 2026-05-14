@@ -7,6 +7,10 @@ import { normalizeProjects, buildCategories } from '../utils/projectModel'
 const categoryColors = {
   'BROCHURE': 'from-orange-500/20 to-amber-600/20',
   'BRANDING & IDENTITY': 'from-violet-500/20 to-violet-600/20',
+  'LOGO DESIGNS': 'from-brand-lime/20 to-emerald-500/20',
+  'SOCIAL MEDIA POSTS': 'from-fuchsia-500/20 to-cyan-500/20',
+  'VISITING CARDS': 'from-sky-500/20 to-indigo-500/20',
+  'WEBSITE PAGE': 'from-blue-500/20 to-violet-600/20',
   'WEB & DIGITAL': 'from-cyan-500/20 to-blue-600/20',
   'MARKETING & CAMPAIGNS': 'from-pink-500/20 to-rose-600/20',
   'PRINT DESIGN': 'from-amber-500/20 to-orange-600/20'
@@ -15,10 +19,29 @@ const categoryColors = {
 const categoryBadges = {
   'BROCHURE': 'bg-orange-500/30 text-orange-300',
   'BRANDING & IDENTITY': 'bg-violet-500/30 text-violet-300',
+  'LOGO DESIGNS': 'bg-emerald-500/30 text-emerald-300',
+  'SOCIAL MEDIA POSTS': 'bg-fuchsia-500/30 text-fuchsia-300',
+  'VISITING CARDS': 'bg-sky-500/30 text-sky-300',
+  'WEBSITE PAGE': 'bg-blue-500/30 text-blue-300',
   'WEB & DIGITAL': 'bg-cyan-500/30 text-cyan-300',
   'MARKETING & CAMPAIGNS': 'bg-pink-500/30 text-pink-300',
   'PRINT DESIGN': 'bg-amber-500/30 text-amber-300'
 }
+
+const categorySortOrder = [
+  'BROCHURE',
+  'CORPORATE DESKS',
+  'WEBSITE PAGE',
+  'SOCIAL MEDIA POSTS',
+  'VISITING CARDS',
+  'LOGO DESIGNS',
+  'EMAILERS',
+  'ANALYTICS',
+  'BRANDING & IDENTITY',
+  'WEB & DIGITAL',
+  'MARKETING & CAMPAIGNS',
+  'PRINT DESIGN'
+]
 
 function formatCategoryLabel(category = '') {
   const known = {
@@ -26,6 +49,10 @@ function formatCategoryLabel(category = '') {
     'ANALYTICS': 'Analytics',
     'EMAILERS': 'Emailers',
     'BRANDING & IDENTITY': 'Branding',
+    'LOGO DESIGNS': 'Logo Design',
+    'SOCIAL MEDIA POSTS': 'Social Media',
+    'VISITING CARDS': 'Visiting Cards',
+    'WEBSITE PAGE': 'Website Page',
     'WEB & DIGITAL': 'Digital',
     'MARKETING & CAMPAIGNS': 'Marketing',
     'PRINT DESIGN': 'Print Design'
@@ -53,6 +80,7 @@ function ProjectCard({ project, index, onOpenProject }) {
 
   const imageCount = project.images?.length || 1
   const colorClass = categoryColors[project.category] || 'from-brand-lime/20 to-green-600/20'
+  const isPdfHero = /\.pdf$/i.test(project.heroImage || '')
 
   return (
     <motion.div
@@ -72,13 +100,21 @@ function ProjectCard({ project, index, onOpenProject }) {
       >
         {/* Image Container with Overlay */}
         <div className="relative w-full overflow-hidden bg-black/40 aspect-square sm:aspect-video flex items-center justify-center">
-          <img
-            src={project.heroImage}
-            alt={project.title}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-out"
-            loading="lazy"
-            decoding="async"
-          />
+          {isPdfHero ? (
+            <iframe
+              src={`${project.heroImage}#view=FitH&toolbar=0&navpanes=0&scrollbar=0`}
+              title={`${project.title} PDF preview`}
+              className="w-full h-full pointer-events-none border-0"
+            />
+          ) : (
+            <img
+              src={project.heroImage}
+              alt={project.title}
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-out"
+              loading="lazy"
+              decoding="async"
+            />
+          )}
           {/* Premium Overlay on Hover */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           
@@ -166,12 +202,27 @@ export default function WorkGallery() {
     [normalizedProjects]
   )
 
+  const sortedProjects = useMemo(() => {
+    return [...normalizedProjects].sort((a, b) => {
+      const categoryIndexA = categorySortOrder.indexOf(a.category)
+      const categoryIndexB = categorySortOrder.indexOf(b.category)
+      const safeCategoryIndexA = categoryIndexA === -1 ? categorySortOrder.length : categoryIndexA
+      const safeCategoryIndexB = categoryIndexB === -1 ? categorySortOrder.length : categoryIndexB
+
+      if (safeCategoryIndexA !== safeCategoryIndexB) {
+        return safeCategoryIndexA - safeCategoryIndexB
+      }
+
+      return String(a.title).localeCompare(String(b.title))
+    })
+  }, [normalizedProjects])
+
   const filteredProjects = useMemo(() => {
     if (activeCategory === 'ALL') {
-      return normalizedProjects
+      return sortedProjects
     }
-    return normalizedProjects.filter((project) => project.category === activeCategory)
-  }, [activeCategory, normalizedProjects])
+    return sortedProjects.filter((project) => project.category === activeCategory)
+  }, [activeCategory, sortedProjects])
 
   const handleOpenProject = (project) => {
     navigate(`/project/${project.id}`, {
