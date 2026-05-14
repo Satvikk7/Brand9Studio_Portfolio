@@ -345,24 +345,41 @@ export default function WorkGallery() {
           </motion.div>
         )}
 
-        {/* Footer CTA */}
+        {/* Footer CTA - Premium Island */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-20 sm:mt-24 pt-12 sm:pt-16 border-t border-white/10 text-center px-4"
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="mt-24 sm:mt-32 p-10 sm:p-16 glass-panel relative overflow-hidden group text-center"
         >
-          <h3 className="text-xl sm:text-2xl font-bold text-white mb-4">Interested in Working Together?</h3>
-          <p className="text-sm sm:text-base text-brand-smoke/60 mb-8">Let's bring your creative vision to life.</p>
-          <motion.a
-            href="#contact"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-block px-6 sm:px-8 py-2 sm:py-3 bg-brand-lime text-black font-bold uppercase tracking-widest rounded-full hover:bg-white transition-all text-xs sm:text-sm"
-          >
-            Start a Project
-          </motion.a>
+          {/* Subtle Glow Background */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-brand-lime/5 via-transparent to-brand-orange/5 opacity-50 pointer-events-none" />
+          
+          <div className="relative z-10 max-w-2xl mx-auto">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-brand-lime/10 border border-brand-lime/20 text-brand-lime text-[10px] sm:text-xs font-bold uppercase tracking-[0.3em] mb-6">
+              Let's Connect
+            </span>
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-white uppercase tracking-tighter leading-tight mb-6">
+              Interested in <br className="hidden sm:block" />
+              <span className="text-brand-lime">Working Together?</span>
+            </h3>
+            <p className="text-sm sm:text-base md:text-lg text-brand-smoke/70 mb-10 leading-relaxed">
+              Let's bring your creative vision to life with precision and strategic design excellence.
+            </p>
+            <motion.a
+              href="#contact"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-block px-10 py-4 bg-brand-lime text-black font-black uppercase tracking-[0.2em] rounded-xl hover:bg-white transition-all text-xs sm:text-sm shadow-xl shadow-brand-lime/20"
+            >
+              Start a Project
+            </motion.a>
+          </div>
+
+          {/* Decorative Corner Elements */}
+          <div className="absolute -top-6 -right-6 w-24 h-24 bg-brand-lime/10 rounded-full blur-2xl group-hover:bg-brand-lime/20 transition-all duration-700" />
+          <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-brand-orange/10 rounded-full blur-2xl group-hover:bg-brand-orange/20 transition-all duration-700" />
         </motion.div>
       </div>
 
