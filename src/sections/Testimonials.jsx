@@ -37,11 +37,12 @@ export default function Testimonials() {
 
   return (
     <section id="testimonials" className="py-24 bg-brand-gray/30">
-      <div className="max-w-7xl mx-auto px-6 text-center">
+      <div className="main-container text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
           className="mb-12 sm:mb-16"
         >
           <span className="text-brand-lime font-mono text-xs uppercase tracking-[0.4em] mb-4 block">Testimonials</span>

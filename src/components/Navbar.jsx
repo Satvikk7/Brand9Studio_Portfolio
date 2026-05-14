@@ -129,8 +129,8 @@ export default function Navbar() {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
-        scrolled ? 'bg-black/40 backdrop-blur-xl border-b border-white/10 py-3 shadow-lg' : 'bg-transparent py-6'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 will-change-gpu ${
+        scrolled ? 'py-4 bg-black/60 backdrop-blur-xl border-b border-white/5' : 'py-6 bg-transparent'
       }`}
       onClick={(e) => {
         // Close mobile menu if clicking a nav target
@@ -139,7 +139,7 @@ export default function Navbar() {
         }
       }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+      <div className="main-container flex items-center justify-between">
         <a href="#hero" onClick={(event) => handleNavClick(event, 'hero')} className="flex items-center gap-2 group flex-shrink-0">
           <img src={brandLogo} alt="Brand9 Studio Logo" className="h-10 sm:h-12 lg:h-14 w-auto" />
         </a>

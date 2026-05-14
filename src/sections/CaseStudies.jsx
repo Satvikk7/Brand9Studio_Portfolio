@@ -70,7 +70,7 @@ export default function CaseStudies() {
 
   return (
     <section id="case-studies" className="py-24 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="main-container">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <motion.div
             initial={{ opacity: 0, x: -20 }}

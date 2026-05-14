@@ -48,12 +48,13 @@ export default function Services() {
 
   return (
     <section id="services" className="py-24 bg-brand-gray/50 relative">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="main-container will-change-gpu">
         <div className="mb-16 sm:mb-20">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
           >
             <span className="text-brand-lime font-mono text-xs uppercase tracking-[0.4em] mb-4 block">Our Solutions</span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tighter">

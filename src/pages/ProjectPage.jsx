@@ -185,7 +185,7 @@ export default function ProjectPage() {
         }}
       />
 
-      <div className="max-w-6xl mx-auto space-y-8 sm:space-y-10">
+      <div className="main-container space-y-8 sm:space-y-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

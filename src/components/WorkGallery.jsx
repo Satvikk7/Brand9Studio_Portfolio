@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLocation, useNavigate } from 'react-router-dom'
 import projectsData from '../data/projects.json'
@@ -63,19 +63,37 @@ function formatCategoryLabel(category = '') {
     .replace(/\b\w/g, (char) => char.toUpperCase())
 }
 
-function ProjectCard({ project, index, onOpenProject }) {
+const ProjectCard = React.memo(React.forwardRef(({ project, index, onOpenProject }, ref) => {
   const containerVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { 
+      opacity: 0, 
+      y: 40, 
+      scale: 0.94,
+      filter: 'blur(8px)',
+    },
     visible: {
       opacity: 1,
       y: 0,
+      scale: 1,
+      filter: 'blur(0px)',
       transition: {
-        duration: 0.5,
-        delay: index * 0.08,
-        ease: [0.22, 1, 0.36, 1]
+        duration: 0.7,
+        delay: index * 0.06,
+        ease: [0.22, 1, 0.36, 1],
+        scale: {
+          type: "spring",
+          stiffness: 100,
+          damping: 15,
+          delay: index * 0.06
+        }
       }
     },
-    exit: { opacity: 0, y: -20, transition: { duration: 0.3 } }
+    exit: { 
+      opacity: 0, 
+      scale: 0.9, 
+      filter: 'blur(10px)',
+      transition: { duration: 0.3 } 
+    }
   }
 
   const imageCount = project.images?.length || 1
@@ -84,11 +102,13 @@ function ProjectCard({ project, index, onOpenProject }) {
 
   return (
     <motion.div
+      ref={ref}
       variants={containerVariants}
       initial="hidden"
       animate="visible"
       exit="exit"
       layout
+      style={{ willChange: 'transform, opacity', transform: 'translateZ(0)' }}
       className="group h-full"
     >
       <motion.button
@@ -161,7 +181,7 @@ function ProjectCard({ project, index, onOpenProject }) {
       </motion.button>
     </motion.div>
   )
-}
+}))
 
 function FilterButton({ category, isActive, onClick }) {
   return (
@@ -248,7 +268,7 @@ export default function WorkGallery() {
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="main-container relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}

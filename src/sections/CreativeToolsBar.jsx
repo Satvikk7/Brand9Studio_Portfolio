@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import afterEffectsIcon from '../assets/icons/Adobe After Effects.png'
 import premiereProIcon from '../assets/icons/Adobe Premiere Pro.png'
 import xdIcon from '../assets/icons/Adobe Xd.png'
@@ -83,12 +84,18 @@ export default function CreativeToolsBar() {
       aria-label="Tools used by the company"
       className="relative overflow-hidden border-y border-white/5 bg-transparent py-8 sm:py-10"
     >
-      <div className="text-center mb-8 sm:mb-10">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="text-center mb-8 sm:mb-10"
+      >
         <p className="text-brand-lime text-[10px] sm:text-xs font-bold uppercase tracking-[0.28em] mb-4">Creative Arsenal</p>
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white uppercase tracking-tight mb-4 font-outfit">
           Tools we <span className="bg-gradient-to-r from-brand-lime to-brand-orange bg-clip-text text-transparent">use</span>
         </h2>
-      </div>
+      </motion.div>
       
       <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-black to-transparent sm:w-24" />
       <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-black to-transparent sm:w-24" />

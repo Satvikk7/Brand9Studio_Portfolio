@@ -19,6 +19,25 @@ function App() {
   })
   const cursorX = useMotionValue(0)
   const cursorY = useMotionValue(0)
+  
+  useEffect(() => {
+    // Force scroll to top immediately and after a small delay to beat browser restoration
+    window.scrollTo(0, 0)
+    
+    const forceScroll = () => {
+      window.scrollTo(0, 0)
+      if (window.location.hash) {
+        window.history.replaceState(null, null, window.location.pathname)
+      }
+    }
+
+    // Multiple attempts to ensure it sticks
+    forceScroll()
+    requestAnimationFrame(forceScroll)
+    const timer = setTimeout(forceScroll, 50)
+    
+    return () => clearTimeout(timer)
+  }, [])
 
   useEffect(() => {
     const handlePointerMove = (event) => {
@@ -45,7 +64,7 @@ function App() {
         <motion.div
           aria-hidden="true"
           className="absolute left-1/2 top-1/2 h-[70vw] w-[70vw] -translate-x-1/2 -translate-y-1/2 rounded-full portfolio-cursor-glow blur-3xl mix-blend-screen"
-          style={{ x: cursorX, y: cursorY }}
+          style={{ x: cursorX, y: cursorY, transform: 'translateZ(0)', willChange: 'transform, opacity' }}
           animate={{ scale: [1, 1.06, 1], opacity: [0.16, 0.22, 0.16] }}
           transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
         />
@@ -53,6 +72,7 @@ function App() {
         <motion.div
           aria-hidden="true"
           className="absolute -left-1/4 top-[-12%] h-[60vw] w-[60vw] rounded-full portfolio-wave-orb blur-3xl mix-blend-screen"
+          style={{ transform: 'translateZ(0)', willChange: 'transform, opacity' }}
           animate={{ x: [0, 42, 0], y: [0, 28, 0], rotate: [0, 10, 0], scale: [1, 1.08, 1] }}
           transition={{ duration: 24, repeat: Infinity, ease: 'easeInOut' }}
         />
@@ -60,6 +80,7 @@ function App() {
         <motion.div
           aria-hidden="true"
           className="absolute right-[-18%] bottom-[-18%] h-[64vw] w-[64vw] rounded-full portfolio-wave-orb-alt blur-3xl mix-blend-screen"
+          style={{ transform: 'translateZ(0)', willChange: 'transform, opacity' }}
           animate={{ x: [0, -36, 0], y: [0, -24, 0], rotate: [0, -12, 0], scale: [1, 1.05, 1] }}
           transition={{ duration: 28, repeat: Infinity, ease: 'easeInOut' }}
         />

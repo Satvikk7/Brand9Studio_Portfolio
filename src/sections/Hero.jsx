@@ -59,7 +59,7 @@ export default function Hero() {
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
+      <div className="main-container relative z-10 will-change-gpu">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7">
             <motion.div
@@ -74,7 +74,7 @@ export default function Hero() {
               
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-[0.9] mb-8 text-white">
                 BUILD A <br />
-                <span className="text-gradient">GROWTH-READY</span> <br />
+                GROWTH-READY <br />
                 IDENTITY.
               </h1>
               

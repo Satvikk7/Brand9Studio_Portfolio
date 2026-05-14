@@ -29,7 +29,7 @@ export default function About() {
 
   return (
     <section id="about" className="py-24 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="main-container">
         <div className="grid lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-20 items-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
