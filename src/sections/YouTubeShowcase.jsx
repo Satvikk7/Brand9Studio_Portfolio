@@ -57,7 +57,7 @@ function YouTubeShort({ videoId, isMuted, onToggleMute }) {
       <iframe
         ref={iframeRef}
         onLoad={handleIframeLoad}
-        src={`https://www.youtube.com/embed/${videoId}?enablejsapi=1&autoplay=0&mute=1&controls=0&modestbranding=1&rel=0&playsinline=1&disablekb=1`}
+        src={`https://www.youtube.com/embed/${videoId}?enablejsapi=1&autoplay=0&mute=1&controls=0&modestbranding=1&rel=0&playsinline=1&disablekb=1&iv_load_policy=3`}
         title="Brand9Studio YouTube Short"
         className="absolute inset-0 w-full h-full scale-[1.05] pointer-events-none"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -69,6 +69,15 @@ function YouTubeShort({ videoId, isMuted, onToggleMute }) {
         onClick={() => onToggleMute(videoId)}
       >
         <div className={`absolute inset-0 transition-opacity duration-300 ${isMuted ? 'bg-black/10 opacity-0 group-hover:opacity-100' : 'bg-transparent'}`} />
+        
+        {/* Bottom Gradient to hide any native YouTube injected buttons (like the dummy share button on mobile) */}
+        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />
+
+        {/* Custom Brand9 Badge at bottom left to completely obscure the share button area */}
+        <div className="absolute bottom-4 left-4 z-20 flex items-center gap-2 px-3 py-1.5 bg-black/60 backdrop-blur-md border border-white/10 rounded-full transition-opacity pointer-events-none">
+          <Youtube size={12} className="text-brand-lime" />
+          <span className="text-[9px] font-bold text-white uppercase tracking-widest">Brand9 Shorts</span>
+        </div>
         
         {/* Play/Pause Button in Center */}
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
