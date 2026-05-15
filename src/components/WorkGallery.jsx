@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useLocation, useNavigate } from 'react-router-dom'
 import projectsData from '../data/projects.json'
 import { normalizeProjects, buildCategories } from '../utils/projectModel'
+import YouTubeShowcase from '../sections/YouTubeShowcase'
 
 const categoryColors = {
   'BROCHURE': 'from-orange-500/20 to-amber-600/20',
@@ -396,6 +397,8 @@ export default function WorkGallery() {
             <p className="text-white/60 text-lg">No projects found in this category.</p>
           </motion.div>
         )}
+
+        <YouTubeShowcase />
 
         <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }} transition={{ duration: 0.8, ease: 'easeOut' }}

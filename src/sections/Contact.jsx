@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion'
-import { MessageSquare, Mail, Instagram, Linkedin, ArrowRight, Facebook } from 'lucide-react'
+import { MessageSquare, Mail, Instagram, Linkedin, ArrowRight, Facebook, Youtube } from 'lucide-react'
 
 export default function Contact() {
   const socials = [
     { icon: <Instagram size={20} />, label: 'Instagram', link: 'https://instagram.com/brand9studio' },
     { icon: <Linkedin size={20} />, label: 'LinkedIn', link: 'https://linkedin.com/company/brand9studio' },
     { icon: <Facebook size={20} />, label: 'Facebook', link: 'https://www.facebook.com/people/Brand9Studio/61584349220080/?rdid=EIrgieF6o5OfEVxG&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1C9HJ2SP5m%2F' },
+    { icon: <Youtube size={20} />, label: 'YouTube', link: 'https://youtube.com/@brandninestudio?si=icXSAwUd_cGkL_Kk' },
     { icon: <MessageSquare size={20} />, label: 'WhatsApp', link: 'https://wa.me/919667733182' },
   ]
 
