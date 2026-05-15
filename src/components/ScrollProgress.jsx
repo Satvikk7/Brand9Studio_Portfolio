@@ -7,9 +7,9 @@ export default function ScrollProgress() {
   const pathLength = useSpring(scrollYProgress, { stiffness: 100, damping: 30 })
   const location = useLocation()
 
-  // On project pages, shift up to avoid overlapping the "Back" buttons
-  const isProjectPage = location.pathname.startsWith('/project/') || location.pathname === '/privacy-policy' || location.pathname === '/terms-of-service'
-  const bottomClass = isProjectPage ? 'bottom-24 sm:bottom-28' : 'bottom-8'
+  // On inner pages, shift up to avoid overlapping the "Back" buttons
+  const isInnerPage = location.pathname !== '/'
+  const bottomClass = isInnerPage ? 'bottom-24 sm:bottom-28' : 'bottom-8'
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
