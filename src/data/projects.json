@@ -1,4 +1,4 @@
-﻿{
+{
   "projects": [
     {
       "id": 1,
@@ -37,44 +37,6 @@
         "/projects/Brochure/African Roots Project/shared image (3).jpg"
       ]
     },
-    {
-      "id": 2,
-      "title": "Ecomerce Business Project",
-      "client": "Retail Growth Studio",
-      "category": "BROCHURE",
-      "heroImage": "/projects/Brochure/Ecomerce Business Project/shared image (1).jpg",
-      "description": "Conversion-focused brochure design for an ecommerce brand, built to present offerings with a clean, modern, and sales-ready layout.",
-      "year": "2025",
-      "frameNarratives": [
-        {
-          "title": "Commercial First Impression",
-          "focus": "Leads with a conversion-ready visual identity and crisp category framing.",
-          "detail": "This page is designed to capture attention quickly and align user intent with business offering."
-        },
-        {
-          "title": "Audience Problem Framing",
-          "focus": "Maps customer pain points to service value through concise storytelling blocks.",
-          "detail": "The layout supports faster understanding by combining visual anchors with short-form copy."
-        },
-        {
-          "title": "Offer Breakdown",
-          "focus": "Presents service tiers and benefits using a clear, modular visual system.",
-          "detail": "The structure reduces cognitive load and improves comparability for purchase decisions."
-        },
-        {
-          "title": "Action & Trust Layer",
-          "focus": "Ends with trust cues, retention messaging, and direct call-to-action flow.",
-          "detail": "This final touchpoint supports stronger lead response and brochure-to-conversion movement."
-        }
-      ],
-      "images": [
-        "/projects/Brochure/Ecomerce Business Project/shared image (1).jpg",
-        "/projects/Brochure/Ecomerce Business Project/shared image (2).jpg",
-        "/projects/Brochure/Ecomerce Business Project/shared image (3).jpg",
-        "/projects/Brochure/Ecomerce Business Project/shared image (4).jpg"
-      ]
-    }
-    ,
     {
       "id": 7,
       "title": "Bizsol Technologies Project",
@@ -413,16 +375,10 @@
           "title": "Travel Hook",
           "focus": "Introduces the campaign with a clear destination-led visual and a strong scroll-stopping layout.",
           "detail": "The opening post is crafted to create curiosity and immediate brand interest in the feed."
-        },
-        {
-          "title": "Campaign Companion",
-          "focus": "Supports the first design with a complementary layout that keeps the message cohesive.",
-          "detail": "The second post helps reinforce the travel story while keeping the visual rhythm consistent."
         }
       ],
       "images": [
-        "/projects/Social Media Posts/Business World Travel/shared image (2).jpg",
-        "/projects/Social Media Posts/Business World Travel/shared image (3).jpg"
+        "/projects/Social Media Posts/Business World Travel/shared image (2).jpg"
       ]
     }
     ,
@@ -480,14 +436,14 @@
       "client": "Website Page Series",
       "category": "WEBSITE PAGE",
       "projectFolder": "Website Page",
-      "heroImage": "/projects/Website Page/Website_Wedding.pdf",
+      "heroImage": "/projects/Website Page/Wedding Showcase/page_1.png",
       "description": "A wedding-focused website page concept with elegant hierarchy, immersive visuals, and conversion-ready section flow.",
       "year": "2026",
       "frameNarratives": [
         {
           "title": "Landing Impression",
           "focus": "Sets a premium romantic tone with clean composition and visually guided storytelling.",
-          "detail": "The PDF layout is optimized for long-scroll presentation while keeping each section easy to scan."
+          "detail": "The layout is optimized for long-scroll presentation while keeping each section easy to scan."
         },
         {
           "title": "Content Journey",
@@ -496,7 +452,9 @@
         }
       ],
       "images": [
-        "/projects/Website Page/Website_Wedding.pdf"
+        "/projects/Website Page/Wedding Showcase/page_1.png",
+        "/projects/Website Page/Wedding Showcase/page_2.png",
+        "/projects/Website Page/Wedding Showcase/page_3.png"
       ]
     }
     ,
@@ -506,7 +464,7 @@
       "client": "Website Page Series",
       "category": "WEBSITE PAGE",
       "projectFolder": "Website Page",
-      "heroImage": "/projects/Website Page/Website_Maternity & Kids .pdf",
+      "heroImage": "/projects/Website Page/Maternity Showcase/page_1.png",
       "description": "A warm and friendly website page concept tailored for maternity and kids offerings with a reassuring, modern design language.",
       "year": "2026",
       "frameNarratives": [
@@ -522,7 +480,11 @@
         }
       ],
       "images": [
-        "/projects/Website Page/Website_Maternity & Kids .pdf"
+        "/projects/Website Page/Maternity Showcase/page_1.png",
+        "/projects/Website Page/Maternity Showcase/page_2.png",
+        "/projects/Website Page/Maternity Showcase/page_3.png",
+        "/projects/Website Page/Maternity Showcase/page_4.png",
+        "/projects/Website Page/Maternity Showcase/page_5.png"
       ]
     }
     ,
@@ -532,7 +494,7 @@
       "client": "Website Page Series",
       "category": "WEBSITE PAGE",
       "projectFolder": "Website Page",
-      "heroImage": "/projects/Website Page/website_main page.pdf",
+      "heroImage": "/projects/Website Page/Main Page Showcase/page_1.png",
       "description": "A comprehensive main-page direction showing full-page layout rhythm, key content zones, and polished brand presentation.",
       "year": "2026",
       "frameNarratives": [
@@ -548,7 +510,11 @@
         }
       ],
       "images": [
-        "/projects/Website Page/website_main page.pdf"
+        "/projects/Website Page/Main Page Showcase/page_1.png",
+        "/projects/Website Page/Main Page Showcase/page_2.png",
+        "/projects/Website Page/Main Page Showcase/page_3.png",
+        "/projects/Website Page/Main Page Showcase/page_4.png",
+        "/projects/Website Page/Main Page Showcase/page_5.png"
       ]
     }
     ,
@@ -646,16 +612,22 @@
           "detail": "The composition supports longer-form content without losing the clean corporate look."
         },
         {
-          "title": "Closing Page",
-          "focus": "Wraps the presentation with a refined closing layout and brand recall cues.",
-          "detail": "The ending frame reinforces consistency and leaves a professional final impression."
+          "title": "PPC Process Roadmap",
+          "focus": "A 6-step PPC workflow: Data Review → Tracking → Keywords & Audience → Ad Copies → Bidding Strategy → Landing Pages.",
+          "detail": "Each step is visually anchored to guide stakeholders through the paid-media execution flow with clear campaign logic."
+        },
+        {
+          "title": "PPC Benefits Overview",
+          "focus": "Highlights 8 core PPC benefits including Real-Time Trackability, Flexible Budgeting, Campaign Flexibility, and Targeted Success.",
+          "detail": "A circular radial layout communicates how PPC delivers the fastest and most effective way to attract traffic and rise in search rankings."
         }
       ],
       "images": [
         "/projects/Corporate Decks/Coporate Brief/1.jpg",
         "/projects/Corporate Decks/Coporate Brief/2.jpg",
         "/projects/Corporate Decks/Coporate Brief/3.jpg",
-        "/projects/Corporate Decks/Coporate Brief/4.jpg"
+        "/projects/Corporate Decks/Coporate Brief/4.png",
+        "/projects/Corporate Decks/Coporate Brief/5.png"
       ]
     },
     {
@@ -678,21 +650,21 @@
           "detail": "This page is built to communicate technical confidence without visual clutter."
         },
         {
-          "title": "Capability Spread",
-          "focus": "Presents key strengths in a format that is easy to compare and remember.",
-          "detail": "The layout supports business storytelling while maintaining a corporate presentation style."
+          "title": "Manufacturing Capacity",
+          "focus": "Details 6 core production capabilities including in-house weighing systems, 6 tonnes/day mixing, 7–250 Ton Desma injection moulding, 12 compression machines, 2 steam-curing extruders, and spray painting facilities.",
+          "detail": "A timeline-style infographic communicates the full scope of the plant's manufacturing infrastructure with clarity and precision."
         },
         {
-          "title": "Reference Close",
-          "focus": "Concludes with a clean summary page and a strong final brand statement.",
-          "detail": "The last frame helps the audience retain the company message and visual identity."
+          "title": "Quality Objectives",
+          "focus": "Outlines 6 quality commitments: enhancing customer satisfaction, reducing complaints, employee training & upskilling, improving products to customer specs, better housekeeping, and minimising rejection.",
+          "detail": "A clean icon-driven layout reinforces the brand's dedication to quality standards and continuous operational improvement."
         }
       ],
       "images": [
         "/projects/Corporate Decks/Indian Polymers Industries/1.jpg",
         "/projects/Corporate Decks/Indian Polymers Industries/2.jpg",
-        "/projects/Corporate Decks/Indian Polymers Industries/3.jpg",
-        "/projects/Corporate Decks/Indian Polymers Industries/4.jpg"
+        "/projects/Corporate Decks/Indian Polymers Industries/3.png",
+        "/projects/Corporate Decks/Indian Polymers Industries/4.png"
       ]
     }
   ]

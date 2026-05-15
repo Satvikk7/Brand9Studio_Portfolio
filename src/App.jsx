@@ -9,6 +9,8 @@ import DigitalMarketingPage from './pages/DigitalMarketingPage'
 import WebDesignPage from './pages/WebDesignPage'
 import ContentWritingPage from './pages/ContentWritingPage'
 import ProjectPage from './pages/ProjectPage'
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage'
+import TermsOfServicePage from './pages/TermsOfServicePage'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import CustomCursor from './components/CustomCursor'
@@ -138,6 +140,8 @@ function App() {
           <Route path="/web-design" element={<WebDesignPage />} />
           <Route path="/content-writing" element={<ContentWritingPage />} />
           <Route path="/project/:id" element={<ProjectPage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="/terms-of-service" element={<TermsOfServicePage />} />
         </Routes>
       </div>
     </div>

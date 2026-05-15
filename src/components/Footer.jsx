@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const brandLogo = "/logo.png"
 
 export default function Footer() {
@@ -14,8 +16,8 @@ export default function Footer() {
         </div>
 
         <div className="flex gap-4 sm:gap-8 text-center sm:text-left">
-          <a href="#" className="text-brand-smoke hover:text-brand-lime text-[10px] font-bold uppercase tracking-widest transition-colors duration-300">Privacy Policy</a>
-          <a href="#" className="text-brand-smoke hover:text-brand-lime text-[10px] font-bold uppercase tracking-widest transition-colors duration-300">Terms of Service</a>
+          <Link to="/privacy-policy" className="text-brand-smoke hover:text-brand-lime text-[10px] font-bold uppercase tracking-widest transition-colors duration-300">Privacy Policy</Link>
+          <Link to="/terms-of-service" className="text-brand-smoke hover:text-brand-lime text-[10px] font-bold uppercase tracking-widest transition-colors duration-300">Terms of Service</Link>
         </div>
         
         <div className="text-brand-smoke text-[10px] uppercase tracking-widest text-center">
