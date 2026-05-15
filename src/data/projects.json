@@ -410,14 +410,19 @@
     }
     ,
     {
-      "id": 21,
+      "id": "meenaz",
       "title": "Meenaz Visiting Card",
       "client": "Meenaz",
       "category": "VISITING CARDS",
       "projectFolder": "Meenaz",
-      "heroImage": "/projects/Visiting Cards/Meenaz.png",
-      "description": "A sleek single-card concept with a modern finish and clear personal-brand presentation.",
-      "year": "2026",
+      "heroImage": "/projects/Visiting Cards/Meenaz/1.png",
+      "description": "Elegant and premium visiting card design crafted for Meenaz Jewelleries.",
+      "services": [
+        "Brand Identity",
+        "Print Design",
+        "Typography"
+      ],
+      "year": "2024",
       "frameNarratives": [
         {
           "title": "Brand Presence",
@@ -426,7 +431,8 @@
         }
       ],
       "images": [
-        "/projects/Visiting Cards/Meenaz.png"
+        "/projects/Visiting Cards/Meenaz/1.png",
+        "/projects/Visiting Cards/Meenaz/2.png"
       ]
     }
     ,
