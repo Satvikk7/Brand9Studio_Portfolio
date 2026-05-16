@@ -39,6 +39,7 @@ export function buildCategories(projects = []) {
     'BROCHURE',
     'CORPORATE DECKS',
     'WEBSITE PAGE',
+    'APP DESIGNS',
     'SOCIAL MEDIA POSTS',
     'VISITING CARDS',
     'LOGO DESIGNS',

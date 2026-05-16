@@ -15,7 +15,8 @@ const categoryColors = {
   'WEBSITE PAGE': 'from-blue-500/20 to-violet-600/20',
   'WEB & DIGITAL': 'from-cyan-500/20 to-blue-600/20',
   'MARKETING & CAMPAIGNS': 'from-pink-500/20 to-rose-600/20',
-  'PRINT DESIGN': 'from-amber-500/20 to-orange-600/20'
+  'PRINT DESIGN': 'from-amber-500/20 to-orange-600/20',
+  'APP DESIGNS': 'from-teal-500/20 to-emerald-600/20'
 }
 
 const categoryBadges = {
@@ -28,11 +29,12 @@ const categoryBadges = {
   'WEBSITE PAGE': 'bg-blue-500/30 text-blue-300',
   'WEB & DIGITAL': 'bg-cyan-500/30 text-cyan-300',
   'MARKETING & CAMPAIGNS': 'bg-pink-500/30 text-pink-300',
-  'PRINT DESIGN': 'bg-amber-500/30 text-amber-300'
+  'PRINT DESIGN': 'bg-amber-500/30 text-amber-300',
+  'APP DESIGNS': 'bg-teal-500/30 text-teal-300'
 }
 
 const categorySortOrder = [
-  'BROCHURE','CORPORATE DECKS','WEBSITE PAGE','SOCIAL MEDIA POSTS',
+  'BROCHURE','CORPORATE DECKS','WEBSITE PAGE','APP DESIGNS','SOCIAL MEDIA POSTS',
   'VISITING CARDS','LOGO DESIGNS','EMAILERS','ANALYTICS',
   'BRANDING & IDENTITY','WEB & DIGITAL','MARKETING & CAMPAIGNS','PRINT DESIGN'
 ]
@@ -44,7 +46,8 @@ function formatCategoryLabel(category = '') {
     'BRANDING & IDENTITY': 'Branding','LOGO DESIGNS': 'Logo Design',
     'SOCIAL MEDIA POSTS': 'Social Media','VISITING CARDS': 'Visiting Cards',
     'WEBSITE PAGE': 'Website Page','WEB & DIGITAL': 'Digital',
-    'MARKETING & CAMPAIGNS': 'Marketing','PRINT DESIGN': 'Print Design'
+    'MARKETING & CAMPAIGNS': 'Marketing','PRINT DESIGN': 'Print Design',
+    'APP DESIGNS': 'App Designs'
   }
   return known[category] || category.toLowerCase().replace(/\b\w/g, c => c.toUpperCase())
 }

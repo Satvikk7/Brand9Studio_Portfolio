@@ -672,6 +672,43 @@
         "/projects/Corporate Decks/Indian Polymers Industries/3.png",
         "/projects/Corporate Decks/Indian Polymers Industries/4.png"
       ]
+    },
+    {
+      "id": "app-designs",
+      "title": "App Design Showcase",
+      "client": "Mobile App Series",
+      "category": "APP DESIGNS",
+      "projectFolder": "App Designs",
+      "heroImage": "/projects/App Designs/1.png",
+      "description": "A curated collection of mobile app designs focusing on intuitive navigation, premium aesthetics, and seamless user experiences across food ordering and retail platforms.",
+      "services": [
+        "UI/UX Design",
+        "Mobile App Design",
+        "Prototyping"
+      ],
+      "year": "2026",
+      "frameNarratives": [
+        {
+          "title": "Sticky Fingers BBQ App",
+          "focus": "A warm, food-focused mobile experience with clear sign-in and registration flows tailored for BBQ lovers.",
+          "detail": "Features rich, textured backgrounds with high-contrast typography, streamlining the user journey from splash screen to the main menu."
+        },
+        {
+          "title": "Colton's Steak House Ordering",
+          "focus": "A rustic, loyalty-driven application designed to enhance the dine-in and takeout ordering experience.",
+          "detail": "Integrates rewards tracking, location-based ordering, and gift card management into a cohesive, brand-authentic digital environment."
+        },
+        {
+          "title": "Nysaa E-Commerce Experience",
+          "focus": "A high-energy, red-themed shopping application prioritizing secure authentication and seamless product discovery.",
+          "detail": "Includes comprehensive OTP verification, smooth password reset flows, and an intuitive catalog layout designed to maximize conversions."
+        }
+      ],
+      "images": [
+        "/projects/App Designs/1.png",
+        "/projects/App Designs/2.png",
+        "/projects/App Designs/3.png"
+      ]
     }
   ]
 }
