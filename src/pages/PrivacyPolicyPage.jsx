@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 
 export default function PrivacyPolicyPage() {
   const navigate = useNavigate()
+  const location = useLocation()
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -133,7 +134,7 @@ export default function PrivacyPolicyPage() {
 
       <button
         type="button"
-        onClick={() => navigate(-1)}
+        onClick={() => navigate('/', { state: { scrollY: location.state?.scrollY ?? 0 } })}
         className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 inline-flex items-center gap-2 px-4 sm:px-5 py-3 rounded-full border border-brand-lime/30 bg-black/70 backdrop-blur-xl text-brand-lime text-[11px] sm:text-xs font-bold uppercase tracking-widest shadow-lg shadow-black/30 hover:bg-brand-lime/10 hover:border-brand-lime/60 hover:text-brand-lime transition-all duration-300"
       >
         <ArrowLeft size={16} /> Go Back

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, useMotionValue, useScroll, useSpring, AnimatePresence, useTransform } from 'framer-motion'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import BrandingPage from './pages/BrandingPage'
 import ReelsPage from './pages/ReelsPage'
@@ -41,13 +41,21 @@ function App() {
   const cursorX = useMotionValue(0)
   const cursorY = useMotionValue(0)
   
+  const location = useLocation()
+  
   useEffect(() => {
-    // Force scroll to top immediately and after a small delay to beat browser restoration
+    // If we are returning to the Home page and explicitly restoring scroll position,
+    // do not force scroll to top. Let HomePage.jsx handle the restoration.
+    if (location.pathname === '/' && location.state?.scrollY !== undefined) {
+      return;
+    }
+
+    // Force scroll to top when route changes
     window.scrollTo(0, 0)
     
     const forceScroll = () => {
       window.scrollTo(0, 0)
-      if (window.location.hash) {
+      if (window.location.hash && location.pathname === '/') {
         window.history.replaceState(null, null, window.location.pathname)
       }
     }
@@ -58,7 +66,7 @@ function App() {
     const timer = setTimeout(forceScroll, 50)
     
     return () => clearTimeout(timer)
-  }, [])
+  }, [location.pathname])
 
   useEffect(() => {
     const handlePointerMove = (event) => {

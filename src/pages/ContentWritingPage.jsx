@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowLeft, FileText, Sparkles } from 'lucide-react'
 import { useNavigate, useLocation } from 'react-router-dom'
@@ -17,6 +18,10 @@ const writingServices = [
 export default function ContentWritingPage() {
   const navigate = useNavigate()
   const location = useLocation()
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [])
 
   const handleBackHome = () => {
     navigate('/', {

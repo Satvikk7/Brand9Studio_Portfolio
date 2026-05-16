@@ -98,7 +98,9 @@ function ImageWallShowcase({ projects }) {
               <img
                 src={img.src}
                 alt=""
-                className="w-full h-full object-cover opacity-50 blur-2xl scale-125 transition-transform duration-700 group-hover:scale-150"
+                className="w-full h-full object-cover opacity-50 blur-xl sm:blur-2xl scale-125 transition-transform duration-700 group-hover:scale-150"
+                loading="lazy"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/80" />
             </div>
@@ -182,7 +184,7 @@ const ProjectCard = React.memo(React.forwardRef(({ project, index, onOpenProject
 
   return (
     <motion.div ref={ref} variants={containerVariants} initial="hidden" animate="visible" exit="exit" layout
-      style={{ willChange: 'transform, opacity', transform: 'translateZ(0)' }} className="group h-full">
+      style={{ willChange: 'transform, opacity, filter', transform: 'translateZ(0)' }} className="group h-full">
       <motion.button onClick={() => onOpenProject(project)} whileHover={{ scale: 1.015, y: -4 }} whileTap={{ scale: 0.98 }}
         transition={{ type: 'spring', stiffness: 320, damping: 28 }}
         className={`premium-card relative rounded-xl overflow-hidden border border-white/10 bg-gradient-to-br ${colorClass} hover:border-white/25 transition-all duration-300 h-full flex flex-col cursor-pointer w-full`}>

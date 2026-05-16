@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowLeft, Megaphone, Sparkles } from 'lucide-react'
 import { useNavigate, useLocation } from 'react-router-dom'
@@ -17,6 +18,10 @@ const marketingServices = [
 export default function DigitalMarketingPage() {
   const navigate = useNavigate()
   const location = useLocation()
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [])
 
   const handleBackHome = () => {
     navigate('/', {

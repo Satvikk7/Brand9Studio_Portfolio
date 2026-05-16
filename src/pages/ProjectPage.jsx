@@ -157,7 +157,7 @@ export default function ProjectPage() {
   if (!project) {
     return (
       <section className="min-h-screen flex items-center justify-center px-6 py-28">
-        <div className="max-w-xl w-full rounded-3xl border border-white/10 bg-black/45 backdrop-blur-xl p-8 sm:p-10 text-center">
+        <div className="max-w-xl w-full rounded-3xl border border-white/10 bg-black/45 backdrop-blur-md sm:backdrop-blur-xl p-8 sm:p-10 text-center">
           <p className="text-brand-smoke uppercase tracking-[0.24em] text-[10px] mb-4">Project</p>
           <h1 className="text-white text-2xl sm:text-3xl font-black mb-3">Project not found</h1>
           <p className="text-brand-smoke text-sm mb-8">The requested project route is unavailable.</p>
@@ -190,7 +190,7 @@ export default function ProjectPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-          className="rounded-3xl border border-white/10 bg-black/45 backdrop-blur-xl p-4 sm:p-6"
+          className="rounded-3xl border border-white/10 bg-black/45 backdrop-blur-md sm:backdrop-blur-xl p-4 sm:p-6"
         >
           <div className="flex flex-wrap items-center justify-between gap-4">
             <Link
@@ -242,7 +242,7 @@ export default function ProjectPage() {
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.55, delay: index * 0.05, ease: [0.22, 1, 0.36, 1] }}
                 whileHover={{ y: -3 }}
-                className="rounded-2xl sm:rounded-3xl overflow-hidden border border-white/10 bg-black/45 backdrop-blur-xl shadow-[0_20px_55px_rgba(0,0,0,0.35)]"
+                className="rounded-2xl sm:rounded-3xl overflow-hidden border border-white/10 bg-black/45 backdrop-blur-md sm:backdrop-blur-xl shadow-[0_20px_55px_rgba(0,0,0,0.35)]"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-5">
                   <motion.div
@@ -341,7 +341,7 @@ export default function ProjectPage() {
       <button
         type="button"
         onClick={handleBackToGallery}
-        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 inline-flex items-center gap-2 px-4 sm:px-5 py-3 rounded-full border border-brand-lime/30 bg-black/70 backdrop-blur-xl text-brand-lime text-[11px] sm:text-xs font-bold uppercase tracking-widest shadow-lg shadow-black/30 hover:bg-brand-lime/10 hover:border-brand-lime/60 hover:text-brand-lime transition-all duration-300"
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 inline-flex items-center gap-2 px-4 sm:px-5 py-3 rounded-full border border-brand-lime/30 bg-black/70 backdrop-blur-md sm:backdrop-blur-xl text-brand-lime text-[11px] sm:text-xs font-bold uppercase tracking-widest shadow-lg shadow-black/30 hover:bg-brand-lime/10 hover:border-brand-lime/60 hover:text-brand-lime transition-all duration-300"
       >
         <ArrowLeft size={16} /> Back to gallery
       </button>

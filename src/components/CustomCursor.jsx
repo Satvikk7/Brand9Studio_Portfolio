@@ -11,8 +11,8 @@ export default function CustomCursor() {
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
 
-  // Spring physics for smooth movement
-  const springConfig = { damping: 25, stiffness: 250, mass: 0.5 }
+  // Spring physics for smooth movement (optimized for less lag)
+  const springConfig = { damping: 28, stiffness: 450, mass: 0.15 }
   const x = useSpring(mouseX, springConfig)
   const y = useSpring(mouseY, springConfig)
 
@@ -86,8 +86,8 @@ export default function CustomCursor() {
     >
       {/* Primary Cursor Body */}
       <motion.svg
-        width="28"
-        height="28"
+        width="20"
+        height="20"
         viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

@@ -1,8 +1,17 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const brandLogo = "/logo.png"
 
 export default function Footer() {
+  const navigate = useNavigate()
+
+  const handleLegalClick = (e, path) => {
+    e.preventDefault()
+    navigate(path, {
+      state: { scrollY: window.scrollY }
+    })
+  }
+
   return (
     <footer className="py-8 sm:py-12 border-t border-white/5 relative z-10">
       <div className="main-container flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-8 premium-card rounded-xl py-6 sm:py-8">
@@ -16,8 +25,8 @@ export default function Footer() {
         </div>
 
         <div className="flex gap-4 sm:gap-8 text-center sm:text-left">
-          <Link to="/privacy-policy" className="text-brand-smoke hover:text-brand-lime text-[10px] font-bold uppercase tracking-widest transition-colors duration-300">Privacy Policy</Link>
-          <Link to="/terms-of-service" className="text-brand-smoke hover:text-brand-lime text-[10px] font-bold uppercase tracking-widest transition-colors duration-300">Terms of Service</Link>
+          <a href="/privacy-policy" onClick={(e) => handleLegalClick(e, '/privacy-policy')} className="text-brand-smoke hover:text-brand-lime text-[10px] font-bold uppercase tracking-widest transition-colors duration-300 cursor-pointer">Privacy Policy</a>
+          <a href="/terms-of-service" onClick={(e) => handleLegalClick(e, '/terms-of-service')} className="text-brand-smoke hover:text-brand-lime text-[10px] font-bold uppercase tracking-widest transition-colors duration-300 cursor-pointer">Terms of Service</a>
         </div>
         
         <div className="text-brand-smoke text-[10px] uppercase tracking-widest text-center">
