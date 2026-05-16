@@ -61,7 +61,7 @@ h1, h2, h3, h4 {
 
 @layer components {
   .main-container {
-    @apply w-full max-w-[1600px] mx-auto px-6 sm:px-12 lg:px-20;
+    @apply w-full max-w-[1600px] mx-auto px-5 sm:px-12 lg:px-20;
   }
 
   .will-change-gpu {

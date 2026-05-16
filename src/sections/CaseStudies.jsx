@@ -79,7 +79,7 @@ export default function CaseStudies() {
             viewport={{ once: true }}
           >
             <span className="text-brand-lime font-mono text-xs uppercase tracking-[0.4em] mb-4 block">Storytelling</span>
-            <h2 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-white uppercase tracking-tighter">
               CASE <br /> <span className="text-brand-lime">STUDIES.</span>
             </h2>
           </motion.div>

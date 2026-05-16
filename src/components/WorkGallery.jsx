@@ -240,7 +240,7 @@ const ProjectCard = React.memo(React.forwardRef(({ project, index, onOpenProject
 function FilterButton({ category, isActive, onClick }) {
   return (
     <motion.button onClick={onClick} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-      className={`relative px-5 sm:px-7 py-2 rounded-xl font-bold text-[10px] sm:text-xs uppercase tracking-[0.2em] transition-all duration-500 whitespace-nowrap ${
+      className={`relative px-4 sm:px-7 py-2 rounded-xl font-bold text-[9px] sm:text-xs uppercase tracking-[0.2em] transition-all duration-500 whitespace-nowrap ${
         isActive
           ? 'bg-brand-lime text-black shadow-xl shadow-brand-lime/20 border border-brand-lime/50'
           : 'bg-white/[0.03] border border-white/10 text-white/50 hover:border-brand-lime/40 hover:text-white hover:bg-white/[0.06]'
@@ -354,7 +354,7 @@ export default function WorkGallery() {
         <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }} transition={{ duration: 0.6 }} className="mb-12 sm:mb-16">
           <span className="text-brand-lime font-mono text-xs uppercase tracking-[0.4em] mb-4 block">Adaptive Flow</span>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white uppercase tracking-tighter leading-tight mb-6">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white uppercase tracking-tighter leading-tight mb-6">
             WORK <br /> <span className="text-brand-lime">GALLERY.</span>
           </h1>
           <p className="text-sm sm:text-base md:text-lg text-brand-smoke/70 max-w-2xl leading-relaxed">
@@ -364,7 +364,7 @@ export default function WorkGallery() {
 
         <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }}
-          className="mb-12 sm:mb-16 flex flex-wrap items-center gap-3 sm:gap-4">
+          className="mb-10 sm:mb-16 flex flex-wrap items-center gap-2 sm:gap-4">
           {categories.map((category) => (
             <FilterButton key={category} category={category} isActive={activeCategory === category}
               onClick={() => setActiveCategory(category)} />

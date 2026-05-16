@@ -80,7 +80,7 @@ export default function Services() {
             const isContentWriting = service.title === 'Content Writing'
 
             const cardClasses =
-              'premium-card p-8 sm:p-10 relative group overflow-hidden block text-left w-full h-full border border-white/5'
+              'premium-card p-6 sm:p-8 lg:p-10 relative group overflow-hidden block text-left w-full h-full border border-white/5'
 
             const content = (
               <>
@@ -88,7 +88,7 @@ export default function Services() {
                 <div className="absolute inset-0 bg-gradient-to-br from-brand-lime/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 
                 <div className="relative z-10 flex flex-col h-full">
-                  <div className="text-brand-lime mb-6 sm:mb-8 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500 origin-left">
+                  <div className="text-brand-lime mb-5 sm:mb-8 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500 origin-left flex items-center">
                     {service.icon}
                   </div>
                   <h3 className="text-lg sm:text-xl lg:text-2xl font-black text-white mb-3 sm:mb-4 uppercase tracking-tight group-hover:text-brand-lime transition-colors duration-300">
