@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, useMotionValue, useScroll, useSpring, AnimatePresence, useTransform } from 'framer-motion'
 import { Routes, Route, useLocation } from 'react-router-dom'
-import { FloatingPaths } from '@/components/ui/background-paths'
+import { FloatingPaths } from './components/ui/background-paths'
 import HomePage from './pages/HomePage'
 import BrandingPage from './pages/BrandingPage'
 import ReelsPage from './pages/ReelsPage'

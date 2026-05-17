@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { Button } from "./button";
+import { cn } from "../../lib/utils";
 
 export function FloatingPaths({ position, className = "text-slate-950 dark:text-white" }) {
     const paths = Array.from({ length: 36 }, (_, i) => ({
