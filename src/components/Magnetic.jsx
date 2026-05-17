@@ -1,4 +1,4 @@
-import { useRef, useState, cloneElement } from 'react'
+import { useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 
 export default function Magnetic({ children, strength = 0.5 }) {

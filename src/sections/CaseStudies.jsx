@@ -72,11 +72,12 @@ export default function CaseStudies() {
   return (
     <section id="case-studies" className="py-24 relative overflow-hidden">
       <div className="main-container">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8 text-left">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
             <span className="text-brand-lime font-mono text-xs uppercase tracking-[0.4em] mb-4 block">Storytelling</span>
             <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-white uppercase tracking-tighter">
@@ -84,16 +85,17 @@ export default function CaseStudies() {
             </h2>
           </motion.div>
 
-          <p className="max-w-2xl text-brand-smoke text-base md:text-lg leading-relaxed">
+          <p className="max-w-2xl text-brand-smoke text-base md:text-lg leading-relaxed text-left font-outfit">
             Deeper narratives for selected projects: what the challenge was, how the work was approached, and what the delivery achieved.
           </p>
         </div>
 
         {/* Featured Transformation Slider */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 35 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           className="mb-20"
         >
           <div className="flex flex-col lg:flex-row gap-12 items-center">
@@ -105,14 +107,14 @@ export default function CaseStudies() {
                 afterLabel="Growth-Ready Revamp"
               />
             </div>
-            <div className="w-full lg:w-2/5 space-y-6">
+            <div className="w-full lg:w-2/5 space-y-6 text-left">
               <div className="inline-block px-3 py-1 bg-brand-lime/10 border border-brand-lime/20 rounded-full text-[10px] font-bold text-brand-lime uppercase tracking-widest">
                 Visual Impact
               </div>
               <h3 className="text-3xl font-black text-white uppercase tracking-tighter leading-none">
                 FROM CONCEPT <br /> TO <span className="text-brand-lime">CONVERSION.</span>
               </h3>
-              <p className="text-brand-smoke text-sm leading-relaxed">
+              <p className="text-brand-smoke text-sm leading-relaxed font-outfit">
                 Our design process isn't just about aesthetics. We transform outdated brand markers into strategic visual assets that capture trust and drive measurable business growth.
               </p>
               <ul className="space-y-3">
@@ -127,20 +129,39 @@ export default function CaseStudies() {
           </div>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <motion.div 
+          variants={{
+            hidden: { opacity: 0 },
+            show: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.1,
+                delayChildren: 0.1
+              }
+            }
+          }}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-60px" }}
+          className="grid lg:grid-cols-3 gap-8"
+        >
           {caseStudies.map((study, index) => {
             const Icon = study.icon
             const isActive = activeStudyId === study.id
 
             return (
               <motion.article
+                variants={{
+                  hidden: { opacity: 0, y: 30 },
+                  show: { 
+                    opacity: 1, 
+                    y: 0,
+                    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } 
+                  }
+                }}
                 id={`case-study-${study.id}`}
                 key={study.title}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.08 }}
-                className={`premium-card border transition-all duration-500 p-8 rounded-xl ${isActive
+                className={`premium-card border transition-all duration-500 p-8 rounded-xl text-left ${isActive
                     ? 'border-brand-lime/60 shadow-[0_0_0_1px_rgba(196,239,71,0.4),0_0_40px_rgba(196,239,71,0.15),inset_0_1px_0_rgba(255,255,255,0.1)] scale-[1.02]'
                     : 'border-white/8 hover:border-brand-lime/40 hover:shadow-lg'
                   }`}
@@ -157,21 +178,21 @@ export default function CaseStudies() {
                 <h3 className="text-2xl font-black text-white uppercase tracking-tight mb-4">
                   {study.title}
                 </h3>
-                <p className="text-brand-smoke leading-relaxed mb-6 text-sm">
+                <p className="text-brand-smoke leading-relaxed mb-6 text-sm font-outfit">
                   {study.summary}
                 </p>
 
-                <div className="space-y-5 text-sm">
+                <div className="space-y-5 text-sm font-outfit">
                   <div>
-                    <p className="text-brand-lime font-bold uppercase tracking-widest text-[10px] mb-2">Challenge</p>
+                    <p className="text-brand-lime font-bold uppercase tracking-widest text-[10px] mb-2 font-inter">Challenge</p>
                     <p className="text-brand-smoke leading-relaxed">{study.challenge}</p>
                   </div>
                   <div>
-                    <p className="text-brand-lime font-bold uppercase tracking-widest text-[10px] mb-2">Approach</p>
+                    <p className="text-brand-lime font-bold uppercase tracking-widest text-[10px] mb-2 font-inter">Approach</p>
                     <p className="text-brand-smoke leading-relaxed">{study.approach}</p>
                   </div>
                   <div>
-                    <p className="text-brand-lime font-bold uppercase tracking-widest text-[10px] mb-2">Outcome</p>
+                    <p className="text-brand-lime font-bold uppercase tracking-widest text-[10px] mb-2 font-inter">Outcome</p>
                     <p className="text-brand-smoke leading-relaxed">{study.outcome}</p>
                   </div>
                 </div>
@@ -179,7 +200,7 @@ export default function CaseStudies() {
                 <button
                   type="button"
                   onClick={() => highlightCaseStudy(study.id)}
-                  className="mt-8 flex items-center gap-3 text-white font-bold text-xs uppercase tracking-widest group/button"
+                  className="mt-8 flex items-center gap-3 text-white font-bold text-xs uppercase tracking-widest group/button cursor-pointer"
                 >
                   Explore Story
                   <ArrowRight size={15} className="text-brand-lime transition-transform group-hover/button:translate-x-1" />
@@ -187,7 +208,7 @@ export default function CaseStudies() {
               </motion.article>
             )
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

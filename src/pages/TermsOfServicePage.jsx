@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
-import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 
 export default function TermsOfServicePage() {
@@ -15,7 +14,6 @@ export default function TermsOfServicePage() {
 
   return (
     <div className="bg-brand-dark min-h-screen text-white pt-24 pb-0 flex flex-col">
-      <Navbar />
       
       <main className="flex-1 main-container max-w-4xl py-16 relative z-10">
         <motion.div

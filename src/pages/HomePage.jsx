@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
-import Navbar from '../components/Navbar'
 import Hero from '../sections/Hero'
 import Projects from '../sections/Projects'
 import CaseStudies from '../sections/CaseStudies'
@@ -27,8 +26,6 @@ export default function HomePage() {
 
   return (
     <>
-      <Navbar />
-
       <main>
         <Hero />
         <Projects />
