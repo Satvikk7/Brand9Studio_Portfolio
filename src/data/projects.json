@@ -709,6 +709,26 @@
         "/projects/App Designs/2.png",
         "/projects/App Designs/3.png"
       ]
+    },
+    {
+      "id": 25,
+      "title": "Dr. Anuj Mudgal Family Clinic",
+      "client": "Dr. Anuj Mudgal",
+      "category": "LOGO DESIGNS",
+      "projectFolder": "Healthcare Identity",
+      "heroImage": "/projects/Logo Designs/dr-anuj-mudgal.jpg",
+      "description": "A premium and trust-forward medical identity designed for Dr. Anuj Mudgal Family Clinic, balancing clean medical symbolism with professional warmth.",
+      "year": "2026",
+      "frameNarratives": [
+        {
+          "title": "Stethoscope Cross Emblem",
+          "focus": "Combines a classic medical cross with a modern, elegant stethoscope shape to symbolise professional care and accessibility.",
+          "detail": "The soft teal and blue gradients evoke clean, clinical precision while remaining warm, friendly, and deeply trustworthy."
+        }
+      ],
+      "images": [
+        "/projects/Logo Designs/dr-anuj-mudgal.jpg"
+      ]
     }
   ]
 }
