@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, useMotionValue, useScroll, useSpring, AnimatePresence, useTransform } from 'framer-motion'
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import { FloatingPaths } from './components/ui/background-paths'
 import HomePage from './pages/HomePage'
 import BrandingPage from './pages/BrandingPage'
@@ -17,6 +17,7 @@ import Footer from './components/Footer'
 import CustomCursor from './components/CustomCursor'
 import Preloader from './components/Preloader'
 import ScrollProgress from './components/ScrollProgress'
+import { ArrowLeft } from 'lucide-react'
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
@@ -40,8 +41,37 @@ function App() {
   const cursorY = useMotionValue(0)
   
   const location = useLocation()
+  const navigate = useNavigate()
   
   const showNavbar = location.pathname === '/' || location.pathname === '/terms-of-service' || location.pathname === '/privacy-policy'
+
+  const handleBackToGallery = () => {
+    navigate('/', {
+      state: {
+        scrollY: location.state?.scrollY ?? 0,
+        activeCategory: location.state?.activeCategory ?? 'ALL'
+      }
+    })
+  }
+
+  const handleBackHome = () => {
+    navigate('/', {
+      state: {
+        scrollY: location.state?.scrollY ?? 0
+      }
+    })
+  }
+
+  const isServiceOrPolicyPage = [
+    '/branding',
+    '/reels',
+    '/social-media',
+    '/digital-marketing',
+    '/web-design',
+    '/content-writing',
+    '/privacy-policy',
+    '/terms-of-service'
+  ].includes(location.pathname)
   
   useEffect(() => {
     // If we are returning to the Home page and explicitly restoring scroll position,
@@ -91,6 +121,27 @@ function App() {
       <CustomCursor />
       <ScrollProgress />
       {showNavbar && <Navbar />}
+
+      {/* Floating Back Buttons - Rendered globally to bypass transformed ancestor context */}
+      {location.pathname.startsWith('/project/') && (
+        <button
+          type="button"
+          onClick={handleBackToGallery}
+          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 inline-flex items-center gap-2 px-4 sm:px-5 py-3 rounded-full border border-brand-lime/30 bg-black/70 backdrop-blur-xl text-brand-lime text-[11px] sm:text-xs font-bold uppercase tracking-widest shadow-lg shadow-black/30 hover:bg-brand-lime/10 hover:border-brand-lime/60 hover:text-brand-lime transition-all duration-300"
+        >
+          <ArrowLeft size={16} /> Back to gallery
+        </button>
+      )}
+
+      {isServiceOrPolicyPage && (
+        <button
+          type="button"
+          onClick={handleBackHome}
+          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 inline-flex items-center gap-2 px-4 sm:px-5 py-3 rounded-full border border-brand-lime/30 bg-black/70 backdrop-blur-xl text-brand-lime text-[11px] sm:text-xs font-bold uppercase tracking-widest shadow-lg shadow-black/30 hover:bg-brand-lime/10 hover:border-brand-lime/60 hover:text-brand-lime transition-all duration-300"
+        >
+          <ArrowLeft size={16} /> Back to home
+        </button>
+      )}
 
       {/* Scrollable Universe of Paths */}
       <div className="absolute inset-0 h-full w-full z-0 pointer-events-none overflow-hidden opacity-[0.14]">
