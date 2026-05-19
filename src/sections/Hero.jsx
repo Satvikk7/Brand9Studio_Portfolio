@@ -79,7 +79,7 @@ export default function Hero() {
   }
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+    <section id="hero" className="relative min-h-screen lg:h-screen flex items-center pt-20 overflow-hidden">
       <div className="main-container relative z-10 will-change-gpu">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7 text-left">
@@ -189,18 +189,18 @@ export default function Hero() {
 
           <div className="lg:col-span-5 relative hidden lg:block">
             <motion.div
-              initial={{ opacity: 0, scale: 0.94, rotate: 3, y: 30 }}
-              animate={{ opacity: 1, scale: 1, rotate: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.94, rotate: 0, y: 30 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0, y: 0 }}
               transition={{ type: "spring", stiffness: 60, damping: 15, delay: 0.35 }}
               className="relative"
             >
               <motion.button
                 type="button"
                 onClick={openLatestCaseStudy}
-                whileHover={{ rotate: 0, scale: 1.02, y: -5 }}
+                whileHover={{ scale: 1.02, y: -5 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="w-full max-w-[450px] aspect-[450/550] premium-card border border-white/10 p-4 rotate-3 hover:rotate-0 transition-all duration-700 group text-left shadow-[0_20px_50px_rgba(0,0,0,0.6)] hover:shadow-[0_25px_60px_rgba(196,239,71,0.1)]"
+                className="w-full max-w-[450px] aspect-[450/550] premium-card border border-white/10 p-4 transition-all duration-700 group text-left shadow-[0_20px_50px_rgba(0,0,0,0.6)] hover:shadow-[0_25px_60px_rgba(196,239,71,0.1)]"
                 aria-label={`Open latest case study ${latestCaseStudy.title}`}
               >
                 <div className="w-full h-full bg-black relative overflow-hidden flex flex-col">

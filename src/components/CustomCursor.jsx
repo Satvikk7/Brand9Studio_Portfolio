@@ -17,35 +17,67 @@ export default function CustomCursor() {
   const y = useSpring(mouseY, springConfig)
 
   useEffect(() => {
-    // Check if device has a fine pointer (mouse)
     const mediaQuery = window.matchMedia('(pointer: fine)')
     setHasPointer(mediaQuery.matches)
     
+    let lastTarget = null
+    
     const handleMouseMove = (e) => {
       if (!isVisible) setIsVisible(true)
+      
       mouseX.set(e.clientX)
       mouseY.set(e.clientY)
       
       const target = e.target
-      const computedCursor = window.getComputedStyle(target).cursor
-      const tagName = target.tagName.toLowerCase()
+      if (!target || target === lastTarget) return
+      lastTarget = target
       
+      const tagName = target.tagName ? target.tagName.toLowerCase() : ''
+      
+      // Highly optimized interactive element checks (skips expensive DOM queries where possible)
       const isClickable = 
-        target.closest('button') || 
         target.closest('a') || 
+        target.closest('button') || 
         target.closest('[role="button"]') ||
-        computedCursor === 'pointer'
+        target.closest('input[type="submit"]') ||
+        target.closest('input[type="button"]')
       
+      if (isClickable) {
+        setIsPointer(true)
+        setIsText(false)
+        return
+      }
+
+      // Check text elements
       const isHeroElement = !!target.closest('#hero')
-      
       const isTextElement = 
-        !isHeroElement && (
-          ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span', 'li', 'label', 'input', 'textarea'].includes(tagName) ||
-          computedCursor === 'text'
-        )
+        !isHeroElement && 
+        ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span', 'li', 'label', 'input', 'textarea'].includes(tagName)
       
-      setIsPointer(!!isClickable)
-      setIsText(!!isTextElement && !isClickable)
+      if (isTextElement) {
+        setIsPointer(false)
+        setIsText(true)
+        return
+      }
+      
+      // Fallback to getComputedStyle ONLY when target changes and is not obviously text/clickable
+      try {
+        const computedStyle = window.getComputedStyle(target)
+        const computedCursor = computedStyle ? computedStyle.cursor : 'auto'
+        if (computedCursor === 'pointer') {
+          setIsPointer(true)
+          setIsText(false)
+        } else if (computedCursor === 'text' && !isHeroElement) {
+          setIsPointer(false)
+          setIsText(true)
+        } else {
+          setIsPointer(false)
+          setIsText(false)
+        }
+      } catch (err) {
+        setIsPointer(false)
+        setIsText(false)
+      }
     }
 
     const handleMouseDown = () => setIsClicking(true)
@@ -54,11 +86,11 @@ export default function CustomCursor() {
     const handleMouseEnter = () => setIsVisible(true)
 
     if (mediaQuery.matches) {
-      window.addEventListener('mousemove', handleMouseMove)
-      window.addEventListener('mousedown', handleMouseDown)
-      window.addEventListener('mouseup', handleMouseUp)
-      document.addEventListener('mouseleave', handleMouseLeave)
-      document.addEventListener('mouseenter', handleMouseEnter)
+      window.addEventListener('mousemove', handleMouseMove, { passive: true })
+      window.addEventListener('mousedown', handleMouseDown, { passive: true })
+      window.addEventListener('mouseup', handleMouseUp, { passive: true })
+      document.addEventListener('mouseleave', handleMouseLeave, { passive: true })
+      document.addEventListener('mouseenter', handleMouseEnter, { passive: true })
     }
 
     return () => {
@@ -82,6 +114,7 @@ export default function CustomCursor() {
         y,
         translateX: '-5%',
         translateY: '-5%',
+        willChange: 'transform',
       }}
     >
       {/* Primary Cursor Body */}

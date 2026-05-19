@@ -44,7 +44,7 @@ export default function Preloader({ onComplete }) {
               cy="50%"
               fill="black"
               initial={{ r: 0 }}
-              animate={isZooming ? { r: '150%' } : { r: 0 }}
+              animate={isZooming ? { r: 2500 } : { r: 0 }}
               transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }} // Hyper-drive 0.5s zoom reveal
             />
           </mask>
