@@ -262,7 +262,7 @@ export default function WorkGallery() {
   }, [location.state])
 
   return (
-    <section id="work" className="py-32 relative overflow-hidden bg-black">
+    <section id="work" className="py-32 relative overflow-hidden bg-transparent">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-lime/5 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />

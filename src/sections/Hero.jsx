@@ -79,7 +79,7 @@ export default function Hero() {
   }
 
   return (
-    <section id="hero" className="relative min-h-screen w-full flex items-center py-20 sm:py-24 lg:py-28 overflow-hidden bg-black">
+    <section id="hero" className="relative min-h-screen w-full flex items-center py-20 sm:py-24 lg:py-28 overflow-hidden bg-transparent">
       <div className="main-container relative z-10 will-change-gpu w-full">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7 text-left">
@@ -250,7 +250,7 @@ export default function Hero() {
       </div>
 
       {/* Background Decorative Text */}
-      <div className="absolute bottom-0 right-0 opacity-[0.02] pointer-events-none select-none overflow-hidden">
+      <div className="absolute bottom-0 right-0 opacity-[0.08] pointer-events-none select-none overflow-hidden">
         <h2 className="text-[20rem] font-black leading-none translate-y-1/3">BRAND9</h2>
       </div>
     </section>
