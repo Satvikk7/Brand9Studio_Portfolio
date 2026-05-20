@@ -359,7 +359,7 @@ export default function WorkGallery() {
                       viewport={{ once: true }}
                       transition={{ duration: 0.6, delay: idx * 0.06, ease: [0.16, 1, 0.3, 1] }}
                       whileHover={{ y: -8, transition: { duration: 0.3, ease: 'easeOut' } }}
-                      className="w-full sm:w-[45%] lg:w-[30%] min-w-[280px] aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 group cursor-pointer bg-[#050505] relative shadow-[0_20px_50px_rgba(0,0,0,0.7)] hover:border-brand-lime/30 hover:shadow-[0_25px_50px_rgba(196,239,71,0.06)] transition-all duration-500"
+                      className="w-full sm:w-[45%] lg:w-[30%] min-w-0 sm:min-w-[280px] aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 group cursor-pointer bg-[#050505] relative shadow-[0_20px_50px_rgba(0,0,0,0.7)] hover:border-brand-lime/30 hover:shadow-[0_25px_50px_rgba(196,239,71,0.06)] transition-all duration-500"
                       onClick={() => handleOpenProject(project)}
                     >
                       {/* Hover Backdrop Overlay */}

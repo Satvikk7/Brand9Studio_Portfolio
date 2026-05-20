@@ -250,8 +250,8 @@ export default function Hero() {
       </div>
 
       {/* Background Decorative Text */}
-      <div className="absolute bottom-0 right-0 opacity-[0.08] pointer-events-none select-none overflow-hidden">
-        <h2 className="text-[20rem] font-black leading-none translate-y-1/3">BRAND9</h2>
+      <div className="absolute bottom-12 sm:bottom-16 lg:bottom-20 right-0 opacity-[0.02] pointer-events-none select-none overflow-hidden z-0">
+        <h2 className="text-[12rem] sm:text-[16rem] md:text-[20rem] font-black leading-none translate-y-0">BRAND9</h2>
       </div>
     </section>
   )
