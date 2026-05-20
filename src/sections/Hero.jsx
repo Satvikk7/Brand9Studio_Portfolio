@@ -217,7 +217,7 @@ export default function Hero() {
               </motion.button>
 
               {/* Floating Stat Badges with elegant spring hover and reactive glows */}
-              <div className="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 lg:-top-8 lg:-right-8 flex flex-col gap-3 sm:gap-4">
+              <div className="absolute top-6 sm:top-8 lg:top-12 -right-4 sm:-right-6 lg:-right-8 flex flex-col gap-3 sm:gap-4 z-20">
                 <motion.div
                   animate={{ y: [0, -10, 0] }}
                   transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
