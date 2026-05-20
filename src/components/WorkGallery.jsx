@@ -305,39 +305,120 @@ export default function WorkGallery() {
         </motion.div>
       </div>
 
-      {/* Full-bleed Edge-to-Edge Drag-loop Moving Painting Wall */}
-      <div className="relative overflow-hidden w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] bg-black border-y border-white/10 mt-6 select-none">
+      {/* Full-bleed Edge-to-Edge Moving Painting Wall OR Stationary Exhibition Wall */}
+      <div className="relative overflow-hidden w-full bg-black border-y border-white/10 mt-6 select-none py-4">
         <AnimatePresence mode="wait">
-          <motion.div 
-            key={activeCategory}
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
-            transition={{ duration: 0.45, ease: [0.25, 1, 0.5, 1] }}
-            className="flex flex-col select-none"
-          >
-            {row1Projects.length > 0 ? (
-              <InfinitePaintingRow 
-                projects={row1Projects} 
-                speed={-0.45} 
-                onOpenProject={handleOpenProject} 
-                rowHeight="h-[180px] sm:h-[270px]"
-              />
-            ) : (
-              <div className="text-center py-20 text-white/40 text-sm">
-                No projects found in this category.
-              </div>
-            )}
+          {activeCategory === 'ALL' ? (
+            <motion.div 
+              key="moving-wall"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.45, ease: [0.25, 1, 0.5, 1] }}
+              className="flex flex-col select-none w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] relative"
+            >
+              {row1Projects.length > 0 ? (
+                <InfinitePaintingRow 
+                  projects={row1Projects} 
+                  speed={-0.45} 
+                  onOpenProject={handleOpenProject} 
+                  rowHeight="h-[180px] sm:h-[270px]"
+                />
+              ) : (
+                <div className="text-center py-20 text-white/40 text-sm">
+                  No projects found in this category.
+                </div>
+              )}
 
-            {row2Projects.length > 0 && (
-              <InfinitePaintingRow 
-                projects={row2Projects} 
-                speed={0.45} 
-                onOpenProject={handleOpenProject} 
-                rowHeight="h-[210px] sm:h-[320px]"
-              />
-            )}
-          </motion.div>
+              {row2Projects.length > 0 && (
+                <InfinitePaintingRow 
+                  projects={row2Projects} 
+                  speed={0.45} 
+                  onOpenProject={handleOpenProject} 
+                  rowHeight="h-[210px] sm:h-[320px]"
+                />
+              )}
+            </motion.div>
+          ) : (
+            <motion.div
+              key={`stationary-wall-${activeCategory}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="max-w-7xl mx-auto px-6 sm:px-8 py-16 flex flex-wrap justify-center gap-8 sm:gap-10"
+            >
+              {filteredProjects.length > 0 ? (
+                filteredProjects.map((project, idx) => {
+                  const isPdfHero = /\.pdf$/i.test(project.heroImage || '')
+                  return (
+                    <motion.div
+                      key={project.id}
+                      initial={{ opacity: 0, y: 30, scale: 0.97 }}
+                      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: idx * 0.06, ease: [0.16, 1, 0.3, 1] }}
+                      whileHover={{ y: -8, transition: { duration: 0.3, ease: 'easeOut' } }}
+                      className="w-full sm:w-[45%] lg:w-[30%] min-w-[280px] aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 group cursor-pointer bg-[#050505] relative shadow-[0_20px_50px_rgba(0,0,0,0.7)] hover:border-brand-lime/30 hover:shadow-[0_25px_50px_rgba(196,239,71,0.06)] transition-all duration-500"
+                      onClick={() => handleOpenProject(project)}
+                    >
+                      {/* Hover Backdrop Overlay */}
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-brand-lime/10 via-transparent to-brand-orange/5 z-10 pointer-events-none" />
+
+                      {/* Mockup Container */}
+                      <div className="w-full h-full relative p-6 sm:p-8 flex items-center justify-center pointer-events-none">
+                        {isPdfHero ? (
+                          <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-brand-dark to-[#050505] p-6 rounded-xl border border-white/5">
+                            <div className="w-14 h-14 rounded-2xl bg-brand-lime/10 border border-brand-lime/30 flex items-center justify-center mb-3">
+                              <span className="text-brand-lime font-black text-lg">PDF</span>
+                            </div>
+                            <span className="text-[10px] text-brand-smoke/50 uppercase tracking-[0.25em] font-bold">Document</span>
+                          </div>
+                        ) : (
+                          <img 
+                            src={project.heroImage} 
+                            alt={project.title}
+                            className="max-w-full max-h-full object-contain block transition-transform duration-700 ease-out group-hover:scale-105 select-none"
+                            loading="eager"
+                            decoding="async"
+                            draggable="false"
+                          />
+                        )}
+                      </div>
+
+                      {/* Smooth Shadow Vignette */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent z-20 transition-opacity duration-300 opacity-80 group-hover:opacity-90 pointer-events-none" />
+
+                      {/* Floating Details Overlay */}
+                      <div className="absolute inset-x-0 bottom-0 p-6 z-30 transform translate-y-3 group-hover:translate-y-0 transition-transform duration-500 ease-out flex flex-col gap-1 pointer-events-none">
+                        <span className="inline-block w-fit text-[8px] font-black uppercase tracking-widest px-2 py-0.5 rounded bg-brand-lime text-black mb-1">
+                          {formatCategoryLabel(project.category)}
+                        </span>
+                        <div className="flex items-center justify-between">
+                          <h4 className="text-xs sm:text-sm font-extrabold text-white leading-tight uppercase tracking-wider group-hover:text-brand-lime transition-colors duration-300 line-clamp-1">
+                            {project.title}
+                          </h4>
+                          <span className="text-brand-lime opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-x-2 group-hover:translate-x-0 transition-transform duration-500">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                            </svg>
+                          </span>
+                        </div>
+                        <p className="text-[10px] text-brand-smoke/60 line-clamp-1">{project.client}</p>
+                      </div>
+
+                      {/* Premium Micro Glow Border */}
+                      <span className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-brand-lime/20 to-transparent z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                    </motion.div>
+                  )
+                })
+              ) : (
+                <div className="text-center py-20 text-white/40 text-sm w-full">
+                  No projects found in this category.
+                </div>
+              )}
+            </motion.div>
+          )}
         </AnimatePresence>
       </div>
 
