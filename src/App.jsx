@@ -32,6 +32,14 @@ function App() {
     // Page loading lifecycle is completely managed by Preloader's dynamic portal zoom completion
   }, [])
 
+  useEffect(() => {
+    if (!isLoading) {
+      import('./utils/prefetcher').then(({ initializeGlobalPrefetch }) => {
+        initializeGlobalPrefetch()
+      })
+    }
+  }, [isLoading])
+
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
@@ -258,8 +266,8 @@ function App() {
           {!isLoading && (
             <motion.div
               key="main-layout-reveal"
-              initial={{ opacity: 0, y: 15, filter: 'blur(4px)' }}
-              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
             >
               <Routes>

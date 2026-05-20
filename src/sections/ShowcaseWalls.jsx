@@ -25,12 +25,12 @@ export default function ShowcaseWalls() {
             className="w-full h-auto"
           >
             <img
-              src={src}
-              alt={`Showcase Wall ${index + 1}`}
-              className="w-full h-auto block select-none"
-              loading="lazy"
-              decoding="async"
-            />
+               src={src}
+               alt={`Showcase Wall ${index + 1}`}
+               className="w-full h-auto block select-none"
+               loading="eager"
+               decoding="async"
+             />
           </motion.div>
         </div>
       ))}

@@ -79,8 +79,8 @@ export default function Hero() {
   }
 
   return (
-    <section id="hero" className="relative min-h-screen lg:h-screen flex items-center pt-20 overflow-hidden">
-      <div className="main-container relative z-10 will-change-gpu">
+    <section id="hero" className="relative min-h-screen w-full flex items-center py-20 sm:py-24 lg:py-28 overflow-hidden bg-black">
+      <div className="main-container relative z-10 will-change-gpu w-full">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7 text-left">
             <motion.div
@@ -94,7 +94,7 @@ export default function Hero() {
               </motion.div>
 
               {/* Title line mask transitions for ultra-premium look */}
-              <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-[0.9] mb-8 text-white uppercase tracking-tighter">
+              <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black leading-[0.9] mb-6 sm:mb-8 text-white uppercase tracking-tighter">
                 <div className="overflow-hidden block py-1">
                   <motion.span 
                     className="inline-block"
@@ -200,7 +200,7 @@ export default function Hero() {
                 whileHover={{ scale: 1.02, y: -5 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="w-full max-w-[450px] aspect-[450/550] premium-card border border-white/10 p-4 transition-all duration-700 group text-left shadow-[0_20px_50px_rgba(0,0,0,0.6)] hover:shadow-[0_25px_60px_rgba(196,239,71,0.1)]"
+                className="w-full max-w-[380px] xl:max-w-[450px] aspect-[4/5] premium-card border border-white/10 p-4 transition-all duration-700 group text-left shadow-[0_20px_50px_rgba(0,0,0,0.6)] hover:shadow-[0_25px_60px_rgba(196,239,71,0.1)]"
                 aria-label={`Open latest case study ${latestCaseStudy.title}`}
               >
                 <div className="w-full h-full bg-black relative overflow-hidden flex flex-col">

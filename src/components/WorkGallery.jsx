@@ -1,5 +1,5 @@
-import React, { useEffect, useMemo, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import React, { useEffect, useMemo, useState, useRef } from 'react'
+import { motion, AnimatePresence, useMotionValue, useAnimationFrame, useSpring } from 'framer-motion'
 import { useLocation, useNavigate } from 'react-router-dom'
 import projectsData from '../data/projects.json'
 import { normalizeProjects, buildCategories } from '../utils/projectModel'
@@ -17,20 +17,6 @@ const categoryColors = {
   'MARKETING & CAMPAIGNS': 'from-pink-500/20 to-rose-600/20',
   'PRINT DESIGN': 'from-amber-500/20 to-orange-600/20',
   'APP DESIGNS': 'from-teal-500/20 to-emerald-600/20'
-}
-
-const categoryBadges = {
-  'BROCHURE': 'bg-orange-500/30 text-orange-300',
-  'CORPORATE DECKS': 'bg-slate-500/30 text-slate-300',
-  'BRANDING & IDENTITY': 'bg-violet-500/30 text-violet-300',
-  'LOGO DESIGNS': 'bg-emerald-500/30 text-emerald-300',
-  'SOCIAL MEDIA POSTS': 'bg-fuchsia-500/30 text-fuchsia-300',
-  'VISITING CARDS': 'bg-sky-500/30 text-sky-300',
-  'WEBSITE PAGE': 'bg-blue-500/30 text-blue-300',
-  'WEB & DIGITAL': 'bg-cyan-500/30 text-cyan-300',
-  'MARKETING & CAMPAIGNS': 'bg-pink-500/30 text-pink-300',
-  'PRINT DESIGN': 'bg-amber-500/30 text-amber-300',
-  'APP DESIGNS': 'bg-teal-500/30 text-teal-300'
 }
 
 const categorySortOrder = [
@@ -52,208 +38,185 @@ function formatCategoryLabel(category = '') {
   return known[category] || category.toLowerCase().replace(/\b\w/g, c => c.toUpperCase())
 }
 
-/* ─── Image Wall Showcase ─── */
-function ImageWallShowcase({ projects }) {
-  const allImages = useMemo(() => {
-    const imgs = []
-    projects.forEach(p => {
-      ;(p.images || []).forEach(img => {
-        if (!/\.pdf$/i.test(img)) imgs.push({ src: img, alt: p.title })
-      })
-    })
-    return imgs
-  }, [projects])
-
-  if (allImages.length === 0) return null
+/* ─── Premium Painting Block Card ─── */
+const PaintingCard = React.memo(({ project, index, onOpenProject, rowHeight }) => {
+  const isPdfHero = /\.pdf$/i.test(project.heroImage || '')
+  
+  // High-performance height matching. Alternate rows use slightly staggered heights for organic rhythm.
+  // The widths resolve dynamically based on the native aspect ratio of each original mockup (0% cropping).
+  const cardHeight = rowHeight || (index % 2 === 0 ? 'h-[180px] sm:h-[270px]' : 'h-[210px] sm:h-[320px]')
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+    <div 
+      className={`relative ${cardHeight} w-auto flex-shrink-0 overflow-hidden border-r border-white/10 group cursor-pointer bg-[#050505]`}
+      onClick={() => onOpenProject(project)}
     >
-      {/* Flex wrap with flex-start — 4 per row, left aligned for easy additions */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'flex-start' }}>
-        {allImages.map((img, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, scale: 0.88 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.45, delay: i * 0.04, ease: [0.22, 1, 0.36, 1] }}
-            whileHover={{ scale: 1.04, zIndex: 10 }}
-            className="relative rounded-xl overflow-hidden border border-white/10 hover:border-white/25 transition-colors duration-300 group"
-            style={{
-              width: 'calc(25% - 12px)',
-              minWidth: '220px',
-              aspectRatio: '4 / 5',
-              flexShrink: 0,
-              position: 'relative',
-              background: '#050505',
-              boxShadow: '0 10px 30px -10px rgba(204,255,0,0.15)',
-            }}
-          >
-            {/* Blurred ambient background to fill space beautifully without cropping the main image */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img
-                src={img.src}
-                alt=""
-                className="w-full h-full object-cover opacity-50 blur-xl sm:blur-2xl scale-125 transition-transform duration-700 group-hover:scale-150"
-                loading="lazy"
-                decoding="async"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/80" />
+      {/* Interactive Hover Backdrop Blend */}
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-brand-lime/10 via-transparent to-brand-orange/10 z-10 pointer-events-none" />
+
+      {/* Main Showcase Image Wrapper - Locks height, lets width expand/contract dynamically to avoid crop */}
+      <div className="h-full w-auto relative pointer-events-none">
+        {isPdfHero ? (
+          <div className="h-full w-[200px] flex flex-col items-center justify-center bg-gradient-to-br from-brand-dark to-[#050505] p-6">
+            <div className="w-12 h-12 rounded-2xl bg-brand-lime/10 border border-brand-lime/30 flex items-center justify-center mb-3">
+              <span className="text-brand-lime font-black text-base">PDF</span>
             </div>
-
-            {/* Gradient border ring — brand-lime arc, premium glow border */}
-            <span
-              aria-hidden="true"
-              style={{
-                position: 'absolute',
-                inset: 0,
-                borderRadius: 'inherit',
-                padding: '1px',
-                background: 'linear-gradient(135deg, rgba(204,255,0,0.5) 0%, rgba(204,255,0,0.1) 50%, rgba(204,255,0,0.3) 100%)',
-                WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                WebkitMaskComposite: 'xor',
-                maskComposite: 'exclude',
-                zIndex: 4,
-                pointerEvents: 'none',
-              }}
-            />
-
-            {/* Top-edge light highlight strip */}
-            <span
-              aria-hidden="true"
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: '20%',
-                right: '20%',
-                height: '1px',
-                background: 'linear-gradient(90deg, transparent, rgba(204,255,0,0.6), transparent)',
-                zIndex: 5,
-                pointerEvents: 'none',
-              }}
-            />
-
-            {/* Uncropped Main Image - Fully visible, centered, floating over ambient background */}
-            <div className="absolute inset-0 p-3 sm:p-4 flex items-center justify-center z-10 pointer-events-none">
-              <img
-                src={img.src}
-                alt={img.alt}
-                className="max-w-full max-h-full object-contain drop-shadow-2xl transition-transform duration-500 group-hover:scale-105"
-                style={{ filter: 'drop-shadow(0 20px 13px rgba(0, 0, 0, 0.5)) drop-shadow(0 8px 5px rgba(0, 0, 0, 0.4))' }}
-                loading="lazy"
-                decoding="async"
-                draggable="false"
-              />
-            </div>
-            
-            {/* Subtle vignette overlay — dark corners for depth */}
-            <span
-              aria-hidden="true"
-              style={{
-                position: 'absolute',
-                inset: 0,
-                background: 'radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.5) 100%)',
-                zIndex: 3,
-                pointerEvents: 'none',
-              }}
-            />
-          </motion.div>
-        ))}
+            <span className="text-[8px] text-brand-smoke/50 uppercase tracking-[0.2em] font-bold">Document</span>
+          </div>
+        ) : (
+          <img 
+            src={project.heroImage} 
+            alt={project.title}
+            className="h-full w-auto object-contain block transition-transform duration-[800ms] ease-out group-hover:scale-[1.03] select-none"
+            loading="eager"
+            decoding="async"
+            draggable="false"
+          />
+        )}
       </div>
-    </motion.div>
+
+      {/* Smooth Dark Vignette Shadow Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent z-20 transition-opacity duration-300 opacity-70 group-hover:opacity-85 pointer-events-none" />
+
+      {/* Minimal premium hover title overlay (Slides up on hover) */}
+      <div className="absolute inset-x-0 bottom-0 p-5 z-30 transform translate-y-3 group-hover:translate-y-0 transition-transform duration-500 ease-out flex flex-col gap-1 pointer-events-none max-w-full">
+        <span className="inline-block w-fit text-[8px] font-black uppercase tracking-widest px-1.5 py-0.5 rounded bg-brand-lime text-black mb-1">
+          {formatCategoryLabel(project.category)}
+        </span>
+        <h4 className="text-[10px] sm:text-xs font-extrabold text-white leading-tight uppercase tracking-wider group-hover:text-brand-lime transition-colors duration-300 line-clamp-1">
+          {project.title}
+        </h4>
+        <p className="text-[9px] sm:text-[10px] text-brand-smoke/60 line-clamp-1">{project.client}</p>
+      </div>
+
+      {/* Interactive Micro Glow Accents */}
+      <span className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-brand-lime/20 to-transparent z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+    </div>
+  )
+})
+
+/* ─── Endless Infinite Painting Row ─── */
+function InfinitePaintingRow({ projects, speed = -0.6, onOpenProject, rowHeight }) {
+  const containerRef = useRef(null)
+  const contentRef = useRef(null)
+  const [contentWidth, setContentWidth] = useState(0)
+  const [isHovered, setIsHovered] = useState(false)
+  const [isDragging, setIsDragging] = useState(false)
+
+  const x = useMotionValue(0)
+  const springX = useSpring(x, { stiffness: 350, damping: 35, restDelta: 0.01 })
+
+  // Fill up the list to at least 10 items for solid loop coverage, then triple it to ensure seamless overlapping
+  const baseProjects = useMemo(() => {
+    if (projects.length === 0) return []
+    let list = [...projects]
+    while (list.length < 10) {
+      list = [...list, ...projects]
+    }
+    return list
+  }, [projects])
+
+  const tripledProjects = useMemo(() => {
+    return [...baseProjects, ...baseProjects, ...baseProjects]
+  }, [baseProjects])
+
+  useEffect(() => {
+    if (contentRef.current && baseProjects.length > 0) {
+      setContentWidth(contentRef.current.scrollWidth / 3)
+    }
+  }, [baseProjects, projects])
+
+  useAnimationFrame(() => {
+    if (contentWidth === 0 || isDragging) return
+
+    // Linear translation matching direction and speed
+    const currentSpeed = isHovered ? 0 : speed
+    let nextX = x.get() + currentSpeed
+
+    // Seamless loop wrapping boundaries
+    if (speed < 0) {
+      if (nextX < -contentWidth) {
+        nextX = 0
+      }
+    } else {
+      if (nextX > 0) {
+        nextX = -contentWidth
+      }
+    }
+
+    x.set(nextX)
+  })
+
+  return (
+    <div 
+      ref={containerRef} 
+      className="w-full overflow-hidden select-none touch-pan-y cursor-grab active:cursor-grabbing border-b border-white/10"
+    >
+      <motion.div
+        ref={contentRef}
+        className="flex flex-nowrap"
+        style={{ x: springX }}
+        drag="x"
+        dragConstraints={{ left: -contentWidth * 2, right: 0 }}
+        dragElastic={0.05}
+        onDragStart={() => setIsDragging(true)}
+        onDragEnd={(event, info) => {
+          setIsDragging(false)
+          // Add physics-based momentum carry-over on release
+          const velocity = info.velocity.x * 0.08
+          let targetX = x.get() + velocity
+
+          if (targetX < -contentWidth) {
+            targetX = 0
+          } else if (targetX > 0) {
+            targetX = -contentWidth
+          }
+
+          x.set(targetX)
+        }}
+        onHoverStart={() => setIsHovered(true)}
+        onHoverEnd={() => setIsHovered(false)}
+      >
+        {tripledProjects.map((project, idx) => (
+          <PaintingCard 
+            key={`${project.id}-${idx}`}
+            project={project}
+            index={idx}
+            onOpenProject={onOpenProject}
+            rowHeight={rowHeight}
+          />
+        ))}
+      </motion.div>
+    </div>
   )
 }
 
-const ProjectCard = React.memo(React.forwardRef(({ project, index, onOpenProject }, ref) => {
-  const containerVariants = {
-    hidden: { opacity: 0, y: 40, scale: 0.94, filter: 'blur(8px)' },
-    visible: {
-      opacity: 1, y: 0, scale: 1, filter: 'blur(0px)',
-      transition: { duration: 0.7, delay: index * 0.06, ease: [0.22, 1, 0.36, 1],
-        scale: { type: 'spring', stiffness: 100, damping: 15, delay: index * 0.06 } }
-    },
-    exit: { opacity: 0, scale: 0.9, filter: 'blur(10px)', transition: { duration: 0.3 } }
-  }
-  const imageCount = project.images?.length || 1
-  const colorClass = categoryColors[project.category] || 'from-brand-lime/20 to-green-600/20'
-  const isPdfHero = /\.pdf$/i.test(project.heroImage || '')
-
-  return (
-    <motion.div ref={ref} variants={containerVariants} initial="hidden" animate="visible" exit="exit" layout
-      style={{ willChange: 'transform, opacity, filter', transform: 'translateZ(0)' }} className="group h-full">
-      <motion.button onClick={() => onOpenProject(project)} whileHover={{ scale: 1.015, y: -4 }} whileTap={{ scale: 0.98 }}
-        transition={{ type: 'spring', stiffness: 320, damping: 28 }}
-        className={`premium-card relative rounded-xl overflow-hidden border border-white/10 bg-gradient-to-br ${colorClass} hover:border-white/25 transition-all duration-300 h-full flex flex-col cursor-pointer w-full`}>
-        <div className="relative w-full overflow-hidden bg-black/40 aspect-square sm:aspect-video flex items-center justify-center">
-          {isPdfHero ? (
-            <>
-              <iframe src={`${project.heroImage}#view=FitH&toolbar=0&navpanes=0&scrollbar=0`}
-                title={`${project.title} PDF preview`} className="hidden sm:block w-full h-full pointer-events-none border-0" />
-              <div className="sm:hidden w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-brand-gray/40 to-black/60 p-6">
-                <div className="w-16 h-16 rounded-2xl bg-brand-lime/10 border border-brand-lime/30 flex items-center justify-center mb-3">
-                  <span className="text-brand-lime font-black text-xl">PDF</span>
-                </div>
-                <span className="text-[10px] text-brand-smoke/60 uppercase tracking-[0.2em] font-bold">Document Preview</span>
-              </div>
-            </>
-          ) : (
-            <img src={project.heroImage} alt={project.title}
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-out"
-              loading="lazy" decoding="async" />
-          )}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          <motion.div initial={{ opacity: 0, y: 10 }} whileHover={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}
-            className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-            <div className="px-4 py-2 rounded-full bg-brand-lime/90 text-black font-bold text-xs sm:text-sm uppercase tracking-widest mb-2">
-              {project.isCategoryLink ? 'View Collection' : 'View Project'}
-            </div>
-            <span className="text-xs text-brand-lime/80 font-mono">
-              {project.isCategoryLink ? 'Special Showcase' : `${imageCount} Images`}
-            </span>
-          </motion.div>
-        </div>
-        <div className="flex-1 p-4 sm:p-5 flex flex-col gap-3">
-          <div className="space-y-2">
-            <h3 className="text-sm sm:text-base font-bold text-white line-clamp-2 group-hover:text-brand-lime transition-colors duration-300">{project.title}</h3>
-            <p className="text-xs sm:text-sm text-brand-smoke/70 line-clamp-1">{project.client}</p>
-            {project.projectFolder && (
-              <p className="text-[10px] sm:text-xs text-brand-smoke/50 uppercase tracking-[0.16em] line-clamp-1">{project.projectFolder}</p>
-            )}
-          </div>
-          <p className="text-xs text-brand-smoke/60 line-clamp-2 flex-grow">{project.description}</p>
-          <div className="flex items-center justify-between gap-2 mt-auto pt-3 border-t border-white/8">
-            <span className={`inline-block text-[10px] sm:text-xs font-bold uppercase tracking-wider px-2 py-1 rounded-full ${categoryBadges[project.category] || 'bg-brand-lime/30 text-brand-lime'}`}>
-              {formatCategoryLabel(project.category)}
-            </span>
-            <span className="text-[10px] text-brand-smoke/40 font-mono">{project.year}</span>
-          </div>
-        </div>
-      </motion.button>
-    </motion.div>
-  )
-}))
-
+/* ─── Stated Category Filter Button ─── */
 function FilterButton({ category, isActive, onClick }) {
   return (
-    <motion.button onClick={onClick} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-      className={`relative px-4 sm:px-7 py-2 rounded-xl font-bold text-[9px] sm:text-xs uppercase tracking-[0.2em] transition-all duration-500 whitespace-nowrap ${
+    <motion.button 
+      onClick={onClick} 
+      whileHover={{ scale: 1.04 }} 
+      whileTap={{ scale: 0.96 }}
+      className={`relative px-4 sm:px-7 py-2.5 rounded-xl font-bold text-[9px] sm:text-xs uppercase tracking-[0.2em] transition-all duration-500 whitespace-nowrap cursor-pointer ${
         isActive
           ? 'bg-brand-lime text-black shadow-xl shadow-brand-lime/20 border border-brand-lime/50'
           : 'bg-white/[0.03] border border-white/10 text-white/50 hover:border-brand-lime/40 hover:text-white hover:bg-white/[0.06]'
-      }`}>
+      }`}
+    >
       {category}
       {isActive && (
-        <motion.div layoutId="filterUnderline" className="absolute inset-0 rounded-full bg-brand-lime/10"
-          transition={{ type: 'spring', stiffness: 380, damping: 30 }} />
+        <motion.div 
+          layoutId="filterUnderline" 
+          className="absolute inset-0 rounded-full bg-brand-lime/10 pointer-events-none"
+          transition={{ type: 'spring', stiffness: 380, damping: 30 }} 
+        />
       )}
     </motion.button>
   )
 }
 
+/* ─── Work Gallery Base Showcase ─── */
 export default function WorkGallery() {
   const navigate = useNavigate()
   const location = useLocation()
@@ -272,69 +235,24 @@ export default function WorkGallery() {
     })
   }, [normalizedProjects])
 
+  // Filter project lists
   const filteredProjects = useMemo(() => {
     if (activeCategory === 'ALL') return sortedProjects
     return sortedProjects.filter(p => p.category === activeCategory)
   }, [activeCategory, sortedProjects])
 
-  const socialMediaProjects = useMemo(
-    () => sortedProjects.filter(p => p.category === 'SOCIAL MEDIA POSTS'),
-    [sortedProjects]
-  )
-  
-  const logoDesignProjects = useMemo(
-    () => sortedProjects.filter(p => p.category === 'LOGO DESIGNS'),
-    [sortedProjects]
-  )
+  // Segmenting filtered projects into Row 1 and Row 2 for interlocking staggered design
+  const row1Projects = useMemo(() => {
+    if (filteredProjects.length === 1) return filteredProjects
+    return filteredProjects.filter((_, idx) => idx % 2 === 0)
+  }, [filteredProjects])
 
-  const normalProjects = useMemo(() => {
-    const base = filteredProjects.filter(p => p.category !== 'SOCIAL MEDIA POSTS' && p.category !== 'LOGO DESIGNS')
-    
-    if (activeCategory === 'ALL') {
-      const links = []
-      if (socialMediaProjects.length > 0) {
-        links.push({
-          id: 'social-category-link',
-          isCategoryLink: true,
-          title: 'Social Media Collection',
-          client: 'Brand9Studio Showcase',
-          category: 'SOCIAL MEDIA POSTS',
-          projectFolder: 'Full Gallery',
-          heroImage: socialMediaProjects[0]?.heroImage || socialMediaProjects[0]?.images?.[0] || '',
-          description: 'Explore a curated collection of high-engagement social media posts spanning multiple industries and campaigns.',
-          year: '2026',
-          images: socialMediaProjects[0]?.images || []
-        })
-      }
-      if (logoDesignProjects.length > 0) {
-        links.push({
-          id: 'logo-category-link',
-          isCategoryLink: true,
-          title: 'Logo Design Archive',
-          client: 'Brand9Studio Showcase',
-          category: 'LOGO DESIGNS',
-          projectFolder: 'Full Gallery',
-          heroImage: logoDesignProjects[0]?.heroImage || logoDesignProjects[0]?.images?.[0] || '',
-          description: 'Discover an archive of premium, minimal, and highly scalable logo marks and brand emblems.',
-          year: '2026',
-          images: logoDesignProjects[0]?.images || []
-        })
-      }
-      return [...base, ...links]
-    }
-    
-    return base
-  }, [filteredProjects, activeCategory, socialMediaProjects, logoDesignProjects])
-
-  const isSocialOnly = activeCategory === 'SOCIAL MEDIA POSTS'
-  const isLogoOnly = activeCategory === 'LOGO DESIGNS'
-  const isSpecialOnly = isSocialOnly || isLogoOnly
+  const row2Projects = useMemo(() => {
+    if (filteredProjects.length === 1) return filteredProjects
+    return filteredProjects.filter((_, idx) => idx % 2 !== 0)
+  }, [filteredProjects])
 
   const handleOpenProject = (project) => {
-    if (project.isCategoryLink) {
-      setActiveCategory(project.category)
-      return
-    }
     navigate(`/project/${project.id}`, { state: { scrollY: window.scrollY, activeCategory } })
   }
 
@@ -344,70 +262,96 @@ export default function WorkGallery() {
   }, [location.state])
 
   return (
-    <section id="work" className="py-32 relative overflow-hidden">
+    <section id="work" className="py-32 relative overflow-hidden bg-black">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-lime/5 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
       </div>
 
+      {/* Main Header Container */}
       <div className="main-container relative z-10">
-        <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }} transition={{ duration: 0.6 }} className="mb-12 sm:mb-16">
+        <motion.div 
+          initial={{ opacity: 0, x: -20 }} 
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }} 
+          transition={{ duration: 0.6 }} 
+          className="mb-12 sm:mb-16"
+        >
           <span className="text-brand-lime font-mono text-xs uppercase tracking-[0.4em] mb-4 block">Adaptive Flow</span>
           <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white uppercase tracking-tighter leading-tight mb-6">
             WORK <br /> <span className="text-brand-lime">GALLERY.</span>
           </h1>
           <p className="text-sm sm:text-base md:text-lg text-brand-smoke/70 max-w-2xl leading-relaxed">
-            Explore premium creative projects showcasing versatile design excellence. Click any project to view the complete image collection in fullscreen.
+            Discover a shifting, endless interactive canvas of creative projects. Drag left or right to explore blocks, and tap any block to view its fullscreen details.
           </p>
         </motion.div>
 
-        <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }}
-          className="mb-10 sm:mb-16 flex flex-wrap items-center gap-2 sm:gap-4">
+        {/* Category Filters row */}
+        <motion.div 
+          initial={{ opacity: 0, y: 10 }} 
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }} 
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mb-10 sm:mb-16 flex flex-wrap items-center gap-2 sm:gap-4"
+        >
           {categories.map((category) => (
-            <FilterButton key={category} category={category} isActive={activeCategory === category}
-              onClick={() => setActiveCategory(category)} />
+            <FilterButton 
+              key={category} 
+              category={category} 
+              isActive={activeCategory === category}
+              onClick={() => setActiveCategory(category)} 
+            />
           ))}
         </motion.div>
+      </div>
 
+      {/* Full-bleed Edge-to-Edge Drag-loop Moving Painting Wall */}
+      <div className="relative overflow-hidden w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] bg-black border-y border-white/10 mt-6 select-none">
         <AnimatePresence mode="wait">
-          {isSocialOnly && (
-            <motion.div key="social-wall" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.35 }}>
-              <ImageWallShowcase projects={socialMediaProjects} />
-            </motion.div>
-          )}
-          {isLogoOnly && (
-            <motion.div key="logo-wall" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.35 }}>
-              <ImageWallShowcase projects={logoDesignProjects} />
-            </motion.div>
-          )}
+          <motion.div 
+            key={activeCategory}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.45, ease: [0.25, 1, 0.5, 1] }}
+            className="flex flex-col select-none"
+          >
+            {row1Projects.length > 0 ? (
+              <InfinitePaintingRow 
+                projects={row1Projects} 
+                speed={-0.45} 
+                onOpenProject={handleOpenProject} 
+                rowHeight="h-[180px] sm:h-[270px]"
+              />
+            ) : (
+              <div className="text-center py-20 text-white/40 text-sm">
+                No projects found in this category.
+              </div>
+            )}
+
+            {row2Projects.length > 0 && (
+              <InfinitePaintingRow 
+                projects={row2Projects} 
+                speed={0.45} 
+                onOpenProject={handleOpenProject} 
+                rowHeight="h-[210px] sm:h-[320px]"
+              />
+            )}
+          </motion.div>
         </AnimatePresence>
+      </div>
 
-        {!isSpecialOnly && (
-          <motion.div layout
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 lg:gap-6 auto-rows-max">
-            <AnimatePresence mode="popLayout">
-              {normalProjects.map((project, index) => (
-                <ProjectCard key={project.id} project={project} index={index} onOpenProject={handleOpenProject} />
-              ))}
-            </AnimatePresence>
-          </motion.div>
-        )}
-
-
-
-        {!isSpecialOnly && normalProjects.length === 0 && activeCategory !== 'ALL' && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4 }} className="text-center py-16">
-            <p className="text-white/60 text-lg">No projects found in this category.</p>
-          </motion.div>
-        )}
-
+      {/* Footer / Connect Section */}
+      <div className="main-container relative z-10 mt-16 sm:mt-24">
         <YouTubeShowcase />
 
-        <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }} transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="mt-24 sm:mt-32 p-10 sm:p-16 glass-panel relative overflow-hidden group text-center">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.96 }} 
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }} 
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+          className="mt-24 sm:mt-32 p-10 sm:p-16 glass-panel relative overflow-hidden group text-center"
+        >
           <div className="absolute inset-0 bg-gradient-to-tr from-brand-lime/5 via-transparent to-brand-orange/5 opacity-50 pointer-events-none" />
           <div className="relative z-10 max-w-2xl mx-auto">
             <span className="inline-block px-4 py-1.5 rounded-full bg-brand-lime/10 border border-brand-lime/20 text-brand-lime text-[10px] sm:text-xs font-bold uppercase tracking-[0.3em] mb-6">
@@ -420,13 +364,17 @@ export default function WorkGallery() {
             <p className="text-sm sm:text-base md:text-lg text-brand-smoke/70 mb-10 leading-relaxed">
               Let's bring your creative vision to life with precision and strategic design excellence.
             </p>
-            <motion.a href="#contact" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-              className="inline-block px-10 py-4 bg-brand-lime text-black font-black uppercase tracking-[0.2em] rounded-xl hover:bg-white transition-all text-xs sm:text-sm shadow-xl shadow-brand-lime/20">
+            <motion.a 
+              href="#contact" 
+              whileHover={{ scale: 1.05 }} 
+              whileTap={{ scale: 0.95 }}
+              className="inline-block px-10 py-4 bg-brand-lime text-black font-black uppercase tracking-[0.2em] rounded-xl hover:bg-white transition-all text-xs sm:text-sm shadow-xl shadow-brand-lime/20 cursor-pointer"
+            >
               Start a Project
             </motion.a>
           </div>
-          <div className="absolute -top-6 -right-6 w-24 h-24 bg-brand-lime/10 rounded-full blur-2xl group-hover:bg-brand-lime/20 transition-all duration-700" />
-          <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-brand-orange/10 rounded-full blur-2xl group-hover:bg-brand-orange/20 transition-all duration-700" />
+          <div className="absolute -top-6 -right-6 w-24 h-24 bg-brand-lime/10 rounded-full blur-2xl group-hover:bg-brand-lime/20 transition-all duration-700 pointer-events-none" />
+          <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-brand-orange/10 rounded-full blur-2xl group-hover:bg-brand-orange/20 transition-all duration-700 pointer-events-none" />
         </motion.div>
       </div>
     </section>
