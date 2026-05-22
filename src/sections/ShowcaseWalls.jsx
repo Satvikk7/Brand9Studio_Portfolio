@@ -1,39 +1,51 @@
-import { motion } from 'framer-motion'
+import { motion } from 'framer-motion';
 
 const walls = [
-  '/showcase/1.jpg',
-  '/showcase/2.jpg',
-  '/showcase/3.jpg',
-  '/showcase/4.jpg',
-  '/showcase/5.jpg'
-]
+  { src: '/showcase/1.png', bg: '#171718', fullWidth: true },
+  { src: '/showcase/2.png', bg: '#111111', fullWidth: true },
+  { src: '/showcase/3.png', bg: '#1A1919', fullWidth: true },
+  { src: '/showcase/4.png', bg: '#CACACA', fullWidth: true },
+  { src: '/showcase/5.png', bg: '#ADACAC', fullWidth: true },
+  { src: '/showcase/6.png', bg: '#000001', fullWidth: true },
+];
 
 export default function ShowcaseWalls() {
   return (
-    <section id="showcase-walls" className="relative bg-black overflow-hidden">
-      {walls.map((src, index) => (
-        <div
+    <section id="showcase-walls" className="relative overflow-hidden">
+      {walls.map((wall, index) => (
+        <motion.div
           key={index}
-          className="w-full relative overflow-hidden bg-black border-b border-white/[0.04]"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          className="w-full relative"
+          style={{ background: wall.bg }}
         >
-          {/* Edge-to-edge dynamic-height visual wrapper (strictly crop-free & no background filler) */}
-          <motion.div
-            initial={{ scale: 1.03, opacity: 0.9 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 0.9, ease: [0.215, 0.61, 0.355, 1] }}
-            className="w-full h-auto"
-          >
+          {wall.fullWidth ? (
+            // Full-width: image already contains its own background
             <img
-               src={src}
-               alt={`Showcase Wall ${index + 1}`}
-               className="w-full h-auto block select-none"
-               loading="eager"
-               decoding="async"
-             />
-          </motion.div>
-        </div>
+              src={wall.src}
+              alt={`Showcase Wall ${index + 1}`}
+              className="w-full h-auto block select-none"
+              loading="lazy"
+              decoding="async"
+            />
+          ) : (
+            // Contained: centered block with bg color bleeding on sides
+            <div className="w-[92%] sm:w-[82%] md:w-[74%] lg:w-[70%] mx-auto">
+              <img
+                src={wall.src}
+                alt={`Showcase Wall ${index + 1}`}
+                className="w-full h-auto block select-none"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          )}
+        </motion.div>
       ))}
     </section>
-  )
+  );
 }
+

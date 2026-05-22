@@ -5,19 +5,7 @@ import projectsData from '../data/projects.json'
 import { normalizeProjects, buildCategories } from '../utils/projectModel'
 import YouTubeShowcase from '../sections/YouTubeShowcase'
 
-const categoryColors = {
-  'BROCHURE': 'from-orange-500/20 to-amber-600/20',
-  'CORPORATE DECKS': 'from-slate-500/20 to-slate-600/20',
-  'BRANDING & IDENTITY': 'from-violet-500/20 to-violet-600/20',
-  'LOGO DESIGNS': 'from-brand-lime/20 to-emerald-500/20',
-  'SOCIAL MEDIA POSTS': 'from-fuchsia-500/20 to-cyan-500/20',
-  'VISITING CARDS': 'from-sky-500/20 to-indigo-500/20',
-  'WEBSITE PAGE': 'from-blue-500/20 to-violet-600/20',
-  'WEB & DIGITAL': 'from-cyan-500/20 to-blue-600/20',
-  'MARKETING & CAMPAIGNS': 'from-pink-500/20 to-rose-600/20',
-  'PRINT DESIGN': 'from-amber-500/20 to-orange-600/20',
-  'APP DESIGNS': 'from-teal-500/20 to-emerald-600/20'
-}
+
 
 const categorySortOrder = [
   'BROCHURE','CORPORATE DECKS','WEBSITE PAGE','APP DESIGNS','SOCIAL MEDIA POSTS',

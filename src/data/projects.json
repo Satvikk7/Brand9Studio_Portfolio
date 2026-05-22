@@ -496,31 +496,32 @@
     ,
     {
       "id": 24,
-      "title": "Website Main Page",
-      "client": "Website Page Series",
+      "title": "Photography Website Design",
+      "client": "Freelance Photographer",
       "category": "WEBSITE PAGE",
       "projectFolder": "Website Page",
-      "heroImage": "/projects/Website Page/Main Page Showcase/page_1.png",
-      "description": "A comprehensive main-page direction showing full-page layout rhythm, key content zones, and polished brand presentation.",
+      "heroImage": "/projects/Website Page/Photography Showcase/page_1.png",
+      "description": "A full-page photography website design concept showcasing responsive layout across desktop, laptop, and tablet — built to highlight visual portfolios with elegant hierarchy and immersive storytelling.",
       "year": "2026",
       "frameNarratives": [
         {
-          "title": "Core Layout",
-          "focus": "Builds a strong structure for hero, value sections, and conversion touchpoints.",
-          "detail": "The concept is designed for readability and visual continuity across a long single-page experience."
+          "title": "Multi-Device Responsive Layout",
+          "focus": "Demonstrates the website fully adapted across desktop, laptop, and tablet viewports.",
+          "detail": "Every section scales fluidly to maintain a premium visual experience regardless of screen size or device."
         },
         {
-          "title": "Conversion Flow",
-          "focus": "Supports navigation and decision-making through clean hierarchy and focused section pacing.",
-          "detail": "Each block reinforces the brand story while guiding users toward action."
+          "title": "Photographer-Centric Hero",
+          "focus": "The hero section leads with a bold personal brand moment — the photographer front and centre.",
+          "detail": "Typography, imagery and call-to-action placement are designed to instantly build trust and invite bookings."
+        },
+        {
+          "title": "Portfolio Gallery Structure",
+          "focus": "A curated gallery layout lets the work speak for itself with clean spacing and visual rhythm.",
+          "detail": "Categories like Wedding, Fashion, and Nature Photography are navigable without disrupting the aesthetic flow."
         }
       ],
       "images": [
-        "/projects/Website Page/Main Page Showcase/page_1.png",
-        "/projects/Website Page/Main Page Showcase/page_2.png",
-        "/projects/Website Page/Main Page Showcase/page_3.png",
-        "/projects/Website Page/Main Page Showcase/page_4.png",
-        "/projects/Website Page/Main Page Showcase/page_5.png"
+        "/projects/Website Page/Photography Showcase/page_1.png"
       ]
     }
     ,
