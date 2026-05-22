@@ -88,13 +88,12 @@ function InfinitePaintingRow({ projects, speed = -0.6, onOpenProject, rowHeight 
   const containerRef = useRef(null)
   const contentRef = useRef(null)
   const [contentWidth, setContentWidth] = useState(0)
-  const [isHovered, setIsHovered] = useState(false)
   const [isDragging, setIsDragging] = useState(false)
 
   const x = useMotionValue(0)
-  const springX = useSpring(x, { stiffness: 350, damping: 35, restDelta: 0.01 })
+  // Spring the *velocity* multiplier instead of the position for buttery smooth continuous movement
+  const speedMultiplier = useSpring(1, { stiffness: 80, damping: 20 })
 
-  // Fill up the list to at least 10 items for solid loop coverage, then triple it to ensure seamless overlapping
   const baseProjects = useMemo(() => {
     if (projects.length === 0) return []
     let list = [...projects]
@@ -115,24 +114,28 @@ function InfinitePaintingRow({ projects, speed = -0.6, onOpenProject, rowHeight 
   }, [baseProjects, projects])
 
   useAnimationFrame(() => {
-    if (contentWidth === 0 || isDragging) return
+    if (contentWidth === 0) return
 
-    // Linear translation matching direction and speed
-    const currentSpeed = isHovered ? 0 : speed
-    let nextX = x.get() + currentSpeed
+    let currentX = x.get()
 
-    // Seamless loop wrapping boundaries
-    if (speed < 0) {
-      if (nextX < -contentWidth) {
-        nextX = 0
-      }
-    } else {
-      if (nextX > 0) {
-        nextX = -contentWidth
-      }
+    // If we are not dragging, apply the auto-scroll speed
+    if (!isDragging) {
+      const currentSpeed = speed * speedMultiplier.get()
+      currentX += currentSpeed
     }
 
-    x.set(nextX)
+    // Mathematically wrap the container seamlessly
+    // If it scrolls too far left:
+    if (currentX <= -contentWidth) {
+      currentX += contentWidth
+    } 
+    // If it scrolls too far right:
+    else if (currentX >= 0) {
+      currentX -= contentWidth
+    }
+
+    // Apply the value back to x
+    x.set(currentX)
   })
 
   return (
@@ -143,27 +146,29 @@ function InfinitePaintingRow({ projects, speed = -0.6, onOpenProject, rowHeight 
       <motion.div
         ref={contentRef}
         className="flex flex-nowrap"
-        style={{ x: springX }}
+        style={{ x }}
         drag="x"
-        dragConstraints={{ left: -contentWidth * 2, right: 0 }}
-        dragElastic={0.05}
-        onDragStart={() => setIsDragging(true)}
+        // Removed dragConstraints so it can be dragged infinitely in either direction
+        dragElastic={0}
+        dragMomentum={true}
+        onDragStart={() => {
+          setIsDragging(true)
+          speedMultiplier.set(0)
+        }}
         onDragEnd={(event, info) => {
           setIsDragging(false)
-          // Add physics-based momentum carry-over on release
-          const velocity = info.velocity.x * 0.08
-          let targetX = x.get() + velocity
-
-          if (targetX < -contentWidth) {
-            targetX = 0
-          } else if (targetX > 0) {
-            targetX = -contentWidth
+          // Boost the speed in the direction of the swipe for natural physics
+          const velocity = info.velocity.x * 0.005
+          if (Math.sign(velocity) === Math.sign(speed)) {
+             speedMultiplier.set(1 + Math.abs(velocity))
           }
-
-          x.set(targetX)
+          // Smoothly return to the base auto-scroll speed
+          setTimeout(() => speedMultiplier.set(1), 50)
         }}
-        onHoverStart={() => setIsHovered(true)}
-        onHoverEnd={() => setIsHovered(false)}
+        onHoverStart={() => speedMultiplier.set(0)}
+        onHoverEnd={() => {
+          if (!isDragging) speedMultiplier.set(1)
+        }}
       >
         {tripledProjects.map((project, idx) => (
           <PaintingCard 
