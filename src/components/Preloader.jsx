@@ -42,10 +42,12 @@ export default function Preloader({ onComplete }) {
             <motion.circle
               cx="50%"
               cy="50%"
+              r="10"
               fill="black"
-              initial={{ r: 0 }}
-              animate={isZooming ? { r: 2500 } : { r: 0 }}
-              transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }} // Hyper-drive 0.5s zoom reveal
+              style={{ transformOrigin: '50% 50%', willChange: 'transform' }}
+              initial={{ scale: 0 }}
+              animate={isZooming ? { scale: 300 } : { scale: 0 }}
+              transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }} // Hyper-drive 0.5s GPU zoom
             />
           </mask>
         </defs>
@@ -60,6 +62,7 @@ export default function Preloader({ onComplete }) {
           <div className="relative flex flex-col items-center">
             <div className="h-12 overflow-hidden mb-4">
               <motion.div
+                style={{ willChange: 'transform' }}
                 animate={{ y: [0, -48, -96, -144] }}
                 transition={{ 
                   duration: 1.6, // Premium stately 1.6s slot roll
@@ -85,7 +88,7 @@ export default function Preloader({ onComplete }) {
                     src="/studio9.png" 
                     alt="9" 
                     className="h-10 w-auto inline-block align-middle" 
-                    style={{ verticalAlign: 'middle' }}
+                    style={{ verticalAlign: 'middle', willChange: 'transform' }}
                   />
                 </span>
               </motion.div>
@@ -94,6 +97,7 @@ export default function Preloader({ onComplete }) {
             {/* Progress Bar synchronized with roll */}
             <div className="w-48 h-[2px] bg-white/10 relative overflow-hidden rounded-full">
               <motion.div
+                style={{ willChange: 'transform' }}
                 initial={{ x: '-100%' }}
                 animate={{ x: '0%' }}
                 transition={{ duration: 1.6, ease: "easeInOut" }} // Synchronized with 1.6s slot roll
@@ -106,6 +110,7 @@ export default function Preloader({ onComplete }) {
           <div className="relative flex items-center justify-center text-4xl sm:text-5xl font-black tracking-tighter">
             {/* "BRAND" text: Fades out and glides left using 100% GPU-accelerated transforms (no layout reflow) */}
             <motion.span
+              style={{ willChange: 'transform, opacity' }}
               initial={{ opacity: 1, x: 0 }}
               animate={{ opacity: 0, x: -40 }}
               transition={{ duration: 0.35, ease: [0.76, 0, 0.24, 1] }} // Elegant 350ms fade
