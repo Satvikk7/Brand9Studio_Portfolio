@@ -29,15 +29,27 @@ function formatCategoryLabel(category = '') {
 /* ─── Premium Painting Block Card ─── */
 const PaintingCard = React.memo(({ project, index, onOpenProject, rowHeight }) => {
   const isPdfHero = /\.pdf$/i.test(project.heroImage || '')
+  const [isTapped, setIsTapped] = useState(false)
   
   // High-performance height matching. Alternate rows use slightly staggered heights for organic rhythm.
   // The widths resolve dynamically based on the native aspect ratio of each original mockup (0% cropping).
   const cardHeight = rowHeight || (index % 2 === 0 ? 'h-[180px] sm:h-[270px]' : 'h-[210px] sm:h-[320px]')
 
+  const handleClick = () => {
+    if (isTapped) {
+      onOpenProject(project)
+      setIsTapped(false)
+    } else {
+      setIsTapped(true)
+      setTimeout(() => setIsTapped(false), 3000)
+    }
+  }
+
   return (
     <div 
       className={`relative ${cardHeight} w-auto flex-shrink-0 overflow-hidden border-r border-white/10 group cursor-pointer bg-[#050505]`}
-      onClick={() => onOpenProject(project)}
+      onClick={handleClick}
+      onMouseLeave={() => setIsTapped(false)}
     >
       {/* Interactive Hover Backdrop Blend */}
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-brand-lime/10 via-transparent to-brand-orange/10 z-10 pointer-events-none" />
@@ -79,6 +91,28 @@ const PaintingCard = React.memo(({ project, index, onOpenProject, rowHeight }) =
 
       {/* Interactive Micro Glow Accents */}
       <span className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-brand-lime/20 to-transparent z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+      {/* Two-Tap 'View Project' Overlay */}
+      <AnimatePresence>
+        {isTapped && (
+          <motion.div 
+            initial={{ opacity: 0, backdropFilter: 'blur(0px)' }}
+            animate={{ opacity: 1, backdropFilter: 'blur(8px)' }}
+            exit={{ opacity: 0, backdropFilter: 'blur(0px)' }}
+            className="absolute inset-0 z-40 bg-black/60 flex items-center justify-center pointer-events-none"
+          >
+            <motion.div 
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              className="bg-brand-lime text-black font-black uppercase tracking-[0.2em] px-6 py-3 rounded-full text-[10px] sm:text-xs shadow-[0_0_30px_rgba(196,239,71,0.4)] flex items-center gap-2 pointer-events-none"
+            >
+              <span>View Project</span>
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 })
@@ -208,6 +242,105 @@ function FilterButton({ category, isActive, onClick }) {
     </motion.button>
   )
 }
+
+/* ─── Category Grid Card ─── */
+const CategoryCard = React.memo(({ project, index, onOpenProject }) => {
+  const isPdfHero = /\.pdf$/i.test(project.heroImage || '')
+  const [isTapped, setIsTapped] = useState(false)
+
+  const handleClick = () => {
+    if (isTapped) {
+      onOpenProject(project)
+      setIsTapped(false)
+    } else {
+      setIsTapped(true)
+      setTimeout(() => setIsTapped(false), 3000)
+    }
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30, scale: 0.97 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: index * 0.06, ease: [0.16, 1, 0.3, 1] }}
+      whileHover={{ y: -8, transition: { duration: 0.3, ease: 'easeOut' } }}
+      className="w-full sm:w-[45%] lg:w-[30%] min-w-0 sm:min-w-[280px] aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 group cursor-pointer bg-[#050505] relative shadow-[0_20px_50px_rgba(0,0,0,0.7)] hover:border-brand-lime/30 hover:shadow-[0_25px_50px_rgba(196,239,71,0.06)] transition-all duration-500"
+      onClick={handleClick}
+      onMouseLeave={() => setIsTapped(false)}
+    >
+      {/* Hover Backdrop Overlay */}
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-brand-lime/10 via-transparent to-brand-orange/5 z-10 pointer-events-none" />
+
+      {/* Mockup Container */}
+      <div className="w-full h-full relative p-6 sm:p-8 flex items-center justify-center pointer-events-none">
+        {isPdfHero ? (
+          <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-brand-dark to-[#050505] p-6 rounded-xl border border-white/5">
+            <div className="w-14 h-14 rounded-2xl bg-brand-lime/10 border border-brand-lime/30 flex items-center justify-center mb-3">
+              <span className="text-brand-lime font-black text-lg">PDF</span>
+            </div>
+            <span className="text-[10px] text-brand-smoke/50 uppercase tracking-[0.25em] font-bold">Document</span>
+          </div>
+        ) : (
+          <img 
+            src={project.heroImage} 
+            alt={project.title}
+            className="max-w-full max-h-full object-contain block transition-transform duration-700 ease-out group-hover:scale-105 select-none"
+            loading="eager"
+            decoding="async"
+            draggable="false"
+          />
+        )}
+      </div>
+
+      {/* Smooth Shadow Vignette */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent z-20 transition-opacity duration-300 opacity-80 group-hover:opacity-90 pointer-events-none" />
+
+      {/* Floating Details Overlay */}
+      <div className="absolute inset-x-0 bottom-0 p-6 z-30 transform translate-y-3 group-hover:translate-y-0 transition-transform duration-500 ease-out flex flex-col gap-1 pointer-events-none">
+        <span className="inline-block w-fit text-[8px] font-black uppercase tracking-widest px-2 py-0.5 rounded bg-brand-lime text-black mb-1">
+          {formatCategoryLabel(project.category)}
+        </span>
+        <div className="flex items-center justify-between">
+          <h4 className="text-xs sm:text-sm font-extrabold text-white leading-tight uppercase tracking-wider group-hover:text-brand-lime transition-colors duration-300 line-clamp-1">
+            {project.title}
+          </h4>
+          <span className="text-brand-lime opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-x-2 group-hover:translate-x-0 transition-transform duration-500">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
+          </span>
+        </div>
+        <p className="text-[10px] text-brand-smoke/60 line-clamp-1">{project.client}</p>
+      </div>
+
+      {/* Premium Micro Glow Border */}
+      <span className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-brand-lime/20 to-transparent z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+      {/* Two-Tap 'View Project' Overlay */}
+      <AnimatePresence>
+        {isTapped && (
+          <motion.div 
+            initial={{ opacity: 0, backdropFilter: 'blur(0px)' }}
+            animate={{ opacity: 1, backdropFilter: 'blur(8px)' }}
+            exit={{ opacity: 0, backdropFilter: 'blur(0px)' }}
+            className="absolute inset-0 z-40 bg-black/60 flex items-center justify-center pointer-events-none"
+          >
+            <motion.div 
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              className="bg-brand-lime text-black font-black uppercase tracking-[0.2em] px-6 py-3 rounded-full text-xs shadow-[0_0_30px_rgba(196,239,71,0.4)] flex items-center gap-2 pointer-events-none"
+            >
+              <span>View Project</span>
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  )
+})
 
 /* ─── Work Gallery Base Showcase ─── */
 export default function WorkGallery() {
@@ -342,69 +475,14 @@ export default function WorkGallery() {
               className="max-w-7xl mx-auto px-6 sm:px-8 py-16 flex flex-wrap justify-center gap-8 sm:gap-10"
             >
               {filteredProjects.length > 0 ? (
-                filteredProjects.map((project, idx) => {
-                  const isPdfHero = /\.pdf$/i.test(project.heroImage || '')
-                  return (
-                    <motion.div
-                      key={project.id}
-                      initial={{ opacity: 0, y: 30, scale: 0.97 }}
-                      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: idx * 0.06, ease: [0.16, 1, 0.3, 1] }}
-                      whileHover={{ y: -8, transition: { duration: 0.3, ease: 'easeOut' } }}
-                      className="w-full sm:w-[45%] lg:w-[30%] min-w-0 sm:min-w-[280px] aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 group cursor-pointer bg-[#050505] relative shadow-[0_20px_50px_rgba(0,0,0,0.7)] hover:border-brand-lime/30 hover:shadow-[0_25px_50px_rgba(196,239,71,0.06)] transition-all duration-500"
-                      onClick={() => handleOpenProject(project)}
-                    >
-                      {/* Hover Backdrop Overlay */}
-                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-brand-lime/10 via-transparent to-brand-orange/5 z-10 pointer-events-none" />
-
-                      {/* Mockup Container */}
-                      <div className="w-full h-full relative p-6 sm:p-8 flex items-center justify-center pointer-events-none">
-                        {isPdfHero ? (
-                          <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-brand-dark to-[#050505] p-6 rounded-xl border border-white/5">
-                            <div className="w-14 h-14 rounded-2xl bg-brand-lime/10 border border-brand-lime/30 flex items-center justify-center mb-3">
-                              <span className="text-brand-lime font-black text-lg">PDF</span>
-                            </div>
-                            <span className="text-[10px] text-brand-smoke/50 uppercase tracking-[0.25em] font-bold">Document</span>
-                          </div>
-                        ) : (
-                          <img 
-                            src={project.heroImage} 
-                            alt={project.title}
-                            className="max-w-full max-h-full object-contain block transition-transform duration-700 ease-out group-hover:scale-105 select-none"
-                            loading="eager"
-                            decoding="async"
-                            draggable="false"
-                          />
-                        )}
-                      </div>
-
-                      {/* Smooth Shadow Vignette */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent z-20 transition-opacity duration-300 opacity-80 group-hover:opacity-90 pointer-events-none" />
-
-                      {/* Floating Details Overlay */}
-                      <div className="absolute inset-x-0 bottom-0 p-6 z-30 transform translate-y-3 group-hover:translate-y-0 transition-transform duration-500 ease-out flex flex-col gap-1 pointer-events-none">
-                        <span className="inline-block w-fit text-[8px] font-black uppercase tracking-widest px-2 py-0.5 rounded bg-brand-lime text-black mb-1">
-                          {formatCategoryLabel(project.category)}
-                        </span>
-                        <div className="flex items-center justify-between">
-                          <h4 className="text-xs sm:text-sm font-extrabold text-white leading-tight uppercase tracking-wider group-hover:text-brand-lime transition-colors duration-300 line-clamp-1">
-                            {project.title}
-                          </h4>
-                          <span className="text-brand-lime opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-x-2 group-hover:translate-x-0 transition-transform duration-500">
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                            </svg>
-                          </span>
-                        </div>
-                        <p className="text-[10px] text-brand-smoke/60 line-clamp-1">{project.client}</p>
-                      </div>
-
-                      {/* Premium Micro Glow Border */}
-                      <span className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-brand-lime/20 to-transparent z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-                    </motion.div>
-                  )
-                })
+                filteredProjects.map((project, idx) => (
+                  <CategoryCard
+                    key={project.id}
+                    project={project}
+                    index={idx}
+                    onOpenProject={handleOpenProject}
+                  />
+                ))
               ) : (
                 <div className="text-center py-20 text-white/40 text-sm w-full">
                   No projects found in this category.
