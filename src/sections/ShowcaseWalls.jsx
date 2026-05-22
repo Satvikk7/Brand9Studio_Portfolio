@@ -7,6 +7,7 @@ const walls = [
   { src: '/showcase/4.png', bg: '#CACACA', fullWidth: true },
   { src: '/showcase/5.png', bg: '#ADACAC', fullWidth: true },
   { src: '/showcase/6.png', bg: '#000001', fullWidth: true },
+  { src: '/showcase/7.png', bg: '#000000', fullWidth: true },
 ];
 
 export default function ShowcaseWalls() {

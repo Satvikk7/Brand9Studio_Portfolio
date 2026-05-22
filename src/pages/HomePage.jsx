@@ -4,7 +4,6 @@ import Hero from '../sections/Hero'
 import ShowcaseWalls from '../sections/ShowcaseWalls'
 import Projects from '../sections/Projects'
 import CaseStudies from '../sections/CaseStudies'
-import Services from '../sections/Services'
 import Testimonials from '../sections/Testimonials'
 import About from '../sections/About'
 import CreativeToolsBar from '../sections/CreativeToolsBar'
@@ -32,7 +31,6 @@ export default function HomePage() {
         <ShowcaseWalls />
         <Projects />
         <CaseStudies />
-        <Services />
         <Testimonials />
         <About />
         <CreativeToolsBar />

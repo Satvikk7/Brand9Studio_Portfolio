@@ -71,10 +71,10 @@ export default function Hero() {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
-    show: { 
-      opacity: 1, 
+    show: {
+      opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } 
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
     }
   }
 
@@ -96,7 +96,7 @@ export default function Hero() {
               {/* Title line mask transitions for ultra-premium look */}
               <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black leading-[0.9] mb-6 sm:mb-8 text-white uppercase tracking-tighter">
                 <div className="overflow-hidden block py-1">
-                  <motion.span 
+                  <motion.span
                     className="inline-block"
                     initial={{ y: "100%" }}
                     animate={{ y: 0 }}
@@ -106,7 +106,7 @@ export default function Hero() {
                   </motion.span>
                 </div>
                 <div className="overflow-hidden block py-1 text-brand-lime">
-                  <motion.span 
+                  <motion.span
                     className="inline-block"
                     initial={{ y: "100%" }}
                     animate={{ y: 0 }}
@@ -116,7 +116,7 @@ export default function Hero() {
                   </motion.span>
                 </div>
                 <div className="overflow-hidden block py-1">
-                  <motion.span 
+                  <motion.span
                     className="inline-block"
                     initial={{ y: "100%" }}
                     animate={{ y: 0 }}
@@ -127,8 +127,8 @@ export default function Hero() {
                 </div>
               </h1>
 
-              <motion.p 
-                variants={itemVariants} 
+              <motion.p
+                variants={itemVariants}
                 className="text-brand-smoke text-base sm:text-lg md:text-xl max-w-xl mb-10 leading-relaxed font-outfit"
               >
                 A creative design and digital solutions studio helping brands stand out
@@ -155,7 +155,7 @@ export default function Hero() {
                   transition={{ type: "spring", stiffness: 400, damping: 25 }}
                   className="px-6 sm:px-8 py-3 sm:py-4 border border-white/20 text-white font-inter text-xs sm:text-sm uppercase tracking-widest hover:border-brand-lime hover:bg-brand-lime/5 flex items-center justify-center sm:justify-start gap-2 transition-all duration-300 rounded-lg group/btn text-center"
                 >
-                  Start a Project 
+                  Start a Project
                   <motion.span
                     animate={{ x: [0, 4, 0] }}
                     transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}

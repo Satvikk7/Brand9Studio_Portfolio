@@ -437,34 +437,6 @@
     }
     ,
     {
-      "id": 22,
-      "title": "Wedding Website Page",
-      "client": "Website Page Series",
-      "category": "WEBSITE PAGE",
-      "projectFolder": "Website Page",
-      "heroImage": "/projects/Website Page/Wedding Showcase/page_1.png",
-      "description": "A wedding-focused website page concept with elegant hierarchy, immersive visuals, and conversion-ready section flow.",
-      "year": "2026",
-      "frameNarratives": [
-        {
-          "title": "Landing Impression",
-          "focus": "Sets a premium romantic tone with clean composition and visually guided storytelling.",
-          "detail": "The layout is optimized for long-scroll presentation while keeping each section easy to scan."
-        },
-        {
-          "title": "Content Journey",
-          "focus": "Uses structured blocks and clear spacing to maintain flow across the full-page concept.",
-          "detail": "The page direction balances visual beauty with practical communication and lead intent."
-        }
-      ],
-      "images": [
-        "/projects/Website Page/Wedding Showcase/page_1.png",
-        "/projects/Website Page/Wedding Showcase/page_2.png",
-        "/projects/Website Page/Wedding Showcase/page_3.png"
-      ]
-    }
-    ,
-    {
       "id": 23,
       "title": "Maternity & Kids Website Page",
       "client": "Website Page Series",
