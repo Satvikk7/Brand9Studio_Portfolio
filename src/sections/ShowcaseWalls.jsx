@@ -12,7 +12,7 @@ const walls = [
 
 export default function ShowcaseWalls() {
   return (
-    <section id="showcase-walls" className="relative overflow-hidden">
+    <section id="showcase-walls" className="relative overflow-hidden" style={{ contain: 'layout paint' }}>
       {walls.map((wall, index) => (
         <motion.div
           key={index}
@@ -21,7 +21,7 @@ export default function ShowcaseWalls() {
           viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           className="w-full relative"
-          style={{ background: wall.bg }}
+          style={{ background: wall.bg, willChange: 'opacity' }}
         >
           {wall.fullWidth ? (
             // Full-width: image already contains its own background
@@ -31,6 +31,7 @@ export default function ShowcaseWalls() {
               className="w-full h-auto block select-none"
               loading="lazy"
               decoding="async"
+              fetchpriority="low"
             />
           ) : (
             // Contained: centered block with bg color bleeding on sides
@@ -41,6 +42,7 @@ export default function ShowcaseWalls() {
                 className="w-full h-auto block select-none"
                 loading="lazy"
                 decoding="async"
+                fetchpriority="low"
               />
             </div>
           )}

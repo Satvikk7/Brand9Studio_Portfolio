@@ -7,9 +7,9 @@ export default function ScrollProgress() {
   const pathLength = useSpring(scrollYProgress, { stiffness: 100, damping: 30 })
   const location = useLocation()
 
-  // On inner pages, shift up to avoid overlapping the "Back" buttons
   const isInnerPage = location.pathname !== '/'
-  const bottomClass = isInnerPage ? 'bottom-24 sm:bottom-28' : 'bottom-8'
+  // Use GPU translateY instead of layout-triggering `bottom` transitions
+  const yOffset = isInnerPage ? -80 : 0
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -18,8 +18,10 @@ export default function ScrollProgress() {
   return (
     <motion.div 
       initial={{ opacity: 0, scale: 0.8 }}
-      animate={{ opacity: 1, scale: 1 }}
-      className={`fixed right-4 sm:right-8 z-[100] ${bottomClass} transition-[bottom] duration-300`}
+      animate={{ opacity: 1, scale: 1, y: yOffset }}
+      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+      className="fixed right-4 sm:right-8 bottom-8 z-[100]"
+      style={{ willChange: 'transform', contain: 'layout paint' }}
     >
       <button 
         onClick={scrollToTop}

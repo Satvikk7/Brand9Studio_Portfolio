@@ -1,69 +1,70 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { motion, useSpring, useMotionValue } from 'framer-motion'
 
 export default function CustomCursor() {
   const [isPointer, setIsPointer] = useState(false)
   const [isText, setIsText] = useState(false)
   const [isClicking, setIsClicking] = useState(false)
-  const [isVisible, setIsVisible] = useState(false)
   const [hasPointer, setHasPointer] = useState(false)
-  
+
+  // Direct MotionValues — set synchronously inside pointermove, zero latency
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
 
-  // Spring physics for smooth movement (optimized for less lag)
-  const springConfig = { damping: 28, stiffness: 450, mass: 0.15 }
+  // Visibility as MotionValue: avoids a React re-render on every enter/leave
+  const opacity = useMotionValue(0)
+
+  // Near-zero-latency spring: stiffness 500/damping 28/mass 0.5 closely tracks the pointer
+  const springConfig = { stiffness: 500, damping: 28, mass: 0.5 }
   const x = useSpring(mouseX, springConfig)
   const y = useSpring(mouseY, springConfig)
+
+  // Refs for hover-state detection loop — avoids stale closure issues
+  const lastTargetRef = useRef(null)
+  const hoverRafRef = useRef(null)
+  const pendingTargetRef = useRef(null)
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(pointer: fine)')
     setHasPointer(mediaQuery.matches)
-    
-    let lastTarget = null
-    
-    const handleMouseMove = (e) => {
-      if (!isVisible) setIsVisible(true)
-      
-      mouseX.set(e.clientX)
-      mouseY.set(e.clientY)
-      
-      const target = e.target
-      if (!target || target === lastTarget) return
-      lastTarget = target
-      
+    if (!mediaQuery.matches) return
+
+    // ─── Hover-state detection (RAF-throttled: reads DOM, can be one frame behind) ───
+    const processHoverState = () => {
+      hoverRafRef.current = null
+      const target = pendingTargetRef.current
+      if (!target || target === lastTargetRef.current) return
+      lastTargetRef.current = target
+
       const tagName = target.tagName ? target.tagName.toLowerCase() : ''
-      
-      // Highly optimized interactive element checks (skips expensive DOM queries where possible)
-      const isClickable = 
-        target.closest('a') || 
-        target.closest('button') || 
+
+      const isClickable =
+        target.closest('a') ||
+        target.closest('button') ||
         target.closest('[role="button"]') ||
         target.closest('input[type="submit"]') ||
         target.closest('input[type="button"]')
-      
+
       if (isClickable) {
         setIsPointer(true)
         setIsText(false)
         return
       }
 
-      // Check text elements
       const isHeroElement = !!target.closest('#hero')
-      const isTextElement = 
-        !isHeroElement && 
+      const isTextElement =
+        !isHeroElement &&
         ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span', 'li', 'label', 'input', 'textarea'].includes(tagName)
-      
+
       if (isTextElement) {
         setIsPointer(false)
         setIsText(true)
         return
       }
-      
-      // Fallback to getComputedStyle ONLY when target changes and is not obviously text/clickable
+
+      // Fallback: getComputedStyle only on target change (already one per new element)
       try {
-        const computedStyle = window.getComputedStyle(target)
-        const computedCursor = computedStyle ? computedStyle.cursor : 'auto'
+        const computedCursor = window.getComputedStyle(target).cursor
         if (computedCursor === 'pointer') {
           setIsPointer(true)
           setIsText(false)
@@ -74,47 +75,61 @@ export default function CustomCursor() {
           setIsPointer(false)
           setIsText(false)
         }
-      } catch (err) {
+      } catch {
         setIsPointer(false)
         setIsText(false)
       }
     }
 
-    const handleMouseDown = () => setIsClicking(true)
-    const handleMouseUp = () => setIsClicking(false)
-    const handleMouseLeave = () => setIsVisible(false)
-    const handleMouseEnter = () => setIsVisible(true)
+    // ─── Position tracking: DIRECT set, no RAF, no throttle ───
+    // useMotionValue.set() is synchronous but off the React render tree —
+    // calling it here gives the lowest possible latency before the spring takes over.
+    const handlePointerMove = (e) => {
+      mouseX.set(e.clientX)
+      mouseY.set(e.clientY)
+      opacity.set(1)
 
-    if (mediaQuery.matches) {
-      window.addEventListener('mousemove', handleMouseMove, { passive: true })
-      window.addEventListener('mousedown', handleMouseDown, { passive: true })
-      window.addEventListener('mouseup', handleMouseUp, { passive: true })
-      document.addEventListener('mouseleave', handleMouseLeave, { passive: true })
-      document.addEventListener('mouseenter', handleMouseEnter, { passive: true })
+      // Queue hover-state detection in next frame (DOM reads are cheap but deferred)
+      pendingTargetRef.current = e.target
+      if (!hoverRafRef.current) {
+        hoverRafRef.current = window.requestAnimationFrame(processHoverState)
+      }
     }
 
+    const handleMouseDown = () => setIsClicking(true)
+    const handleMouseUp   = () => setIsClicking(false)
+    const handleMouseLeave = () => opacity.set(0)
+    const handleMouseEnter = () => opacity.set(1)
+
+    window.addEventListener('pointermove', handlePointerMove, { passive: true })
+    window.addEventListener('mousedown', handleMouseDown, { passive: true })
+    window.addEventListener('mouseup', handleMouseUp, { passive: true })
+    document.addEventListener('mouseleave', handleMouseLeave, { passive: true })
+    document.addEventListener('mouseenter', handleMouseEnter, { passive: true })
+
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove)
+      if (hoverRafRef.current) window.cancelAnimationFrame(hoverRafRef.current)
+      window.removeEventListener('pointermove', handlePointerMove)
       window.removeEventListener('mousedown', handleMouseDown)
       window.removeEventListener('mouseup', handleMouseUp)
       document.removeEventListener('mouseleave', handleMouseLeave)
       document.removeEventListener('mouseenter', handleMouseEnter)
     }
-  }, [mouseX, mouseY, isVisible])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mouseX, mouseY, opacity])
 
   if (!hasPointer) return null
 
   return (
     <motion.div
       className="fixed top-0 left-0 z-[9999] pointer-events-none mix-blend-difference"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: isVisible ? 1 : 0 }}
       style={{
         x,
         y,
+        opacity,
         translateX: '-5%',
         translateY: '-5%',
-        willChange: 'transform',
+        willChange: 'transform, opacity',
       }}
     >
       {/* Primary Cursor Body */}

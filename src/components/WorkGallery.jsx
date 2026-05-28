@@ -96,10 +96,10 @@ const PaintingCard = React.memo(({ project, index, onOpenProject, rowHeight }) =
       <AnimatePresence>
         {isTapped && (
           <motion.div 
-            initial={{ opacity: 0, backdropFilter: 'blur(0px)' }}
-            animate={{ opacity: 1, backdropFilter: 'blur(8px)' }}
-            exit={{ opacity: 0, backdropFilter: 'blur(0px)' }}
-            className="absolute inset-0 z-40 bg-black/60 flex items-center justify-center pointer-events-none"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="absolute inset-0 z-40 bg-black/60 backdrop-blur-[8px] flex items-center justify-center pointer-events-none"
           >
             <motion.div 
               initial={{ scale: 0.8, opacity: 0 }}
@@ -143,7 +143,12 @@ function InfinitePaintingRow({ projects, speed = -0.6, onOpenProject, rowHeight 
 
   useEffect(() => {
     if (contentRef.current && baseProjects.length > 0) {
-      setContentWidth(contentRef.current.scrollWidth / 3)
+      const rafId = window.requestAnimationFrame(() => {
+        if (contentRef.current) {
+          setContentWidth(contentRef.current.scrollWidth / 3)
+        }
+      })
+      return () => window.cancelAnimationFrame(rafId)
     }
   }, [baseProjects, projects])
 
@@ -176,6 +181,7 @@ function InfinitePaintingRow({ projects, speed = -0.6, onOpenProject, rowHeight 
     <div 
       ref={containerRef} 
       className="w-full overflow-hidden select-none touch-pan-y cursor-grab active:cursor-grabbing border-b border-white/10"
+      style={{ contain: 'layout paint', willChange: 'transform' }}
     >
       <motion.div
         ref={contentRef}
@@ -321,10 +327,10 @@ const CategoryCard = React.memo(({ project, index, onOpenProject }) => {
       <AnimatePresence>
         {isTapped && (
           <motion.div 
-            initial={{ opacity: 0, backdropFilter: 'blur(0px)' }}
-            animate={{ opacity: 1, backdropFilter: 'blur(8px)' }}
-            exit={{ opacity: 0, backdropFilter: 'blur(0px)' }}
-            className="absolute inset-0 z-40 bg-black/60 flex items-center justify-center pointer-events-none"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="absolute inset-0 z-40 bg-black/60 backdrop-blur-[8px] flex items-center justify-center pointer-events-none"
           >
             <motion.div 
               initial={{ scale: 0.8, opacity: 0 }}
@@ -388,7 +394,7 @@ export default function WorkGallery() {
   }, [location.state])
 
   return (
-    <section id="work" className="py-32 relative overflow-hidden bg-transparent">
+    <section id="work" className="py-32 relative overflow-hidden bg-transparent" style={{ contain: 'layout paint' }}>
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-lime/5 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />

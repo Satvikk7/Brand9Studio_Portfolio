@@ -32,7 +32,7 @@ export default function ContentWritingPage() {
   }
 
   return (
-    <section className="min-h-screen pt-28 pb-16 sm:pb-24 px-4 sm:px-6">
+    <section className="min-h-screen pt-28 pb-16 sm:pb-24 px-4 sm:px-6" style={{ contain: 'layout paint' }}>
       <div className="main-container space-y-8 sm:space-y-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

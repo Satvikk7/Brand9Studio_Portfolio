@@ -11,7 +11,7 @@ export default function Contact() {
   ]
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden">
+    <section id="contact" className="py-24 relative overflow-hidden" style={{ contain: 'layout paint' }}>
       <div className="main-container">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-20">
           <motion.div

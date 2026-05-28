@@ -152,7 +152,7 @@ function App() {
       )}
 
       {/* Scrollable Universe of Paths */}
-      <div className="absolute inset-0 h-full w-full z-0 pointer-events-none overflow-hidden opacity-[0.14]">
+      <div className="absolute inset-0 h-full w-full z-0 pointer-events-none overflow-hidden opacity-[0.14]" style={{ contain: 'strict' }}>
         {/* Stage 1: 0% */}
         <div className="absolute top-0 left-0 w-full h-[200vh]">
           <FloatingPaths position={1} className="text-brand-lime" />
@@ -215,10 +215,10 @@ function App() {
       </div>
       
       {/* Background Effects */}
-      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden" style={{ contain: 'layout paint' }}>
         <div className="absolute inset-0 bg-grid opacity-60" />
 
-        <div className="absolute inset-0 portfolio-wave-bg opacity-45" />
+        <div className="absolute inset-0 portfolio-wave-bg opacity-45" style={{ willChange: 'opacity' }} />
 
         <motion.div
           aria-hidden="true"

@@ -54,7 +54,7 @@ export default function Services() {
   ]
 
   return (
-    <section id="services" className="py-24 bg-brand-gray/50 relative overflow-hidden">
+    <section id="services" className="py-24 bg-brand-gray/50 relative overflow-hidden" style={{ contain: 'layout paint' }}>
       <div className="main-container will-change-gpu">
         <div className="mb-16 sm:mb-20 text-left">
           <motion.div

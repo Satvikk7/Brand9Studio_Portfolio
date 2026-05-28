@@ -30,6 +30,7 @@ const styles = `
     gap: 2rem;
     animation: marquee-lr 20s linear infinite;
     width: fit-content;
+    will-change: transform;
   }
   
   @media (max-width: 640px) {
@@ -38,12 +39,6 @@ const styles = `
     }
   }
 `
-
-if (typeof document !== 'undefined') {
-  const styleSheet = document.createElement('style')
-  styleSheet.textContent = styles
-  document.head.appendChild(styleSheet)
-}
 
 const tools = [
   { name: 'After Effects', icon: afterEffectsIcon },
@@ -69,6 +64,8 @@ function ToolItem({ name, icon }) {
           aria-hidden="true"
           className="h-14 w-14 object-contain sm:h-16 sm:w-16"
           draggable="false"
+          decoding="async"
+          loading="lazy"
         />
       </div>
       <span className="text-[0.78rem] font-semibold tracking-[0.24em] text-white/40 sm:text-sm">
@@ -85,7 +82,9 @@ export default function CreativeToolsBar() {
     <section
       aria-label="Tools used by the company"
       className="relative overflow-hidden border-y border-white/5 bg-transparent py-8 sm:py-10"
+      style={{ contain: 'layout paint' }}
     >
+      <style>{styles}</style>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

@@ -79,7 +79,7 @@ export default function Hero() {
   }
 
   return (
-    <section id="hero" className="relative min-h-screen w-full flex items-center py-20 sm:py-24 lg:py-28 overflow-hidden bg-transparent">
+    <section id="hero" className="relative min-h-screen w-full flex items-center py-20 sm:py-24 lg:py-28 overflow-hidden bg-transparent" style={{ contain: 'layout paint' }}>
       <div className="main-container relative z-10 will-change-gpu w-full">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7 text-left">
@@ -221,8 +221,9 @@ export default function Hero() {
                 <motion.div
                   animate={{ y: [0, -10, 0] }}
                   transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                  whileHover={{ scale: 1.05, borderColor: "rgba(196,239,71,0.5)", boxShadow: "0 10px 25px -5px rgba(196,239,71,0.15)" }}
-                  className="premium-card p-3 sm:p-4 px-4 sm:px-6 border border-white/10 text-sm sm:text-base cursor-pointer transition-all duration-300"
+                  whileHover={{ scale: 1.05 }}
+                  className="premium-card p-3 sm:p-4 px-4 sm:px-6 border border-white/10 text-sm sm:text-base cursor-pointer transition-colors duration-300"
+                  style={{ willChange: 'transform' }}
                 >
                   <div className="flex items-baseline gap-2 sm:gap-3">
                     <p className="text-2xl sm:text-3xl font-black text-white">10+</p>
@@ -234,8 +235,9 @@ export default function Hero() {
                 <motion.div
                   animate={{ y: [0, -8, 0] }}
                   transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 0.4 }}
-                  whileHover={{ scale: 1.05, borderColor: "rgba(196,239,71,0.5)", boxShadow: "0 10px 25px -5px rgba(196,239,71,0.15)" }}
-                  className="premium-card p-3 sm:p-4 px-4 sm:px-6 border border-white/10 text-sm sm:text-base hidden sm:block cursor-pointer transition-all duration-300"
+                  whileHover={{ scale: 1.05 }}
+                  className="premium-card p-3 sm:p-4 px-4 sm:px-6 border border-white/10 text-sm sm:text-base hidden sm:block cursor-pointer transition-colors duration-300"
+                  style={{ willChange: 'transform' }}
                 >
                   <div className="flex items-baseline gap-2 sm:gap-3">
                     <p className="text-2xl sm:text-3xl font-black text-white">14+</p>

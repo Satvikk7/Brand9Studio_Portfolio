@@ -173,7 +173,7 @@ export default function ProjectPage() {
   }
 
   return (
-    <section className="min-h-screen pt-28 pb-16 sm:pb-24 px-4 sm:px-6">
+    <section className="min-h-screen pt-28 pb-16 sm:pb-24 px-4 sm:px-6" style={{ contain: 'layout paint' }}>
       <div
         className="pointer-events-none fixed inset-0 -z-10"
         style={{

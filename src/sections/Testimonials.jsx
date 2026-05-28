@@ -36,7 +36,7 @@ export default function Testimonials() {
   ]
 
   return (
-    <section id="testimonials" className="py-24 bg-brand-gray/30">
+    <section id="testimonials" className="py-24 bg-brand-gray/30" style={{ contain: 'layout paint' }}>
       <div className="main-container text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

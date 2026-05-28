@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useCallback } from 'react'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 
 export default function BeforeAfterSlider({ 
@@ -23,15 +23,20 @@ export default function BeforeAfterSlider({
   const beforeWidth = useTransform(springProgress, (val) => `${val}%`)
   const handleLeft = useTransform(springProgress, (val) => `${val}%`)
 
-  const handleMove = (e) => {
+  const handleMove = useCallback((e) => {
     if (!containerRef.current) return
-    const rect = containerRef.current.getBoundingClientRect()
-    const clientX = e.clientX || e.touches?.[0]?.clientX
+    if (handleMove._rafId) return
+    const clientX = e.clientX ?? e.touches?.[0]?.clientX
     if (clientX === undefined) return
-    
-    const x = (clientX - rect.left) / rect.width
-    progressVal.set(Math.max(0, Math.min(100, x * 100)))
-  }
+    handleMove._rafId = window.requestAnimationFrame(() => {
+      handleMove._rafId = null
+      if (!containerRef.current) return
+      const rect = containerRef.current.getBoundingClientRect()
+      const x = (clientX - rect.left) / rect.width
+      progressVal.set(Math.max(0, Math.min(100, x * 100)))
+    })
+  }, [progressVal])
+  handleMove._rafId = handleMove._rafId ?? null
 
   const handleMouseLeave = () => {
     // Elegant floating recoil back to exact center when mouse departs
@@ -42,6 +47,7 @@ export default function BeforeAfterSlider({
     <div 
       ref={containerRef}
       className="relative aspect-video rounded-2xl overflow-hidden cursor-ew-resize select-none premium-card border border-white/10 group will-change-transform"
+      style={{ contain: 'layout paint' }}
       onMouseMove={handleMove}
       onTouchMove={handleMove}
       onMouseLeave={handleMouseLeave}

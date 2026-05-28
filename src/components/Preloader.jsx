@@ -31,7 +31,7 @@ export default function Preloader({ onComplete }) {
   }, [onComplete])
 
   return (
-    <div className="fixed inset-0 z-[10000] overflow-hidden pointer-events-none select-none">
+    <div className="fixed inset-0 z-[10000] overflow-hidden pointer-events-none select-none" style={{ contain: 'strict' }}>
       {/* SVG Mask Background - reveals website through the expanding circular hole in the absolute center (50%, 50%) */}
       <svg className="absolute inset-0 w-full h-full">
         <defs>
@@ -150,6 +150,7 @@ export default function Preloader({ onComplete }) {
       <motion.div 
         animate={showOnlyNine ? { opacity: 0 } : { opacity: 1 }}
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-brand-lime/10 blur-[100px] rounded-full pointer-events-none" 
+        style={{ willChange: 'opacity' }}
       />
     </div>
   )

@@ -70,7 +70,7 @@ export default function CaseStudies() {
   }, [])
 
   return (
-    <section id="case-studies" className="py-24 relative overflow-hidden">
+    <section id="case-studies" className="py-24 relative overflow-hidden" style={{ contain: 'layout paint' }}>
       <div className="main-container">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8 text-left">
           <motion.div
@@ -159,10 +159,13 @@ export default function CaseStudies() {
                     transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } 
                   }
                 }}
+                animate={{ scale: isActive ? 1.02 : 1 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 24 }}
                 id={`case-study-${study.id}`}
                 key={study.title}
-                className={`premium-card border transition-all duration-500 p-8 rounded-xl text-left ${isActive
-                    ? 'border-brand-lime/60 shadow-[0_0_0_1px_rgba(196,239,71,0.4),0_0_40px_rgba(196,239,71,0.15),inset_0_1px_0_rgba(255,255,255,0.1)] scale-[1.02]'
+                style={{ willChange: 'transform' }}
+                className={`premium-card border transition-[border-color,box-shadow] duration-500 p-8 rounded-xl text-left ${isActive
+                    ? 'border-brand-lime/60 shadow-[0_0_0_1px_rgba(196,239,71,0.4),0_0_40px_rgba(196,239,71,0.15),inset_0_1px_0_rgba(255,255,255,0.1)]'
                     : 'border-white/8 hover:border-brand-lime/40 hover:shadow-lg'
                   }`}
               >

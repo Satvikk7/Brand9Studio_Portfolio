@@ -79,6 +79,17 @@ h4 {
     perspective: 1000;
   }
 
+  /* CSS containment: isolates section paint from document reflow */
+  .section-contain {
+    contain: layout paint;
+  }
+
+  /* Content-visibility: allows browser to skip rendering offscreen sections */
+  .cv-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 800px;
+  }
+
   .glass-panel {
     @apply bg-white/[0.02] backdrop-blur-md sm:backdrop-blur-2xl border border-white/10 rounded-[1.5rem] shadow-2xl shadow-black/40;
   }
@@ -156,17 +167,13 @@ h4 {
   background: radial-gradient(circle at center, rgba(247, 148, 29, 0.10) 0%, rgba(247, 148, 29, 0.03) 34%, transparent 72%);
 }
 
+/* Wave background uses opacity-only pulsing — GPU composited, zero paint cost */
 @keyframes waveFlow {
-  0% {
-    background-position: 0% 50%;
+  0%, 100% {
+    opacity: 0.45;
   }
-
   50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
+    opacity: 0.6;
   }
 }
 

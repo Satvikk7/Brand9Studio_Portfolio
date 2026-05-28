@@ -28,7 +28,7 @@ export default function About() {
   }, [quotes.length])
 
   return (
-    <section id="about" className="py-24 relative overflow-hidden">
+    <section id="about" className="py-24 relative overflow-hidden" style={{ contain: 'layout paint' }}>
       <div className="main-container">
         <div className="grid lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-20 items-center">
           <motion.div
@@ -86,6 +86,7 @@ export default function About() {
                     ease: [0.16, 1, 0.3, 1]
                   }}
                   className="absolute inset-0 aspect-square premium-card border border-white/10 overflow-hidden group"
+                  style={{ willChange: 'transform, opacity' }}
                 >
                   <div className="absolute inset-0 bg-brand-lime/5 group-hover:bg-brand-lime/10 transition-colors duration-500" />
                   <motion.div
@@ -109,9 +110,12 @@ export default function About() {
                           onClick={() => setCurrentQuote(i)}
                           whileHover={{ scale: 1.3 }}
                           whileTap={{ scale: 0.9 }}
-                          className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                            i === currentQuote ? 'bg-brand-lime w-6' : 'bg-white/20 hover:bg-white/40'
+                          animate={{ width: i === currentQuote ? '1.5rem' : '0.5rem' }}
+                          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                          className={`h-2 rounded-full transition-colors duration-300 ${
+                            i === currentQuote ? 'bg-brand-lime' : 'bg-white/20 hover:bg-white/40'
                           }`}
+                          style={{ willChange: 'transform, width' }}
                           aria-label={`Quote ${i + 1}`}
                         />
                       ))}

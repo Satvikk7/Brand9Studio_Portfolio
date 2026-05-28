@@ -19,9 +19,19 @@ export default function Navbar() {
   ]
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50)
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    let rafId = null
+    const handleScroll = () => {
+      if (rafId) return
+      rafId = window.requestAnimationFrame(() => {
+        rafId = null
+        setScrolled(window.scrollY > 50)
+      })
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => {
+      if (rafId) window.cancelAnimationFrame(rafId)
+      window.removeEventListener('scroll', handleScroll)
+    }
   }, [])
 
   useEffect(() => {
@@ -60,7 +70,7 @@ export default function Navbar() {
 
     updateActiveSection()
     window.addEventListener('scroll', handleScroll, { passive: true })
-    window.addEventListener('resize', handleScroll)
+    window.addEventListener('resize', handleScroll, { passive: true })
 
     return () => {
       if (rafId) window.cancelAnimationFrame(rafId)
@@ -131,9 +141,10 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 will-change-gpu ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
         scrolled ? 'py-3 bg-black/50 backdrop-blur-3xl border-b border-white/10 shadow-2xl' : 'py-5 bg-black/20 backdrop-blur-md border-b border-white/10 shadow-lg'
       }`}
+      style={{ willChange: 'transform' }}
       onClick={(e) => {
         // Close mobile menu if clicking a nav target
         if ((e.target.closest('a') || e.target.closest('button[data-nav-target]')) && mobileMenuOpen) {
@@ -143,7 +154,7 @@ export default function Navbar() {
     >
       <div className="main-container flex items-center justify-between">
         <a href="#hero" onClick={(event) => handleNavClick(event, 'hero')} className="flex items-center gap-2 group flex-shrink-0">
-          <img src={brandLogo} alt="Brand9 Studio Logo" className="h-10 sm:h-12 lg:h-14 w-auto" />
+          <img src={brandLogo} alt="Brand9 Studio Logo" className="h-10 sm:h-12 lg:h-14 w-auto" decoding="async" fetchpriority="high" />
         </a>
 
         <div className="hidden md:flex items-center gap-6 lg:gap-8">
