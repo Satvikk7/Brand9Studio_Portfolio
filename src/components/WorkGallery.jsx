@@ -137,15 +137,17 @@ function InfinitePaintingRow({ projects, speed = -0.6, onOpenProject, rowHeight 
     return list
   }, [projects])
 
-  const tripledProjects = useMemo(() => {
-    return [...baseProjects, ...baseProjects, ...baseProjects]
+  const duplicatedProjects = useMemo(() => {
+    return [...baseProjects, ...baseProjects, ...baseProjects, ...baseProjects]
   }, [baseProjects])
 
   useEffect(() => {
     if (contentRef.current && baseProjects.length > 0) {
       const rafId = window.requestAnimationFrame(() => {
         if (contentRef.current) {
-          setContentWidth(contentRef.current.scrollWidth / 3)
+          const w = contentRef.current.scrollWidth / 4
+          setContentWidth(w)
+          if (x.get() === 0) x.set(-2 * w)
         }
       })
       return () => window.cancelAnimationFrame(rafId)
@@ -164,12 +166,10 @@ function InfinitePaintingRow({ projects, speed = -0.6, onOpenProject, rowHeight 
     }
 
     // Mathematically wrap the container seamlessly
-    // If it scrolls too far left:
-    if (currentX <= -contentWidth) {
+    if (currentX <= -3 * contentWidth) {
       currentX += contentWidth
     } 
-    // If it scrolls too far right:
-    else if (currentX >= 0) {
+    else if (currentX >= -contentWidth) {
       currentX -= contentWidth
     }
 
@@ -210,7 +210,7 @@ function InfinitePaintingRow({ projects, speed = -0.6, onOpenProject, rowHeight 
           if (!isDragging) speedMultiplier.set(1)
         }}
       >
-        {tripledProjects.map((project, idx) => (
+        {duplicatedProjects.map((project, idx) => (
           <PaintingCard 
             key={`${project.id}-${idx}`}
             project={project}
