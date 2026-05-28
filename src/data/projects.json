@@ -38,43 +38,33 @@
       ]
     },
     {
-      "id": 7,
-      "title": "Bizsol Technologies Project",
-      "client": "Bizsol Technologies",
+      "id": 26,
+      "title": "Asian Waterbird Census",
+      "client": "Wetlands International & BNHS",
       "category": "BROCHURE",
-      "heroImage": "/projects/Brochure/Bizsol Technologies Project/shared image.jpg",
-      "description": "A clean brochure presentation for Bizsol Technologies with a premium layout, clear hierarchy, and modern corporate styling.",
-      "year": "2026",
+      "projectFolder": "Asian Waterbird Census",
+      "heroImage": "/projects/Brochure/Asian Waterbird Census/1.jpg",
+      "description": "Comprehensive census report brochure detailing the coordinated January waterbird counts across India from 2006 to 2015, featuring statistical data and ecological insights.",
+      "year": "2019",
       "frameNarratives": [
         {
-          "title": "Opening Statement",
-          "focus": "Introduces the brochure with a confident visual structure and clear identity cues.",
-          "detail": "The first frame sets a professional tone and establishes the brand story instantly."
+          "title": "Cover Presentation",
+          "focus": "Engaging cover design with strong typography and striking wildlife imagery to instantly communicate the report's ecological focus.",
+          "detail": "Establishes a professional yet visually captivating tone, suitable for both scientific and public audiences."
         },
         {
-          "title": "Service Overview",
-          "focus": "Organizes offerings and key messaging into a readable modular format.",
-          "detail": "This section helps viewers quickly understand the companyâ€™s core value proposition."
-        },
-        {
-          "title": "Capability Highlights",
-          "focus": "Shows strengths and differentiators with strong visual balance and spacing.",
-          "detail": "Designed to keep the page premium while making the content easy to scan."
-        },
-        {
-          "title": "Closing Impact",
-          "focus": "Ends with a polished call-to-action and memorable brand recall.",
-          "detail": "The final frame leaves a refined impression and supports stronger engagement."
+          "title": "Data Overview & Acknowledgements",
+          "focus": "Structured layout for organizational credits and acknowledgements, ensuring clear hierarchy and readability.",
+          "detail": "Carefully balances text density with white space to maintain a clean and accessible reading experience."
         }
       ],
       "images": [
-        "/projects/Brochure/Bizsol Technologies Project/shared image.jpg",
-        "/projects/Brochure/Bizsol Technologies Project/shared image (1).jpg",
-        "/projects/Brochure/Bizsol Technologies Project/shared image (2).jpg",
-        "/projects/Brochure/Bizsol Technologies Project/shared image (3).jpg"
+        "/projects/Brochure/Asian Waterbird Census/1.jpg",
+        "/projects/Brochure/Asian Waterbird Census/2.jpg",
+        "/projects/Brochure/Asian Waterbird Census/3.jpg",
+        "/projects/Brochure/Asian Waterbird Census/4.jpg"
       ]
-    }
-    ,
+    },
     {
       "id": 8,
       "title": "Vertex Emblem",
