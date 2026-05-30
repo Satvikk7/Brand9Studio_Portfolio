@@ -542,7 +542,7 @@
       "title": "ValueHits Project",
       "client": "ValueHits",
       "category": "EMAILERS",
-      "heroImage": "/projects/Emailers/ValueHits Project/shared image.jpg",
+      "heroImage": "/projects/Emailers/ValueHits Project/shared image.png",
       "description": "A conversion-focused email marketing design system crafted to deliver clear communication, stronger audience engagement, and action-driven campaign experiences through structured layouts and strategic visual hierarchy.",
       "year": "2026",
       "frameNarratives": [
@@ -560,8 +560,8 @@
         }
       ],
       "images": [
-        "/projects/Emailers/ValueHits Project/shared image.jpg",
-        "/projects/Emailers/ValueHits Project/shared image (1).jpg"
+        "/projects/Emailers/ValueHits Project/shared image.png",
+        "/projects/Emailers/ValueHits Project/shared image (1).png"
       ]
     },
     {
