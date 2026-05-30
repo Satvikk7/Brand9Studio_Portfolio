@@ -131,8 +131,7 @@ export default function Hero() {
                 variants={itemVariants}
                 className="text-brand-smoke text-base sm:text-lg md:text-xl max-w-xl mb-10 leading-relaxed font-outfit"
               >
-                A creative design and digital solutions studio helping brands stand out
-                through clean design, smart strategy, and powerful digital presence.
+                We help brands stand out with strategic design, bold visuals, and digital experiences built to create impact and drive growth.
               </motion.p>
 
               <motion.div variants={itemVariants} className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-start">

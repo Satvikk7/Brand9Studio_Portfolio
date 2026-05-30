@@ -10,24 +10,28 @@
       "year": "2025",
       "frameNarratives": [
         {
-          "title": "Cultural Cover Statement",
-          "focus": "Establishes the African Roots identity with bold typography and heritage-forward motifs.",
-          "detail": "The opening frame positions the brand as premium and rooted in authenticity, creating immediate visual trust."
+          "title": "HERITAGE THROUGH DESIGN",
+          "insight": "Designed for a large-scale African cultural event, the brochure captures the vibrancy, tradition, and visual richness of African heritage through layered compositions and authentic design direction.",
+          "focus": "The project followed the client’s traditional color palette and cultural motifs to maintain authenticity while creating a modern, premium event identity.",
+          "detail": "By blending heritage-inspired visuals with modern editorial design, the brochure delivered a culturally authentic yet premium experience that increased visual impact and strengthened audience connection."
         },
         {
-          "title": "Storyline Progression",
-          "focus": "Introduces the narrative journey with balanced spacing and curated visual rhythm.",
-          "detail": "Content hierarchy is structured to keep readers engaged while preserving editorial elegance."
+          "title": "STORYLINE PROGRESSION",
+          "insight": "The brochure was structured to guide viewers through a layered cultural narrative using controlled pacing, immersive visuals, and editorial-style composition.",
+          "focus": "Each section was designed to balance storytelling with visual clarity, allowing traditional African elements and event messaging to flow seamlessly across the layout.",
+          "detail": "The final presentation created a more engaging reading experience, improving content flow while reinforcing the event’s cultural depth and premium visual identity."
         },
         {
-          "title": "Value Communication",
-          "focus": "Highlights offer and differentiation through modular composition and contrast.",
-          "detail": "This frame improves readability and supports decision-making with clear sectional flow."
+          "title": "CULTURAL SHOWCASE",
+          "insight": "The design approach focused on transforming event photography into a visually immersive narrative inspired by African rhythm, celebration, and heritage.",
+          "focus": "Dynamic image grids and editorial spacing techniques were used to create depth, movement, and strong visual engagement throughout the brochure.",
+          "detail": "The brochure successfully elevated the event’s visual presentation, creating a more premium and memorable storytelling experience for attendees and stakeholders."
         },
         {
-          "title": "Closing Brand Recall",
-          "focus": "Concludes the brochure with strong recall cues and actionable communication touchpoints.",
-          "detail": "The final frame reinforces identity consistency and campaign continuity."
+          "title": "CLOSING BRAND RECALL",
+          "insight": "The brochure’s final section was designed to combine cultural storytelling with clear audience action, ensuring the event identity remained memorable beyond the viewing experience.",
+          "focus": "A clean editorial layout with heritage-inspired visual elements was used to emphasize booking information while maintaining visual consistency throughout the brochure.",
+          "detail": "The final presentation improved brand recall, strengthened audience trust, and created a more premium and organized enquiry experience for the event."
         }
       ],
       "images": [
@@ -461,25 +465,16 @@
       "title": "Photography Website Design",
       "client": "Freelance Photographer",
       "category": "WEBSITE PAGE",
-      "projectFolder": "Website Page",
+      "projectFolder": "WEBSITE DESIGNS",
       "heroImage": "/projects/Website Page/Photography Showcase/page_1.png",
-      "description": "A full-page photography website design concept showcasing responsive layout across desktop, laptop, and tablet — built to highlight visual portfolios with elegant hierarchy and immersive storytelling.",
+      "description": "A responsive photography website concept designed to showcase portrait, lifestyle, and wedding photography through immersive layouts, elegant storytelling, and seamless multi-device experiences.",
       "year": "2026",
       "frameNarratives": [
         {
-          "title": "Multi-Device Responsive Layout",
-          "focus": "Demonstrates the website fully adapted across desktop, laptop, and tablet viewports.",
-          "detail": "Every section scales fluidly to maintain a premium visual experience regardless of screen size or device."
-        },
-        {
-          "title": "Photographer-Centric Hero",
-          "focus": "The hero section leads with a bold personal brand moment — the photographer front and centre.",
-          "detail": "Typography, imagery and call-to-action placement are designed to instantly build trust and invite bookings."
-        },
-        {
-          "title": "Portfolio Gallery Structure",
-          "focus": "A curated gallery layout lets the work speak for itself with clean spacing and visual rhythm.",
-          "detail": "Categories like Wedding, Fashion, and Nature Photography are navigable without disrupting the aesthetic flow."
+          "title": "More Premium Alternative",
+          "insight": "This photography website concept blends portrait and wedding storytelling into a modern digital experience focused on elegance, emotional connection, and visual immersion.",
+          "focus": "A responsive design system was developed to balance cinematic photography layouts, editorial typography, and gallery-driven navigation across different devices and screen formats.",
+          "detail": "The final presentation created a refined portfolio experience that elevated visual storytelling, improved user engagement, and showcased photography work with a premium modern feel."
         }
       ],
       "images": [
@@ -493,33 +488,44 @@
       "client": "InsightWorks",
       "category": "ANALYTICS",
       "heroImage": "/projects/Analytics/Analytics Dashboard Project/Analytics Demo-1.jpg",
-      "description": "Interactive analytics dashboard design focusing on clarity, data hierarchy, and actionable insights for decision-makers.",
+      "description": "An interactive analytics dashboard experience designed to simplify complex datasets through structured KPI systems, intuitive filtering, and insight-driven visualization for modern decision-makers.",
       "year": "2026",
       "frameNarratives": [
         {
-          "title": "Dashboard Overview",
-          "focus": "Presents a high-level performance snapshot with concise KPI tiles and summary charts.",
-          "detail": "The overview frame emphasizes immediate situational awareness for executives and product owners."
+          "title": "DASHBOARD OVERVIEW",
+          "insight": "The dashboard overview was designed to deliver a high-level performance snapshot through modular KPI cards, concise charts, and structured analytical hierarchy.",
+          "focus": "A clean grid-based interface was used to organize sales metrics, audience segments, revenue indicators, and category performance into a fast-scanning visual system.",
+          "detail": "The final experience improved situational awareness, accelerated performance monitoring, and enabled decision-makers to interpret key business metrics more efficiently."
         },
         {
-          "title": "Trend Analysis",
-          "focus": "Shows multi-period trends and anomaly highlights with clear axes and callouts.",
-          "detail": "Designed to help analysts quickly identify performance shifts and dig into causal factors."
+          "title": "TREND ANALYSIS",
+          "insight": "This analytical layer focuses on identifying growth patterns, behavioral shifts, and performance anomalies through visually balanced trend visualization.",
+          "focus": "Multi-period comparison systems, chart segmentation, and visual callouts were integrated to help analysts track movement across different operational timelines.",
+          "detail": "The interface simplified trend interpretation, improved analytical clarity, and supported faster performance investigation across business datasets."
         },
         {
-          "title": "Segment Drilldown",
-          "focus": "Enables users to explore cohorts and segments with focused visual filters.",
-          "detail": "Supports faster hypothesis validation and prioritization of opportunities."
+          "title": "SEGMENT DRILLDOWN",
+          "insight": "The drilldown interface was designed to help users navigate deeper audience and operational segments through advanced filtering and focused analytical exploration.",
+          "focus": "Layered filter structures and category-based segmentation controls were used to streamline cohort analysis, comparative evaluation, and performance isolation.",
+          "detail": "The experience enabled faster hypothesis validation, improved opportunity identification, and created a more flexible data exploration workflow for analysts."
         },
         {
-          "title": "Action Panel",
-          "focus": "Combines recommended actions, notes, and export options for cross-team collaboration.",
-          "detail": "Bridges insight-to-action by providing contextual next steps and data export flows."
+          "title": "ACTION PANEL",
+          "insight": "The action panel bridges analytics and execution by transforming dashboard insights into collaborative operational actions and reporting workflows.",
+          "focus": "Export systems, contextual notes, and action-oriented interface elements were integrated to support cross-functional communication and decision alignment.",
+          "detail": "The final workflow improved insight-to-action efficiency, strengthened collaboration visibility, and streamlined operational follow-through across teams."
         },
         {
-          "title": "Supplemental Widgets",
-          "focus": "Displays micro-interactions and secondary visualizations for deeper exploration.",
-          "detail": "Supports advanced users with additional drill controls and contextual tooltips."
+          "title": "SUPPLEMENTAL WIDGETS",
+          "insight": "Supplementary widgets were introduced to support deeper analytical interaction through secondary visualizations and micro-level dashboard controls.",
+          "focus": "Expandable data modules, contextual tooltips, and widget customization systems were used to enhance dashboard flexibility without disrupting interface clarity.",
+          "detail": "The additional interaction layers improved advanced-user functionality, increased analytical depth, and supported a more adaptive dashboard experience."
+        },
+        {
+          "title": "EXTENDED FRAME",
+          "insight": "The extended dashboard frame was designed to maintain visual consistency across large-scale analytical workflows and long-format operational reporting environments.",
+          "focus": "Structured continuation layouts and persistent UI systems were used to preserve navigation familiarity while accommodating expanded datasets and supporting visuals.",
+          "detail": "The design system maintained scalability, strengthened interface continuity, and delivered a more cohesive enterprise-grade analytics experience."
         }
       ],
       "images": [
@@ -537,18 +543,20 @@
       "client": "ValueHits",
       "category": "EMAILERS",
       "heroImage": "/projects/Emailers/ValueHits Project/shared image.jpg",
-      "description": "Conversion-focused emailer design with a clear hierarchy, compact messaging, and strong call-to-action emphasis.",
+      "description": "A conversion-focused email marketing design system crafted to deliver clear communication, stronger audience engagement, and action-driven campaign experiences through structured layouts and strategic visual hierarchy.",
       "year": "2026",
       "frameNarratives": [
         {
-          "title": "Primary Emailer",
-          "focus": "Introduces the campaign with clear promotion framing and concise subject-line hierarchy.",
-          "detail": "This opening asset is designed for immediate attention and quick comprehension in inbox previews."
+          "title": "PRIMARY EMAILER",
+          "insight": "This email campaign experience combines structured promotional storytelling with high-contrast visual design to maximize audience attention and content retention.",
+          "focus": "Strategic spacing, modular information sections, and CTA-focused composition were used to guide readers smoothly from campaign introduction to service exploration.",
+          "detail": "The emailer delivered a cleaner communication experience, increased visual engagement, and reinforced stronger conversion-oriented campaign presentation."
         },
         {
-          "title": "Follow-up Variation",
-          "focus": "Supports the main send with a lighter variant tuned for continued engagement.",
-          "detail": "The secondary frame reinforces the same offer while providing variation for audience segmentation."
+          "title": "FOLLOW-UP VARIATION",
+          "insight": "The secondary campaign frame was designed to extend the customer journey through visually refined follow-up communication and segmented promotional storytelling.",
+          "focus": "Consistent branding elements, modular service highlights, and simplified conversion pathways were integrated to maintain continuity while introducing content variation.",
+          "detail": "The design enhanced retention-focused communication, improved campaign consistency, and created a more polished multi-touch email marketing experience."
         }
       ],
       "images": [
@@ -558,37 +566,42 @@
     },
     {
       "id": 5,
-      "title": "Coporate Brief",
+      "title": "Corporate Brief",
       "client": "Corporate Brief",
       "category": "CORPORATE DECKS",
       "heroImage": "/projects/Corporate Decks/Coporate Brief/1.jpg",
-      "description": "Corporate desk visual system with premium presentation layouts, structured sections, and clean communication hierarchy.",
+      "description": "A premium corporate presentation system designed to communicate digital services, workflows, and business value through clean structure and modern visual hierarchy.",
       "year": "2026",
       "frameNarratives": [
         {
-          "title": "Executive Cover",
-          "focus": "Introduces the corporate identity with a formal cover composition and strong visual order.",
-          "detail": "The cover frame is designed to signal professionalism and set a polished tone for the full document."
+          "title": "EXECUTIVE COVER",
+          "insight": "The opening cover was designed to establish a strong corporate presence through minimal composition, bold typography, and high-contrast branding elements.",
+          "focus": "A structured visual hierarchy was used to create immediate clarity while reinforcing professionalism and presentation consistency from the very first frame.",
+          "detail": "The final cover created a polished first impression, strengthened brand credibility, and set a confident visual tone for the entire corporate deck."
         },
         {
-          "title": "Structured Overview",
-          "focus": "Uses balanced layout blocks to present information with clarity and hierarchy.",
-          "detail": "This frame keeps the document scannable while preserving a premium editorial feel."
+          "title": "STRUCTURED OVERVIEW",
+          "insight": "This section introduces the company’s digital services through a modular layout system focused on readability, organization, and fast information absorption.",
+          "focus": "Balanced content blocks and clean spacing techniques were used to separate service categories while maintaining visual consistency across the presentation.",
+          "detail": "The structured composition improved content navigation, increased presentation clarity, and delivered a more premium editorial-style viewing experience."
         },
         {
-          "title": "Content Expansion",
-          "focus": "Adds supporting information and visual anchors for a stronger reading flow.",
-          "detail": "The composition supports longer-form content without losing the clean corporate look."
+          "title": "CONTENT EXPANSION",
+          "insight": "The layout was developed to present business statistics, service strengths, and organizational credibility through visually segmented information blocks.",
+          "focus": "Strong visual anchors, contrast-driven typography, and modular data placement were used to support long-form corporate communication without overwhelming the viewer.",
+          "detail": "The composition enhanced readability, improved information retention, and helped communicate brand scale in a more professional and impactful format."
         },
         {
-          "title": "PPC Process Roadmap",
-          "focus": "A 6-step PPC workflow: Data Review → Tracking → Keywords & Audience → Ad Copies → Bidding Strategy → Landing Pages.",
-          "detail": "Each step is visually anchored to guide stakeholders through the paid-media execution flow with clear campaign logic."
+          "title": "PPC PROCESS ROADMAP",
+          "insight": "The roadmap section was designed to simplify the paid-media workflow into a clear step-by-step visual journey for clients and stakeholders.",
+          "focus": "A sequential process structure was used to guide viewers through campaign planning, audience targeting, ad creation, bidding strategy, and optimization stages.",
+          "detail": "The visual roadmap improved process understanding, strengthened strategic clarity, and made complex PPC workflows easier to communicate and present."
         },
         {
-          "title": "PPC Benefits Overview",
-          "focus": "Highlights 8 core PPC benefits including Real-Time Trackability, Flexible Budgeting, Campaign Flexibility, and Targeted Success.",
-          "detail": "A circular radial layout communicates how PPC delivers the fastest and most effective way to attract traffic and rise in search rankings."
+          "title": "PPC BENEFITS OVERVIEW",
+          "insight": "This section visually communicates the core advantages of PPC marketing through a centralized layout focused on clarity, balance, and audience engagement.",
+          "focus": "A radial information structure was used to highlight key benefits such as targeting flexibility, measurable performance, real-time tracking, and scalable reach.",
+          "detail": "The design simplified technical marketing concepts into an easy-to-understand visual system, improving audience comprehension and strengthening service value perception."
         }
       ],
       "images": [
@@ -605,28 +618,32 @@
       "client": "Indian Polymers Industries",
       "category": "CORPORATE DECKS",
       "heroImage": "/projects/Corporate Decks/Indian Polymers Industries/1.jpg",
-      "description": "Industrial corporate desk presentation with detailed sections, clear information blocks, and polished visual structure.",
+      "description": "An industrial corporate presentation designed to communicate manufacturing strength, operational scale, and quality-driven processes through structured layouts and modern visual clarity.",
       "year": "2026",
       "frameNarratives": [
         {
-          "title": "Brand Cover",
-          "focus": "Starts with an industrial yet refined cover that frames the company identity confidently.",
-          "detail": "The first page establishes credibility and creates a strong anchor for the rest of the set."
+          "title": "BRAND COVER",
+          "insight": "The opening frame was designed to establish a bold industrial identity through high-contrast visuals, minimal typography, and a refined corporate presentation style.",
+          "focus": "A dark industrial visual language combined with structured typography was used to position the company as credible, modern, and manufacturing-driven.",
+          "detail": "The cover created a strong first impression, reinforced brand authority, and established a confident visual foundation for the entire presentation system."
         },
         {
-          "title": "Operational Detail",
-          "focus": "Highlights process, capability, or service detail with a disciplined grid system.",
-          "detail": "This page is built to communicate technical confidence without visual clutter."
+          "title": "OPERATIONAL DETAIL",
+          "insight": "This section was developed to present company background, operational expertise, and industrial capabilities in a clear and professionally structured format.",
+          "focus": "A disciplined grid layout and controlled content spacing were used to simplify detailed technical information while maintaining readability and presentation balance.",
+          "detail": "The composition improved information clarity, strengthened operational credibility, and delivered a cleaner corporate communication experience without visual overload."
         },
         {
-          "title": "Manufacturing Capacity",
-          "focus": "Details 6 core production capabilities including in-house weighing systems, 6 tonnes/day mixing, 7–250 Ton Desma injection moulding, 12 compression machines, 2 steam-curing extruders, and spray painting facilities.",
-          "detail": "A timeline-style infographic communicates the full scope of the plant's manufacturing infrastructure with clarity and precision."
+          "title": "MANUFACTURING CAPACITY",
+          "insight": "The manufacturing section visually communicates the company’s production infrastructure, machinery scale, and operational capabilities through an infographic-led layout system.",
+          "focus": "A connected process flow was designed to highlight core production units, manufacturing equipment, and facility strengths while maintaining structured visual continuity.",
+          "detail": "The infographic presentation simplified complex manufacturing data into a more accessible and visually engaging format, reinforcing the company’s industrial scale and technical capability."
         },
         {
-          "title": "Quality Objectives",
-          "focus": "Outlines 6 quality commitments: enhancing customer satisfaction, reducing complaints, employee training & upskilling, improving products to customer specs, better housekeeping, and minimising rejection.",
-          "detail": "A clean icon-driven layout reinforces the brand's dedication to quality standards and continuous operational improvement."
+          "title": "QUALITY OBJECTIVES",
+          "insight": "This section highlights the company’s commitment to operational excellence, customer satisfaction, and continuous quality improvement through a structured visual framework.",
+          "focus": "Icon-driven communication and sequential layout techniques were used to organize multiple quality objectives into a clean and easy-to-navigate presentation format.",
+          "detail": "The final composition strengthened the company’s quality-focused brand perception while communicating operational discipline and long-term manufacturing reliability."
         }
       ],
       "images": [
@@ -643,7 +660,7 @@
       "category": "APP DESIGNS",
       "projectFolder": "App Designs",
       "heroImage": "/projects/App Designs/1.png",
-      "description": "A curated collection of mobile app designs focusing on intuitive navigation, premium aesthetics, and seamless user experiences across food ordering and retail platforms.",
+      "description": "A curated mobile app design collection focused on premium user experiences, intuitive navigation systems, and visually engaging interfaces across food ordering and e-commerce platforms.",
       "services": [
         "UI/UX Design",
         "Mobile App Design",
@@ -652,19 +669,22 @@
       "year": "2026",
       "frameNarratives": [
         {
-          "title": "Sticky Fingers BBQ App",
-          "focus": "A warm, food-focused mobile experience with clear sign-in and registration flows tailored for BBQ lovers.",
-          "detail": "Features rich, textured backgrounds with high-contrast typography, streamlining the user journey from splash screen to the main menu."
+          "title": "STICKY FINGERS BBQ APP",
+          "insight": "This mobile experience blends bold restaurant branding with immersive UI design to create a visually appetizing and conversion-focused ordering platform.",
+          "focus": "Textured backgrounds, cinematic food imagery, and structured interaction flows were used to guide users seamlessly from onboarding to menu exploration and checkout.",
+          "detail": "The application delivered a cohesive and memorable digital dining experience while reinforcing the restaurant’s premium and energetic brand identity."
         },
         {
-          "title": "Colton's Steak House Ordering",
-          "focus": "A rustic, loyalty-driven application designed to enhance the dine-in and takeout ordering experience.",
-          "detail": "Integrates rewards tracking, location-based ordering, and gift card management into a cohesive, brand-authentic digital environment."
+          "title": "COLTON’S STEAK HOUSE ORDERING",
+          "insight": "This app experience transforms traditional restaurant ordering into a premium mobile interaction system inspired by classic steakhouse aesthetics and customer loyalty engagement.",
+          "focus": "A layered UX structure was developed to balance menu browsing, rewards tracking, gift card management, and checkout experiences within a visually cohesive interface.",
+          "detail": "The final design elevated digital ordering interactions while reinforcing a strong, recognizable, and brand-authentic restaurant experience."
         },
         {
-          "title": "Nysaa E-Commerce Experience",
-          "focus": "A high-energy, red-themed shopping application prioritizing secure authentication and seamless product discovery.",
-          "detail": "Includes comprehensive OTP verification, smooth password reset flows, and an intuitive catalog layout designed to maximize conversions."
+          "title": "NYSAA E-COMMERCE EXPERIENCE",
+          "insight": "The platform combines modern e-commerce functionality with high-energy visual design to create a responsive and conversion-oriented mobile shopping ecosystem.",
+          "focus": "Clean product categorization, frictionless authentication systems, and visually structured UI components were used to simplify browsing, onboarding, and purchase actions.",
+          "detail": "The final experience enhanced user trust, accelerated product exploration, and delivered a polished mobile commerce interface optimized for engagement and retention."
         }
       ],
       "images": [

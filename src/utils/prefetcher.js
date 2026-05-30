@@ -17,11 +17,13 @@ const preloadedImagesCache = new Set();
 
 // Default core showcase images (pictures after the hero section that need original quality)
 const coreShowcaseImages = [
-  '/showcase/1.jpg',
-  '/showcase/2.jpg',
-  '/showcase/3.jpg',
-  '/showcase/4.jpg',
-  '/showcase/5.jpg'
+  '/showcase/1.png',
+  '/showcase/2.png',
+  '/showcase/3.png',
+  '/showcase/4.png',
+  '/showcase/5.png',
+  '/showcase/6.png',
+  '/showcase/7.png'
 ];
 
 // Helper function to preload a single image path

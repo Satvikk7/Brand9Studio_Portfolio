@@ -35,13 +35,17 @@ const PaintingCard = React.memo(({ project, index, onOpenProject, rowHeight }) =
   // The widths resolve dynamically based on the native aspect ratio of each original mockup (0% cropping).
   const cardHeight = rowHeight || (index % 2 === 0 ? 'h-[180px] sm:h-[270px]' : 'h-[210px] sm:h-[320px]')
 
-  const handleClick = () => {
+  const tapTimerRef = React.useRef(null)
+
+  const handleClick = (e) => {
+    e.stopPropagation()
     if (isTapped) {
-      onOpenProject(project)
+      if (tapTimerRef.current) clearTimeout(tapTimerRef.current)
       setIsTapped(false)
+      onOpenProject(project)
     } else {
       setIsTapped(true)
-      setTimeout(() => setIsTapped(false), 3000)
+      tapTimerRef.current = setTimeout(() => setIsTapped(false), 2500)
     }
   }
 
@@ -49,7 +53,6 @@ const PaintingCard = React.memo(({ project, index, onOpenProject, rowHeight }) =
     <div 
       className={`relative ${cardHeight} w-auto flex-shrink-0 overflow-hidden border-r border-white/10 group cursor-pointer bg-[#050505]`}
       onClick={handleClick}
-      onMouseLeave={() => setIsTapped(false)}
     >
       {/* Interactive Hover Backdrop Blend */}
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-brand-lime/10 via-transparent to-brand-orange/10 z-10 pointer-events-none" />
@@ -92,14 +95,15 @@ const PaintingCard = React.memo(({ project, index, onOpenProject, rowHeight }) =
       {/* Interactive Micro Glow Accents */}
       <span className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-brand-lime/20 to-transparent z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-      {/* Two-Tap 'View Project' Overlay */}
+      {/* Two-Tap 'View Project' Overlay — pointer-events-auto so second tap reliably fires */}
       <AnimatePresence>
         {isTapped && (
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute inset-0 z-40 bg-black/60 backdrop-blur-[8px] flex items-center justify-center pointer-events-none"
+            onClick={handleClick}
+            className="absolute inset-0 z-40 bg-black/60 backdrop-blur-[8px] flex items-center justify-center cursor-pointer"
           >
             <motion.div 
               initial={{ scale: 0.8, opacity: 0 }}
@@ -254,13 +258,17 @@ const CategoryCard = React.memo(({ project, index, onOpenProject }) => {
   const isPdfHero = /\.pdf$/i.test(project.heroImage || '')
   const [isTapped, setIsTapped] = useState(false)
 
-  const handleClick = () => {
+  const tapTimerRef = React.useRef(null)
+
+  const handleClick = (e) => {
+    e.stopPropagation()
     if (isTapped) {
-      onOpenProject(project)
+      if (tapTimerRef.current) clearTimeout(tapTimerRef.current)
       setIsTapped(false)
+      onOpenProject(project)
     } else {
       setIsTapped(true)
-      setTimeout(() => setIsTapped(false), 3000)
+      tapTimerRef.current = setTimeout(() => setIsTapped(false), 2500)
     }
   }
 
@@ -273,7 +281,6 @@ const CategoryCard = React.memo(({ project, index, onOpenProject }) => {
       whileHover={{ y: -8, transition: { duration: 0.3, ease: 'easeOut' } }}
       className="w-full sm:w-[45%] lg:w-[30%] min-w-0 sm:min-w-[280px] aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 group cursor-pointer bg-[#050505] relative shadow-[0_20px_50px_rgba(0,0,0,0.7)] hover:border-brand-lime/30 hover:shadow-[0_25px_50px_rgba(196,239,71,0.06)] transition-all duration-500"
       onClick={handleClick}
-      onMouseLeave={() => setIsTapped(false)}
     >
       {/* Hover Backdrop Overlay */}
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-brand-lime/10 via-transparent to-brand-orange/5 z-10 pointer-events-none" />
@@ -323,14 +330,15 @@ const CategoryCard = React.memo(({ project, index, onOpenProject }) => {
       {/* Premium Micro Glow Border */}
       <span className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-brand-lime/20 to-transparent z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-      {/* Two-Tap 'View Project' Overlay */}
+      {/* Two-Tap 'View Project' Overlay — pointer-events-auto so second tap reliably fires */}
       <AnimatePresence>
         {isTapped && (
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute inset-0 z-40 bg-black/60 backdrop-blur-[8px] flex items-center justify-center pointer-events-none"
+            onClick={handleClick}
+            className="absolute inset-0 z-40 bg-black/60 backdrop-blur-[8px] flex items-center justify-center cursor-pointer"
           >
             <motion.div 
               initial={{ scale: 0.8, opacity: 0 }}
@@ -414,7 +422,7 @@ export default function WorkGallery() {
             WORK <br /> <span className="text-brand-lime">GALLERY.</span>
           </h1>
           <p className="text-sm sm:text-base md:text-lg text-brand-smoke/70 max-w-2xl leading-relaxed">
-            Discover a shifting, endless interactive canvas of creative projects. Drag left or right to explore blocks, and tap any block to view its fullscreen details.
+            A curated showcase of bold branding, modern design systems, and high-impact digital experiences.
           </p>
         </motion.div>
 

@@ -45,7 +45,7 @@ function buildFrameContent(project, index, totalFrames) {
   return {
     label: `Frame ${index + 1} / ${totalFrames}`,
     title: customNarrative?.title || blueprint.stage,
-    insight: `${project.title} for ${project.client} uses a ${project.category.toLowerCase()}-oriented composition with strong visual rhythm and disciplined spacing.`,
+    insight: customNarrative?.insight || `${project.title} for ${project.client} uses a ${project.category.toLowerCase()}-oriented composition with strong visual rhythm and disciplined spacing.`,
     focus: customNarrative?.focus || blueprint.focus,
     outcome: customNarrative?.detail || blueprint.outcome
   }
