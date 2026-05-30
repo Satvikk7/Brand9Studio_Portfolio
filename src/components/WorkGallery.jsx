@@ -126,10 +126,12 @@ function InfinitePaintingRow({ projects, speed = -0.6, onOpenProject, rowHeight 
   const containerRef = useRef(null)
   const contentRef = useRef(null)
   const [contentWidth, setContentWidth] = useState(0)
-  const [isDragging, setIsDragging] = useState(false)
+
+  // Use a REF for isDragging to avoid stale closure inside useAnimationFrame
+  const isDraggingRef = useRef(false)
+  const lastTimestampRef = useRef(null)
 
   const x = useMotionValue(0)
-  // Spring the *velocity* multiplier instead of the position for buttery smooth continuous movement
   const speedMultiplier = useSpring(1, { stiffness: 80, damping: 20 })
 
   const baseProjects = useMemo(() => {
@@ -158,27 +160,36 @@ function InfinitePaintingRow({ projects, speed = -0.6, onOpenProject, rowHeight 
     }
   }, [baseProjects, projects])
 
-  useAnimationFrame(() => {
+  useAnimationFrame((time) => {
     if (contentWidth === 0) return
 
-    let currentX = x.get()
+    // ── FIX 1: Tab-visibility catch-up prevention ──
+    // Clamp delta to max 100ms so a tab-switch pause never causes a huge jump
+    const delta = lastTimestampRef.current === null
+      ? 16
+      : Math.min(time - lastTimestampRef.current, 100)
+    lastTimestampRef.current = time
 
-    // If we are not dragging, apply the auto-scroll speed
-    if (!isDragging) {
-      const currentSpeed = speed * speedMultiplier.get()
-      currentX += currentSpeed
+    if (!isDraggingRef.current) {
+      const pixelsPerMs = speed / 16 // normalize speed to pixels-per-ms
+      const currentSpeed = pixelsPerMs * delta * speedMultiplier.get()
+      let currentX = x.get() + currentSpeed
+
+      // ── FIX 2: Seamless boundary wrap ──
+      if (currentX <= -3 * contentWidth) {
+        currentX += contentWidth
+      } else if (currentX >= -contentWidth) {
+        currentX -= contentWidth
+      }
+
+      // ── FIX 3: Float drift prevention ──
+      // Periodically snap x into the safe -3w..-w window to prevent precision loss
+      if (currentX < -4 * contentWidth || currentX > 0) {
+        currentX = -2 * contentWidth
+      }
+
+      x.set(currentX)
     }
-
-    // Mathematically wrap the container seamlessly
-    if (currentX <= -3 * contentWidth) {
-      currentX += contentWidth
-    } 
-    else if (currentX >= -contentWidth) {
-      currentX -= contentWidth
-    }
-
-    // Apply the value back to x
-    x.set(currentX)
   })
 
   return (
@@ -192,26 +203,25 @@ function InfinitePaintingRow({ projects, speed = -0.6, onOpenProject, rowHeight 
         className="flex flex-nowrap"
         style={{ x }}
         drag="x"
-        // Removed dragConstraints so it can be dragged infinitely in either direction
         dragElastic={0}
         dragMomentum={true}
         onDragStart={() => {
-          setIsDragging(true)
+          isDraggingRef.current = true
           speedMultiplier.set(0)
         }}
         onDragEnd={(event, info) => {
-          setIsDragging(false)
-          // Boost the speed in the direction of the swipe for natural physics
+          isDraggingRef.current = false
+          // Reset timestamp so the first frame after drag doesn't accumulate
+          lastTimestampRef.current = null
           const velocity = info.velocity.x * 0.005
           if (Math.sign(velocity) === Math.sign(speed)) {
              speedMultiplier.set(1 + Math.abs(velocity))
           }
-          // Smoothly return to the base auto-scroll speed
           setTimeout(() => speedMultiplier.set(1), 50)
         }}
         onHoverStart={() => speedMultiplier.set(0)}
         onHoverEnd={() => {
-          if (!isDragging) speedMultiplier.set(1)
+          if (!isDraggingRef.current) speedMultiplier.set(1)
         }}
       >
         {duplicatedProjects.map((project, idx) => (
