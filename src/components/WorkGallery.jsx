@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import projectsData from '../data/projects.json'
 import { normalizeProjects, buildCategories } from '../utils/projectModel'
 import YouTubeShowcase from '../sections/YouTubeShowcase'
+import SocialMediaShowcase from './SocialMediaShowcase'
 
 
 
@@ -488,6 +489,16 @@ export default function WorkGallery() {
                   rowHeight="h-[210px] sm:h-[320px]"
                 />
               )}
+            </motion.div>
+          ) : activeCategory === 'SOCIAL MEDIA POSTS' ? (
+            <motion.div
+              key="social-media-showcase"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <SocialMediaShowcase />
             </motion.div>
           ) : (
             <motion.div
