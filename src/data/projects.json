@@ -70,188 +70,6 @@
       ]
     },
     {
-      "id": 8,
-      "title": "Vertex Emblem",
-      "client": "Logo Design Study",
-      "category": "LOGO DESIGNS",
-      "projectFolder": "Minimal Emblem",
-      "heroImage": "/projects/Logo Designs/shared image.png",
-      "description": "A sharp emblem concept with a minimal silhouette, built to feel modern, compact, and brand-ready.",
-      "year": "2026",
-      "frameNarratives": [
-        {
-          "title": "Symbol Direction",
-          "focus": "Introduces a clean geometric form that communicates confidence and clarity.",
-          "detail": "The mark is designed to be memorable at small sizes while staying elegant in larger applications."
-        },
-        {
-          "title": "Identity Balance",
-          "focus": "Refines spacing and proportion so the logo feels stable and polished.",
-          "detail": "This version works well across headers, social icons, and compact brand applications."
-        }
-      ],
-      "images": [
-        "/projects/Logo Designs/shared image.png"
-      ]
-    }
-    ,
-    {
-      "id": 9,
-      "title": "Solace Wordmark",
-      "client": "Logo Design Study",
-      "category": "LOGO DESIGNS",
-      "projectFolder": "Refined Wordmark",
-      "heroImage": "/projects/Logo Designs/shared image (1).png",
-      "description": "A refined wordmark approach with a premium feel, smooth rhythm, and a clean digital-first presence.",
-      "year": "2026",
-      "frameNarratives": [
-        {
-          "title": "Letterform Flow",
-          "focus": "Highlights the typography and keeps the logo readable with a calm visual tone.",
-          "detail": "The design is tuned for polished presentation across stationery and website use."
-        },
-        {
-          "title": "Brand Finish",
-          "focus": "Balances weight and spacing to create a more premium final impression.",
-          "detail": "This variation supports a trustworthy and elevated identity direction."
-        }
-      ],
-      "images": [
-        "/projects/Logo Designs/shared image (1).png"
-      ]
-    }
-    ,
-    {
-      "id": 10,
-      "title": "Aura Mark",
-      "client": "Logo Design Study",
-      "category": "LOGO DESIGNS",
-      "projectFolder": "Soft Brand Mark",
-      "heroImage": "/projects/Logo Designs/shared image (2).png",
-      "description": "A soft brand mark that feels modern and adaptable, ideal for a clean identity system.",
-      "year": "2026",
-      "frameNarratives": [
-        {
-          "title": "Visual Signature",
-          "focus": "Creates a distinct mark with a balanced, easy-to-recognize shape.",
-          "detail": "The symbol is crafted to be versatile enough for digital, print, and social brand assets."
-        },
-        {
-          "title": "Polished Detail",
-          "focus": "Adds subtle refinement so the identity feels considered and contemporary.",
-          "detail": "This version reads cleanly in both light and dark environments."
-        }
-      ],
-      "images": [
-        "/projects/Logo Designs/shared image (2).png"
-      ]
-    }
-    ,
-    {
-      "id": 11,
-      "title": "Prism Identity",
-      "client": "Logo Design Study",
-      "category": "LOGO DESIGNS",
-      "projectFolder": "Identity System",
-      "heroImage": "/projects/Logo Designs/shared image (3).png",
-      "description": "A versatile identity mark with strong visual character and a clean brand-system approach.",
-      "year": "2026",
-      "frameNarratives": [
-        {
-          "title": "Core Mark",
-          "focus": "Sets the foundation with a logo that feels balanced, modern, and scalable.",
-          "detail": "The shape and spacing are optimized for strong recognition across brand touchpoints."
-        },
-        {
-          "title": "System Ready",
-          "focus": "Prepares the mark for use across app icons, headers, and supporting collateral.",
-          "detail": "This design direction performs well in both feature and minimal layouts."
-        }
-      ],
-      "images": [
-        "/projects/Logo Designs/shared image (3).png"
-      ]
-    }
-    ,
-    {
-      "id": 12,
-      "title": "Nova Crest",
-      "client": "Logo Design Study",
-      "category": "LOGO DESIGNS",
-      "projectFolder": "Crest Concept",
-      "heroImage": "/projects/Logo Designs/shared image (4).png",
-      "description": "A crest-inspired concept that blends premium structure with a clean contemporary finish.",
-      "year": "2026",
-      "frameNarratives": [
-        {
-          "title": "Premium Structure",
-          "focus": "Uses a compact crest form to suggest authority and brand strength.",
-          "detail": "The mark remains lightweight enough for modern digital branding needs."
-        },
-        {
-          "title": "Brand Recall",
-          "focus": "Improves memorability through a distinctive outline and refined spacing.",
-          "detail": "This concept is suited for premium positioning and elegant presentations."
-        }
-      ],
-      "images": [
-        "/projects/Logo Designs/shared image (4).png"
-      ]
-    }
-    ,
-    {
-      "id": 13,
-      "title": "Flux Monogram",
-      "client": "Logo Design Study",
-      "category": "LOGO DESIGNS",
-      "projectFolder": "Monogram Concept",
-      "heroImage": "/projects/Logo Designs/shared image (5).png",
-      "description": "A compact monogram study focused on clean geometry, rhythm, and high brand adaptability.",
-      "year": "2026",
-      "frameNarratives": [
-        {
-          "title": "Compact Form",
-          "focus": "Introduces a condensed mark that works especially well in tight spaces.",
-          "detail": "The form is designed to look premium even as a favicon or social avatar."
-        },
-        {
-          "title": "Flexible Use",
-          "focus": "Keeps the identity adaptable across marketing assets and UI placements.",
-          "detail": "The structure gives the logo long-term utility in evolving brand systems."
-        }
-      ],
-      "images": [
-        "/projects/Logo Designs/shared image (5).png"
-      ]
-    }
-    ,
-    {
-      "id": 14,
-      "title": "Bloom Logo Study",
-      "client": "Logo Design Study",
-      "category": "LOGO DESIGNS",
-      "projectFolder": "Organic Concept",
-      "heroImage": "/projects/Logo Designs/shared image (1).jpg",
-      "description": "A logo exploration with a softer visual personality, built to feel friendly and brandable.",
-      "year": "2026",
-      "frameNarratives": [
-        {
-          "title": "Organic Direction",
-          "focus": "Leans into a more approachable identity language with subtle personality.",
-          "detail": "The design feels suitable for brands that need warmth without losing professionalism."
-        },
-        {
-          "title": "Brand Warmth",
-          "focus": "Rounds out the concept with a polished finish and a memorable silhouette.",
-          "detail": "This final variation offers a softer alternative within the logo family."
-        }
-      ],
-      "images": [
-        "/projects/Logo Designs/shared image (1).jpg"
-      ]
-    }
-    ,
-    {
       "id": 15,
       "title": "Social Launch Story",
       "client": "Brand Social Kit",
@@ -275,8 +93,7 @@
       "images": [
         "/projects/Social Media Posts/shared image (4).jpg"
       ]
-    }
-    ,
+    },
     {
       "id": 16,
       "title": "Community Pulse Post",
@@ -301,8 +118,7 @@
       "images": [
         "/projects/Social Media Posts/shared image (5).jpg"
       ]
-    }
-    ,
+    },
     {
       "id": 17,
       "title": "Content Spark Post",
@@ -327,8 +143,7 @@
       "images": [
         "/projects/Social Media Posts/shared image (6).jpg"
       ]
-    }
-    ,
+    },
     {
       "id": 18,
       "title": "Brand Motion Teaser",
@@ -353,8 +168,7 @@
       "images": [
         "/projects/Social Media Posts/shared image (7).png"
       ]
-    }
-    ,
+    },
     {
       "id": 19,
       "title": "Business World Travel",
@@ -374,8 +188,7 @@
       "images": [
         "/projects/Social Media Posts/Business World Travel/shared image (2).jpg"
       ]
-    }
-    ,
+    },
     {
       "id": 20,
       "title": "Avenir Technologies Visiting Cards",
@@ -401,8 +214,7 @@
         "/projects/Visiting Cards/Avenir Technologies/shared image (7).jpg",
         "/projects/Visiting Cards/Avenir Technologies/shared image (8).jpg"
       ]
-    }
-    ,
+    },
     {
       "id": "meenaz",
       "title": "Meenaz Visiting Card",
@@ -428,8 +240,7 @@
         "/projects/Visiting Cards/Meenaz/1.png",
         "/projects/Visiting Cards/Meenaz/2.png"
       ]
-    }
-    ,
+    },
     {
       "id": 23,
       "title": "Maternity & Kids Website Page",
@@ -458,8 +269,7 @@
         "/projects/Website Page/Maternity Showcase/page_4.png",
         "/projects/Website Page/Maternity Showcase/page_5.png"
       ]
-    }
-    ,
+    },
     {
       "id": 24,
       "title": "Photography Website Design",
@@ -480,8 +290,7 @@
       "images": [
         "/projects/Website Page/Photography Showcase/page_1.png"
       ]
-    }
-    ,
+    },
     {
       "id": 3,
       "title": "Analytics Dashboard Project",
@@ -692,28 +501,6 @@
         "/projects/App Designs/2.png",
         "/projects/App Designs/3.png"
       ]
-    },
-    {
-      "id": 25,
-      "title": "Dr. Anuj Mudgal Family Clinic",
-      "client": "Dr. Anuj Mudgal",
-      "category": "LOGO DESIGNS",
-      "projectFolder": "Healthcare Identity",
-      "heroImage": "/projects/Logo Designs/dr-anuj-mudgal.jpg",
-      "description": "A premium and trust-forward medical identity designed for Dr. Anuj Mudgal Family Clinic, balancing clean medical symbolism with professional warmth.",
-      "year": "2026",
-      "frameNarratives": [
-        {
-          "title": "Stethoscope Cross Emblem",
-          "focus": "Combines a classic medical cross with a modern, elegant stethoscope shape to symbolise professional care and accessibility.",
-          "detail": "The soft teal and blue gradients evoke clean, clinical precision while remaining warm, friendly, and deeply trustworthy."
-        }
-      ],
-      "images": [
-        "/projects/Logo Designs/dr-anuj-mudgal.jpg"
-      ]
     }
   ]
 }
-
-

@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState, useRef } from 'react'
+import { createPortal } from 'react-dom'
 import { motion, AnimatePresence, useMotionValue, useAnimationFrame, useSpring } from 'framer-motion'
 import { useLocation, useNavigate } from 'react-router-dom'
 import projectsData from '../data/projects.json'
@@ -6,7 +7,23 @@ import { normalizeProjects, buildCategories } from '../utils/projectModel'
 import YouTubeShowcase from '../sections/YouTubeShowcase'
 import SocialMediaShowcase from './SocialMediaShowcase'
 
+const INJECTED_LOGOS = [
+  { id: 'logo-1', title: 'Vemdec', category: 'LOGO DESIGNS', heroImage: '/projects/Logo Designs/vemdec.png' },
+  { id: 'logo-2', title: 'Dr. Anuj Mudgal', category: 'LOGO DESIGNS', heroImage: '/projects/Logo Designs/anuj.png' },
+  { id: 'logo-3', title: 'Coffee & Croissant', category: 'LOGO DESIGNS', heroImage: '/projects/Logo Designs/coffee-croissant.png' },
+  { id: 'logo-4', title: 'Maria Industries', category: 'LOGO DESIGNS', heroImage: '/projects/Logo Designs/maria-industries.png' },
+  { id: 'logo-5', title: 'Global EcomPro', category: 'LOGO DESIGNS', heroImage: '/projects/Logo Designs/global-ecompro.png' },
+  { id: 'logo-6', title: 'Social Saumye', category: 'LOGO DESIGNS', heroImage: '/projects/Logo Designs/social-saumye.png' },
+  { id: 'logo-7', title: "Actor's Lab", category: 'LOGO DESIGNS', heroImage: '/projects/Logo Designs/actors-lab.png' },
+  { id: 'logo-8', title: 'Grosandcos', category: 'LOGO DESIGNS', heroImage: '/projects/Logo Designs/grosandcos.png' },
+  { id: 'logo-9', title: 'TC Infra', category: 'LOGO DESIGNS', heroImage: '/projects/Logo Designs/tc-infra.png' }
+];
 
+const INJECTED_VISITING_CARDS = [
+  { id: 'vc-1', title: 'Meenaz Jewelleries', category: 'VISITING CARDS', heroImage: '/projects/Visiting Cards/meenaz.png' },
+  { id: 'vc-2', title: 'Avenir Technology', category: 'VISITING CARDS', heroImage: '/projects/Visiting Cards/avenir.png' },
+  { id: 'vc-3', title: 'Indigo Sourcing', category: 'VISITING CARDS', heroImage: '/projects/Visiting Cards/indigo.png' }
+];
 
 const categorySortOrder = [
   'BROCHURE','CORPORATE DECKS','WEBSITE PAGE','APP DESIGNS','SOCIAL MEDIA POSTS',
@@ -372,8 +389,25 @@ export default function WorkGallery() {
   const navigate = useNavigate()
   const location = useLocation()
   const [activeCategory, setActiveCategory] = useState(location.state?.activeCategory || 'ALL')
+  const [enlargedPost, setEnlargedPost] = useState(null)
 
-  const normalizedProjects = useMemo(() => normalizeProjects(projectsData.projects || []), [])
+  useEffect(() => {
+    if (enlargedPost) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [enlargedPost])
+
+  const normalizedProjects = useMemo(() => {
+    const rawProjects = projectsData.projects || [];
+    const withoutOld = rawProjects.filter(p => p.category !== 'LOGO DESIGNS' && p.category !== 'VISITING CARDS');
+    const finalProjects = [...withoutOld, ...INJECTED_LOGOS, ...INJECTED_VISITING_CARDS];
+    return normalizeProjects(finalProjects);
+  }, [])
   const categories = useMemo(() => buildCategories(normalizedProjects), [normalizedProjects])
 
   const sortedProjects = useMemo(() => {
@@ -404,7 +438,15 @@ export default function WorkGallery() {
   }, [filteredProjects])
 
   const handleOpenProject = (project) => {
-    navigate(`/project/${project.id}`, { state: { scrollY: window.scrollY, activeCategory } })
+    if (project.category === 'SOCIAL MEDIA POSTS' || project.category === 'LOGO DESIGNS' || project.category === 'VISITING CARDS') {
+      setEnlargedPost({
+        image: project.heroImage,
+        images: project.images || [project.heroImage],
+        title: project.title
+      })
+    } else {
+      navigate(`/project/${project.id}`, { state: { scrollY: window.scrollY, activeCategory } })
+    }
   }
 
   useEffect(() => {
@@ -457,7 +499,7 @@ export default function WorkGallery() {
       </div>
 
       {/* Full-bleed Edge-to-Edge Moving Painting Wall OR Stationary Exhibition Wall */}
-      <div className="relative overflow-hidden w-full bg-black border-y border-white/10 mt-6 select-none py-4">
+      <div className="relative overflow-hidden w-full bg-transparent border-y border-white/10 mt-6 select-none py-4">
         <AnimatePresence mode="wait">
           {activeCategory === 'ALL' ? (
             <motion.div 
@@ -499,6 +541,44 @@ export default function WorkGallery() {
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             >
               <SocialMediaShowcase />
+            </motion.div>
+          ) : activeCategory === 'LOGO DESIGNS' || activeCategory === 'VISITING CARDS' ? (
+            <motion.div
+              key="logo-designs-showcase"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="w-full bg-transparent py-16 px-4 sm:px-8"
+            >
+              <div className={`w-full ${activeCategory === 'VISITING CARDS' ? 'max-w-[1350px]' : 'max-w-4xl'} mx-auto grid ${activeCategory === 'VISITING CARDS' ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3' : 'grid-cols-2 sm:grid-cols-3'} gap-4 sm:gap-6 md:gap-8 lg:gap-10`}>
+                {filteredProjects.map((project, i) => {
+                  const isVisitingCard = project.category === 'VISITING CARDS';
+                  return (
+                    <motion.div
+                      key={`${activeCategory}-slot-${i}`}
+                      whileHover={{ scale: 1.03, y: -5 }}
+                      whileTap={{ scale: 0.97 }}
+                      onClick={() => handleOpenProject(project)}
+                      className={`relative flex items-center justify-center cursor-pointer transition-shadow ${
+                        isVisitingCard
+                          ? 'rounded-xl md:rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.2)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)] overflow-hidden'
+                          : 'bg-white rounded-2xl md:rounded-3xl p-6 shadow-[0_10px_30px_rgba(0,0,0,0.15)] aspect-square hover:shadow-[0_20px_40px_rgba(0,0,0,0.25)]'
+                      }`}
+                    >
+                      <img 
+                        src={project.heroImage} 
+                        alt={project.title} 
+                        className={`select-none ${
+                          isVisitingCard
+                            ? 'w-full h-auto object-cover block'
+                            : 'max-w-[85%] max-h-[85%] object-contain'
+                        }`}
+                      />
+                    </motion.div>
+                  )
+                })}
+              </div>
             </motion.div>
           ) : (
             <motion.div
@@ -564,6 +644,63 @@ export default function WorkGallery() {
           <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-brand-orange/10 rounded-full blur-2xl group-hover:bg-brand-orange/20 transition-all duration-700 pointer-events-none" />
         </motion.div>
       </div>
+
+      {/* Social Media Post Modal Portal */}
+      {typeof document !== 'undefined' && createPortal(
+        <AnimatePresence>
+          {enlargedPost && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[9999] flex items-center justify-center p-2 sm:p-4 md:p-6"
+              style={{ backdropFilter: 'blur(12px)', backgroundColor: 'rgba(0,0,0,0.85)' }}
+              onClick={() => setEnlargedPost(null)}
+            >
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setEnlargedPost(null);
+                }}
+                className="fixed top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8 z-[10000] p-2.5 sm:p-3 bg-white/10 hover:bg-white/20 rounded-full text-white backdrop-blur-md transition-all active:scale-95"
+                aria-label="Close"
+              >
+                <svg width="20" height="20" className="sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </button>
+
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+                className="relative max-w-5xl max-h-full w-full h-full flex items-center justify-center pointer-events-none"
+              >
+                <motion.div
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
+                  onClick={(e) => e.stopPropagation()}
+                  className="pointer-events-auto relative w-full max-w-[100vw] max-h-[90vh] overflow-y-auto overflow-x-hidden p-2 sm:p-4"
+                >
+                  <div className="flex flex-col lg:flex-row gap-6 sm:gap-8 items-center justify-center w-full">
+                    {(enlargedPost.images || [enlargedPost.image]).map((imgSrc, i) => (
+                      <img
+                        key={i}
+                        src={imgSrc}
+                        alt={`${enlargedPost.title || 'Enlarged post'} - ${i + 1}`}
+                        className="w-full h-auto max-w-[95vw] sm:max-w-[85vw] lg:max-w-[45vw] max-h-[60vh] sm:max-h-[75vh] lg:max-h-[85vh] object-contain rounded-xl border border-white/10 block shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_40px_rgba(196,239,71,0.15)] shrink-0"
+                      />
+                    ))}
+                  </div>
+                </motion.div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </section>
   )
 }

@@ -1,5 +1,6 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import React, { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const PHONE_POST = {
   id: 'post-1',
@@ -17,7 +18,7 @@ const SIDE_POSTS = [
   { id: 'post-5', image: '/projects/Social Media Posts/Business World Travel/shared image (2).jpg', title: 'World Travel' },
 ]
 
-function PhoneMockup() {
+function PhoneMockup({ onImageClick }) {
   const PW = 240, PH = 490, BR = 40
   return (
     <div className="relative flex-shrink-0 select-none" style={{ width: PW, height: PH }}>
@@ -71,7 +72,7 @@ function PhoneMockup() {
           </svg>
         </div>
         {/* Post image — fills remaining space, no crop */}
-        <div className="flex-1 bg-gray-50 overflow-hidden flex items-center justify-center" style={{ minHeight: 0 }}>
+        <div className="flex-1 bg-gray-50 overflow-hidden flex items-center justify-center cursor-pointer" onClick={() => onImageClick && onImageClick(PHONE_POST)} style={{ minHeight: 0 }}>
           <img src={PHONE_POST.image} alt={PHONE_POST.title} style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
         </div>
         {/* Actions */}
@@ -122,8 +123,22 @@ function PhoneMockup() {
 }
 
 export default function SocialMediaShowcase() {
+  const [enlargedPost, setEnlargedPost] = useState(null)
+
+  useEffect(() => {
+    if (enlargedPost) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [enlargedPost])
+
   return (
-    <div className="relative w-full overflow-hidden" style={{ background: 'linear-gradient(135deg,#080808 0%,#111 60%,#0a0a0a 100%)' }}>
+    <>
+      <div className="relative w-full overflow-hidden" style={{ background: 'linear-gradient(135deg,#080808 0%,#111 60%,#0a0a0a 100%)' }}>
       {/* Ambient glow */}
       <div className="absolute inset-0 pointer-events-none" style={{
         backgroundImage: 'radial-gradient(ellipse at 10% 60%,rgba(196,239,71,0.05) 0%,transparent 50%),radial-gradient(ellipse at 88% 15%,rgba(255,255,255,0.02) 0%,transparent 45%)',
@@ -149,7 +164,7 @@ export default function SocialMediaShowcase() {
           style={{ filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.75))' }}
         >
           <div className="absolute pointer-events-none" style={{ inset: '-22%', background: 'radial-gradient(circle,rgba(196,239,71,0.1) 0%,transparent 62%)', filter: 'blur(30px)' }} />
-          <PhoneMockup />
+          <PhoneMockup onImageClick={setEnlargedPost} />
         </motion.div>
 
         {/* ── RIGHT: text top + posts bottom ── */}
@@ -214,6 +229,7 @@ export default function SocialMediaShowcase() {
             {SIDE_POSTS.map((post, i) => (
               <motion.div
                 key={post.id}
+                onClick={() => setEnlargedPost(post)}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 whileHover={{ scale: 1.05, zIndex: 10 }}
@@ -243,5 +259,58 @@ export default function SocialMediaShowcase() {
         </div>
       </div>
     </div>
+
+      {typeof document !== 'undefined' && createPortal(
+        <AnimatePresence>
+          {enlargedPost && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[9999] flex items-center justify-center p-2 sm:p-4 md:p-6"
+              style={{ backdropFilter: 'blur(12px)', backgroundColor: 'rgba(0,0,0,0.85)' }}
+              onClick={() => setEnlargedPost(null)}
+            >
+              {/* Close button fixed to the corner of the screen */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setEnlargedPost(null);
+                }}
+                className="fixed top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8 z-[10000] p-2.5 sm:p-3 bg-white/10 hover:bg-white/20 rounded-full text-white backdrop-blur-md transition-all active:scale-95"
+                aria-label="Close"
+              >
+                <svg width="20" height="20" className="sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </button>
+
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+                className="relative max-w-5xl max-h-full w-full h-full flex items-center justify-center pointer-events-none"
+              >
+                <motion.div
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
+                  onClick={(e) => e.stopPropagation()}
+                  className="pointer-events-auto rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_30px_rgba(196,239,71,0.15)] sm:shadow-[0_40px_100px_rgba(0,0,0,0.8),0_0_40px_rgba(196,239,71,0.15)] relative"
+                >
+                  <img
+                    src={enlargedPost.image}
+                    alt={enlargedPost.title || 'Enlarged post'}
+                    className="w-auto h-auto max-w-full max-h-[75vh] sm:max-h-[80vh] md:max-h-[85vh] object-contain rounded-xl border border-white/10 block"
+                  />
+                </motion.div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
+    </>
   )
 }

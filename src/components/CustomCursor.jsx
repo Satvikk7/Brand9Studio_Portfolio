@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
+import { createPortal } from 'react-dom'
 import { motion, useSpring, useMotionValue } from 'framer-motion'
 
 export default function CustomCursor() {
@@ -97,7 +98,7 @@ export default function CustomCursor() {
     }
 
     const handleMouseDown = () => setIsClicking(true)
-    const handleMouseUp   = () => setIsClicking(false)
+    const handleMouseUp = () => setIsClicking(false)
     const handleMouseLeave = () => opacity.set(0)
     const handleMouseEnter = () => opacity.set(1)
 
@@ -115,14 +116,14 @@ export default function CustomCursor() {
       document.removeEventListener('mouseleave', handleMouseLeave)
       document.removeEventListener('mouseenter', handleMouseEnter)
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mouseX, mouseY, opacity])
 
   if (!hasPointer) return null
 
-  return (
+  const cursorContent = (
     <motion.div
-      className="fixed top-0 left-0 z-[9999] pointer-events-none mix-blend-difference"
+      className="fixed top-0 left-0 z-[99999] pointer-events-none mix-blend-difference"
       style={{
         x,
         y,
@@ -176,4 +177,6 @@ export default function CustomCursor() {
       />
     </motion.div>
   )
+
+  return typeof document !== 'undefined' ? createPortal(cursorContent, document.body) : null
 }

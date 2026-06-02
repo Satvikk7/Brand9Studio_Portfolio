@@ -166,20 +166,56 @@ export default function Hero() {
               </motion.div>
 
               <motion.button
-                variants={itemVariants}
                 type="button"
                 onClick={openLatestCaseStudy}
-                whileTap={{ scale: 0.98 }}
-                className="mt-8 w-full lg:hidden rounded-xl border border-white/10 premium-card p-3 sm:p-4 text-left hover:border-white/20 transition-all duration-300"
+                initial="initial"
+                whileHover="hover"
+                whileTap="tap"
+                variants={{
+                  initial: { scale: 1, y: 0 },
+                  hover: { scale: 1.02, y: -4 },
+                  tap: { scale: 0.98, y: 0 }
+                }}
+                className="mt-8 w-full lg:hidden premium-card border border-white/10 p-2 text-left shadow-2xl relative group overflow-hidden rounded-2xl flex flex-col"
                 aria-label={`Open latest case study ${latestCaseStudy.title}`}
               >
-                <div className="relative rounded-xl bg-black overflow-hidden min-h-[200px] sm:min-h-[240px] p-4 sm:p-6">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-brand-lime/30 to-transparent opacity-40" />
-                  <div className="relative z-10">
-                    <p className="text-[10px] font-mono text-brand-lime mb-2 tracking-widest uppercase">Latest Case Study</p>
-                    <h3 className="text-xl sm:text-2xl font-black text-white leading-tight">{latestCaseStudy.title}</h3>
-                    <p className="text-brand-smoke text-xs sm:text-sm mt-2 line-clamp-3">{latestCaseStudy.summary}</p>
-                    <p className="text-brand-lime text-[10px] mt-3 font-bold uppercase tracking-[0.25em]">{latestCaseStudy.folder}</p>
+                <div className="w-full bg-[#080808] relative overflow-hidden flex flex-col rounded-xl border border-white/5">
+                  {/* Top Image Section - Uncropped */}
+                  <div className="w-full relative overflow-hidden bg-black flex items-center justify-center px-4 pt-6 pb-2">
+                    <motion.img 
+                      variants={{
+                        initial: { scale: 1 },
+                        hover: { scale: 1.04 }
+                      }}
+                      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                      src="/projects/hero-case-study.png" 
+                      alt="Case Study" 
+                      className="w-full h-auto object-contain drop-shadow-2xl relative z-10" 
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#080808] to-transparent h-12 bottom-0 top-auto z-20"></div>
+                  </div>
+                  
+                  {/* Bottom Content Section - Uncompromised */}
+                  <div className="p-5 sm:p-6 flex-1 flex flex-col bg-[#080808] relative z-30">
+                    <p className="text-[10px] font-mono text-brand-lime mb-3 tracking-widest uppercase flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-brand-lime animate-pulse"></span>
+                      Latest Case Study
+                    </p>
+                    <h3 className="text-xl sm:text-2xl font-black text-white leading-tight mb-2">{latestCaseStudy.title}</h3>
+                    <p className="text-brand-smoke text-xs sm:text-sm leading-relaxed">{latestCaseStudy.summary}</p>
+                    
+                    <div className="flex items-center justify-between mt-6 pt-4 border-t border-white/5">
+                      <p className="text-brand-smoke text-[10px] font-bold uppercase tracking-[0.2em]">{latestCaseStudy.folder}</p>
+                      <motion.div
+                        variants={{
+                          initial: { x: -5, opacity: 0.7 },
+                          hover: { x: 0, opacity: 1, backgroundColor: "rgba(196,239,71,0.2)" }
+                        }}
+                        className="w-8 h-8 rounded-full bg-brand-lime/10 flex items-center justify-center border border-brand-lime/20"
+                      >
+                        <ArrowUpRight size={14} className="text-brand-lime" />
+                      </motion.div>
+                    </div>
                   </div>
                 </div>
               </motion.button>
@@ -196,21 +232,67 @@ export default function Hero() {
               <motion.button
                 type="button"
                 onClick={openLatestCaseStudy}
-                whileHover={{ scale: 1.02, y: -5 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="w-full max-w-[380px] xl:max-w-[450px] aspect-[4/5] premium-card border border-white/10 p-4 transition-all duration-700 group text-left shadow-[0_20px_50px_rgba(0,0,0,0.6)] hover:shadow-[0_25px_60px_rgba(196,239,71,0.1)]"
+                initial="initial"
+                whileHover="hover"
+                whileTap="tap"
+                variants={{
+                  initial: { scale: 1, y: 0, boxShadow: "0 20px 50px rgba(0,0,0,0.6)" },
+                  hover: { scale: 1.02, y: -8, boxShadow: "0 30px 60px rgba(196,239,71,0.15)" },
+                  tap: { scale: 0.98, y: 0 }
+                }}
+                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                className="w-full max-w-[420px] xl:max-w-[480px] premium-card border border-white/10 p-2 sm:p-3 text-left overflow-hidden relative group rounded-2xl md:rounded-3xl flex flex-col"
                 aria-label={`Open latest case study ${latestCaseStudy.title}`}
               >
-                <div className="w-full h-full bg-black relative overflow-hidden flex flex-col">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-brand-lime/30 to-transparent opacity-40" />
-                  <div className="absolute bottom-6 sm:bottom-8 lg:bottom-10 left-6 sm:left-8 lg:left-10 right-6 sm:right-8 lg:right-10">
-                    <p className="text-[10px] sm:text-xs font-mono text-brand-lime mb-2 tracking-widest uppercase">Latest Case Study</p>
-                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white leading-tight">{latestCaseStudy.title}</h3>
-                    <p className="text-brand-smoke text-xs sm:text-sm mt-2">{latestCaseStudy.summary}</p>
-                    <p className="text-brand-lime text-[10px] sm:text-[11px] mt-2 sm:mt-3 font-bold uppercase tracking-[0.25em]">
-                      {latestCaseStudy.folder}
-                    </p>
+                <div className="w-full bg-[#080808] relative overflow-hidden flex flex-col rounded-xl md:rounded-2xl h-full border border-white/5">
+                  
+                  {/* Top Image Section - Uncropped */}
+                  <div className="w-full relative overflow-hidden bg-black flex items-center justify-center px-6 pt-8 pb-4">
+                    <motion.div
+                      className="absolute inset-0 bg-brand-lime/20 blur-[60px] rounded-full opacity-0"
+                      variants={{ initial: { opacity: 0 }, hover: { opacity: 0.5 } }}
+                      transition={{ duration: 0.8 }}
+                    />
+                    <motion.img 
+                      variants={{
+                        initial: { scale: 1 },
+                        hover: { scale: 1.04 }
+                      }}
+                      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                      src="/projects/hero-case-study.png" 
+                      alt="Case Study" 
+                      className="w-full h-auto object-contain relative z-10 drop-shadow-[0_20px_30px_rgba(0,0,0,0.8)]" 
+                    />
+                    {/* Seamless blend gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#080808] to-transparent h-16 bottom-0 top-auto z-20"></div>
+                  </div>
+                  
+                  {/* Bottom Content Section - Uncompromised */}
+                  <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between bg-[#080808] relative z-30">
+                    <div>
+                      <p className="text-[10px] sm:text-xs font-mono text-brand-lime mb-3 tracking-widest uppercase flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-brand-lime animate-pulse shadow-[0_0_8px_#C4EF47]"></span>
+                        Latest Case Study
+                      </p>
+                      <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white leading-tight mb-3 tracking-tight">{latestCaseStudy.title}</h3>
+                      <p className="text-brand-smoke text-xs sm:text-sm leading-relaxed font-outfit">{latestCaseStudy.summary}</p>
+                    </div>
+                    
+                    <div className="flex items-end justify-between mt-8 pt-6 border-t border-white/5">
+                      <p className="text-brand-smoke text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em]">
+                        {latestCaseStudy.folder}
+                      </p>
+                      <motion.div
+                        variants={{
+                          initial: { x: -10, opacity: 0.5, backgroundColor: "rgba(255,255,255,0.05)" },
+                          hover: { x: 0, opacity: 1, backgroundColor: "rgba(196,239,71,0.2)", borderColor: "rgba(196,239,71,0.4)" }
+                        }}
+                        transition={{ duration: 0.3 }}
+                        className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center backdrop-blur-md"
+                      >
+                        <ArrowUpRight size={16} className="text-brand-lime" />
+                      </motion.div>
+                    </div>
                   </div>
                 </div>
               </motion.button>
