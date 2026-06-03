@@ -12,7 +12,7 @@ export default function Navbar() {
 
   const navItems = [
     { label: 'Work Gallery', id: 'work' },
-    { label: 'Case Studies', id: 'case-studies' },
+    // { label: 'Case Studies', id: 'case-studies' },
     { label: 'Testimonials', id: 'testimonials' },
     { label: 'About', id: 'about' },
     { label: 'Contact', id: 'contact' }
