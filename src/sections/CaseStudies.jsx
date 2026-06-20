@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, Sparkles, Layers3, Target } from 'lucide-react'
-import BeforeAfterSlider from '../components/BeforeAfterSlider'
+
 
 export const caseStudies = [
   {
@@ -90,44 +90,6 @@ export default function CaseStudies() {
           </p>
         </div>
 
-        {/* Featured Transformation Slider */}
-        <motion.div
-          initial={{ opacity: 0, y: 35 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-20"
-        >
-          <div className="flex flex-col lg:flex-row gap-12 items-center">
-            <div className="w-full lg:w-3/5">
-              <BeforeAfterSlider
-                beforeImage="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=1200"
-                afterImage="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1200"
-                beforeLabel="Old Identity"
-                afterLabel="Growth-Ready Revamp"
-              />
-            </div>
-            <div className="w-full lg:w-2/5 space-y-6 text-left">
-              <div className="inline-block px-3 py-1 bg-brand-lime/10 border border-brand-lime/20 rounded-full text-[10px] font-bold text-brand-lime uppercase tracking-widest">
-                Visual Impact
-              </div>
-              <h3 className="text-3xl font-black text-white uppercase tracking-tighter leading-none">
-                FROM CONCEPT <br /> TO <span className="text-brand-lime">CONVERSION.</span>
-              </h3>
-              <p className="text-brand-smoke text-sm leading-relaxed font-outfit">
-                Our design process isn't just about aesthetics. We transform outdated brand markers into strategic visual assets that capture trust and drive measurable business growth.
-              </p>
-              <ul className="space-y-3">
-                {['Strategic Color Theory', 'Modern Typography Systems', 'High-Performance Visuals'].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-xs font-bold text-white uppercase tracking-wider">
-                    <span className="w-1.5 h-1.5 bg-brand-lime rounded-full" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </motion.div>
 
         <motion.div 
           variants={{
