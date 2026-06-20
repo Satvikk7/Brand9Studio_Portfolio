@@ -66,12 +66,6 @@ function App() {
   }
 
   const isServiceOrPolicyPage = [
-    '/branding',
-    '/reels',
-    '/social-media',
-    '/digital-marketing',
-    '/web-design',
-    '/content-writing',
     '/privacy-policy',
     '/terms-of-service'
   ].includes(location.pathname)

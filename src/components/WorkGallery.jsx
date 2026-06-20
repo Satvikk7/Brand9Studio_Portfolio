@@ -6,6 +6,7 @@ import projectsData from '../data/projects.json'
 import { normalizeProjects, buildCategories } from '../utils/projectModel'
 import YouTubeShowcase from '../sections/YouTubeShowcase'
 import SocialMediaShowcase from './SocialMediaShowcase'
+import WebsiteShowcase from './WebsiteShowcase'
 
 const INJECTED_LOGOS = [
   { id: 'logo-1', title: 'Vemdec', category: 'LOGO DESIGNS', heroImage: '/projects/Logo Designs/vemdec.png' },
@@ -444,6 +445,8 @@ export default function WorkGallery() {
         images: project.images || [project.heroImage],
         title: project.title
       })
+    } else if (project.externalLink) {
+      window.open(project.externalLink, '_blank', 'noopener,noreferrer')
     } else {
       navigate(`/project/${project.id}`, { state: { scrollY: window.scrollY, activeCategory } })
     }
@@ -579,6 +582,22 @@ export default function WorkGallery() {
                   )
                 })}
               </div>
+            </motion.div>
+          ) : activeCategory === 'WEBSITE PAGE' ? (
+            <motion.div
+              key="website-showcase"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            >
+              {filteredProjects.length > 0 ? (
+                <WebsiteShowcase projects={filteredProjects} />
+              ) : (
+                <div className="text-center py-20 text-white/40 text-sm w-full">
+                  No projects found in this category.
+                </div>
+              )}
             </motion.div>
           ) : (
             <motion.div

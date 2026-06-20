@@ -190,35 +190,6 @@
       ]
     },
     {
-      "id": 23,
-      "title": "Maternity & Kids Website Page",
-      "client": "Website Page Series",
-      "category": "WEBSITE PAGE",
-      "projectFolder": "Website Page",
-      "heroImage": "/projects/Website Page/Maternity Showcase/page_1.png",
-      "description": "A warm and friendly website page concept tailored for maternity and kids offerings with a reassuring, modern design language.",
-      "year": "2026",
-      "frameNarratives": [
-        {
-          "title": "Warm Brand Tone",
-          "focus": "Introduces the page with approachable visuals and trust-building structure.",
-          "detail": "The composition keeps the experience gentle and clear for family-oriented audiences."
-        },
-        {
-          "title": "Section Clarity",
-          "focus": "Organizes services and highlights into a smooth long-page reading sequence.",
-          "detail": "This helps users absorb details quickly while preserving a premium visual flow."
-        }
-      ],
-      "images": [
-        "/projects/Website Page/Maternity Showcase/page_1.png",
-        "/projects/Website Page/Maternity Showcase/page_2.png",
-        "/projects/Website Page/Maternity Showcase/page_3.png",
-        "/projects/Website Page/Maternity Showcase/page_4.png",
-        "/projects/Website Page/Maternity Showcase/page_5.png"
-      ]
-    },
-    {
       "id": 24,
       "title": "Photography Website Design",
       "client": "Freelance Photographer",
