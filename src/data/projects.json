@@ -190,58 +190,6 @@
       ]
     },
     {
-      "id": 20,
-      "title": "Avenir Technologies Visiting Cards",
-      "client": "Avenir Technologies",
-      "category": "VISITING CARDS",
-      "projectFolder": "Avenir Technologies",
-      "heroImage": "/projects/Visiting Cards/Avenir Technologies/shared image (7).jpg",
-      "description": "A premium two-sided visiting card set crafted for a clean, confident first impression with strong brand clarity.",
-      "year": "2026",
-      "frameNarratives": [
-        {
-          "title": "Front Identity",
-          "focus": "Introduces the brand with a refined layout, sharp hierarchy, and memorable visual balance.",
-          "detail": "The front side is designed to communicate professionalism instantly in client handoffs and meetings."
-        },
-        {
-          "title": "Back Utility",
-          "focus": "Presents contact details with clean spacing and high readability for practical day-to-day use.",
-          "detail": "The reverse side keeps the brand language consistent while maximizing clarity and usability."
-        }
-      ],
-      "images": [
-        "/projects/Visiting Cards/Avenir Technologies/shared image (7).jpg",
-        "/projects/Visiting Cards/Avenir Technologies/shared image (8).jpg"
-      ]
-    },
-    {
-      "id": "meenaz",
-      "title": "Meenaz Visiting Card",
-      "client": "Meenaz",
-      "category": "VISITING CARDS",
-      "projectFolder": "Meenaz",
-      "heroImage": "/projects/Visiting Cards/Meenaz/1.png",
-      "description": "Elegant and premium visiting card design crafted for Meenaz Jewelleries.",
-      "services": [
-        "Brand Identity",
-        "Print Design",
-        "Typography"
-      ],
-      "year": "2024",
-      "frameNarratives": [
-        {
-          "title": "Brand Presence",
-          "focus": "Uses a focused visual style to create a polished and professional first look.",
-          "detail": "The card keeps messaging concise while retaining premium brand character."
-        }
-      ],
-      "images": [
-        "/projects/Visiting Cards/Meenaz/1.png",
-        "/projects/Visiting Cards/Meenaz/2.png"
-      ]
-    },
-    {
       "id": 23,
       "title": "Maternity & Kids Website Page",
       "client": "Website Page Series",
@@ -500,6 +448,90 @@
         "/projects/App Designs/1.png",
         "/projects/App Designs/2.png",
         "/projects/App Designs/3.png"
+      ]
+    },
+    {
+      "id": "phl-ayurveda",
+      "title": "PHL Ayurveda E-Commerce",
+      "client": "Pravek Healthcare Limited",
+      "category": "WEBSITE PAGE",
+      "projectFolder": "PHL",
+      "externalLink": "https://planet-herbs.com/",
+      "heroImage": "/projects/Website Page/PHL/hero.png",
+      "description": "A comprehensive e-commerce website redesign for PHL Ayurveda, focusing on modernising the presentation of traditional Ayurvedic products with an intuitive user experience across all devices.",
+      "year": "2026",
+      "frameNarratives": [
+        {
+          "title": "Modernising Tradition",
+          "insight": "The design bridges the gap between traditional Ayurvedic credibility and modern e-commerce convenience, presenting products like Synotiz oil with high-impact visuals and clear benefits.",
+          "focus": "A clean, trustworthy color palette with vibrant accents was used to highlight key product benefits, ensuring immediate user understanding and trust.",
+          "detail": "This approach elevates the brand's digital presence, making traditional remedies accessible and appealing to a contemporary audience."
+        },
+        {
+          "title": "Seamless Cross-Device Experience",
+          "insight": "The platform was designed to provide a cohesive shopping experience across desktop, tablet, and mobile devices.",
+          "focus": "Responsive layouts adapt elegantly, ensuring product information, add-to-cart functionality, and navigation remain intuitive regardless of screen size.",
+          "detail": "This ensures a frictionless path to purchase, catering to users browsing at home or on the go."
+        }
+      ],
+      "images": [
+        "/projects/Website Page/PHL/hero.png"
+      ]
+    },
+    {
+      "id": "madhusha-ecommerce",
+      "title": "Madhusha E-Commerce",
+      "client": "Madhusha",
+      "category": "WEBSITE PAGE",
+      "projectFolder": "Madhusha",
+      "externalLink": "https://madhusha.in/",
+      "heroImage": "/projects/Website Page/Madhusha/hero.png",
+      "description": "An elegant e-commerce website design for Madhusha, showcasing their festive and ethnic collections with a focus on immersive visuals and seamless shopping experiences.",
+      "year": "2026",
+      "frameNarratives": [
+        {
+          "title": "Elegant Shopping Experience",
+          "insight": "The website was crafted to reflect the brand's premium ethnic aesthetic, prioritizing high-quality imagery and a refined color palette.",
+          "focus": "A clean, intuitive grid layout allows the products to shine, while subtle interactions enhance the browsing experience.",
+          "detail": "This approach ensures that the digital storefront is as beautiful and carefully curated as the collections it sells."
+        },
+        {
+          "title": "Cross-Device Consistency",
+          "insight": "Ensuring a flawless shopping journey across all platforms was a key priority.",
+          "focus": "The responsive design adapts perfectly to mobile, tablet, and desktop, maintaining visual hierarchy and ease of use.",
+          "detail": "From product discovery to checkout, the interface remains smooth and engaging, driving conversions across all devices."
+        }
+      ],
+      "images": [
+        "/projects/Website Page/Madhusha/hero.png"
+      ]
+    },
+    {
+      "id": "haute-cucire",
+      "title": "Haute Cucire Website",
+      "client": "Haute Cucire",
+      "category": "WEBSITE PAGE",
+      "projectFolder": "Haute Cucire",
+      "externalLink": "https://hautecucire.com/",
+      "heroImage": "/projects/Website Page/Haute Cucire/hero.png",
+      "description": "A refined e-commerce experience for Haute Cucire, designed to present their premium lingerie, sports, and nightwear collections with elegance, comfort, and modern sophistication.",
+      "year": "2026",
+      "frameNarratives": [
+        {
+          "title": "Aesthetic of Comfort",
+          "insight": "The visual direction focuses on softness and everyday comfort, utilizing a minimal and elegant UI that lets the product photography speak for itself.",
+          "focus": "A warm, neutral color palette and clean typography create a trustworthy and inviting atmosphere for shoppers.",
+          "detail": "This design choice elevates the perceived value of the products while maintaining an accessible and comfortable brand voice."
+        },
+        {
+          "title": "Streamlined Navigation",
+          "insight": "The user journey is optimized for easy discovery across multiple product categories like lingerie, sports, and nightwear.",
+          "focus": "Intuitive categorization, clear promotional banners, and seamless cross-device adaptability ensure a frictionless shopping experience.",
+          "detail": "By reducing friction, the platform encourages exploration and ultimately drives higher conversion rates."
+        }
+      ],
+      "images": [
+        "/projects/Website Page/Haute Cucire/hero.png"
       ]
     }
   ]
