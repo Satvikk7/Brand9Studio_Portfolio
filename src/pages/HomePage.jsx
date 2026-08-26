@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import Hero from '../sections/Hero'
 import ShowcaseWalls from '../sections/ShowcaseWalls'
+import ClientSuccessStories from '../sections/ClientSuccessStories'
 import Projects from '../sections/Projects'
 import Testimonials from '../sections/Testimonials'
 import About from '../sections/About'
@@ -28,6 +29,7 @@ export default function HomePage() {
       <main>
         <Hero />
         <ShowcaseWalls />
+        <ClientSuccessStories />
         <Projects />
         <Testimonials />
         <About />

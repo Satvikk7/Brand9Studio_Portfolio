@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useRef } from 'react'
 import Magnetic from './Magnetic'
 
 const brandLogo = "/logo.png"
@@ -12,7 +11,7 @@ export default function Navbar() {
 
   const navItems = [
     { label: 'Work Gallery', id: 'work' },
-    // { label: 'Case Studies', id: 'case-studies' },
+    { label: 'Success Stories', id: 'client-success-stories' },
     { label: 'Testimonials', id: 'testimonials' },
     { label: 'About', id: 'about' },
     { label: 'Contact', id: 'contact' }
