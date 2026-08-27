@@ -30,8 +30,8 @@ const stories = [
     id: '02',
     client: 'WETLANDS',
     services: 'Semi-Government Project | Creative Communication',
-    logo: null, // ← Drop the logo file path here when ready
-    logoBg: 'linear-gradient(135deg, #0b1f14 0%, #0f2e1a 100%)',
+    logo: '/clients/wetlands-logo.png',
+    logoBg: 'linear-gradient(135deg, #ffffff 0%, #f0f4f8 100%)',
     clientNeed:
       'The project required professional, clear and visually engaging communication across reports, envelopes, brochures and other required creative materials.',
     whatWeDid:
@@ -49,8 +49,8 @@ const stories = [
     id: '03',
     client: 'RANKENHANCE',
     services: 'Digital Marketing Agency | Website + Creative Communication',
-    logo: null, // ← Drop the logo file path here when ready
-    logoBg: 'linear-gradient(135deg, #1a0d2e 0%, #2a1245 100%)',
+    logo: '/clients/rankenhance-logo.png',
+    logoBg: 'linear-gradient(135deg, #06152e 0%, #0a2046 100%)',
     clientNeed:
       'The agency needed a stronger digital presence to professionally showcase its digital marketing capabilities.',
     whatWeDid:
@@ -68,7 +68,7 @@ const stories = [
     id: '04',
     client: 'FABB CREATION',
     services: 'Fashion & Clothing Brand | Social Media',
-    logo: null, // ← Drop the logo file path here when ready
+    logo: '/clients/fabb-creation-logo.png',
     logoBg: 'linear-gradient(135deg, #1f0d10 0%, #2e1218 100%)',
     clientNeed:
       'The brand needed to establish itself on social media and build a consistent digital presence.',
@@ -87,7 +87,7 @@ const stories = [
     id: '05',
     client: 'FLYTSHIRTS',
     services: 'Clothing Brand | Built From Scratch',
-    logo: null, // ← Drop the logo file path here when ready
+    logo: '/clients/Fly tshirts.png',
     logoBg: 'linear-gradient(135deg, #0d1020 0%, #161a35 100%)',
     clientNeed:
       'The brand needed to establish its complete digital presence from the ground up.',
@@ -107,8 +107,8 @@ const stories = [
     id: '06',
     client: 'PARVEESHAK',
     services: 'AI Camera Solutions | Testimonial Video Production',
-    logo: null, // ← Drop the logo file path here when ready
-    logoBg: 'linear-gradient(135deg, #0a0e1a 0%, #111828 100%)',
+    logo: '/clients/parveeshak-logo.png',
+    logoBg: 'linear-gradient(135deg, #ffffff 0%, #f0f4f8 100%)',
     clientNeed:
       'The client needed to demonstrate the value of its AI camera solutions through authentic customer experiences.',
     whatWeDid:
@@ -126,7 +126,7 @@ const stories = [
     id: '07',
     client: 'DR. ANUJ MUDGAL CLINIC',
     services: 'Healthcare | Complete Branding',
-    logo: null, // ← Drop the logo file path here when ready
+    logo: '/clients/dr-anuj-mudgal-logo.png',
     logoBg: 'linear-gradient(135deg, #091a1a 0%, #0d2626 100%)',
     clientNeed:
       'The clinic needed a professional, trustworthy and consistent brand identity.',
@@ -146,7 +146,7 @@ const stories = [
     id: '08',
     client: 'LAVISTA PARK FAMILY DENTISTRY',
     services: 'Healthcare | Google Ads',
-    logo: null, // ← Drop the logo file path here when ready
+    logo: '/clients/lavista-park-logo.png',
     logoBg: 'linear-gradient(135deg, #09121e 0%, #0e1c2e 100%)',
     clientNeed:
       'The clinic needed to reach potential patients actively searching for dental services on Google.',
@@ -165,7 +165,7 @@ const stories = [
     id: '09',
     client: 'SUNNO AUR SEEKHO',
     services: 'Education Content | YouTube + Social Media',
-    logo: null, // ← Drop the logo file path here when ready
+    logo: '/clients/sunno-aur-seekho-logo.png',
     logoBg: 'linear-gradient(135deg, #1a1000 0%, #2a1c00 100%)',
     clientNeed:
       'The brand needed to consistently build and distribute educational content across digital platforms.',
@@ -185,7 +185,7 @@ const stories = [
     id: '10',
     client: 'INDIAN POLYMER',
     services: 'B2B Rubber Products | Complete Digital Ecosystem',
-    logo: null, // ← Drop the logo file path here when ready
+    logo: '/clients/indian-polymer-logo.png',
     logoBg: 'linear-gradient(135deg, #100a1a 0%, #1c102e 100%)',
     clientNeed:
       'The traditional B2B business needed a professional digital presence and stronger online visibility to reach broader markets.',
@@ -268,15 +268,12 @@ function StoryCard({ story, index }) {
           </span>
 
           {/* Logo */}
-          <div
-            className="w-24 sm:w-32 h-14 sm:h-16 rounded-xl flex-shrink-0 overflow-hidden flex items-center justify-center p-2"
-            style={{ background: story.logoBg }}
-          >
+          <div className="w-24 sm:w-32 h-14 sm:h-16 flex-shrink-0 flex items-center justify-center">
             {story.logo ? (
               <img
                 src={story.logo}
                 alt={`${story.client} logo`}
-                className="w-full h-full object-contain"
+                className="max-w-full max-h-full object-contain"
                 loading="lazy"
                 decoding="async"
               />
@@ -284,7 +281,7 @@ function StoryCard({ story, index }) {
               // Placeholder shown when logo is not yet provided
               <div
                 className="w-full h-full rounded-lg border-2 border-dashed flex flex-col items-center justify-center gap-1"
-                style={{ borderColor: `${ACCENT}40` }}
+                style={{ borderColor: `${ACCENT}40`, background: story.logoBg }}
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ color: `${ACCENT}99` }}>
                   <rect x="3" y="3" width="18" height="18" rx="2" />

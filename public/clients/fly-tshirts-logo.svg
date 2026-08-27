@@ -1,0 +1,26 @@
+<svg width="768" height="768" viewBox="0 0 768 768" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Fly T-shirts logo</title>
+  <desc id="desc">Fly T-shirts logo with red and sage lettering and geometric shapes on a transparent background.</desc>
+  <g shape-rendering="geometricPrecision">
+    <path d="M113 118H239V154H148V226H232V262H148V394H113V118Z" fill="#EE3A4A"/>
+    <path d="M319 75H354V279H459V315H319V75Z" fill="#9ABFA0"/>
+    <path d="M393 52H447L512 161L575 52H629L540 218V364H486V218L393 52Z" fill="#9ABFA0"/>
+
+    <path d="M168 341H381V522L168 341Z" fill="#9ABFA0"/>
+    <path d="M397 341H530L397 541V341Z" fill="#EE3A4A"/>
+    <path d="M506 342H588V470L506 342Z" fill="#9ABFA0"/>
+    <path d="M582 341H637V388H628L582 341Z" fill="#EE3A4A"/>
+    <path d="M315 620H381V555L315 620Z" fill="#9ABFA0"/>
+
+    <path d="M222 399L250 427L220 457L192 430L222 399Z" fill="#EE3A4A"/>
+    <path d="M241 411L272 443" stroke="#EE3A4A" stroke-width="10" stroke-linecap="round"/>
+    <path d="M264 436L294 466" stroke="#9ABFA0" stroke-width="10" stroke-linecap="round"/>
+    <path d="M288 461L319 493" stroke="#9ABFA0" stroke-width="10" stroke-linecap="round"/>
+    <path d="M311 487L341 517" stroke="#9ABFA0" stroke-width="10" stroke-linecap="round"/>
+
+    <g transform="translate(198 470) rotate(45)">
+      <text x="0" y="0" font-family="Arial Black, Arial, Helvetica, sans-serif" font-size="60" font-weight="900" fill="#EE3A4A">T</text>
+      <text x="34" y="0" font-family="Arial Black, Arial, Helvetica, sans-serif" font-size="60" font-weight="900" fill="#9ABFA0">shirt</text>
+    </g>
+  </g>
+</svg>
