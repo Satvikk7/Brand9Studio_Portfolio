@@ -6,7 +6,8 @@ const shorts = [
   'DIg4DSabczw',
   '9vk65c_GAdE',
   'sKttYSwcRs8',
-  'j__F-hIrTk4'
+  'j__F-hIrTk4',
+  'Vf6VprwQRp8'
 ]
 
 function YouTubeShort({ videoId, isMuted, onToggleMute }) {
