@@ -16,6 +16,14 @@ const SIDE_POSTS = [
   { id: 'post-3', image: '/projects/Social Media Posts/shared image (6).jpg', title: 'Content Spark' },
   { id: 'post-4', image: '/projects/Social Media Posts/shared image (7).png', title: 'Brand Motion' },
   { id: 'post-5', image: '/projects/Social Media Posts/Business World Travel/shared image (2).jpg', title: 'World Travel' },
+  { id: 'post-6', image: '/projects/Social Media Posts/Brand9 post.png', title: 'Brand9 Post' },
+  { id: 'post-7', image: '/projects/Social Media Posts/Brand9 post2.png', title: 'Brand9 Post 2' },
+  { id: 'post-8', image: '/projects/Social Media Posts/Digimac Solutions.png', title: 'Digimac Solutions' },
+  { id: 'post-9', image: '/projects/Social Media Posts/Fly Project 1.jpeg', title: 'Fly Project 1' },
+  { id: 'post-10', image: '/projects/Social Media Posts/Fly Project 2.jpeg', title: 'Fly Project 2' },
+  { id: 'post-11', image: '/projects/Social Media Posts/LBTC Project.png', title: 'LBTC Project' },
+  { id: 'post-12', image: '/projects/Social Media Posts/Rayna Project 1.png', title: 'Rayna Project 1' },
+  { id: 'post-13', image: '/projects/Social Media Posts/Rayna Project 2.png', title: 'Rayna Project 2' },
 ]
 
 function PhoneMockup({ onImageClick }) {
@@ -224,7 +232,7 @@ export default function SocialMediaShowcase() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 flex-1 min-h-0"
+            className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4 flex-1 min-h-0"
           >
             {SIDE_POSTS.map((post, i) => (
               <motion.div

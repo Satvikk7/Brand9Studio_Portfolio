@@ -190,6 +190,118 @@
       ]
     },
     {
+      "id": 20,
+      "title": "Brand9 Post",
+      "client": "Brand Social Kit",
+      "category": "SOCIAL MEDIA POSTS",
+      "projectFolder": "Social Campaign",
+      "heroImage": "/projects/Social Media Posts/Brand9 post.png",
+      "description": "A portrait social campaign creative designed for strong visual storytelling and clear feed presence.",
+      "year": "2026",
+      "frameNarratives": [],
+      "images": [
+        "/projects/Social Media Posts/Brand9 post.png"
+      ]
+    },
+    {
+      "id": 21,
+      "title": "Brand9 Post 2",
+      "client": "Brand Social Kit",
+      "category": "SOCIAL MEDIA POSTS",
+      "projectFolder": "Social Campaign",
+      "heroImage": "/projects/Social Media Posts/Brand9 post2.png",
+      "description": "A portrait social campaign creative with a polished composition built for mobile-first communication.",
+      "year": "2026",
+      "frameNarratives": [],
+      "images": [
+        "/projects/Social Media Posts/Brand9 post2.png"
+      ]
+    },
+    {
+      "id": 22,
+      "title": "Digimac Solutions",
+      "client": "Brand Social Kit",
+      "category": "SOCIAL MEDIA POSTS",
+      "projectFolder": "Social Campaign",
+      "heroImage": "/projects/Social Media Posts/Digimac Solutions.png",
+      "description": "A square social creative balancing strong visual hierarchy with an engaging campaign-ready finish.",
+      "year": "2026",
+      "frameNarratives": [],
+      "images": [
+        "/projects/Social Media Posts/Digimac Solutions.png"
+      ]
+    },
+    {
+      "id": 23,
+      "title": "Fly Project 1",
+      "client": "Brand Social Kit",
+      "category": "SOCIAL MEDIA POSTS",
+      "projectFolder": "Brand9 Social Series",
+      "heroImage": "/projects/Social Media Posts/Fly Project 1.jpeg",
+      "description": "A square brand social post designed to keep campaign messaging bold, clear, and recognisable.",
+      "year": "2026",
+      "frameNarratives": [],
+      "images": [
+        "/projects/Social Media Posts/Fly Project 1.jpeg"
+      ]
+    },
+    {
+      "id": 27,
+      "title": "Fly Project 2",
+      "client": "Brand Social Kit",
+      "category": "SOCIAL MEDIA POSTS",
+      "projectFolder": "Brand9 Social Series",
+      "heroImage": "/projects/Social Media Posts/Fly Project 2.jpeg",
+      "description": "A square social post with a refined, campaign-ready visual system for consistent brand communication.",
+      "year": "2026",
+      "frameNarratives": [],
+      "images": [
+        "/projects/Social Media Posts/Fly Project 2.jpeg"
+      ]
+    },
+    {
+      "id": 28,
+      "title": "LBTC Project",
+      "client": "Brand Social Kit",
+      "category": "SOCIAL MEDIA POSTS",
+      "projectFolder": "Design Feature",
+      "heroImage": "/projects/Social Media Posts/LBTC Project.png",
+      "description": "A tall social feature post composed for clear mobile viewing and high-impact visual presentation.",
+      "year": "2026",
+      "frameNarratives": [],
+      "images": [
+        "/projects/Social Media Posts/LBTC Project.png"
+      ]
+    },
+    {
+      "id": 29,
+      "title": "Rayna Project 1",
+      "client": "Brand Social Kit",
+      "category": "SOCIAL MEDIA POSTS",
+      "projectFolder": "WhatsApp Campaign",
+      "heroImage": "/projects/Social Media Posts/Rayna Project 1.png",
+      "description": "A vertical campaign post designed for polished mobile sharing and quick message recognition.",
+      "year": "2026",
+      "frameNarratives": [],
+      "images": [
+        "/projects/Social Media Posts/Rayna Project 1.png"
+      ]
+    },
+    {
+      "id": 30,
+      "title": "Rayna Project 2",
+      "client": "Brand Social Kit",
+      "category": "SOCIAL MEDIA POSTS",
+      "projectFolder": "WhatsApp Campaign",
+      "heroImage": "/projects/Social Media Posts/Rayna Project 2.png",
+      "description": "A vertical social campaign post with a clean composition built for mobile-first communication.",
+      "year": "2026",
+      "frameNarratives": [],
+      "images": [
+        "/projects/Social Media Posts/Rayna Project 2.png"
+      ]
+    },
+    {
       "id": 24,
       "title": "Photography Website Design",
       "client": "Freelance Photographer",
